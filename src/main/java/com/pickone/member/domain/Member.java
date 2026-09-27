@@ -84,6 +84,13 @@ public class Member extends BaseTimeEntity {
 		this.nickname = nickname;
 	}
 
+	/** 휴대폰 인증 완료. 암호화본과 HMAC 을 저장하고 가입을 마친다 (원본 번호는 받지 않는다) */
+	public void completePhoneVerification(String phoneEncrypted, String phoneHmac) {
+		this.phoneEncrypted = phoneEncrypted;
+		this.phoneHmac = phoneHmac;
+		this.signupStatus = SignupStatus.ACTIVE;
+	}
+
 	public boolean isSignupCompleted() {
 		return this.signupStatus == SignupStatus.ACTIVE;
 	}
