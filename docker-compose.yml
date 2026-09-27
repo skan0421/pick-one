@@ -1,0 +1,27 @@
+services:
+  mariadb:
+    image: mariadb:11.4
+    container_name: pickone-mariadb
+    restart: unless-stopped
+    ports:
+      # 로컬에 다른 MySQL 이 3306 을 쓰는 경우가 많아 기본 3307 로 노출
+      - "${DB_PORT:-3307}:3306"
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-pickone}
+      MARIADB_USER: ${DB_USERNAME:-pickone}
+      MARIADB_PASSWORD: ${DB_PASSWORD:?.env 파일에 DB_PASSWORD 를 설정하세요}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?.env 파일에 DB_ROOT_PASSWORD 를 설정하세요}
+      TZ: Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  mariadb-data:

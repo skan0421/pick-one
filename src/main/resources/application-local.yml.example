@@ -1,0 +1,7 @@
+# 로컬 개발용 설정. 이 파일을 application-local.yml 로 복사한 뒤 값을 채우세요. (application-local.yml 은 git 미추적)
+# 값은 docker-compose 가 읽는 .env 와 맞춰야 합니다.
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3307/pickone
+    username: pickone
+    password:
