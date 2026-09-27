@@ -25,6 +25,10 @@ spring:
     enabled: true
     locations: classpath:db/migration
 
+  jackson:
+    # 응답에서 null 필드는 생략 (ErrorResponse.errors 등)
+    default-property-inclusion: non_null
+
 logging:
   level:
     # Hibernate 가 기동 시 DB URL 을 비밀번호 포함 평문으로 INFO 출력하므로 숨김
