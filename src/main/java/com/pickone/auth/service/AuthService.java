@@ -112,7 +112,8 @@ public class AuthService {
 		refreshTokenStore.delete(memberId, claims.jti());
 	}
 
-	private TokenResponse issueTokens(Member member) {
+	/** access + refresh 를 새로 발급한다. 휴대폰 인증 완료처럼 signupStatus 가 바뀐 뒤에도 쓴다 */
+	public TokenResponse issueTokens(Member member) {
 		RefreshTokenClaims refresh = jwtTokenProvider.newRefreshTokenClaims(member.getId());
 		refreshTokenStore.save(member.getId(), refresh.jti(), refresh.issuedAt(), refreshTtl());
 

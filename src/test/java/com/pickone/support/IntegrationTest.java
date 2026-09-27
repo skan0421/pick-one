@@ -17,6 +17,6 @@ import org.springframework.context.annotation.Import;
 @Retention(RetentionPolicy.RUNTIME)
 @SpringBootTest
 @AutoConfigureMockMvc
-@Import({TestcontainersConfiguration.class, TestSecretsConfiguration.class})
+@Import({TestcontainersConfiguration.class, TestSecretsConfiguration.class, TestSmsConfiguration.class})
 public @interface IntegrationTest {
 }
