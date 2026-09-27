@@ -1,24 +1,21 @@
 package com.pickone.member;
 
+import com.pickone.support.IntegrationTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.pickone.TestcontainersConfiguration;
 import com.pickone.member.domain.Member;
 import com.pickone.member.domain.MemberStatus;
 import com.pickone.member.domain.SignupStatus;
 import com.pickone.member.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Member 엔티티 매핑 검증. 컨텍스트가 뜨는 것 자체가 ddl-auto=validate 통과를 뜻하고,
  * 여기서는 저장·조회가 실제 컬럼과 맞는지 확인한다.
  */
-@Import(TestcontainersConfiguration.class)
-@SpringBootTest
+@IntegrationTest
 @Transactional
 class MemberRepositoryTest {
 

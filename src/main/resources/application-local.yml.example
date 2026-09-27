@@ -5,3 +5,8 @@ spring:
     url: jdbc:mariadb://localhost:3307/pickone
     username: pickone
     password:
+
+pickone:
+  jwt:
+    # 32바이트 이상 임의 문자열. 예: openssl rand -base64 48
+    secret:

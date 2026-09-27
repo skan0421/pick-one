@@ -1,5 +1,6 @@
 package com.pickone;
 
+import com.pickone.support.IntegrationTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -9,8 +10,6 @@ import javax.sql.DataSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  * (ddl-auto=validate 이므로 컨텍스트가 뜨는 것 자체가 엔티티-스키마 일치 검증이기도 하다)
  * 각 테스트는 트랜잭션 안에서 실행되고 끝나면 롤백된다.
  */
-@Import(TestcontainersConfiguration.class)
-@SpringBootTest
+@IntegrationTest
 @Transactional
 class SchemaMigrationTest {
 

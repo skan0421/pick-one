@@ -33,3 +33,9 @@ logging:
   level:
     # Hibernate 가 기동 시 DB URL 을 비밀번호 포함 평문으로 INFO 출력하므로 숨김
     org.hibernate.orm.connections.pooling: WARN
+
+pickone:
+  jwt:
+    # HS256 비밀키. 32바이트 이상. 환경변수 또는 application-local.yml 로 주입 (기본값 없음)
+    secret: ${JWT_SECRET}
+    access-token-ttl: 30m
