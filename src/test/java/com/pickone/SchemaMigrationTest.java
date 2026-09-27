@@ -28,7 +28,8 @@ class SchemaMigrationTest {
 	private static final List<String> EXPECTED_TABLES = List.of(
 			"member", "question", "question_option", "vote",
 			"point_wallet", "point_ledger", "hide_relation", "hide_pending",
-			"member_block", "report"
+			"member_block", "report",
+			"member_social_account" // V2
 	);
 
 	@Autowired
@@ -58,7 +59,16 @@ class SchemaMigrationTest {
 				"SELECT COUNT(*) FROM flyway_schema_history WHERE success = 1", Integer.class);
 
 		assertThat(failed).isZero();
-		assertThat(applied).isGreaterThanOrEqualTo(1);
+		assertThat(applied).isGreaterThanOrEqualTo(2);
+	}
+
+	@Test
+	void V2_이후_휴대폰_인증_전_회원은_이메일_비밀번호_휴대폰이_비어_있을_수_있다() {
+		assertThatCode(() -> jdbc.update("""
+				INSERT INTO member (email, password_hash, nickname, phone_encrypted, phone_hmac,
+				                    hide_from_contacts, status, signup_status, created_at, updated_at)
+				VALUES (NULL, NULL, 'social-only', NULL, NULL, b'0', 'ACTIVE', 'PENDING_PHONE', NOW(6), NOW(6))
+				""")).doesNotThrowAnyException();
 	}
 
 	@Test
