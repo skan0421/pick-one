@@ -1,9 +1,11 @@
 package com.pickone.auth.controller;
 
 import com.pickone.auth.dto.LoginRequest;
+import com.pickone.auth.dto.RefreshTokenRequest;
 import com.pickone.auth.dto.SignupRequest;
 import com.pickone.auth.dto.TokenResponse;
 import com.pickone.auth.service.AuthService;
+import com.pickone.global.security.LoginMemberId;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,18 @@ public class AuthController {
 	@PostMapping("/login")
 	public TokenResponse login(@Valid @RequestBody LoginRequest request) {
 		return authService.login(request);
+	}
+
+	/** 공개 경로. access 가 만료된 상태에서 호출되므로 본문의 refresh 로만 인증한다 */
+	@PostMapping("/refresh")
+	public TokenResponse refresh(@Valid @RequestBody RefreshTokenRequest request) {
+		return authService.refresh(request.refreshToken());
+	}
+
+	@PostMapping("/logout")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void logout(@LoginMemberId Long memberId, @Valid @RequestBody RefreshTokenRequest request) {
+		authService.logout(memberId, request.refreshToken());
 	}
 
 }

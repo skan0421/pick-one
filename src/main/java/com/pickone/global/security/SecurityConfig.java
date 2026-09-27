@@ -20,7 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 /**
  * 인증 수준 (docs/api.md 1.2)
- * - 공개: 가입, 로그인
+ * - 공개: 가입, 로그인, 재발급(access 만료 상태에서 호출되므로 본문의 refresh 로 인증)
  * - 로그인: 토큰만 있으면 됨 (PENDING_PHONE 포함) — 인증, 내 정보, 휴대폰 인증
  * - ACTIVE: 그 외 모든 API. PENDING_PHONE 이면 403 SIGNUP_INCOMPLETE
  */
@@ -46,7 +46,8 @@ public class SecurityConfig {
 				.logout(AbstractHttpConfigurer::disable)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers(HttpMethod.POST, "/api/v1/auth/signup", "/api/v1/auth/login").permitAll()
+						.requestMatchers(HttpMethod.POST, "/api/v1/auth/signup", "/api/v1/auth/login", "/api/v1/auth/refresh")
+						.permitAll()
 						.requestMatchers("/api/v1/auth/**", "/api/v1/members/me", "/api/v1/phone-verifications/**")
 						.authenticated()
 						.anyRequest().hasAuthority(ACTIVE_AUTHORITY))

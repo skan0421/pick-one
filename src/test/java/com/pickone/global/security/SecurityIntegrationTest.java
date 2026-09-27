@@ -64,6 +64,7 @@ class SecurityIntegrationTest {
 				.subject("1")
 				.issuedAt(past.minus(30, ChronoUnit.MINUTES))
 				.expiresAt(past)
+				.claim(JwtConfig.TOKEN_TYPE_CLAIM, JwtConfig.TOKEN_TYPE_ACCESS)
 				.claim(JwtConfig.SIGNUP_STATUS_CLAIM, SignupStatus.ACTIVE.name())
 				.build();
 		String expired = jwtEncoder

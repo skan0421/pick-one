@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * secret 은 HS256 용 비밀키 문자열로 32바이트 이상이어야 한다 (환경변수 JWT_SECRET 또는 application-local.yml).
  */
 @ConfigurationProperties(prefix = "pickone.jwt")
-public record JwtProperties(String secret, Duration accessTokenTtl) {
+public record JwtProperties(String secret, Duration accessTokenTtl, Duration refreshTokenTtl) {
 
 	private static final int MIN_SECRET_BYTES = 32;
 
@@ -19,6 +19,9 @@ public record JwtProperties(String secret, Duration accessTokenTtl) {
 		}
 		if (accessTokenTtl == null) {
 			accessTokenTtl = Duration.ofMinutes(30);
+		}
+		if (refreshTokenTtl == null) {
+			refreshTokenTtl = Duration.ofDays(14);
 		}
 	}
 
