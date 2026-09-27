@@ -11,7 +11,7 @@ import org.testcontainers.utility.DockerImageName;
  * docker-compose.yml 과 같은 버전을 사용해 로컬/테스트 환경 차이를 줄인다.
  */
 @TestConfiguration(proxyBeanMethods = false)
-class TestcontainersConfiguration {
+public class TestcontainersConfiguration {
 
 	@Bean
 	@ServiceConnection
