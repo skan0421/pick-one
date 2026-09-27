@@ -7,15 +7,16 @@
 
 ## 기술 스택
 
-Java 17 · Spring Boot 4.1 · Spring Data JPA · Flyway · MariaDB 11.4 · Gradle · Docker Compose · Testcontainers
+Java 17 · Spring Boot 4.1 · Spring Data JPA · Spring Security(JWT) · Flyway · MariaDB 11.4 · Gradle · Docker Compose · Testcontainers
 
 ## 로컬 실행
 
 1. 환경변수 파일 준비 (둘 다 git 미추적)
    ```bash
    cp .env.example .env                                                        # DB_PASSWORD, DB_ROOT_PASSWORD 채우기
-   cp src/main/resources/application-local.yml.example src/main/resources/application-local.yml   # .env 와 같은 비밀번호
+   cp src/main/resources/application-local.yml.example src/main/resources/application-local.yml   # .env 와 같은 비밀번호 + JWT 비밀키
    ```
+   JWT 비밀키(`pickone.jwt.secret`)는 32바이트 이상 임의 문자열입니다. 환경변수 `JWT_SECRET` 으로도 줄 수 있습니다.
 2. DB 기동
    ```bash
    docker compose up -d
