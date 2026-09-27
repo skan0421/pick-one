@@ -23,5 +23,19 @@ services:
       timeout: 5s
       retries: 12
 
+  redis:
+    image: redis:7.4-alpine
+    container_name: pickone-redis
+    restart: unless-stopped
+    ports:
+      # 다른 프로젝트 Redis 가 6379 를 쓰는 경우가 있어 기본 6380 으로 노출
+      - "${REDIS_PORT:-6380}:6379"
+    command: ["redis-server", "--appendonly", "no", "--save", ""]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
 volumes:
   mariadb-data:
