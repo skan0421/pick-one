@@ -33,6 +33,7 @@ public enum ErrorCode {
 	MEMBER_SUSPENDED(HttpStatus.FORBIDDEN, "정지된 회원입니다."),
 
 	// 휴대폰 인증
+	PHONE_INVALID_FORMAT(HttpStatus.BAD_REQUEST, "휴대폰 번호 형식이 올바르지 않습니다."),
 	PHONE_ALREADY_REGISTERED(HttpStatus.CONFLICT, "이미 등록된 휴대폰 번호입니다.", "uk_member_phone_hmac"),
 	PHONE_ALREADY_VERIFIED(HttpStatus.CONFLICT, "이미 휴대폰 인증을 완료했습니다."),
 	OTP_INVALID(HttpStatus.BAD_REQUEST, "인증번호가 올바르지 않습니다."),

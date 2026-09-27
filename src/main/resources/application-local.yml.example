@@ -14,3 +14,7 @@ pickone:
   jwt:
     # 32바이트 이상 임의 문자열. 예: openssl rand -base64 48
     secret:
+  crypto:
+    # AES 키: openssl rand -base64 32 / HMAC 키: 32자 이상 임의 문자열 (두 값은 서로 다르게)
+    phone-aes-key:
+    phone-hmac-key:
