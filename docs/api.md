@@ -75,6 +75,7 @@
 | `MEMBER_NICKNAME_DUPLICATE` | 409 | 이미 사용 중인 닉네임 |
 | `MEMBER_NOT_FOUND` | 404 | 회원 없음 |
 | `MEMBER_SUSPENDED` | 403 | 정지된 회원 |
+| `PHONE_INVALID_FORMAT` | 400 | 한국 휴대폰 번호 형식이 아님 (010은 11자리, 01x는 10~11자리) |
 | `PHONE_ALREADY_REGISTERED` | 409 | 다른 회원이 이미 인증한 휴대폰 번호 |
 | `PHONE_ALREADY_VERIFIED` | 409 | 이미 인증을 마친 회원이 다시 인증 요청 |
 | `OTP_INVALID` | 400 | 인증번호 불일치 (남은 시도 횟수 포함) |
@@ -144,7 +145,7 @@
 | 고민 본문 | 1~300자 |
 | 텍스트 선택지 | 1~20자, 2~4개 |
 | 사진 선택지 | `image_url` 500자, 정확히 2개 |
-| 휴대폰 번호 | 한국 번호, 서버에서 E.164(`+8210...`) 로 정규화 |
+| 휴대폰 번호 | 한국 휴대폰 번호(010/011/016/017/018/019), 서버에서 E.164(`+8210...`) 로 정규화. 아니면 `PHONE_INVALID_FORMAT` |
 
 ---
 
@@ -312,10 +313,21 @@ Spring Security OAuth2 Client 의 Authorization Code 흐름을 그대로 쓴다.
 Redis 키 설계
 | 키 | 값 | TTL |
 |---|---|---|
-| `otp:{phoneHmac}` | `{ hash, salt, attempts, memberId }` (hash) | 180초 |
+| `otp:{memberId}:{phoneHmac}` | `{ hash, salt, attempts }` (hash) | 180초 |
 | `otp:cooldown:{phoneHmac}` | 1 | 60초 |
 | `otp:daily:phone:{phoneHmac}:{yyyyMMdd}` | 발송 횟수 | 자정까지 |
 | `otp:daily:member:{memberId}:{yyyyMMdd}` | 발송 횟수 | 자정까지 |
+
+**키에 memberId 를 넣는 이유**: 코드는 요청한 회원만 확인할 수 있어야 한다. 다른 회원이 같은 번호로 코드를 받아도 서로의 코드를 덮어쓰지 않고, 남의 코드로 확인을 시도하면 `OTP_EXPIRED` 로 응답한다. 쿨다운·일일 한도는 번호 기준이므로 memberId 가 없다.
+
+**원자적 처리 (동시 요청 대비)**
+| 지점 | 연산 | 보장 |
+|---|---|---|
+| 재발송 쿨다운 | `SET otp:cooldown:{phoneHmac} 1 NX EX 60` | 같은 번호로 동시에 여러 요청이 와도 한 요청만 발송, 나머지는 `OTP_COOLDOWN` |
+| 일일 한도 | `INCR` 후 값 비교 | 동시 요청이 한도를 넘겨 세지 않음 (거절된 요청도 1회로 센다) |
+| 코드 확인 | Lua: 해시 비교 → 일치면 `DEL`, 불일치면 `HINCRBY attempts` → 5 도달 시 `DEL` | 맞는 코드가 동시에 와도 한 번만 성공, 틀린 코드가 동시에 와도 시도 횟수가 정확히 증가 |
+
+코드는 확인 성공 시점(Lua)에 소비된다. 그 뒤 DB 트랜잭션이 실패하면(예: 같은 번호를 다른 회원이 먼저 인증해 `uk_member_phone_hmac` 위반 → 409 `PHONE_ALREADY_REGISTERED`) 코드를 다시 요청해야 한다.
 
 ### 3.2 SmsSender 분리
 ```
@@ -339,7 +351,7 @@ interface SmsSender { void send(String phoneE164, String message); }
   { "expiresInSeconds": 180, "cooldownSeconds": 60 }
   ```
 - 처리 순서: 정규화 → 이미 ACTIVE 면 `PHONE_ALREADY_VERIFIED` → 다른 회원의 `phone_hmac` 이면 `PHONE_ALREADY_REGISTERED` → 쿨다운·일일 한도 확인 → 코드 생성·해시 저장 → `SmsSender.send`
-- 주요 에러: `VALIDATION_ERROR`, `PHONE_ALREADY_VERIFIED`, `PHONE_ALREADY_REGISTERED`, `OTP_COOLDOWN`, `OTP_DAILY_LIMIT`
+- 주요 에러: `VALIDATION_ERROR`, `PHONE_INVALID_FORMAT`, `PHONE_ALREADY_VERIFIED`, `PHONE_ALREADY_REGISTERED`, `OTP_COOLDOWN`, `OTP_DAILY_LIMIT`
 
 ### 3.4 POST /phone-verifications/confirm — 인증번호 확인
 - 인증: 로그인
@@ -357,12 +369,12 @@ interface SmsSender { void send(String phoneE164, String message); }
   ```
   access 토큰에 `signupStatus` 클레임이 들어 있으므로 상태 변경 후 토큰을 다시 발급한다.
 - 처리 (한 트랜잭션):
-  1. `otp:{phoneHmac}` 조회. 없으면 `OTP_EXPIRED`
-  2. `attempts >= 5` 면 `OTP_ATTEMPT_EXCEEDED`, 아니면 해시 비교. 불일치 시 attempts+1 후 `OTP_INVALID`(응답에 `remainingAttempts`)
+  1. `otp:{memberId}:{phoneHmac}` 조회. 없으면(다른 회원의 코드 포함) `OTP_EXPIRED`
+  2. Lua 로 해시 비교. 불일치 시 attempts+1 후 `OTP_INVALID`(message 에 남은 시도 횟수), 5회째 실패면 코드 삭제 후 `OTP_ATTEMPT_EXCEEDED`
   3. `member.phone_encrypted = AES-GCM(phone)`, `member.phone_hmac`, `signup_status = ACTIVE`
   4. `point_wallet` 생성 (balance 0)
   5. `hide_pending` 에서 `phone_hmac` 이 같은 행을 찾아 `hide_relation(owner_id, target_member_id = 나)` 로 옮기고 삭제
-  6. Redis 키 삭제, 새 토큰 발급
+  6. 커밋 후 새 access + refresh 발급 (access 의 `signupStatus` 클레임이 ACTIVE). 3~5 는 한 트랜잭션이고, 토큰은 커밋이 끝난 뒤 발급한다
 - 주요 에러: `OTP_INVALID`, `OTP_EXPIRED`, `OTP_ATTEMPT_EXCEEDED`, `PHONE_ALREADY_REGISTERED`(경합 시 `uk_member_phone_hmac` 위반), `PHONE_ALREADY_VERIFIED`
 
 ---
@@ -852,7 +864,7 @@ member_social_account
 | `refresh:{memberId}:{jti}` | 유효한 refresh | 14일 |
 | `refresh:used:{jti}` | 교체된 refresh (재사용 감지) | 원래 만료 시각까지 |
 | `oauth:code:{code}` | 소셜 로그인 일회용 code | 60초 |
-| `otp:{phoneHmac}` | 인증번호 해시·시도 횟수 | 180초 |
+| `otp:{memberId}:{phoneHmac}` | 인증번호 해시·시도 횟수 (요청한 회원만 확인 가능) | 180초 |
 | `otp:cooldown:{phoneHmac}` | 재발송 쿨다운 | 60초 |
 | `otp:daily:phone:{phoneHmac}:{date}`, `otp:daily:member:{memberId}:{date}` | 일일 발송 한도 | 자정까지 |
 | `point:daily:{memberId}:{date}` | 일일 투표 적립 합계 | 자정까지 |

@@ -16,7 +16,15 @@ Java 17 · Spring Boot 4.1 · Spring Data JPA · Spring Security(JWT) · Flyway 
    cp .env.example .env                                                        # DB_PASSWORD, DB_ROOT_PASSWORD 채우기
    cp src/main/resources/application-local.yml.example src/main/resources/application-local.yml   # .env 와 같은 비밀번호 + JWT 비밀키
    ```
-   JWT 비밀키(`pickone.jwt.secret`)는 32바이트 이상 임의 문자열입니다. 환경변수 `JWT_SECRET` 으로도 줄 수 있습니다.
+   비밀값 세 가지는 환경변수로도 줄 수 있습니다.
+   | 설정 | 환경변수 | 형식 |
+   |---|---|---|
+   | `pickone.jwt.secret` | `JWT_SECRET` | 32바이트 이상 임의 문자열 |
+   | `pickone.crypto.phone-aes-key` | `PHONE_AES_KEY` | Base64 32바이트 (`openssl rand -base64 32`) |
+   | `pickone.crypto.phone-hmac-key` | `PHONE_HMAC_KEY` | 32바이트 이상 임의 문자열, AES 키와 다른 값 |
+
+   AES 키는 휴대폰 번호 암호화(복호화 가능), HMAC 키는 검색용 해시에 쓰입니다. 키를 바꾸면 기존 회원의 번호를 복호화·매칭할 수 없으므로 운영 중 교체에는 재암호화 마이그레이션이 필요합니다.
+   로컬에서는 SMS 가 실제로 발송되지 않고 인증번호가 앱 로그(DEBUG)에 찍힙니다.
 2. DB·Redis 기동 (MariaDB 3307, Redis 6380. Refresh 토큰은 Redis 에 저장되므로 Redis 없이는 로그인이 실패합니다)
    ```bash
    docker compose up -d
