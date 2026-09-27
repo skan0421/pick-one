@@ -7,7 +7,7 @@
 
 ## 기술 스택
 
-Java 17 · Spring Boot 4.1 · Spring Data JPA · Spring Security(JWT) · Flyway · MariaDB 11.4 · Gradle · Docker Compose · Testcontainers
+Java 17 · Spring Boot 4.1 · Spring Data JPA · Spring Security(JWT) · Flyway · MariaDB 11.4 · Redis 7.4 · Gradle · Docker Compose · Testcontainers
 
 ## 로컬 실행
 
@@ -17,7 +17,7 @@ Java 17 · Spring Boot 4.1 · Spring Data JPA · Spring Security(JWT) · Flyway 
    cp src/main/resources/application-local.yml.example src/main/resources/application-local.yml   # .env 와 같은 비밀번호 + JWT 비밀키
    ```
    JWT 비밀키(`pickone.jwt.secret`)는 32바이트 이상 임의 문자열입니다. 환경변수 `JWT_SECRET` 으로도 줄 수 있습니다.
-2. DB 기동
+2. DB·Redis 기동 (MariaDB 3307, Redis 6380. Refresh 토큰은 Redis 에 저장되므로 Redis 없이는 로그인이 실패합니다)
    ```bash
    docker compose up -d
    ```
@@ -28,7 +28,7 @@ Java 17 · Spring Boot 4.1 · Spring Data JPA · Spring Security(JWT) · Flyway 
 
 ## 테스트
 
-Docker 가 실행 중이어야 합니다. 테스트는 Testcontainers 로 MariaDB 를 직접 띄우므로 별도 설정이 필요 없습니다.
+Docker 가 실행 중이어야 합니다. 테스트는 Testcontainers 로 MariaDB 와 Redis 를 직접 띄우므로 별도 설정이 필요 없습니다.
 
 ```bash
 ./gradlew test

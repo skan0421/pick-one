@@ -26,9 +26,9 @@
 ### 1.3 토큰 정책
 | 항목 | 값 |
 |---|---|
-| Access 토큰 | JWT, 30분. 클레임: `sub`(memberId), `signupStatus`, `exp` |
-| Refresh 토큰 | JWT, 14일. 클레임: `sub`, `jti`(UUID), `exp`. Redis 에 저장 |
-| 저장 (유효) | `refresh:{memberId}:{jti}` → 발급 시각/기기 정보, TTL 14일 |
+| Access 토큰 | JWT, 30분. 클레임: `sub`(memberId), `typ=access`, `signupStatus`, `exp` |
+| Refresh 토큰 | JWT, 14일. 클레임: `sub`, `typ=refresh`, `jti`(UUID), `exp`. Redis 에 저장 |
+| 저장 (유효) | `refresh:{memberId}:{jti}` → 발급 시각(epoch 초), TTL 14일 |
 | 저장 (사용됨) | `refresh:used:{jti}` → memberId, TTL 은 **그 토큰의 원래 만료 시각까지** |
 
 **Rotation**: `POST /auth/refresh` 가 성공하면 새 access + 새 refresh 를 발급하고, 옛 refresh 의 키를 `refresh:{memberId}:{jti}` 에서 삭제한 뒤 `refresh:used:{jti}` 로 옮긴다.
@@ -39,6 +39,12 @@
 3. 어느 키에도 없음(만료·로그아웃·위조) → 401 `AUTH_INVALID_TOKEN`
 
 **로그아웃**: `POST /auth/logout` 은 요청의 refresh 를 `refresh:{memberId}:{jti}` 에서 삭제한다. (`used` 로 옮기지 않으므로 이후 재사용은 `AUTH_INVALID_TOKEN`)
+
+**한계 — access 토큰은 로그아웃 후에도 만료까지 유효하다.** access 는 서버에 저장하지 않고 서명만 검증하므로 로그아웃해도 즉시 무효화되지 않는다. 수명이 30분이라 블랙리스트를 두지 않기로 했고, 클라이언트가 로그아웃 시 access 를 버리는 것으로 갈음한다. 즉시 차단이 필요해지면 `access:blocked:{jti}` 블랙리스트(TTL = 남은 만료 시간)를 추가한다.
+
+**토큰 용도 분리**: access 와 refresh 는 같은 키로 서명하지만 `typ` 클레임(`access` / `refresh`)이 다르고, 각 디코더가 `typ` 을 검증한다. refresh 를 `Authorization` 헤더에 넣거나 access 를 재발급 본문에 넣으면 모두 `AUTH_INVALID_TOKEN`.
+
+**동시 재발급**: 같은 refresh 로 동시에 두 요청이 오면 Redis Lua 스크립트가 "옛 키 삭제 + used 표시 + 새 키 저장" 을 원자적으로 처리하므로 정확히 하나만 성공한다. 진 쪽은 이미 `used` 가 된 jti 를 든 것이므로 재사용으로 판정되어 `AUTH_REFRESH_REUSED` 가 되고, 그 회원의 refresh 가 전부(이긴 쪽의 새 refresh 포함) 폐기된다. 클라이언트는 재발급 요청을 직렬화해야 한다.
 
 ### 1.4 에러 응답
 모든 에러는 같은 형식이다.
@@ -199,7 +205,7 @@
   ```json
   { "accessToken": "eyJ...", "refreshToken": "eyJ..." }
   ```
-- 처리: 1.3 의 판별 순서. 성공 시 rotation, 옛 jti 는 `refresh:used:{jti}` 로 이동
+- 처리: 1.3 의 판별 순서. 성공 시 rotation, 옛 jti 는 `refresh:used:{jti}` 로 이동. 새 access 의 `signupStatus` 는 옛 토큰을 복사하지 않고 DB 의 현재 값을 읽는다 (휴대폰 인증 완료가 재발급 시 반영됨)
 - 주요 에러: `AUTH_REFRESH_REUSED`(전체 세션 폐기), `AUTH_INVALID_TOKEN`, `MEMBER_SUSPENDED`
 
 ### 2.5 POST /auth/logout — 로그아웃
@@ -209,7 +215,7 @@
   { "refreshToken": "eyJ..." }
   ```
 - 응답 `204`
-- 처리: `refresh:{memberId}:{jti}` 삭제. access 는 만료까지 유효하므로 클라이언트가 폐기한다 (30분 수명이라 블랙리스트는 두지 않음)
+- 처리: refresh 의 `sub` 가 access 의 회원과 같은지 확인한 뒤 `refresh:{memberId}:{jti}` 삭제 (다르면 `AUTH_INVALID_TOKEN`). access 는 만료까지 유효하므로 클라이언트가 폐기한다 (30분 수명이라 블랙리스트는 두지 않음, 1.3 한계 참고)
 - 주요 에러: `AUTH_INVALID_TOKEN`
 
 ### 2.6 소셜 로그인 (카카오, 구글)
