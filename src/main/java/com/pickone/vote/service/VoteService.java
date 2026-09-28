@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
  * vote() 에는 일부러 @Transactional 을 붙이지 않는다. DB 작업은 VoteTransaction 이 한 트랜잭션으로 처리하고,
  * 낙관적 락 충돌 시 OptimisticRetryExecutor 가 그 트랜잭션을 통째로 다시 실행한다.
  * Redis 일일 카운터는 커밋이 끝난 뒤(execute 가 정상 반환한 뒤)에만 올린다. 롤백된 적립이 세어지지 않게 하기 위해서다.
+ * 결과 집계도 커밋 뒤에 한다. 트랜잭션 안에서 세면 REPEATABLE READ 스냅샷 때문에 동시에 들어온 다른 표가 빠진다.
  */
 @Slf4j
 @Service
@@ -51,7 +52,8 @@ public class VoteService {
 			}
 		}
 
-		Tally tally = VoteResultCalculator.tally(outcome.options(), outcome.counts());
+		// 커밋 이후 새 스냅샷으로 집계 (idx_vote_question_id_option_id)
+		Tally tally = VoteResultCalculator.tally(outcome.options(), voteRepository.countByQuestion(questionId));
 		return VoteResponse.of(outcome, tally);
 	}
 

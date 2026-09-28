@@ -14,7 +14,6 @@ import com.pickone.question.domain.QuestionOption;
 import com.pickone.question.domain.QuestionStatus;
 import com.pickone.question.repository.QuestionRepository;
 import com.pickone.vote.domain.Vote;
-import com.pickone.vote.repository.OptionCount;
 import com.pickone.vote.repository.VoteRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +30,8 @@ import org.springframework.transaction.annotation.Transactional;
  * 4. 오늘 적립 합계(원장 SUM)가 상한 미만이면 지갑 +1 → 원장 INSERT(idempotency_key = vote:{voteId})
  *    상한 판정을 Redis 가 아니라 원장으로 하는 이유: 적립하는 투표는 모두 같은 지갑 행을 UPDATE 하므로
  *    낙관적 락이 회원 단위로 적립을 직렬화해 준다. 49P 에서 동시에 두 건이 와도 한 건만 적립되고 나머지는 재시도 후 상한에 걸린다
- * 5. 결과 집계 (GROUP BY option_id)
+ * 결과 집계는 여기서 하지 않는다. REPEATABLE READ 스냅샷이 트랜잭션 시작 시점에 고정되어 동시에 커밋된 다른 표가 빠지므로,
+ * 커밋이 끝난 뒤 VoteService 가 새 스냅샷으로 집계한다 (명세 5.1 의 7단계).
  *
  * 지갑 UPDATE 는 일부러 flush 하지 않고 커밋 시점에 내보낸다 (X 락 보유 시간 최소화). version 불일치는 커밋에서
  * ObjectOptimisticLockingFailureException 으로 나오고, 호출자(VoteService)가 OptimisticRetryExecutor 로 이 메서드 전체를 다시 실행한다.
@@ -49,8 +49,8 @@ public class VoteTransaction {
 	private final PointLedgerRepository pointLedgerRepository;
 	private final PointProperties properties;
 
-	/** 트랜잭션 결과. 응답 조립은 트랜잭션 밖에서 한다 (options 는 fetch join 으로 이미 로드됨) */
-	public record VoteOutcome(Long voteId, Long optionId, List<QuestionOption> options, List<OptionCount> counts,
+	/** 트랜잭션 결과. 응답 조립·집계는 트랜잭션 밖에서 한다 (options 는 fetch join 으로 이미 로드됨) */
+	public record VoteOutcome(Long voteId, Long optionId, List<QuestionOption> options,
 			boolean earned, long amount, String reason) {
 	}
 
@@ -86,8 +86,7 @@ public class VoteTransaction {
 			pointLedgerRepository.save(PointLedger.voteReward(memberId, reward, wallet.getBalance(), vote.getId()));
 		}
 
-		List<OptionCount> counts = voteRepository.countByQuestion(questionId);
-		return new VoteOutcome(vote.getId(), option.getId(), question.getOptions(), counts,
+		return new VoteOutcome(vote.getId(), option.getId(), question.getOptions(),
 				earned, earned ? reward : 0L, earned ? null : REASON_DAILY_LIMIT);
 	}
 
