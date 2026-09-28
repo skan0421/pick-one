@@ -759,7 +759,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.1 프로필 속성
 회원이 성별·출생연도·MBTI·학력을 직접 입력한다. 지금은 본인 입력이지만 나중에 본인인증(PASS 등)과 연동하면 검증된 값으로 승격할 수 있도록 속성별 `verified` 플래그를 둔다.
 
-- 테이블 초안 `member_profile` (V5)
+- 테이블 초안 `member_profile` (V6)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | member_id | BIGINT PK, FK | |
@@ -776,7 +776,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.2 질문 대상 지정
 작성자가 "20대 여성에게만 물어보기" 처럼 대상을 정한다.
 
-- 테이블 초안 `question_target` (V6)
+- 테이블 초안 `question_target` (V7)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | question_id | BIGINT PK, FK | 행이 없으면 조건 없음 |
@@ -851,11 +851,14 @@ member_social_account
 ### V4 — 신고 상세 컬럼 (적용됨)
 `V4__report_detail.sql`: `report.detail VARCHAR(200) NULL`. 8.4 의 선택 입력 `detail` 저장용
 
-### V5 — 프로필 속성 (2차)
-파일명 예: `V5__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+### V5 — 내가 투표한 고민 목록 인덱스 (적용됨)
+`V5__vote_member_created_index.sql`: `idx_vote_member_id_created_at (member_id, created_at)`. V1 의 vote 인덱스는 `uk_vote_member_id_question_id(member_id, question_id)` 와 `idx_vote_question_id_option_id` 뿐이라 회원의 투표를 최신순으로 읽을 인덱스가 없었다. 5.3 EXPLAIN 참고
 
-### V6 — 질문 대상 지정 (2차)
-파일명 예: `V6__question_target.sql`. 9.2 의 `question_target` 테이블 생성
+### V6 — 프로필 속성 (2차)
+파일명 예: `V6__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+
+### V7 — 질문 대상 지정 (2차)
+파일명 예: `V7__question_target.sql`. 9.2 의 `question_target` 테이블 생성
 
 ### 이후 후보
 - 랭킹·알림·카테고리: 기획서 "이후 추가 기능"
