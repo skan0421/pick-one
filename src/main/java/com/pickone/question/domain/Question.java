@@ -16,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,8 +93,18 @@ public class Question extends BaseTimeEntity {
 		return status == QuestionStatus.ACTIVE && !isDeleted();
 	}
 
+	public boolean isClosed() {
+		return status == QuestionStatus.CLOSED;
+	}
+
 	public boolean isBoostedAt(LocalDateTime now) {
 		return boostedUntil != null && boostedUntil.isAfter(now);
+	}
+
+	/** 상단 노출 연장: 이미 노출 중이면 남은 시간에 이어 붙인다 (GREATEST(now, boosted_until) + duration) */
+	public void extendBoost(LocalDateTime now, Duration duration) {
+		LocalDateTime base = isBoostedAt(now) ? boostedUntil : now;
+		this.boostedUntil = base.plus(duration);
 	}
 
 	/** 소프트 삭제. 투표·원장은 남긴다 */

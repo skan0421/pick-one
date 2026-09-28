@@ -17,10 +17,15 @@ import com.pickone.question.dto.MyQuestionResponse;
 import com.pickone.question.dto.QuestionResponse;
 import com.pickone.question.repository.QuestionQueryRepository.FeedKeyset;
 import com.pickone.question.repository.QuestionRepository;
+import com.pickone.vote.domain.Vote;
+import com.pickone.vote.repository.OptionCount;
+import com.pickone.vote.repository.VoteRepository;
+import com.pickone.vote.service.VoteResultCalculator;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +45,7 @@ public class QuestionService {
 
 	private final QuestionRepository questionRepository;
 	private final MemberRepository memberRepository;
+	private final VoteRepository voteRepository;
 	private final CursorCodec cursorCodec;
 
 	// ---------- 등록 ----------
@@ -146,7 +152,14 @@ public class QuestionService {
 		if (!question.isOwnedBy(viewerId) && questionRepository.isHiddenFromViewer(viewerId, question.getAuthor().getId())) {
 			throw new BusinessException(ErrorCode.QUESTION_NOT_FOUND);
 		}
-		return QuestionResponse.of(question, viewerId, LocalDateTime.now());
+		// myVote / result 는 내가 투표했거나 내 고민일 때만 (투표 전 결과 노출로 인한 편향 방지)
+		Optional<Vote> myVote = voteRepository.findByMemberIdAndQuestionId(viewerId, questionId);
+		Long myOptionId = myVote.map(v -> v.getOption().getId()).orElse(null);
+		VoteResultCalculator.Tally tally = null;
+		if (question.isOwnedBy(viewerId) || myVote.isPresent()) {
+			tally = VoteResultCalculator.tally(question.getOptions(), voteRepository.countByQuestion(questionId));
+		}
+		return QuestionResponse.of(question, viewerId, LocalDateTime.now(), myOptionId, tally);
 	}
 
 	// ---------- 내 고민 ----------
@@ -168,7 +181,13 @@ public class QuestionService {
 			Question last = questions.get(questions.size() - 1);
 			next = cursorCodec.encode(new KeysetCursor(last.getCreatedAt(), last.getId()));
 		}
-		return CursorPage.of(questions.stream().map(MyQuestionResponse::from).toList(), next, hasNext);
+		// 페이지 전체의 득표수를 한 쿼리로 집계한다 (항목 수와 무관하게 쿼리 1회)
+		Map<Long, List<OptionCount>> countsByQuestion = questions.isEmpty() ? Map.of()
+				: VoteResultCalculator.groupByQuestion(voteRepository.countByQuestions(questions.stream().map(Question::getId).toList()));
+		List<MyQuestionResponse> items = questions.stream()
+				.map(q -> MyQuestionResponse.of(q, VoteResultCalculator.tally(q.getOptions(), countsByQuestion.getOrDefault(q.getId(), List.of()))))
+				.toList();
+		return CursorPage.of(items, next, hasNext);
 	}
 
 	private List<Question> decodeMyCursor(String cursor, Long memberId, Limit limit) {
