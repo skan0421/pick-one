@@ -1,11 +1,13 @@
 package com.pickone.question.repository;
 
 import com.pickone.question.domain.Question;
+import jakarta.persistence.LockModeType;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -17,6 +19,11 @@ public interface QuestionRepository extends JpaRepository<Question, Long>, Quest
 
 	@Query("SELECT q FROM Question q JOIN FETCH q.author LEFT JOIN FETCH q.options WHERE q.id = :id")
 	Optional<Question> findWithAuthorAndOptionsById(@Param("id") Long id);
+
+	/** SELECT ... FOR UPDATE. 같은 고민에 대한 신고 누적 판정을 직렬화한다 (ReportService) */
+	@Lock(LockModeType.PESSIMISTIC_WRITE)
+	@Query("SELECT q FROM Question q WHERE q.id = :id")
+	Optional<Question> findByIdForUpdate(@Param("id") Long id);
 
 	// ---- 내 고민 목록 (커서: created_at DESC, id DESC). 선택지는 findAllWithAuthorAndOptionsByIdIn 으로 2차 조회 ----
 

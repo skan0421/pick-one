@@ -753,7 +753,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.1 프로필 속성
 회원이 성별·출생연도·MBTI·학력을 직접 입력한다. 지금은 본인 입력이지만 나중에 본인인증(PASS 등)과 연동하면 검증된 값으로 승격할 수 있도록 속성별 `verified` 플래그를 둔다.
 
-- 테이블 초안 `member_profile` (V4)
+- 테이블 초안 `member_profile` (V5)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | member_id | BIGINT PK, FK | |
@@ -770,7 +770,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.2 질문 대상 지정
 작성자가 "20대 여성에게만 물어보기" 처럼 대상을 정한다.
 
-- 테이블 초안 `question_target` (V5)
+- 테이블 초안 `question_target` (V6)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | question_id | BIGINT PK, FK | 행이 없으면 조건 없음 |
@@ -842,11 +842,14 @@ member_social_account
 ### V3 — 피드 상단 노출 인덱스 (적용됨)
 `V3__question_boosted_index.sql`: `idx_question_status_boosted_until (status, boosted_until)`. 4.2 EXPLAIN 참고
 
-### V4 — 프로필 속성 (2차)
-파일명 예: `V4__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+### V4 — 신고 상세 컬럼 (적용됨)
+`V4__report_detail.sql`: `report.detail VARCHAR(200) NULL`. 8.4 의 선택 입력 `detail` 저장용
 
-### V5 — 질문 대상 지정 (2차)
-파일명 예: `V5__question_target.sql`. 9.2 의 `question_target` 테이블 생성
+### V5 — 프로필 속성 (2차)
+파일명 예: `V5__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+
+### V6 — 질문 대상 지정 (2차)
+파일명 예: `V6__question_target.sql`. 9.2 의 `question_target` 테이블 생성
 
 ### 이후 후보
 - 랭킹·알림·카테고리: 기획서 "이후 추가 기능"

@@ -111,6 +111,15 @@ public class Question extends BaseTimeEntity {
 		this.boostedUntil = base.plus(duration).truncatedTo(ChronoUnit.MICROS);
 	}
 
+	/** 신고 누적 자동 숨김. ACTIVE 일 때만 바꾸고, 바꿨으면 true (CLOSED 는 건드리지 않는다) */
+	public boolean hideByReports() {
+		if (status != QuestionStatus.ACTIVE) {
+			return false;
+		}
+		this.status = QuestionStatus.HIDDEN;
+		return true;
+	}
+
 	/** 소프트 삭제. 투표·원장은 남긴다 */
 	public void delete() {
 		this.deletedAt = LocalDateTime.now();

@@ -253,6 +253,7 @@ Table report {
   question_id bigint [not null, ref: > question.id]
   reporter_id bigint [not null, ref: > member.id]
   reason varchar(30) [not null, note: 'ABUSE / PERSONAL_INFO / SPAM / ETC']
+  detail varchar(200) [note: '신고 상세 (선택, V4)']
   status varchar(20) [not null, note: 'RECEIVED / ACCEPTED / REJECTED']
   created_at datetime(6) [not null]
 
