@@ -438,7 +438,12 @@ interface SmsSender { void send(String phoneE164, String message); }
   ```
   피드에는 결과(득표수)를 넣지 않는다. 투표 전 결과를 보면 편향되기 때문이며, 투표 응답에서 즉시 돌려준다.
 
-- **정렬**: `boosted_until > NOW()` 인 고민 우선, 그 안에서 `created_at DESC, id DESC`. 커서는 `(boosted 여부, created_at, id)`
+- **정렬**: `boosted_until > NOW()` 인 고민 우선, 그 안에서 `created_at DESC, id DESC`.
+  ORDER BY 에 계산식(`boosted_until > NOW()`)을 넣으면 인덱스로 정렬할 수 없어 **두 단계로 나눠 조회**한다.
+  1. 상단 노출 단계(B): `boosted_until > :now` 인 고민을 최신순으로
+  2. 일반 단계(N): 그 외 고민을 최신순으로
+  커서는 `{ p: "B"|"N", t: created_at, id }` 를 base64url 로 감싼 값이다. B 단계가 한 페이지 안에서 끝나면 같은 요청에서 N 단계로 이어 채우고, 커서에는 마지막 항목이 속한 단계가 기록된다.
+  페이지 사이에 boost 가 만료되면 그 고민이 N 단계에서 한 번 더 보일 수 있다 (수명 24시간짜리 상태라 드물고, 중복 표시는 클라이언트가 id 로 걸러도 된다).
 
 - **필터링**: 아래 다섯 조건을 모두 만족하는 고민만 내려준다.
   | # | 제외 대상 | 근거 테이블 |
@@ -449,29 +454,42 @@ interface SmsSender { void send(String phoneE164, String message); }
   | 4 | 지인 숨김: 작성자가 나를 숨김 대상으로 등록 | `hide_relation(owner_id = 작성자, target_member_id = 나)` 이고 작성자의 `hide_from_contacts = true` |
   | 5 | 노출 불가 상태 | `status = 'ACTIVE' AND deleted_at IS NULL` |
 
-  SQL 스케치 (`:me` 는 내 memberId)
+  실제 SQL (`:me` 는 뷰어, `:now` 는 요청 시각). ID 만 고르고, 작성자·선택지는 JPQL fetch join 한 번으로 가져온다.
   ```sql
-  SELECT q.*
-  FROM question q
-  JOIN member a ON a.id = q.member_id
+  -- [B] 상단 노출 단계
+  SELECT q.id FROM question q
   WHERE q.status = 'ACTIVE' AND q.deleted_at IS NULL
+    AND q.boosted_until > :now
+    -- 뷰어 필터 (N 단계와 동일)
     AND q.member_id <> :me
-    AND NOT EXISTS (SELECT 1 FROM vote v
-                    WHERE v.member_id = :me AND v.question_id = q.id)
-    AND NOT EXISTS (SELECT 1 FROM member_block b
-                    WHERE (b.blocker_id = :me AND b.blocked_id = q.member_id)
-                       OR (b.blocker_id = q.member_id AND b.blocked_id = :me))
-    AND NOT (a.hide_from_contacts = b'1' AND EXISTS (
-             SELECT 1 FROM hide_relation h
-             WHERE h.owner_id = q.member_id AND h.target_member_id = :me))
-    -- 커서 조건
-    AND ( (q.boosted_until > NOW()) < :cursorBoosted            -- boosted 그룹이 끝났으면 일반 그룹
-       OR ((q.boosted_until > NOW()) = :cursorBoosted
-           AND (q.created_at, q.id) < (:cursorCreatedAt, :cursorId)) )
-  ORDER BY (q.boosted_until > NOW()) DESC, q.created_at DESC, q.id DESC
+    AND NOT EXISTS (SELECT 1 FROM vote v WHERE v.member_id = :me AND v.question_id = q.id)
+    AND NOT EXISTS (SELECT 1 FROM member_block b WHERE b.blocker_id = :me AND b.blocked_id = q.member_id)
+    AND NOT EXISTS (SELECT 1 FROM member_block b WHERE b.blocker_id = q.member_id AND b.blocked_id = :me)
+    AND NOT EXISTS (SELECT 1 FROM hide_relation h JOIN member a ON a.id = h.owner_id
+                    WHERE h.owner_id = q.member_id AND h.target_member_id = :me AND a.hide_from_contacts = b'1')
+    -- 커서 (두 번째 페이지부터)
+    AND (q.created_at < :cursorCreatedAt OR (q.created_at = :cursorCreatedAt AND q.id < :cursorId))
+  ORDER BY q.created_at DESC, q.id DESC
   LIMIT :size + 1;
+
+  -- [N] 일반 단계: boosted 조건만 다르다
+    AND (q.boosted_until IS NULL OR q.boosted_until <= :now)
   ```
-  `LIMIT size + 1` 로 한 건 더 읽어 `hasNext` 를 판단한다. 조건 4 의 `hide_relation` 은 `idx_hide_relation_target_member_id` 를 탄다. 성능 개선 단계에서 Redis 로 "내가 투표한 question_id 집합" 을 캐싱하는 방안을 검토한다.
+  `LIMIT size + 1` 로 한 건 더 읽어 `hasNext` 를 판단한다. 차단 조건은 OR 하나로 쓰지 않고 방향별 `NOT EXISTS` 두 개로 나눠 각자 `member_block` PK 를 타게 했다.
+  지인 숨김의 `member` 조인을 본문에 두면 옵티마이저가 작은 member 테이블을 조인 버퍼(BNL)로 처리하면서 정렬 인덱스를 버리고 filesort 를 하므로 EXISTS 안으로 넣었다.
+
+  **쿼리 수**: 페이지당 ID 조회 1회(단계 전환 시 2회) + 작성자·선택지 fetch join 1회 = **2~3회**. 항목 수와 무관하며 `FeedQueryCountTest` 가 3회 이하를 고정한다.
+
+  **EXPLAIN** (MariaDB 11.4, question 3,000행 중 상단 노출 30행, `ANALYZE FORMAT=JSON` 실측)
+  | 단계 | key | type | 예상 rows | 실제 읽은 rows | filesort |
+  |---|---|---|---|---|---|
+  | B 첫 페이지 | `idx_question_status_boosted_until` (V3) | range | 30 | 30 | 30행 → 22행 (priority queue) |
+  | N 첫 페이지 | `idx_question_status_created_at` (V1) | range, 역순 스캔 | 3000 | **21** | 없음 |
+  | N 커서 이후 | `idx_question_status_created_at` (V1) | range | 2009 | **22** | 없음 |
+
+  N 단계는 예상 rows 가 3000 이지만 인덱스가 `ORDER BY created_at DESC, id DESC` 순서(InnoDB 세컨더리 인덱스 뒤에 붙는 PK 포함)와 일치해 LIMIT 만큼 읽고 멈춘다.
+  B 단계는 V3 인덱스가 없으면 `idx_question_member_id_created_at` 으로 3,000행을 읽고 정렬했다(`Using temporary; Using filesort`). 서브쿼리 4개는 모두 유니크/PK 인덱스 ref 로 MATERIALIZED 된다.
+  성능 개선 단계에서 Redis 로 "내가 투표한 question_id 집합" 을 캐싱하는 방안을 검토한다.
 
 ### 4.3 GET /questions/{id} — 고민 상세
 - 인증: ACTIVE
@@ -491,8 +509,8 @@ interface SmsSender { void send(String phoneE164, String message); }
     "createdAt": "2026-09-27T17:30:00+09:00"
   }
   ```
-- `myVote` 와 `result` 는 내가 투표했거나 내 고민일 때만 채워지고, 아니면 null
-- 주요 에러: `QUESTION_NOT_FOUND`(삭제·HIDDEN 포함. 차단 관계면 역시 404 로 숨김)
+- `myVote` 와 `result` 는 내가 투표했거나 내 고민일 때만 채워지고, 아니면 null (투표 기능 구현 전까지는 항상 null)
+- 주요 에러: `QUESTION_NOT_FOUND`(삭제·HIDDEN 포함. 양방향 차단이나 지인 숨김 관계면 역시 404 로 존재를 숨김. 내 글은 상태와 무관하게 조회 가능)
 
 ### 4.4 GET /members/me/questions — 내 고민 목록
 - 인증: ACTIVE
@@ -715,7 +733,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.1 프로필 속성
 회원이 성별·출생연도·MBTI·학력을 직접 입력한다. 지금은 본인 입력이지만 나중에 본인인증(PASS 등)과 연동하면 검증된 값으로 승격할 수 있도록 속성별 `verified` 플래그를 둔다.
 
-- 테이블 초안 `member_profile` (V3)
+- 테이블 초안 `member_profile` (V4)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | member_id | BIGINT PK, FK | |
@@ -732,7 +750,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.2 질문 대상 지정
 작성자가 "20대 여성에게만 물어보기" 처럼 대상을 정한다.
 
-- 테이블 초안 `question_target` (V4)
+- 테이블 초안 `question_target` (V5)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | question_id | BIGINT PK, FK | 행이 없으면 조건 없음 |
@@ -801,11 +819,14 @@ member_social_account
 - OTP, refresh 토큰, 소셜 일회용 code 는 Redis 만 쓰므로 테이블이 없다
 - 엔티티 매핑 주의: `signup_status` 는 enum → `VARCHAR`, `hide_from_contacts` 는 BIT(1) → `boolean`
 
-### V3 — 프로필 속성 (2차)
-파일명 예: `V3__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+### V3 — 피드 상단 노출 인덱스 (적용됨)
+`V3__question_boosted_index.sql`: `idx_question_status_boosted_until (status, boosted_until)`. 4.2 EXPLAIN 참고
 
-### V4 — 질문 대상 지정 (2차)
-파일명 예: `V4__question_target.sql`. 9.2 의 `question_target` 테이블 생성
+### V4 — 프로필 속성 (2차)
+파일명 예: `V4__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+
+### V5 — 질문 대상 지정 (2차)
+파일명 예: `V5__question_target.sql`. 9.2 의 `question_target` 테이블 생성
 
 ### 이후 후보
 - 랭킹·알림·카테고리: 기획서 "이후 추가 기능"
