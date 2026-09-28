@@ -11,6 +11,12 @@ spring:
       port: 6380
 
 pickone:
+  storage:
+    # docker-compose 의 MinIO. access/secret 은 .env 의 MINIO_ROOT_USER / MINIO_ROOT_PASSWORD 와 같은 값
+    endpoint: http://localhost:9000
+    bucket: pickone-images
+    access-key:
+    secret-key:
   swagger:
     # 로컬에서는 Swagger UI 를 켠다 (application.yml 기본값은 꺼짐)
     enabled: true

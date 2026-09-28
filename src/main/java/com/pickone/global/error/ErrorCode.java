@@ -48,6 +48,11 @@ public enum ErrorCode {
 	QUESTION_OPTION_TYPE_MISMATCH(HttpStatus.BAD_REQUEST, "고민 유형과 선택지 형식이 맞지 않습니다."),
 	QUESTION_CLOSED(HttpStatus.CONFLICT, "종료된 고민입니다."),
 
+	// 사진 업로드
+	IMAGE_TYPE_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "지원하지 않는 이미지 형식입니다. (jpeg, png, webp)"),
+	IMAGE_TOO_LARGE(HttpStatus.BAD_REQUEST, "이미지 크기가 상한을 넘었습니다."),
+	IMAGE_URL_INVALID(HttpStatus.BAD_REQUEST, "본인이 발급받아 업로드한 이미지 주소만 사용할 수 있습니다."),
+
 	// 투표
 	VOTE_ALREADY_VOTED(HttpStatus.CONFLICT, "이미 투표한 고민입니다.", "uk_vote_member_id_question_id"),
 	VOTE_OPTION_MISMATCH(HttpStatus.BAD_REQUEST, "해당 고민의 선택지가 아닙니다.", "fk_vote_option"),

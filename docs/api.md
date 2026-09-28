@@ -87,6 +87,9 @@
 | `QUESTION_OPTION_COUNT_INVALID` | 400 | TEXT 2~4개 / IMAGE 2개 규칙 위반 |
 | `QUESTION_OPTION_TYPE_MISMATCH` | 400 | TEXT 인데 image_url, IMAGE 인데 content 가 옴 |
 | `QUESTION_CLOSED` | 409 | 종료된 고민에 투표/boost |
+| `IMAGE_TYPE_NOT_ALLOWED` | 400 | 업로드 URL 발급 시 jpeg/png/webp 가 아닌 형식 |
+| `IMAGE_TOO_LARGE` | 400 | 업로드 URL 발급 시 크기 상한(설정값, 기본 5MB) 초과 |
+| `IMAGE_URL_INVALID` | 400 | 고민 등록의 `imageUrl` 이 본인이 발급받아 업로드한 주소가 아님 (외부 URL, 다른 회원 키, 미업로드 키) |
 | `VOTE_ALREADY_VOTED` | 409 | 같은 고민에 두 번 투표 (`uk_vote_member_id_question_id`) |
 | `VOTE_OPTION_MISMATCH` | 400 | 선택지가 해당 고민의 것이 아님 (`fk_vote_option` 복합 FK) |
 | `VOTE_OWN_QUESTION` | 403 | 자기 고민에 투표 |
@@ -146,7 +149,7 @@
 | 닉네임 | 2~30자, 한글/영문/숫자 |
 | 고민 본문 | 1~300자 |
 | 텍스트 선택지 | 1~20자, 2~4개 |
-| 사진 선택지 | `image_url` 500자, 정확히 2개 |
+| 사진 선택지 | `image_url` 500자, 정확히 2개. 4.6 으로 발급받아 업로드한 본인 주소만 허용 |
 | 휴대폰 번호 | 한국 휴대폰 번호(010/011/016/017/018/019), 서버에서 E.164(`+8210...`) 로 정규화. 아니면 `PHONE_INVALID_FORMAT` |
 
 ---
@@ -414,8 +417,8 @@ interface SmsSender { void send(String phoneE164, String message); }
   }
   ```
 - 처리: 선택지 개수·유형 규칙은 API 에서 검증 (erd.md 설계 메모). `sort_order` 는 요청 순서대로 1부터 부여
-- 이미지 업로드 자체는 1차 범위 밖이다. 클라이언트가 접근 가능한 URL 을 넘긴다고 가정하고, 이후 presigned URL 발급 API 를 추가한다
-- 주요 에러: `VALIDATION_ERROR`, `QUESTION_OPTION_COUNT_INVALID`, `QUESTION_OPTION_TYPE_MISMATCH`, `SIGNUP_INCOMPLETE`
+- 이미지는 4.6 의 업로드 URL 로 먼저 올린 뒤 그 `imageUrl` 을 넘긴다. 서버는 개수·형식 검사를 통과한 뒤 각 `imageUrl` 이 `{publicBaseUrl}/images/{내 회원 ID}/{uuid}.{ext}` 형식이고 저장소에 실제로 있는지(HEAD) 확인한다. 아니면 `IMAGE_URL_INVALID`
+- 주요 에러: `VALIDATION_ERROR`, `QUESTION_OPTION_COUNT_INVALID`, `QUESTION_OPTION_TYPE_MISMATCH`, `IMAGE_URL_INVALID`, `SIGNUP_INCOMPLETE`
 
 ### 4.2 GET /questions/feed — 투표 피드
 - 인증: ACTIVE
@@ -543,6 +546,38 @@ interface SmsSender { void send(String phoneE164, String message); }
 - 응답 `204`
 - 처리: `deleted_at = NOW()` 소프트 삭제. 투표·원장은 남긴다 (포인트 불변식 유지). boost 잔여 시간은 환불하지 않는다
 - 주요 에러: `QUESTION_NOT_FOUND`, `FORBIDDEN`
+
+### 4.6 POST /uploads/images — 사진 업로드 URL 발급
+- 인증: ACTIVE
+- 요청
+  ```json
+  { "contentType": "image/jpeg", "size": 183422 }
+  ```
+  `size` 는 바이트. 허용 형식 `image/jpeg`, `image/png`, `image/webp`(설정 `pickone.storage.allowed-content-types`), 최대 크기 `pickone.storage.max-image-size`(기본 5MB)
+- 응답 `200`
+  ```json
+  {
+    "uploadUrl": "http://localhost:9000/pickone-images/images/7/3f1c...-9a.jpg?X-Amz-Algorithm=...&X-Amz-Signature=...",
+    "imageUrl": "http://localhost:9000/pickone-images/images/7/3f1c...-9a.jpg",
+    "expiresAt": "2026-09-29T18:05:00+09:00"
+  }
+  ```
+- 흐름
+  1. 서버는 파일을 받지 않는다. 형식·크기를 검증하고 객체 키 `images/{memberId}/{uuid}.{ext}` 로 **presigned PUT URL**(유효 시간 `pickone.storage.presign-ttl`, 기본 5분)을 만든다
+  2. 클라이언트가 `uploadUrl` 로 직접 `PUT` 한다. 발급 시 선언한 `Content-Type` 과 `Content-Length` 가 서명에 포함되므로 다르게 올리면 저장소가 403 으로 거절한다
+  3. 고민 등록(4.1)에 `imageUrl` 을 넣는다. 서버는 URL 형식(내 회원 폴더 + UUID)과 실제 존재(HEAD)를 확인한다. 키에 회원 ID 가 들어 있어 남의 이미지·외부 URL 은 형식만으로 걸러진다
+- 저장소: `ImageStorage` 인터페이스(`SmsSender` 와 같은 포트 분리) 뒤에 AWS SDK v2 구현 하나. 로컬은 docker-compose 의 MinIO, 운영은 S3 호환 저장소를 `pickone.storage.*`(endpoint, bucket, access/secret key, public-base-url) 설정만으로 교체한다. 접근 키는 환경변수·`application-local.yml` 에만 둔다
+- **이미지 읽기 방식 (결정: `images/*` 접두사만 공개 읽기)**
+
+  | | 공개 읽기 (접두사 한정) | 읽기용 presigned URL |
+  |---|---|---|
+  | 앱 표시 | 저장된 `imageUrl` 을 그대로 `<Image>` 에 사용, CDN 캐시 가능 | 응답마다 서명 URL 생성(피드 20건 × 2장), 캐시 불가, 만료되면 재요청 |
+  | 접근 제어 | URL 을 아는 누구나 읽음. 삭제·HIDDEN 뒤에도 링크는 유효 | 조회 시점에 권한 판단 가능 |
+  | 열거 방지 | 키가 `{uuid}` 라 추측 불가 + `ListBucket` 을 열지 않아 목록 조회 불가 | 불필요 |
+
+  게시된 고민 사진은 피드에서 모든 ACTIVE 회원에게 보이는 **공개 콘텐츠**라 비공개 접근 제어의 이득이 작고, 읽기 서명은 피드 한 페이지에 서명 40개를 만들고 캐시를 막는다. 그래서 버킷 정책으로 `arn:aws:s3:::{bucket}/images/*` 에 `s3:GetObject` 만 익명 허용한다 (`s3:ListBucket` 없음 — `docker/minio/public-read-images.json`, 테스트는 같은 정책을 컨테이너에 적용해 목록 조회 403·`images/` 밖 객체 403 을 확인). 삭제·HIDDEN 고민의 객체 정리는 배포 단계 과제(수명 주기 규칙 또는 정리 배치)
+- 배포 단계 과제: 발급 횟수 제한(회원당 분당), 발급만 받고 등록하지 않은 객체 정리
+- 주요 에러: `VALIDATION_ERROR`, `IMAGE_TYPE_NOT_ALLOWED`, `IMAGE_TOO_LARGE`
 
 ---
 
@@ -886,6 +921,7 @@ member_social_account
 | GET | /questions/{id} | ACTIVE | 상세 |
 | GET | /members/me/questions | ACTIVE | 내 고민 목록 (커서) |
 | DELETE | /questions/{id} | ACTIVE | 삭제 |
+| POST | /uploads/images | ACTIVE | 사진 업로드 URL 발급 (presigned PUT) |
 | POST | /questions/{id}/votes | ACTIVE | 투표 |
 | GET | /questions/{id}/results | ACTIVE | 결과 |
 | GET | /points/balance | ACTIVE | 잔액 |

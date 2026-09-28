@@ -29,6 +29,9 @@ dependencies {
 	implementation 'org.flywaydb:flyway-mysql'
 	// OpenAPI 문서 (Spring Boot 4 / Spring Framework 7 은 springdoc 3.x 이상)
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.1'
+	// S3 호환 객체 저장소 (로컬 MinIO, 운영 S3). presigned PUT 발급 + HEAD 존재 확인
+	implementation platform('software.amazon.awssdk:bom:2.55.6')
+	implementation 'software.amazon.awssdk:s3'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
 /**
- * 통합 테스트 공통 설정: 전체 컨텍스트 + Testcontainers MariaDB·Redis + 테스트용 비밀값(JWT·암호화 키) + MockMvc.
+ * 통합 테스트 공통 설정: 전체 컨텍스트 + Testcontainers MariaDB·Redis·MinIO + 테스트용 비밀값(JWT·암호화 키) + MockMvc.
  * 모든 통합 테스트가 같은 설정을 쓰므로 스프링 컨텍스트가 한 번만 뜨고 캐시된다.
  * 프로필은 test 로 고정한다. application.yml 의 spring.profiles.default 가 local 이라 그대로 두면 개발자 PC 의
  * application-local.yml(git 미추적)이 테스트에 읽혀 CI 와 설정이 달라진다 (docs/troubleshooting.md 13).
@@ -22,6 +22,6 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-@Import({TestcontainersConfiguration.class, TestSecretsConfiguration.class, TestSmsConfiguration.class})
+@Import({TestcontainersConfiguration.class, TestSecretsConfiguration.class, TestSmsConfiguration.class, TestStorageConfiguration.class})
 public @interface IntegrationTest {
 }

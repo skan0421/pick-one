@@ -271,3 +271,41 @@ Swagger 기본값을 꺼짐(`${SWAGGER_ENABLED:false}`)으로 바꾸고 로컬�
 로컬 `application-local.yml` 에 `pickone.swagger.enabled: true` 가 있는 상태에서 전체 188건 통과, `SwaggerDisabledIntegrationTest` 는 401 확인. 테스트 결과가 개발자 PC 의 로컬 파일 유무와 무관해졌다.
 
 **관련 커밋** `1bf1cd6`(Swagger 기본값 변경으로 드러남), 이 항목을 추가한 fix 커밋
+
+---
+
+## 14. MinIO 공식 Docker 이미지를 받을 수 없음 (`minio/minio`, `quay.io/minio/minio` 404)
+
+**문제 상황**
+사진 업로드용 S3 호환 저장소로 MinIO 를 docker-compose 와 Testcontainers 에 넣었는데, 통합 테스트 컨텍스트가 `Can't get Docker image: minio/minio:RELEASE.2025-09-07T16-13-09Z ... pull access denied for minio/minio, repository does not exist` 로 뜨지 않았다. 태그를 바꿔도(`RELEASE.2025-04-22T22-12-26Z`, `latest`), `quay.io/minio/minio` 로 바꿔도 같았고 Docker Hub API 도 저장소에 404 를 돌려줬다.
+
+**원인**
+2026-09 기준 MinIO 의 공식 컨테이너 이미지 저장소(Docker Hub `minio/minio`, `minio/mc`, quay.io)가 공개 pull 이 되지 않는다. Testcontainers 의 `MinIOContainer` 모듈은 이 공식 이미지의 실행 명령(`server --console-address :9001 /data`)을 전제한다.
+
+**해결**
+- 받아지는 MinIO 이미지 중 `bitnamilegacy/minio:2025.7.23-debian-12-r5`(+ `bitnamilegacy/minio-client:2025.7.21-debian-12-r3`)를 compose 와 테스트 양쪽에 같은 태그로 쓴다. 데이터 경로는 `/bitnami/minio/data`, 헬스체크는 `/minio/health/live`.
+- 테스트는 `MinIOContainer` 대신 `GenericContainer` 로 띄우고(`MINIO_ROOT_USER/PASSWORD`, 9000 노출, HTTP 헬스체크 대기) `DynamicPropertyRegistrar` 로 `pickone.storage.*` 를 주입한다. 버킷 생성과 `images/*` 익명 읽기 정책은 `TestStorageConfiguration` 이 컨텍스트 기동 시 적용한다.
+- 앱 코드는 `ImageStorage` 포트 뒤의 AWS SDK v2 구현이라 이미지가 무엇이든(어떤 S3 호환 저장소든) 영향이 없다. Bitnami legacy 이미지는 갱신이 멈춘 이미지이므로, 운영은 S3 를 쓰고 로컬 이미지는 compose 의 `image:` 한 줄만 바꾸면 된다.
+
+**결과**
+업로드 통합 테스트 8건 통과: 발급 → 실제 presigned PUT(200) → 사진형 고민 등록, 형식·크기 불일치 PUT 은 403, 익명 GET 은 `images/*` 만 200 이고 버킷 목록·`private/*` 는 403.
+
+**관련 커밋** 사진 업로드 feat 커밋
+
+---
+
+## 15. AWS SDK v2: `ForcePathStyle has been configured on both S3Configuration and the client`
+
+**문제 상황**
+`S3Client.builder().serviceConfiguration(S3Configuration.pathStyleAccessEnabled(true)).forcePathStyle(true)` 로 만들자 기동 시 `IllegalStateException: ForcePathStyle has been configured on both S3Configuration and the client/global level` 이 났다.
+
+**원인**
+SDK 2.x 는 path-style 을 `S3Configuration`(구 방식)과 클라이언트 빌더의 `forcePathStyle`(신 방식) 두 곳에서 받는데, 둘 다 주면 거부한다. `S3Presigner.Builder` 에는 `forcePathStyle` 이 없어 `serviceConfiguration` 만 쓸 수 있다.
+
+**해결**
+클라이언트는 `forcePathStyle(true)` 만, 프리사이너는 `serviceConfiguration(S3Configuration.pathStyleAccessEnabled(true))` 만 설정한다. MinIO 는 virtual-host 스타일이 기본이 아니라 path-style(`{endpoint}/{bucket}/{key}`)이 필요하다.
+
+**결과**
+컨텍스트 기동 정상, presigned URL 이 `http://host:port/{bucket}/images/...` 형태로 생성되어 MinIO 가 서명을 검증한다.
+
+**관련 커밋** 사진 업로드 feat 커밋

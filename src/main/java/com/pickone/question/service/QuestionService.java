@@ -17,6 +17,7 @@ import com.pickone.question.dto.MyQuestionResponse;
 import com.pickone.question.dto.QuestionResponse;
 import com.pickone.question.repository.QuestionQueryRepository.FeedKeyset;
 import com.pickone.question.repository.QuestionRepository;
+import com.pickone.upload.service.ImageUrlValidator;
 import com.pickone.vote.domain.Vote;
 import com.pickone.vote.repository.OptionCount;
 import com.pickone.vote.repository.VoteRepository;
@@ -46,6 +47,7 @@ public class QuestionService {
 	private final QuestionRepository questionRepository;
 	private final MemberRepository memberRepository;
 	private final VoteRepository voteRepository;
+	private final ImageUrlValidator imageUrlValidator;
 	private final CursorCodec cursorCodec;
 
 	// ---------- 등록 ----------
@@ -55,14 +57,17 @@ public class QuestionService {
 		Member author = memberRepository.findById(memberId)
 				.filter(m -> !m.isDeleted())
 				.orElseThrow(() -> new BusinessException(ErrorCode.MEMBER_NOT_FOUND));
-		List<OptionDraft> drafts = validateOptions(request.questionType(), request.options());
+		List<OptionDraft> drafts = validateOptions(memberId, request.questionType(), request.options());
 
 		Question question = questionRepository.save(Question.create(author, request.questionType(), request.content(), drafts));
 		return QuestionResponse.of(question, memberId, LocalDateTime.now());
 	}
 
-	/** 유형별 선택지 규칙 (docs/api.md 4.1, erd.md 설계 메모). DB 는 개수를 강제하지 않으므로 여기가 유일한 검증 지점 */
-	private List<OptionDraft> validateOptions(QuestionType type, List<OptionRequest> options) {
+	/**
+	 * 유형별 선택지 규칙 (docs/api.md 4.1, erd.md 설계 메모). DB 는 개수를 강제하지 않으므로 여기가 유일한 검증 지점.
+	 * 사진형의 imageUrl 은 개수·형식 검사를 모두 통과한 뒤 본인이 발급받아 업로드한 주소인지 확인한다 (4.6, HEAD 포함)
+	 */
+	private List<OptionDraft> validateOptions(Long memberId, QuestionType type, List<OptionRequest> options) {
 		int count = options.size();
 		if (type == QuestionType.TEXT && (count < TEXT_MIN_OPTIONS || count > TEXT_MAX_OPTIONS)) {
 			throw new BusinessException(ErrorCode.QUESTION_OPTION_COUNT_INVALID, "텍스트형 선택지는 2~4개여야 합니다.");
@@ -87,6 +92,11 @@ public class QuestionService {
 				}
 				drafts.add(new OptionDraft(null, option.imageUrl().trim()));
 			}
+		}
+		if (type == QuestionType.IMAGE) {
+			drafts = drafts.stream()
+					.map(d -> new OptionDraft(null, imageUrlValidator.validateOwned(memberId, d.imageUrl())))
+					.toList();
 		}
 		return drafts;
 	}
