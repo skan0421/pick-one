@@ -18,6 +18,7 @@ import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
@@ -101,10 +102,13 @@ public class Question extends BaseTimeEntity {
 		return boostedUntil != null && boostedUntil.isAfter(now);
 	}
 
-	/** 상단 노출 연장: 이미 노출 중이면 남은 시간에 이어 붙인다 (GREATEST(now, boosted_until) + duration) */
+	/**
+	 * 상단 노출 연장: 이미 노출 중이면 남은 시간에 이어 붙인다 (GREATEST(now, boosted_until) + duration).
+	 * 컬럼이 DATETIME(6) 이라 마이크로초로 잘라 둔다. 그래야 응답값과 저장값이 같고, 멱등 재응답이 최초 응답과 일치한다.
+	 */
 	public void extendBoost(LocalDateTime now, Duration duration) {
 		LocalDateTime base = isBoostedAt(now) ? boostedUntil : now;
-		this.boostedUntil = base.plus(duration);
+		this.boostedUntil = base.plus(duration).truncatedTo(ChronoUnit.MICROS);
 	}
 
 	/** 소프트 삭제. 투표·원장은 남긴다 */
