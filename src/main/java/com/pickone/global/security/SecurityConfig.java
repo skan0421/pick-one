@@ -1,10 +1,12 @@
 package com.pickone.global.security;
 
+import com.pickone.global.openapi.SwaggerProperties;
 import com.pickone.global.security.handler.JsonAccessDeniedHandler;
 import com.pickone.global.security.handler.JsonAuthenticationEntryPoint;
 import com.pickone.global.security.jwt.JwtConfig;
 import com.pickone.member.domain.SignupStatus;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -23,11 +25,15 @@ import org.springframework.security.web.SecurityFilterChain;
  * - 공개: 가입, 로그인, 재발급(access 만료 상태에서 호출되므로 본문의 refresh 로 인증)
  * - 로그인: 토큰만 있으면 됨 (PENDING_PHONE 포함) — 인증, 내 정보, 휴대폰 인증
  * - ACTIVE: 그 외 모든 API. PENDING_PHONE 이면 403 SIGNUP_INCOMPLETE
+ * Swagger(/swagger-ui/**, /v3/api-docs/**)는 pickone.swagger.enabled 가 true 일 때만 인증 없이 연다. 꺼져 있으면 다른 경로처럼 401 이다.
  */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@EnableConfigurationProperties(SwaggerProperties.class)
 public class SecurityConfig {
+
+	private static final String[] SWAGGER_PATHS = {"/swagger-ui/**", "/v3/api-docs/**"};
 
 	private static final String ACTIVE_AUTHORITY = JwtConfig.SIGNUP_AUTHORITY_PREFIX + SignupStatus.ACTIVE.name();
 
@@ -35,6 +41,7 @@ public class SecurityConfig {
 	private final JwtAuthenticationConverter jwtAuthenticationConverter;
 	private final JsonAuthenticationEntryPoint authenticationEntryPoint;
 	private final JsonAccessDeniedHandler accessDeniedHandler;
+	private final SwaggerProperties swaggerProperties;
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -45,12 +52,17 @@ public class SecurityConfig {
 				.httpBasic(AbstractHttpConfigurer::disable)
 				.logout(AbstractHttpConfigurer::disable)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests(auth -> auth
+				.authorizeHttpRequests(auth -> {
+					if (swaggerProperties.isEnabled()) {
+						auth.requestMatchers(SWAGGER_PATHS).permitAll();
+					}
+					auth
 						.requestMatchers(HttpMethod.POST, "/api/v1/auth/signup", "/api/v1/auth/login", "/api/v1/auth/refresh")
 						.permitAll()
 						.requestMatchers("/api/v1/auth/**", "/api/v1/members/me", "/api/v1/phone-verifications/**")
 						.authenticated()
-						.anyRequest().hasAuthority(ACTIVE_AUTHORITY))
+						.anyRequest().hasAuthority(ACTIVE_AUTHORITY);
+				})
 				.oauth2ResourceServer(resourceServer -> resourceServer
 						.jwt(jwt -> jwt
 								.decoder(jwtDecoder)

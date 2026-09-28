@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.1.1'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'jacoco'
 }
 
 group = 'com.pickone'
@@ -26,6 +27,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security-oauth2-resource-server'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.flywaydb:flyway-mysql'
+	// OpenAPI 문서 (Spring Boot 4 / Spring Framework 7 은 springdoc 3.x 이상)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -43,4 +46,31 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	// 테스트가 실패해도 커버리지 리포트는 만든다 (CI 가 항상 artifact 로 올린다)
+	finalizedBy jacocoTestReport
 }
+
+jacoco {
+	toolVersion = '0.8.13'
+}
+
+// 커버리지 측정에서 제외: 설정 클래스(*Config, *Properties), DTO 패키지, Application 진입점
+def coverageExcludes = [
+		'**/*Config.class', '**/*Config$*.class',
+		'**/*Properties.class',
+		'**/dto/**',
+		'**/PickoneApplication.class'
+]
+
+tasks.named('jacocoTestReport') {
+	dependsOn test
+	reports {
+		xml.required = true    // CI Job Summary 집계용
+		html.required = true   // build/reports/jacoco/test/html/index.html
+		csv.required = false
+	}
+	classDirectories.setFrom(files(classDirectories.files.collect {
+		fileTree(dir: it, exclude: coverageExcludes)
+	}))
+}
+// 최소 기준(jacocoTestCoverageVerification)은 두지 않는다. 수치는 README 와 CI Summary 로만 공개한다

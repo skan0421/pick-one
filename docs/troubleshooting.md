@@ -251,3 +251,23 @@ REPEATABLE READ 스냅샷은 다른 트랜잭션이 동시에 넣은 행을 보�
 3건 있는 고민에 동시 신고 3건 → 201 3건, HIDDEN. 0건에서 동시 5건 → HIDDEN. 동시 4건 → ACTIVE 유지 (ReportIntegrationTest).
 
 **관련 커밋** `09ccb1c`
+
+---
+
+## 13. 테스트가 개발자 PC 의 application-local.yml 을 읽어 CI 와 설정이 달라짐
+
+**문제 상황**
+Swagger 기본값을 꺼짐(`${SWAGGER_ENABLED:false}`)으로 바꾸고 로컬은 `application-local.yml` 에서 켜도록 했더니, "아무 설정 없이 뜬 컨텍스트에서 `/v3/api-docs` 가 401" 을 검증하는 `SwaggerDisabledIntegrationTest` 가 개발자 PC 에서는 Swagger 가 켜진 채로 떴다. CI(로컬 파일 없음)와 결과가 달라지는 상태였고, 그동안은 로컬 파일의 값(DB 접속 정보, 키)이 모두 Testcontainers·`TestSecretsConfiguration` 에 덮여 드러나지 않았다.
+
+**원인**
+`application.yml` 의 `spring.profiles.default: local`. 프로필을 지정하지 않으면 앱뿐 아니라 테스트 컨텍스트도 `local` 프로필로 떠서 git 미추적 파일인 `src/main/resources/application-local.yml` 을 읽는다.
+
+**해결**
+- `@IntegrationTest` 메타 애너테이션에 `@ActiveProfiles("test")` 를 붙여 모든 통합 테스트의 프로필을 고정했다. `test` 프로필용 설정 파일은 두지 않는다. DB·Redis 는 `@ServiceConnection`, 비밀값은 `TestSecretsConfiguration` 이 주므로 `application.yml` 기본값만으로 뜬다.
+- 임시로 넣었던 `SwaggerDisabledIntegrationTest` 의 `spring.profiles.active=test` 우회는 제거했다.
+- 통합 테스트가 아닌 테스트(PhoneCipher, PhoneNumber, ErrorCode, LoggingSmsSender, OptimisticRetryExecutor)는 스프링 컨텍스트를 띄우지 않아 프로필과 무관함을 확인했다.
+
+**결과**
+로컬 `application-local.yml` 에 `pickone.swagger.enabled: true` 가 있는 상태에서 전체 188건 통과, `SwaggerDisabledIntegrationTest` 는 401 확인. 테스트 결과가 개발자 PC 의 로컬 파일 유무와 무관해졌다.
+
+**관련 커밋** `1bf1cd6`(Swagger 기본값 변경으로 드러남), 이 항목을 추가한 fix 커밋
