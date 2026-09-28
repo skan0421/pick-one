@@ -152,6 +152,13 @@
 | 사진 선택지 | `image_url` 500자, 정확히 2개. 4.6 으로 발급받아 업로드한 본인 주소만 허용 |
 | 휴대폰 번호 | 한국 휴대폰 번호(010/011/016/017/018/019), 서버에서 E.164(`+8210...`) 로 정규화. 아니면 `PHONE_INVALID_FORMAT` |
 
+### 1.9 CORS
+Expo 웹 버전이 브라우저에서 API 를 호출하므로 `/api/**` 에만 CORS 를 연다 (Swagger 경로 등에는 CORS 헤더가 붙지 않는다).
+- 허용 origin: `pickone.cors.allowed-origins`(환경변수 `CORS_ALLOWED_ORIGINS`, 쉼표 구분). 로컬 기본값은 Expo 웹 개발 서버 `http://localhost:8081`. 정확한 문자열 비교이며 와일드카드 패턴은 쓰지 않는다
+- 허용 메서드 `GET, POST, PUT, PATCH, DELETE, OPTIONS`, 허용 헤더 `Authorization, Content-Type, Idempotency-Key`, preflight 캐시 1시간
+- **`Access-Control-Allow-Credentials` 는 내지 않는다.** 인증은 `Authorization: Bearer` 헤더이고 쿠키·세션을 쓰지 않는다. 네이티브 앱(RN)은 CORS 대상이 아니다
+- Spring Security 의 `CorsFilter` 가 인가 필터보다 앞에 있어, 허용 origin 의 preflight(OPTIONS) 는 토큰 없이 200 으로 통과하고 허용되지 않은 origin 의 preflight 는 403 이다
+
 ---
 
 ## 2. 인증·회원
