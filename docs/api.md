@@ -97,7 +97,7 @@
 | `IDEMPOTENCY_KEY_REQUIRED` | 400 | 포인트 사용 API 에 헤더 누락 |
 | `IDEMPOTENCY_KEY_CONFLICT` | 409 | 같은 키로 다른 요청 본문 |
 | `BLOCK_SELF` | 400 | 자기 자신 차단 (`chk_member_block_not_self`) |
-| `BLOCK_ALREADY_EXISTS` | 409 | 이미 차단한 사용자 |
+| `BLOCK_ALREADY_EXISTS` | 409 | (미사용) 중복 차단은 멱등 처리해 201 을 돌려준다 (8.1) |
 | `REPORT_DUPLICATE` | 409 | 같은 고민 중복 신고 (`uk_report_reporter_id_question_id`) |
 | `REPORT_OWN_QUESTION` | 400 | 자기 고민 신고 |
 | `CONTACTS_TOO_MANY` | 400 | 연락처 업로드 상한 초과 |
@@ -690,6 +690,10 @@ interface SmsSender { void send(String phoneE164, String message); }
   2. 기존 `hide_relation(owner_id = 나)`, `hide_pending(owner_id = 나)` 삭제
   3. HMAC 이 `member.phone_hmac` 과 일치하는 회원 → `hide_relation(owner_id = 나, target_member_id)`. 자기 자신은 `chk_hide_relation_not_self` 가 막는다
   4. 일치하지 않는 HMAC → `hide_pending(owner_id = 나, phone_hmac)`. 그 번호가 나중에 가입해 휴대폰 인증을 마치면 3.4 의 5단계에서 `hide_relation` 으로 옮겨진다
+- 구현 메모
+  - `received` 는 정규화·중복 제거 후 처리한 번호 수다. 휴대폰 형식이 아닌 항목(유선 번호 등)은 건너뛰고, 내 번호는 제외한다. 요청 전체를 실패시키지 않는다
+  - 5,000건을 한 번에 넣으므로 JPA 대신 `JdbcTemplate.batchUpdate` 를 쓴다. `hide_pending` 이 IDENTITY 라 Hibernate 는 INSERT 를 배치로 묶지 못하고 건마다 왕복한다. 회원 매칭도 엔티티를 로드하지 않고 `(id, phone_hmac)` 만 IN 절(1,000개씩 분할)로 읽는다. 실측: 5,000건 교체 352~392ms, 같은 5,000건 `saveAll` 3.1~6.7초 (troubleshooting.md 11)
+  - 번호 원문은 정규화 직후 HMAC 으로 바뀌고 로그에는 건수만 남는다. 요청 DTO 의 `toString` 도 건수만 낸다. 통합 테스트가 업로드 중 모든 로그에 번호가 없는지 확인한다
 - 관계 데이터는 `hide_from_contacts` 플래그와 무관하게 유지된다. 플래그가 꺼져 있으면 피드 필터에서 무시할 뿐이다
 - 주요 에러: `VALIDATION_ERROR`, `CONTACTS_TOO_MANY`
 
@@ -717,7 +721,8 @@ interface SmsSender { void send(String phoneE164, String message); }
   { "blockedMemberId": 15, "createdAt": "2026-09-27T18:10:00+09:00" }
   ```
 - 처리: `member_block(blocker_id = 나, blocked_id = id)`. 자기 자신은 API 와 `chk_member_block_not_self` 양쪽에서 막는다. 차단 즉시 양쪽 피드에서 서로의 고민이 사라진다 (4.2 조건 3)
-- 주요 에러: `BLOCK_SELF`, `BLOCK_ALREADY_EXISTS`, `MEMBER_NOT_FOUND`
+- **멱등**: 이미 차단한 상대를 다시 차단해도 201 이고 최초 차단 시각을 돌려준다. "존재 확인 → INSERT" 는 동시 요청에서 PK 위반이 나므로 `INSERT ... ON DUPLICATE KEY UPDATE` 한 문장으로 처리하고, `created_at` 은 `FOR UPDATE` 로 읽는다 (일반 SELECT 는 REPEATABLE READ 스냅샷 때문에 이긴 쪽이 막 커밋한 행을 못 본다, troubleshooting.md 10)
+- 주요 에러: `BLOCK_SELF`, `MEMBER_NOT_FOUND`
 
 ### 8.2 DELETE /members/{id}/blocks — 차단 해제
 - 인증: ACTIVE
@@ -742,8 +747,9 @@ interface SmsSender { void send(String phoneE164, String message); }
   ```json
   { "reportId": 77, "status": "RECEIVED" }
   ```
-- 처리: `report(question_id, reporter_id, reason, status='RECEIVED')`. 같은 고민 재신고는 `uk_report_reporter_id_question_id` 로 409
-- **자동 숨김 정책**: 같은 고민의 `RECEIVED` 신고가 5건(설정값 `pickone.report.auto-hide-threshold`) 이상이면 `question.status = 'HIDDEN'` 으로 바꾼다. 이후 운영자가 `ACCEPTED`(유지) / `REJECTED`(ACTIVE 복구) 로 처리한다. 운영자 API 는 1차 범위 밖
+- 처리: `report(question_id, reporter_id, reason, detail, status='RECEIVED')`. 같은 고민 재신고는 `uk_report_reporter_id_question_id` 로 409. 삭제된 고민은 404, 이미 HIDDEN 인 고민은 신고를 접수한다(운영 판단 근거 보존)
+- **자동 숨김 정책**: 같은 고민의 `RECEIVED` 신고가 5건(설정값 `pickone.report.auto-hide-threshold`) 이상이면 `question.status = 'HIDDEN'` 으로 바꾼다 (ACTIVE 일 때만, CLOSED 는 그대로). 이후 운영자가 `ACCEPTED`(유지) / `REJECTED`(ACTIVE 복구) 로 처리한다. 운영자 API 는 1차 범위 밖
+- **동시 신고**: 각 신고가 "INSERT 후 COUNT" 를 자기 스냅샷으로만 하면 3건 있는 고민에 2건이 동시에 와서 둘 다 4를 세고 5건째 전환을 놓친다. 그래서 고민 행을 `SELECT ... FOR UPDATE` 로 먼저 잠가 같은 고민의 신고를 직렬화한다. 잠금 읽기가 트랜잭션의 첫 문장이라 read view 는 그 뒤 COUNT 에서 만들어지고 앞서 커밋된 신고가 모두 보인다. 실측: 3건 있는 고민에 동시 신고 3건 → 201 3건, HIDDEN. 0건에서 동시 5건 → HIDDEN. 동시 4건 → ACTIVE 유지
 - 주요 에러: `REPORT_DUPLICATE`, `REPORT_OWN_QUESTION`, `QUESTION_NOT_FOUND`, `VALIDATION_ERROR`
 
 ---

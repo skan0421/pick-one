@@ -190,3 +190,64 @@ expected: "boostedUntil":"2026-09-29T15:36:06.1125994"
 두 제약 모두 이름이 추출되고 각각 400 / 409 로 번역된다. 정규식 보조 추출은 불필요했다.
 
 **관련 커밋** `eff477b`, `66b365c`
+
+---
+
+## 10. 동시 차단에서 UPSERT 뒤 SELECT 가 0행 — REPEATABLE READ 스냅샷
+
+**문제 상황**
+같은 상대를 3스레드가 동시에 차단하는 테스트에서 응답이 `[500, 201, 500]` 이었다. 로그는 `EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0` — `INSERT ... ON DUPLICATE KEY UPDATE` 직후 `SELECT created_at FROM member_block WHERE ...` 가 행을 못 찾았다.
+
+**원인**
+진 쪽 트랜잭션은 UPSERT 전에 `memberRepository.findById(target)` 로 이미 consistent read 를 했고, 그 시점에 REPEATABLE READ 스냅샷이 고정됐다. UPSERT 는 이긴 쪽의 행 락을 기다렸다가 "중복 → 무변경 UPDATE" 경로로 정상 종료했지만, 이어지는 일반 SELECT 는 옛 스냅샷이라 이긴 쪽이 막 커밋한 행이 보이지 않았다. (6번과 같은 원리인데 방향이 반대다: 6번은 다른 사람의 새 행이 안 보였고, 여기서는 내가 방금 "있음" 을 확인한 행이 안 보인다.)
+
+**해결**
+`created_at` 을 `SELECT ... FOR UPDATE` 로 읽는다. 잠금 읽기는 스냅샷이 아니라 최신 커밋 버전을 읽고, 행 락은 UPSERT 가 이미 잡고 있어 추가 대기가 없다.
+
+**결과**
+동시 차단 3건 → 201 3건, `member_block` 1행, `created_at` 동일 (MemberBlockIntegrationTest).
+
+**관련 커밋** `7467eed`
+
+---
+
+## 11. 연락처 5,000건 저장 — IDENTITY 엔티티의 JPA saveAll 은 건별 INSERT
+
+**문제 상황**
+연락처 업로드는 한 번에 최대 5,000건을 `hide_relation` / `hide_pending` 에 넣는다. `hide_pending` 은 IDENTITY 전략이라 Hibernate 가 INSERT 를 배치로 묶지 못하고(`hibernate.jdbc.batch_size` 도 IDENTITY 에는 무효) 건마다 DB 를 왕복한다.
+
+**원인**
+IDENTITY 는 INSERT 를 실행해야 PK 를 알 수 있어 Hibernate 가 persist 시점에 즉시 실행한다. 5,000건이면 5,000회 왕복 + 5,000개 엔티티 상태 관리.
+
+**해결**
+- 저장은 `JdbcTemplate.batchUpdate` (1,000건 단위 분할) 로, 회원 매칭은 엔티티 대신 `SELECT id, phone_hmac FROM member WHERE phone_hmac IN (...)` (1,000개씩 분할, `uk_member_phone_hmac`) 로 처리한다. 같은 `@Transactional` 커넥션을 쓰므로 실패 시 함께 롤백된다.
+- 테스트에서 같은 5,000건을 `hidePendingRepository.saveAll` 로 넣는 시간을 함께 재서 비교했다.
+
+**결과** (Testcontainers MariaDB, 정규화 + HMAC 계산 포함)
+| 방식 | 5,000건 |
+|---|---|
+| API 최초 업로드 (`batchUpdate`) | 352 ~ 392 ms |
+| API 재교체 (삭제 5,000 + 삽입 5,000) | 163 ~ 249 ms |
+| JPA `saveAll` (IDENTITY, 건별 INSERT) | 3,068 ~ 6,675 ms |
+
+약 9~17배 차이. 로컬 컨테이너라 절대값보다 비율이 의미 있다.
+
+**관련 커밋** `aadc1a0`
+
+---
+
+## 12. 동시 신고에서 N건째 자동 숨김 전환 누락 가능성
+
+**문제 상황**
+신고 누적 5건이면 HIDDEN 으로 바꿔야 한다. "INSERT 후 COUNT" 를 각자 트랜잭션에서 하면, 3건 있는 고민에 2건이 동시에 올 때 둘 다 자기 스냅샷에서 4를 세어 전환을 놓친다 (설계 단계에서 확인).
+
+**원인**
+REPEATABLE READ 스냅샷은 다른 트랜잭션이 동시에 넣은 행을 보여주지 않는다. 6·10번과 같은 뿌리다.
+
+**해결**
+고민 행을 `SELECT ... FOR UPDATE` 로 먼저 잠가 같은 고민의 신고를 직렬화한다. 잠금 읽기는 read view 를 만들지 않으므로, 그 뒤의 COUNT 가 첫 consistent read 가 되어 락을 얻은 시점까지 커밋된 신고가 모두 보인다. 이미 HIDDEN 인 고민도 신고는 접수한다.
+
+**결과**
+3건 있는 고민에 동시 신고 3건 → 201 3건, HIDDEN. 0건에서 동시 5건 → HIDDEN. 동시 4건 → ACTIVE 유지 (ReportIntegrationTest).
+
+**관련 커밋** `09ccb1c`
