@@ -2,7 +2,6 @@ package com.pickone.global.error;
 
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -47,7 +46,7 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<ErrorResponse> handleDataIntegrity(DataIntegrityViolationException e) {
-		String constraintName = findConstraintName(e);
+		String constraintName = ConstraintViolations.constraintName(e);
 		return ErrorCode.fromConstraintName(constraintName)
 				.map(code -> ResponseEntity.status(code.getStatus()).body(ErrorResponse.of(code)))
 				.orElseGet(() -> {
@@ -68,18 +67,6 @@ public class GlobalExceptionHandler {
 		log.error("처리되지 않은 예외", e);
 		return ResponseEntity.status(ErrorCode.INTERNAL_ERROR.getStatus())
 				.body(ErrorResponse.of(ErrorCode.INTERNAL_ERROR));
-	}
-
-	/** cause 체인에서 Hibernate ConstraintViolationException 을 찾아 제약 이름을 꺼낸다 */
-	private String findConstraintName(Throwable e) {
-		Throwable cause = e;
-		while (cause != null) {
-			if (cause instanceof ConstraintViolationException cve) {
-				return cve.getConstraintName();
-			}
-			cause = cause.getCause();
-		}
-		return null;
 	}
 
 }

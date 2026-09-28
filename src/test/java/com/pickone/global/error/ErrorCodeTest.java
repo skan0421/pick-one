@@ -19,6 +19,13 @@ class ErrorCodeTest {
 	}
 
 	@Test
+	void FK와_CHECK_제약도_해당_코드로_찾는다() {
+		assertThat(ErrorCode.fromConstraintName("fk_vote_option")).contains(ErrorCode.VOTE_OPTION_MISMATCH);
+		assertThat(ErrorCode.fromConstraintName("chk_point_wallet_balance")).contains(ErrorCode.POINT_INSUFFICIENT);
+		assertThat(ErrorCode.fromConstraintName("uk_vote_member_id_question_id")).contains(ErrorCode.VOTE_ALREADY_VOTED);
+	}
+
+	@Test
 	void 모르는_제약이나_null_은_빈_값이다() {
 		assertThat(ErrorCode.fromConstraintName("fk_question_member")).isEmpty();
 		assertThat(ErrorCode.fromConstraintName(null)).isEmpty();

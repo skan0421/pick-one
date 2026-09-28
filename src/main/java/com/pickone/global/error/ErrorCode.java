@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * API 에러 코드. docs/api.md 1.4 의 표와 1:1 로 맞춘다.
- * constraintName 이 있는 코드는 DB 유니크 제약 위반을 409 로 번역할 때 쓴다.
+ * constraintName 이 있는 코드는 DB 제약(유니크·FK·CHECK) 위반을 해당 코드로 번역할 때 쓴다 (GlobalExceptionHandler).
  */
 @Getter
 public enum ErrorCode {
@@ -50,13 +50,14 @@ public enum ErrorCode {
 
 	// 투표
 	VOTE_ALREADY_VOTED(HttpStatus.CONFLICT, "이미 투표한 고민입니다.", "uk_vote_member_id_question_id"),
-	VOTE_OPTION_MISMATCH(HttpStatus.BAD_REQUEST, "해당 고민의 선택지가 아닙니다."),
+	VOTE_OPTION_MISMATCH(HttpStatus.BAD_REQUEST, "해당 고민의 선택지가 아닙니다.", "fk_vote_option"),
 	VOTE_OWN_QUESTION(HttpStatus.FORBIDDEN, "자신의 고민에는 투표할 수 없습니다."),
 	RESULT_NOT_ALLOWED(HttpStatus.FORBIDDEN, "투표한 사람만 결과를 볼 수 있습니다."),
 
 	// 포인트
-	POINT_INSUFFICIENT(HttpStatus.CONFLICT, "포인트가 부족합니다."),
+	POINT_INSUFFICIENT(HttpStatus.CONFLICT, "포인트가 부족합니다.", "chk_point_wallet_balance"),
 	POINT_WALLET_NOT_FOUND(HttpStatus.CONFLICT, "포인트 지갑이 없습니다."),
+	POINT_WALLET_CONFLICT(HttpStatus.CONFLICT, "포인트 처리가 몰려 잠시 후 다시 시도해 주세요."),
 	IDEMPOTENCY_KEY_REQUIRED(HttpStatus.BAD_REQUEST, "Idempotency-Key 헤더가 필요합니다."),
 	IDEMPOTENCY_KEY_CONFLICT(HttpStatus.CONFLICT, "같은 키로 다른 요청이 처리되었습니다."),
 
@@ -71,7 +72,7 @@ public enum ErrorCode {
 
 	private final HttpStatus status;
 	private final String message;
-	/** 이 에러로 번역할 DB 유니크 제약 이름 (없으면 null) */
+	/** 이 에러로 번역할 DB 제약 이름 (없으면 null) */
 	private final String constraintName;
 
 	ErrorCode(HttpStatus status, String message) {

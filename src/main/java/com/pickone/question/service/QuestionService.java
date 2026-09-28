@@ -4,6 +4,7 @@ import com.pickone.global.error.BusinessException;
 import com.pickone.global.error.ErrorCode;
 import com.pickone.global.paging.CursorCodec;
 import com.pickone.global.paging.CursorPage;
+import com.pickone.global.paging.KeysetCursor;
 import com.pickone.member.domain.Member;
 import com.pickone.member.repository.MemberRepository;
 import com.pickone.question.domain.Question;
@@ -225,10 +226,6 @@ public class QuestionService {
 			return t == null || id == null ? null : new FeedKeyset(t, id);
 		}
 
-	}
-
-	/** 내 고민 커서: 키셋만 */
-	public record KeysetCursor(LocalDateTime createdAt, Long id) {
 	}
 
 }

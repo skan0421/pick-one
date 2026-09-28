@@ -1,5 +1,7 @@
 package com.pickone.point.domain;
 
+import com.pickone.global.error.BusinessException;
+import com.pickone.global.error.ErrorCode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -45,6 +47,25 @@ public class PointWallet {
 
 	public static PointWallet open(Long memberId) {
 		return new PointWallet(memberId);
+	}
+
+	/** 적립. 실제 UPDATE 는 커밋 시 flush 되며 WHERE version = ? 로 동시 변경을 감지한다 */
+	public void earn(long amount) {
+		if (amount <= 0) {
+			throw new IllegalArgumentException("적립 금액은 양수여야 합니다: " + amount);
+		}
+		this.balance += amount;
+	}
+
+	/** 차감. 읽은 잔액 기준으로 부족하면 POINT_INSUFFICIENT. 경합으로 음수가 되려 하면 DB CHECK 가 막는다 */
+	public void use(long amount) {
+		if (amount <= 0) {
+			throw new IllegalArgumentException("차감 금액은 양수여야 합니다: " + amount);
+		}
+		if (this.balance < amount) {
+			throw new BusinessException(ErrorCode.POINT_INSUFFICIENT);
+		}
+		this.balance -= amount;
 	}
 
 }

@@ -6,6 +6,7 @@ import com.pickone.global.crypto.PhoneCipher;
 import com.pickone.global.crypto.PhoneNumber;
 import com.pickone.global.error.BusinessException;
 import com.pickone.global.error.ErrorCode;
+import com.pickone.global.time.KstDates;
 import com.pickone.member.domain.Member;
 import com.pickone.member.repository.MemberRepository;
 import com.pickone.phone.OtpProperties;
@@ -19,11 +20,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.HexFormat;
 import lombok.extern.slf4j.Slf4j;
@@ -40,8 +36,6 @@ import org.springframework.stereotype.Service;
 @EnableConfigurationProperties(OtpProperties.class)
 public class PhoneVerificationService {
 
-	private static final ZoneId KST = ZoneId.of("Asia/Seoul");
-	private static final DateTimeFormatter DATE_KEY = DateTimeFormatter.ofPattern("yyyyMMdd");
 	private static final int SALT_BYTES = 16;
 
 	private final MemberRepository memberRepository;
@@ -76,8 +70,8 @@ public class PhoneVerificationService {
 		if (!otpStore.tryAcquireCooldown(phoneHmac, properties.cooldown())) {
 			throw new BusinessException(ErrorCode.OTP_COOLDOWN);
 		}
-		String today = LocalDate.now(KST).format(DATE_KEY);
-		Duration toMidnight = untilMidnight();
+		String today = KstDates.today();
+		Duration toMidnight = KstDates.untilMidnight();
 		if (otpStore.incrementDailyByPhone(phoneHmac, today, toMidnight) > properties.dailyLimitPerPhone()
 				|| otpStore.incrementDailyByMember(member.getId(), today, toMidnight) > properties.dailyLimitPerMember()) {
 			throw new BusinessException(ErrorCode.OTP_DAILY_LIMIT);
@@ -151,13 +145,6 @@ public class PhoneVerificationService {
 		catch (NoSuchAlgorithmException e) {
 			throw new IllegalStateException(e);
 		}
-	}
-
-	private static Duration untilMidnight() {
-		ZonedDateTime now = ZonedDateTime.now(KST);
-		ZonedDateTime midnight = LocalDateTime.of(now.toLocalDate().plusDays(1), java.time.LocalTime.MIDNIGHT).atZone(KST);
-		Duration d = Duration.between(now, midnight);
-		return d.isZero() || d.isNegative() ? Duration.ofSeconds(1) : d;
 	}
 
 }

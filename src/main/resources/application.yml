@@ -58,6 +58,14 @@ pickone:
     daily-limit-per-phone: 5
     daily-limit-per-member: 10
 
+  point:
+    # 포인트 정책 (docs/api.md 1.7). wallet-max-retries 는 지갑 낙관적 락 충돌 시 재시도 횟수 (총 시도 = 1 + 값)
+    vote-reward: 1
+    daily-earn-limit: 50
+    boost-cost: 100
+    boost-duration: 24h
+    wallet-max-retries: 3
+
   crypto:
     # 휴대폰 번호 AES-GCM 키(Base64 32바이트)와 HMAC-SHA256 키(32바이트 이상). 서로 다른 값. 환경변수 주입, 기본값 없음
     phone-aes-key: ${PHONE_AES_KEY}
