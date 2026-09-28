@@ -5,6 +5,7 @@ import com.pickone.global.error.ErrorCode;
 import com.pickone.global.paging.CursorCodec;
 import com.pickone.global.paging.CursorPage;
 import com.pickone.global.paging.KeysetCursor;
+import com.pickone.global.paging.PageSize;
 import com.pickone.member.domain.Member;
 import com.pickone.member.repository.MemberRepository;
 import com.pickone.question.domain.Question;
@@ -38,8 +39,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class QuestionService {
 
-	public static final int DEFAULT_PAGE_SIZE = 20;
-	public static final int MAX_PAGE_SIZE = 50;
 	private static final int TEXT_MIN_OPTIONS = 2;
 	private static final int TEXT_MAX_OPTIONS = 4;
 	private static final int IMAGE_OPTIONS = 2;
@@ -109,7 +108,7 @@ public class QuestionService {
 	 */
 	@Transactional(readOnly = true)
 	public CursorPage<FeedItemResponse> feed(Long viewerId, String cursor, Integer size) {
-		int pageSize = normalizeSize(size);
+		int pageSize = PageSize.normalize(size);
 		LocalDateTime now = LocalDateTime.now();
 		FeedCursor from = cursor == null ? FeedCursor.first() : cursorCodec.decode(cursor, FeedCursor.class);
 
@@ -176,7 +175,7 @@ public class QuestionService {
 
 	@Transactional(readOnly = true)
 	public CursorPage<MyQuestionResponse> myQuestions(Long memberId, String cursor, Integer size) {
-		int pageSize = normalizeSize(size);
+		int pageSize = PageSize.normalize(size);
 		Limit limit = Limit.of(pageSize + 1);
 		List<Question> page = cursor == null
 				? questionRepository.findMineFirstPage(memberId, limit)
@@ -228,13 +227,6 @@ public class QuestionService {
 		Map<Long, Question> byId = questionRepository.findAllWithAuthorAndOptionsByIdIn(ids).stream()
 				.collect(Collectors.toMap(Question::getId, Function.identity()));
 		return ids.stream().map(byId::get).filter(q -> q != null).toList();
-	}
-
-	private static int normalizeSize(Integer size) {
-		if (size == null || size < 1) {
-			return DEFAULT_PAGE_SIZE;
-		}
-		return Math.min(size, MAX_PAGE_SIZE);
 	}
 
 	/** 피드 커서: 단계(B/N) + 키셋 */

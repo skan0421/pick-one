@@ -167,9 +167,11 @@ class VoteIntegrationTest {
 		void 일일_적립_상한에_도달하면_투표는_되지만_적립은_없다() throws Exception {
 			Session voter = activeMember();
 			Created q = create(activeMember(), TWO_OPTIONS.formatted("상한"));
-			// 오늘 이미 50P 적립한 상태를 원장 + 지갑에 만든다 (판정 근거는 원장 SUM)
+			// 오늘 이미 50P 적립한 상태를 원장 + 지갑에 만든다 (판정 근거는 원장 SUM).
+			// created_at 은 DB 의 NOW() 가 아니라 JVM 시각으로 넣는다: 앱은 @CreationTimestamp(JVM, KST) 로 쓰고 KST 자정과 비교하므로,
+			// DB 시계(컨테이너 UTC)를 쓰면 KST 자정~09시 사이에 "어제" 행이 된다 (troubleshooting.md 17)
 			jdbc.update("INSERT INTO point_ledger (member_id, amount, balance_after, tx_type, ref_type, ref_id, idempotency_key, created_at) "
-					+ "VALUES (?, 50, 50, 'VOTE_REWARD', 'VOTE', 0, ?, NOW(6))", voter.memberId, "test:" + UUID.randomUUID());
+					+ "VALUES (?, 50, 50, 'VOTE_REWARD', 'VOTE', 0, ?, ?)", voter.memberId, "test:" + UUID.randomUUID(), java.time.LocalDateTime.now());
 			jdbc.update("UPDATE point_wallet SET balance = 50 WHERE member_id = ?", voter.memberId);
 
 			vote(voter, q.id, q.option(0))

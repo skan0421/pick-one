@@ -115,8 +115,8 @@ flowchart LR
 ./gradlew test   # Docker 실행 중이어야 함
 ```
 
-- **테스트 188건**: 테스트 메서드 176개 + 파라미터 테스트 2개가 7케이스씩 펼쳐져 실행 기준 188건, 전부 GitHub Actions 에서 통과
-- **커버리지 (JaCoCo, 2026-09-28 로컬 실측)**: 라인 **95.5%** (940/984), 브랜치 **83.5%** (340/407). 설정 클래스(`*Config`, `*Properties`)·DTO 패키지·Application 진입점은 측정에서 제외. 최소 기준으로 빌드를 막지는 않고 CI Job Summary 와 artifact(`jacoco-report`)로 공개합니다
+- **테스트 205건**: 테스트 메서드 193개 + 파라미터 테스트 2개가 7케이스씩 펼쳐져 실행 기준 205건, 전부 GitHub Actions 에서 통과 (통합 테스트는 MariaDB·Redis·MinIO 컨테이너 사용)
+- **커버리지 (JaCoCo, 2026-09-29 로컬 실측)**: 라인 **96.0%** (1046/1090), 브랜치 **84.6%** (368/435). 설정 클래스(`*Config`, `*Properties`)·DTO 패키지·Application 진입점은 측정에서 제외. 최소 기준으로 빌드를 막지는 않고 CI Job Summary 와 artifact(`jacoco-report`)로 공개합니다
   ```bash
   ./gradlew test jacocoTestReport   # build/reports/jacoco/test/html/index.html
   ```

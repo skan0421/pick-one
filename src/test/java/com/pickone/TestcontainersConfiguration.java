@@ -20,7 +20,8 @@ public class TestcontainersConfiguration {
 	@Bean
 	@ServiceConnection
 	MariaDBContainer mariaDbContainer() {
-		return new MariaDBContainer(DockerImageName.parse("mariadb:11.4"));
+		// docker-compose 와 같은 시간대. 컨테이너 기본(UTC)이면 NOW() 가 JVM(KST) 시각과 어긋난다 (troubleshooting.md 17)
+		return new MariaDBContainer(DockerImageName.parse("mariadb:11.4")).withEnv("TZ", "Asia/Seoul");
 	}
 
 	private static final String MINIO_USER = "pickone-test";

@@ -55,7 +55,7 @@ public record QuestionResponse(
 
 	public record ResultResponse(long totalVotes, List<OptionResult> options) {
 
-		static ResultResponse from(Tally tally) {
+		public static ResultResponse from(Tally tally) {
 			return new ResultResponse(tally.totalVotes(), tally.options().stream()
 					.map(o -> new OptionResult(o.option().getId(), o.count(), o.percent()))
 					.toList());

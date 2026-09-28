@@ -660,6 +660,52 @@ interface SmsSender { void send(String phoneE164, String message); }
 - `percent` 는 소수점 1자리. 반올림 합이 100 이 아니면 가장 큰 항목에서 보정한다. 작성자는 `myOptionId = null`
 - 주요 에러: `QUESTION_NOT_FOUND`, `RESULT_NOT_ALLOWED`
 
+### 5.3 GET /members/me/votes — 내가 투표한 고민 목록
+- 인증: ACTIVE
+- 요청: `?cursor=&size=20` (정렬 투표 시각 `vote.created_at DESC, vote.id DESC`, `idx_vote_member_id_created_at` V5)
+- 응답 `200`
+  ```json
+  {
+    "items": [
+      {
+        "voteId": 9001,
+        "votedAt": "2026-09-29T17:55:00+09:00",
+        "question": {
+          "id": 42, "questionType": "TEXT", "content": "소개팅 첫 만남, 카페 vs 밥집?", "status": "ACTIVE", "boosted": false,
+          "options": [ { "id": 101, "sortOrder": 1, "content": "카페" }, { "id": 102, "sortOrder": 2, "content": "밥집" } ],
+          "author": { "nickname": "고민많은사람" },
+          "createdAt": "2026-09-27T17:30:00+09:00"
+        },
+        "myOptionId": 101,
+        "result": { "totalVotes": 39, "options": [ { "optionId": 101, "count": 26, "percent": 66.7 }, { "optionId": 102, "count": 13, "percent": 33.3 } ] }
+      }
+    ],
+    "nextCursor": "eyJ...",
+    "hasNext": true
+  }
+  ```
+- **제외 규칙과 근거**: 상세 API(4.3)가 404 를 주는 항목은 목록에서도 뺀다. "목록에 보이는 항목은 모두 열 수 있다" 를 지키기 위해서다. 투표·적립 기록(vote, point_ledger)은 그대로 남으므로 포인트 불변식에는 영향이 없다
+
+  | 대상 | 처리 | 근거 |
+  |---|---|---|
+  | 삭제된 고민 (`deleted_at IS NOT NULL`) | 제외 | 상세 404. 내 고민 목록(4.4)도 삭제된 글은 제외 |
+  | 신고로 HIDDEN 된 고민 | 제외 | 상세 404. 운영자가 REJECTED 로 되돌리면 다시 보인다 |
+  | 차단 관계(양방향) 작성자의 고민 | 제외 | 상세 404. 차단 해제 시 다시 보인다 |
+  | 작성자가 지인 숨기기를 켜고 나를 등록 | 제외 | 상세 404. 작성자가 끄면 다시 보인다 |
+  | CLOSED 고민 | **포함** (`status: CLOSED`) | 결과 조회(5.2)가 가능하므로 목록에서도 연다 |
+
+- **쿼리 수**: 페이지당 3회로 고정 — vote 행(ID·선택지·시각) 조회 1회 + 고민·작성자·선택지 fetch join 1회 + 페이지 전체 득표 집계(`GROUP BY question_id, option_id`) 1회. 항목 수와 무관하며 `MyVotesQueryCountTest` 가 3회 이하를 고정한다
+- **EXPLAIN** (MariaDB 11.4, `MyVotesExplainTest` 가 실제 서비스 SQL 을 EXPLAIN 해 단정. 내 표 40행 + 다른 회원 표 2,400행)
+
+  | 단계 | key | type | rows | Extra |
+  |---|---|---|---|---|
+  | 첫 페이지 | `idx_vote_member_id_created_at` | ref | 40 | Using where (filesort 없음) |
+  | 커서 이후 | `idx_vote_member_id_created_at` | range | 20 | Using where (filesort 없음) |
+  | (V5 전, 참고) | 없음 | ALL | 40 | Using where; Using filesort |
+
+  `member_id = :me` 로 인덱스 ref 접근 후 인덱스 순서(`created_at`, 뒤에 붙는 PK `id`)가 `ORDER BY` 와 일치해 filesort 없이 LIMIT 만큼 읽고 멈춘다. V1 인덱스(`uk_vote_member_id_question_id`)만 있을 때는 `Using filesort` 였다. 차단·지인 숨김 서브쿼리는 MATERIALIZED 로 각자 PK/인덱스를 탄다
+- 주요 에러: `VALIDATION_ERROR`(잘못된 커서)
+
 ---
 
 ## 6. 포인트
@@ -931,6 +977,7 @@ member_social_account
 | POST | /uploads/images | ACTIVE | 사진 업로드 URL 발급 (presigned PUT) |
 | POST | /questions/{id}/votes | ACTIVE | 투표 |
 | GET | /questions/{id}/results | ACTIVE | 결과 |
+| GET | /members/me/votes | ACTIVE | 내가 투표한 고민 목록 (커서) |
 | GET | /points/balance | ACTIVE | 잔액 |
 | GET | /points/ledger | ACTIVE | 내역 (커서) |
 | POST | /questions/{id}/boosts | ACTIVE | 상단 노출 (Idempotency-Key) |
