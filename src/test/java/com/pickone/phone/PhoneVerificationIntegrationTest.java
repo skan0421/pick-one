@@ -155,9 +155,9 @@ class PhoneVerificationIntegrationTest {
 
 		String newAccess = tokens.get("accessToken").asString();
 		assertThat(jwtDecoder.decode(newAccess).getClaimAsString(JwtConfig.SIGNUP_STATUS_CLAIM)).isEqualTo("ACTIVE");
-		// 인증 후에는 인가를 통과한다 (경로가 아직 없어 404)
+		// 인증 후에는 인가를 통과해 피드가 응답한다
 		mockMvc.perform(get(ACTIVE_ONLY_PATH).header(HttpHeaders.AUTHORIZATION, "Bearer " + newAccess))
-				.andExpect(status().isNotFound());
+				.andExpect(status().isOk());
 
 		Member member = memberRepository.findById(s.memberId).orElseThrow();
 		assertThat(member.isSignupCompleted()).isTrue();

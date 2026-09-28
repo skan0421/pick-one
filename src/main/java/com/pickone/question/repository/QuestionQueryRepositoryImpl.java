@@ -11,9 +11,11 @@ import java.util.List;
  *  1) 내가 쓴 글 제외
  *  2) 이미 투표한 글 제외         — vote(member_id, question_id) 유니크 인덱스
  *  3) 양방향 차단 제외            — member_block PK (blocker_id, blocked_id) 를 양쪽 방향으로 각각 탐색
- *  4) 지인 숨김                   — 작성자가 hide_from_contacts 를 켰고 hide_relation(owner=작성자, target=나) 이 있으면 제외
+ *  4) 지인 숨김                   — 작성자가 hide_from_contacts 를 켰고 hide_relation(owner=작성자, target=나) 이 있으면 제외.
+ *                                   member 를 본문에서 JOIN 하면 옵티마이저가 조인 버퍼를 쓰며 정렬 인덱스를 버리므로 EXISTS 안으로 넣는다
  *  5) status = ACTIVE, deleted_at IS NULL
- * 상단 노출 단계는 idx_question_status_boosted_until(V3), 일반 단계는 idx_question_status_created_at 을 탄다.
+ * 인덱스: 상단 노출 단계는 idx_question_status_boosted_until(V3, range 후 소량 filesort),
+ *         일반 단계는 idx_question_status_created_at 을 역순으로 읽어 filesort 없이 LIMIT 에서 멈춘다 (EXPLAIN 은 docs/api.md 4.2).
  */
 public class QuestionQueryRepositoryImpl implements QuestionQueryRepository {
 
@@ -22,8 +24,9 @@ public class QuestionQueryRepositoryImpl implements QuestionQueryRepository {
 			  AND NOT EXISTS (SELECT 1 FROM vote v WHERE v.member_id = :me AND v.question_id = q.id)
 			  AND NOT EXISTS (SELECT 1 FROM member_block b WHERE b.blocker_id = :me AND b.blocked_id = q.member_id)
 			  AND NOT EXISTS (SELECT 1 FROM member_block b WHERE b.blocker_id = q.member_id AND b.blocked_id = :me)
-			  AND NOT (a.hide_from_contacts = b'1' AND EXISTS (
-			          SELECT 1 FROM hide_relation h WHERE h.owner_id = q.member_id AND h.target_member_id = :me))
+			  AND NOT EXISTS (SELECT 1 FROM hide_relation h
+			                  JOIN member a ON a.id = h.owner_id
+			                  WHERE h.owner_id = q.member_id AND h.target_member_id = :me AND a.hide_from_contacts = b'1')
 			""";
 
 	private static final String KEYSET = """
@@ -38,7 +41,6 @@ public class QuestionQueryRepositoryImpl implements QuestionQueryRepository {
 	private static final String BOOSTED_BASE = """
 			SELECT q.id
 			FROM question q
-			JOIN member a ON a.id = q.member_id
 			WHERE q.status = 'ACTIVE' AND q.deleted_at IS NULL
 			  AND q.boosted_until > :now
 			""";
@@ -46,7 +48,6 @@ public class QuestionQueryRepositoryImpl implements QuestionQueryRepository {
 	private static final String NORMAL_BASE = """
 			SELECT q.id
 			FROM question q
-			JOIN member a ON a.id = q.member_id
 			WHERE q.status = 'ACTIVE' AND q.deleted_at IS NULL
 			  AND (q.boosted_until IS NULL OR q.boosted_until <= :now)
 			""";
@@ -57,9 +58,9 @@ public class QuestionQueryRepositoryImpl implements QuestionQueryRepository {
 			) OR EXISTS (
 			    SELECT 1 FROM member_block b WHERE b.blocker_id = :author AND b.blocked_id = :me
 			) OR EXISTS (
-			    SELECT 1 FROM member a
-			    JOIN hide_relation h ON h.owner_id = a.id
-			    WHERE a.id = :author AND a.hide_from_contacts = b'1' AND h.target_member_id = :me
+			    SELECT 1 FROM hide_relation h
+			    JOIN member a ON a.id = h.owner_id
+			    WHERE h.owner_id = :author AND h.target_member_id = :me AND a.hide_from_contacts = b'1'
 			) THEN 1 ELSE 0 END
 			""";
 

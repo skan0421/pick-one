@@ -89,9 +89,9 @@ class SecurityIntegrationTest {
 	void ACTIVE_회원은_ACTIVE_전용_경로를_통과한다_대조군() throws Exception {
 		String token = jwtTokenProvider.createAccessToken(1L, SignupStatus.ACTIVE);
 
-		// 인가는 통과하고, 아직 컨트롤러가 없어 404 가 난다 → 403 이 상태 때문이었음을 보여준다
+		// 인가를 통과해 피드가 응답한다 → PENDING 의 403 이 상태 때문이었음을 보여준다
 		mockMvc.perform(get(ACTIVE_ONLY_PATH).header(HttpHeaders.AUTHORIZATION, "Bearer " + token))
-				.andExpect(status().isNotFound());
+				.andExpect(status().isOk());
 	}
 
 }
