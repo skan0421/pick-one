@@ -91,6 +91,11 @@ public class Member extends BaseTimeEntity {
 		this.signupStatus = SignupStatus.ACTIVE;
 	}
 
+	/** 지인에게 숨기기 켜기/끄기. 관계 데이터(hide_relation/hide_pending)는 그대로 두고 피드 필터에서만 반영된다 */
+	public void changeHideFromContacts(boolean enabled) {
+		this.hideFromContacts = enabled;
+	}
+
 	public boolean isSignupCompleted() {
 		return this.signupStatus == SignupStatus.ACTIVE;
 	}

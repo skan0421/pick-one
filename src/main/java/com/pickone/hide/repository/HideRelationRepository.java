@@ -9,4 +9,6 @@ public interface HideRelationRepository extends JpaRepository<HideRelation, Hide
 
 	List<HideRelation> findAllByIdTargetMemberId(Long targetMemberId);
 
+	long countByIdOwnerId(Long ownerId);
+
 }

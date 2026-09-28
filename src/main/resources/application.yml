@@ -70,6 +70,11 @@ pickone:
     # 같은 고민의 RECEIVED 신고가 이 수 이상이면 자동 HIDDEN (docs/api.md 8.4)
     auto-hide-threshold: 5
 
+  hide:
+    # 연락처 업로드 상한과 JDBC 배치 크기 (docs/api.md 7.1)
+    max-contacts: 5000
+    batch-size: 1000
+
   crypto:
     # 휴대폰 번호 AES-GCM 키(Base64 32바이트)와 HMAC-SHA256 키(32바이트 이상). 서로 다른 값. 환경변수 주입, 기본값 없음
     phone-aes-key: ${PHONE_AES_KEY}
