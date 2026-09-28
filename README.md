@@ -161,6 +161,11 @@ flowchart LR
    ./gradlew bootRun
    ```
    로컬에서는 SMS 가 실제로 발송되지 않고 인증번호가 앱 로그(DEBUG)에 찍힙니다.
+4. API 문서 (Swagger UI, springdoc-openapi)
+   - Swagger UI: http://localhost:8080/swagger-ui/index.html
+   - OpenAPI JSON: http://localhost:8080/v3/api-docs
+   - 보호된 API 는 우측 상단 **Authorize** 버튼에 가입/로그인 응답의 `accessToken` 을 넣으면 호출할 수 있습니다 (Bearer JWT)
+   - `pickone.swagger.enabled`(환경변수 `SWAGGER_ENABLED`, 기본 `true`) 하나로 문서·UI·보안 예외를 함께 끕니다. 운영 배포 시 `SWAGGER_ENABLED=false`
 
 스키마 변경은 항상 새 `V{n}__{설명}.sql` 파일로 추가하며, push 된 마이그레이션은 수정하지 않습니다.
 
