@@ -93,6 +93,7 @@
 | `RESULT_NOT_ALLOWED` | 403 | 투표하지 않았고 작성자도 아닌 사람이 결과 조회 |
 | `POINT_INSUFFICIENT` | 409 | 잔액 부족 |
 | `POINT_WALLET_NOT_FOUND` | 409 | 지갑 없음 (ACTIVE 전환 전) |
+| `POINT_WALLET_CONFLICT` | 409 | 지갑 낙관적 락 충돌 재시도(총 4회)를 모두 소진. 잠시 후 다시 시도 |
 | `IDEMPOTENCY_KEY_REQUIRED` | 400 | 포인트 사용 API 에 헤더 누락 |
 | `IDEMPOTENCY_KEY_CONFLICT` | 409 | 같은 키로 다른 요청 본문 |
 | `BLOCK_SELF` | 400 | 자기 자신 차단 (`chk_member_block_not_self`) |
@@ -132,7 +133,8 @@
 | 상단 노출 비용 | 100P | `tx_type = BOOST_USE`, 24시간 |
 | 가입 보너스 | 없음 | 소셜 계정 무한 생성으로 인한 어뷰징 방지 |
 
-- 일일 적립 합계는 Redis 카운터 `point:daily:{memberId}:{yyyyMMdd}` (TTL 자정) 로 빠르게 확인하고, 카운터가 유실되면 `point_ledger` 에서 `SUM(amount) WHERE tx_type='VOTE_REWARD' AND created_at >= 오늘` 로 재계산할 수 있다
+- 일일 적립 상한 **판정은 원장이 기준**이다. 투표 트랜잭션 안에서 `SUM(amount) FROM point_ledger WHERE member_id=? AND tx_type='VOTE_REWARD' AND created_at >= KST 오늘 자정` 을 읽는다 (`idx_point_ledger_member_id_created_at`, 하루 최대 50행). Redis 카운터 `point:daily:{memberId}:{yyyyMMdd}` (TTL 자정) 는 `GET /points/balance` 의 `todayEarned` 표시용 캐시이며, 투표 트랜잭션이 **커밋된 뒤** 증가시키고 유실되면 같은 SUM 으로 다시 채운다
+  - Redis 로 판정하지 않는 이유: 49P 에서 동시에 두 건이 오면 둘 다 49 < 50 을 읽어 51P 가 될 수 있다. 원장 SUM 은 적립하는 모든 투표가 같은 `point_wallet` 행을 UPDATE 하므로 낙관적 락이 회원 단위로 적립을 직렬화해 준다 — 진 쪽은 재시도에서 SUM=50 을 보고 `earned=false` 가 된다 (11.4 케이스 6)
 - `point_wallet` 행은 회원이 `ACTIVE` 로 전환되는 시점(휴대폰 인증 확인 트랜잭션 안)에 `balance = 0` 으로 생성된다. `PENDING_PHONE` 회원은 지갑이 없다
 - 불변식: `SUM(point_ledger.amount) = point_wallet.balance`, `point_wallet.balance >= 0` (`chk_point_wallet_balance`)
 
@@ -509,7 +511,7 @@ interface SmsSender { void send(String phoneE164, String message); }
     "createdAt": "2026-09-27T17:30:00+09:00"
   }
   ```
-- `myVote` 와 `result` 는 내가 투표했거나 내 고민일 때만 채워지고, 아니면 null (투표 기능 구현 전까지는 항상 null)
+- `myVote` 와 `result` 는 내가 투표했거나 내 고민일 때만 채워지고, 아니면 null (JSON 생략). 득표 집계는 `vote` 를 `GROUP BY option_id` 한 값이고 percent 규칙은 5.2 와 같다
 - 주요 에러: `QUESTION_NOT_FOUND`(삭제·HIDDEN 포함. 양방향 차단이나 지인 숨김 관계면 역시 404 로 존재를 숨김. 내 글은 상태와 무관하게 조회 가능)
 
 ### 4.4 GET /members/me/questions — 내 고민 목록
@@ -569,20 +571,35 @@ interface SmsSender { void send(String phoneE164, String message); }
   "pointReward": { "earned": false, "amount": 0, "reason": "DAILY_LIMIT_REACHED" }
   ```
 
-- **트랜잭션 흐름** (하나라도 실패하면 전체 롤백)
-  1. 고민 조회: 없음·삭제·HIDDEN → `QUESTION_NOT_FOUND`, CLOSED → `QUESTION_CLOSED`, 내 고민 → `VOTE_OWN_QUESTION`
-  2. `INSERT vote(question_id, option_id, member_id)`
-     - `uk_vote_member_id_question_id` 위반 → `VOTE_ALREADY_VOTED`
+- **트랜잭션 흐름** (1~5 가 `VoteTransaction.execute` 한 트랜잭션. 하나라도 실패하면 전체 롤백)
+  1. 고민 조회: 없음·삭제·HIDDEN·양방향 차단·지인 숨김 → `QUESTION_NOT_FOUND`(상세와 같은 규칙), CLOSED → `QUESTION_CLOSED`, 내 고민 → `VOTE_OWN_QUESTION`, 선택지가 이 고민 것이 아님 → `VOTE_OPTION_MISMATCH`, 지갑 없음 → `POINT_WALLET_NOT_FOUND`
+  2. `INSERT vote(question_id, option_id, member_id)` — IDENTITY 라 즉시 실행된다
+     - `uk_vote_member_id_question_id` 위반 → `VOTE_ALREADY_VOTED`. 같은 회원의 동시 요청은 유니크 인덱스에서 대기하다 먼저 커밋한 쪽만 남는다
      - `fk_vote_option` (option_id, question_id) 위반 → `VOTE_OPTION_MISMATCH`. 애플리케이션에서도 먼저 검사하지만 DB 가 최종 방어선이다
-  3. 일일 적립 상한 확인: `point:daily:{memberId}:{yyyyMMdd}` 가 상한 이상이면 4~5 건너뜀 (`earned=false`)
-  4. `point_wallet` 을 `version` 낙관적 락으로 읽어 `balance + 1`. 충돌(`OptimisticLockException`) 시 최대 3회 재시도
+  3. 일일 적립 상한 확인: 원장 `SUM(amount) WHERE tx_type='VOTE_REWARD' AND created_at >= 오늘` (1.7). 상한 이상이면 4~5 건너뜀 (`earned=false`, `reason=DAILY_LIMIT_REACHED`)
+  4. `point_wallet` 을 읽어 `balance + 1`. UPDATE 는 커밋 시점에 `WHERE version = ?` 로 나간다 (X 락 보유 시간 최소화)
   5. `INSERT point_ledger(amount=1, balance_after, tx_type='VOTE_REWARD', ref_type='VOTE', ref_id=voteId, idempotency_key='vote:'+voteId)`
-  6. 커밋 후 Redis 일일 카운터 +1 (커밋 이후에 하므로 롤백 시 증가하지 않음)
-  7. 결과 집계 `SELECT option_id, COUNT(*) FROM vote WHERE question_id = ? GROUP BY option_id` (`idx_vote_question_id_option_id`)
+  6. 커밋 후 Redis 일일 카운터 +1 (커밋 이후에 하므로 롤백 시 증가하지 않음. 실패해도 로그만 남기고 응답은 성공)
+  7. 커밋 후 결과 집계 `SELECT option_id, COUNT(*) FROM vote WHERE question_id = ? GROUP BY option_id` (`idx_vote_question_id_option_id`). 트랜잭션 안에서 세면 REPEATABLE READ 스냅샷이 시작 시점에 고정돼 동시에 커밋된 다른 표가 빠지므로 새 스냅샷으로 센다
 
   투표와 적립을 한 트랜잭션에 묶는 이유: 투표는 됐는데 포인트가 안 들어오거나, 포인트만 들어오고 투표가 안 되는 상태를 만들지 않기 위해서다. 원장의 `idempotency_key='vote:{voteId}'` 유니크가 같은 투표에 두 번 적립되는 것을 막는다.
 
-- 주요 에러: `VOTE_ALREADY_VOTED`, `VOTE_OPTION_MISMATCH`, `VOTE_OWN_QUESTION`, `QUESTION_NOT_FOUND`, `QUESTION_CLOSED`, `POINT_WALLET_NOT_FOUND`
+- **낙관적 락 재시도 구조** (`OptimisticRetryExecutor`, boost 도 동일)
+  ```
+  VoteService.vote()  ── 트랜잭션 없음
+    └ OptimisticRetryExecutor.execute(() -> voteTransaction.execute(...))
+          시도 1: 새 트랜잭션 → 커밋에서 version 불일치 → ObjectOptimisticLockingFailureException → 롤백
+          (5~30ms × attempt 무작위 백오프)
+          시도 2: 새 트랜잭션 (처음부터 다시: 검증 → vote INSERT → ... )
+          ... 총 시도 1 + `pickone.point.wallet-max-retries`(3) = 4회. 소진하면 409 `POINT_WALLET_CONFLICT`
+    └ 커밋 후 Redis 카운터 +1, 결과 집계
+  ```
+  - 재시도는 **트랜잭션 전체를 새로 시작**한다. 같은 트랜잭션 안에서 다시 시도하면 이미 rollback-only 가 된 트랜잭션·영속성 컨텍스트에 합류하므로, 실행기는 트랜잭션 안에서 호출되면 `IllegalStateException` 을 던진다
+  - 재시도 대상은 낙관적 락 실패와 InnoDB 데드락(`CannotAcquireLockException`) 뿐이다. 비즈니스 예외와 그 밖의 제약 위반은 그대로 전파된다
+  - 같은 지갑을 놓고 경쟁하는 N개 요청은 총 시도 A ≥ N 이면 전부 성공한다. 각 실패는 다른 요청의 커밋 1건이 원인이고 그 커밋은 최대 N-1개이기 때문이다 (11.4)
+  - vote INSERT 도 재시도마다 다시 실행되므로 auto-increment id 에 빈 구간이 생길 수 있다 (정상)
+
+- 주요 에러: `VOTE_ALREADY_VOTED`, `VOTE_OPTION_MISMATCH`, `VOTE_OWN_QUESTION`, `QUESTION_NOT_FOUND`, `QUESTION_CLOSED`, `POINT_WALLET_NOT_FOUND`, `POINT_WALLET_CONFLICT`
 
 ### 5.2 GET /questions/{id}/results — 결과 조회
 - 인증: ACTIVE. 그 고민에 투표한 사람 또는 작성자만
@@ -641,13 +658,16 @@ interface SmsSender { void send(String phoneE164, String message); }
     "ledgerId": 501
   }
   ```
-- **트랜잭션 흐름**
-  1. `point_ledger` 에서 `idempotency_key` 조회. 있으면 그 행이 가리키는 결과(`ref_id` 의 고민 `boosted_until`, `balance_after`)를 그대로 200 반환. `ref_id` 가 다른 고민이면 `IDEMPOTENCY_KEY_CONFLICT`
+- **트랜잭션 흐름** (`BoostTransaction.execute` 한 트랜잭션. `BoostService` 가 트랜잭션 없이 헤더 검증 후 5.1 과 같은 재시도 실행기로 호출)
+  0. 헤더 검증: 없음·공백 → `IDEMPOTENCY_KEY_REQUIRED`, UUID 형식이 아니면 `VALIDATION_ERROR` (서버가 만드는 `vote:{id}` 키와 키 공간이 겹치지 않게)
+  1. `point_ledger` 에서 `idempotency_key` 조회. 있으면 `member_id = 나 AND tx_type = BOOST_USE AND ref_id = questionId` 일 때만 그 행(`ledgerId`, `balance_after`, `cost`)과 그 고민의 현재 `boosted_until` 로 200 반환(차감 없음). 다른 고민·다른 회원의 키면 `IDEMPOTENCY_KEY_CONFLICT` (키는 전역 유니크라 타인의 키 재사용도 막는다)
   2. 고민 조회: 없음·삭제 → `QUESTION_NOT_FOUND`, 남의 것 → `FORBIDDEN`, CLOSED/HIDDEN → `QUESTION_CLOSED`
-  3. `point_wallet` 낙관적 락으로 읽어 `balance < 100` 이면 `POINT_INSUFFICIENT`, 아니면 `balance - 100`. 경합으로 음수가 되려 하면 `chk_point_wallet_balance` 가 막고 `POINT_INSUFFICIENT` 로 변환
-  4. `INSERT point_ledger(amount=-100, tx_type='BOOST_USE', ref_type='QUESTION', ref_id=questionId, idempotency_key=헤더값)`
-  5. `question.boosted_until = GREATEST(NOW(), boosted_until) + 24h` (이미 노출 중이면 남은 시간에 이어 붙임)
-- 주요 에러: `IDEMPOTENCY_KEY_REQUIRED`, `IDEMPOTENCY_KEY_CONFLICT`, `POINT_INSUFFICIENT`, `QUESTION_NOT_FOUND`, `FORBIDDEN`, `QUESTION_CLOSED`
+  3. `point_wallet` 을 읽어 `balance < 100` 이면 `POINT_INSUFFICIENT`, 아니면 `balance - 100` (UPDATE 는 커밋 시 `WHERE version = ?`). 경합으로 음수가 되려 하면 `chk_point_wallet_balance` 가 막고 `POINT_INSUFFICIENT` 로 변환
+  4. `INSERT point_ledger(amount=-100, tx_type='BOOST_USE', ref_type='QUESTION', ref_id=questionId, idempotency_key=헤더값)` — IDENTITY 라 즉시 실행
+  5. `question.boosted_until = GREATEST(NOW(), boosted_until) + 24h` (이미 노출 중이면 남은 시간에 이어 붙임). DATETIME(6) 에 맞춰 마이크로초로 잘라 재응답이 최초 응답과 같게 한다
+- **같은 키 동시 요청**: 둘 다 1단계를 통과하지만 4단계 INSERT 에서 진 쪽이 `uk_point_ledger_idempotency_key` 에 대기하다 이긴 쪽 커밋 후 위반이 난다(지갑 UPDATE 보다 원장 INSERT 가 먼저 실행되므로 낙관적 락보다 이 경로가 주 경로). 재시도 실행기는 이 위반만 **1회 재실행**으로 처리하고, 재실행된 트랜잭션은 1단계에서 이긴 쪽의 원장 행을 찾아 같은 응답을 돌려준다. 차감은 1번 (11.4 케이스 4)
+- **다른 키 동시 요청**: 지갑 version 충돌로 진 쪽이 재시도하고, 재시도에서 잔액이 모자라면 `POINT_INSUFFICIENT`. 잔액은 음수가 되지 않는다 (11.4 케이스 5)
+- 주요 에러: `IDEMPOTENCY_KEY_REQUIRED`, `IDEMPOTENCY_KEY_CONFLICT`, `VALIDATION_ERROR`, `POINT_INSUFFICIENT`, `POINT_WALLET_CONFLICT`, `QUESTION_NOT_FOUND`, `FORBIDDEN`, `QUESTION_CLOSED`
 
 ---
 
@@ -888,4 +908,19 @@ member_social_account
 | `otp:{memberId}:{phoneHmac}` | 인증번호 해시·시도 횟수 (요청한 회원만 확인 가능) | 180초 |
 | `otp:cooldown:{phoneHmac}` | 재발송 쿨다운 | 60초 |
 | `otp:daily:phone:{phoneHmac}:{date}`, `otp:daily:member:{memberId}:{date}` | 일일 발송 한도 | 자정까지 |
-| `point:daily:{memberId}:{date}` | 일일 투표 적립 합계 | 자정까지 |
+| `point:daily:{memberId}:{date}` | 일일 투표 적립 합계 (표시용 캐시, 판정은 원장 SUM) | 자정까지 |
+
+### 11.4 투표·포인트 동시성 검증 (`PointConcurrencyTest`)
+Testcontainers MariaDB 11.4 + Redis 로 실제 커밋 경합을 만들어 검증한다. 모든 케이스 끝에 `point_wallet.balance = SUM(point_ledger.amount)` 를 확인한다. 재시도 횟수는 스케줄링에 따라 달라지므로 실측값이며 상한(N(N-1)/2)만 단정한다.
+
+| # | 케이스 | 스레드 | 결과 (실측) | 낙관적 락 재시도 |
+|---|---|---|---|---|
+| 1 | 같은 회원이 같은 고민에 동시 투표 | 5 | 201 1건, 409 `VOTE_ALREADY_VOTED` 4건. vote 1행, 원장 1행, 잔액 1 | 0회 (유니크 인덱스 대기로 직렬화) |
+| 2 | 서로 다른 회원 5명이 같은 고민에 동시 투표 | 5 | 201 5건, 각자 잔액 1, 마지막 응답 totalVotes=5 | 0회 (지갑이 다름) |
+| 3 | 같은 회원이 서로 다른 고민 4개에 동시 투표 (지갑 경합) | 4 | 201 4건, 잔액 4, 원장 balance_after 1·2·3·4 | 4~6회 (상한 6) |
+| 4 | 같은 Idempotency-Key 로 boost 동시 요청 | 3 | 200 3건, 응답 본문 3개 동일(ledgerId 포함), 차감 1회 | 0회, 멱등 재실행 2회 |
+| 5 | 잔액 100(딱 1회분)에서 서로 다른 키로 boost 동시 요청 | 3 | 200 1건, 409 `POINT_INSUFFICIENT` 2건, 잔액 0 | 2회 |
+| 6 | 오늘 49P 적립 상태에서 다른 고민 3개에 동시 투표 | 3 | 201 3건, 적립은 정확히 1건(잔액 50), 나머지 `earned=false` | 2회 |
+
+- 스레드 수는 HikariCP 기본 풀(10) 안에서 5 이하로 두었다. 케이스 3 은 총 시도 4회 ≥ 스레드 4 라 전부 성공이 보장되는 최대값이다
+- 케이스 3 에서 재시도가 상한(6)까지 가는 이유: 같은 지갑 행을 기다리던 트랜잭션들이 이긴 쪽 커밋 순간 한꺼번에 실패하고 한꺼번에 다시 부딪힌다(재시도 폭주). 무작위 백오프로 흩어 놓아도 트랜잭션이 수 ms 라 완전히 피하진 못한다. 실서비스에서 같은 회원의 동시 투표는 드물어 허용 가능하고, 심해지면 `UPDATE point_wallet SET balance = balance + 1` 원자 갱신으로 바꾸는 선택지가 있다
