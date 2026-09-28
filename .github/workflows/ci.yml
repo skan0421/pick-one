@@ -56,6 +56,40 @@ jobs:
               out.write(f"### 테스트 결과\n\n`{line}`\n")
           PY
 
+      # 테스트가 실패해도 리포트를 만든다 (test 의 finalizedBy 이지만 명시적으로 한 번 더 보장)
+      - name: 커버리지 리포트 (JaCoCo)
+        if: always()
+        run: ./gradlew jacocoTestReport
+
+      # JaCoCo XML 의 전체 LINE / BRANCH 카운터를 % 로 계산해 Job Summary 에 남긴다. 최소 기준은 두지 않는다
+      - name: 커버리지 요약
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os, xml.etree.ElementTree as ET
+          path = 'build/reports/jacoco/test/jacocoTestReport.xml'
+          if not os.path.exists(path):
+              print('커버리지 리포트 없음'); raise SystemExit(0)
+          root = ET.parse(path).getroot()
+          totals = {c.get('type'): (int(c.get('missed')), int(c.get('covered'))) for c in root.findall('counter')}
+          def pct(t):
+              m, c = totals.get(t, (0, 0)); return (100.0 * c / (m + c)) if (m + c) else 0.0, c, m + c
+          line, lc, lt = pct('LINE'); branch, bc, bt = pct('BRANCH')
+          text = f"line={line:.1f}% ({lc}/{lt}) branch={branch:.1f}% ({bc}/{bt})"
+          print(text)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write("### 커버리지 (JaCoCo)\n\n| 라인 | 브랜치 |\n|---|---|\n")
+              out.write(f"| {line:.1f}% ({lc}/{lt}) | {branch:.1f}% ({bc}/{bt}) |\n")
+          PY
+
+      - name: 커버리지 리포트 업로드 (항상)
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: jacoco-report
+          path: build/reports/jacoco/test/
+          retention-days: 14
+
       - name: 테스트 리포트 업로드 (실패 시)
         if: failure()
         uses: actions/upload-artifact@v5

@@ -114,9 +114,13 @@ flowchart LR
 ./gradlew test   # Docker 실행 중이어야 함
 ```
 
-- **테스트 183건**: 테스트 메서드 171개 + 파라미터 테스트 2개가 7케이스씩 펼쳐져 실행 기준 183건, 전부 GitHub Actions 에서 통과
+- **테스트 188건**: 테스트 메서드 176개 + 파라미터 테스트 2개가 7케이스씩 펼쳐져 실행 기준 188건, 전부 GitHub Actions 에서 통과
+- **커버리지 (JaCoCo, 2026-09-28 로컬 실측)**: 라인 **95.5%** (940/984), 브랜치 **83.5%** (340/407). 설정 클래스(`*Config`, `*Properties`)·DTO 패키지·Application 진입점은 측정에서 제외. 최소 기준으로 빌드를 막지는 않고 CI Job Summary 와 artifact(`jacoco-report`)로 공개합니다
+  ```bash
+  ./gradlew test jacocoTestReport   # build/reports/jacoco/test/html/index.html
+  ```
 - **Testcontainers**: 통합 테스트는 `@IntegrationTest` 하나로 MariaDB 11.4·Redis 7.4 컨테이너를 띄우고 스프링 컨텍스트를 공유합니다. 테스트용 JWT·AES·HMAC 키는 JVM 마다 랜덤 생성하므로 저장소나 CI Secrets 에 키가 없습니다.
-- **CI**: [GitHub Actions](.github/workflows/ci.yml) 에서 PR·main push 마다 실행, 실패 시 테스트 리포트를 artifact 로 업로드합니다.
+- **CI**: [GitHub Actions](.github/workflows/ci.yml) 에서 PR·main push 마다 실행. 테스트 수와 커버리지 % 를 Job Summary 에 남기고, 커버리지 리포트는 항상, 테스트 리포트는 실패 시 artifact 로 업로드합니다.
 - **동시성 테스트 16개** (스레드를 래치로 동시에 출발시켜 실제 DB·Redis 경합을 만듦)
 
 | 영역 | 시나리오 | 기대 결과 |
