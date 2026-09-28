@@ -8,12 +8,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.pickone.support.IntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
-/** Swagger 가 켜진 기본 설정: 문서·UI 는 인증 없이 열리고, 그 밖의 API 는 그대로 보호된다 */
+/** Swagger 를 명시적으로 켠 경우: 문서·UI 는 인증 없이 열리고, 그 밖의 API 는 그대로 보호된다 (기본값은 꺼짐) */
 @IntegrationTest
+@TestPropertySource(properties = "pickone.swagger.enabled=true")
 class SwaggerIntegrationTest {
 
 	@Autowired MockMvc mockMvc;

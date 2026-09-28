@@ -53,8 +53,8 @@ logging:
 
 pickone:
   swagger:
-    # local 기본 켜짐. 운영 배포 시 SWAGGER_ENABLED=false
-    enabled: ${SWAGGER_ENABLED:true}
+    # 기본 꺼짐. 로컬은 application-local.yml 에서 켜고, 필요하면 SWAGGER_ENABLED=true 환경변수로도 켤 수 있다
+    enabled: ${SWAGGER_ENABLED:false}
 
   jwt:
     # HS256 비밀키. 32바이트 이상. 환경변수 또는 application-local.yml 로 주입 (기본값 없음)

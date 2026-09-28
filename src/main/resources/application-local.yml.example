@@ -11,6 +11,9 @@ spring:
       port: 6380
 
 pickone:
+  swagger:
+    # 로컬에서는 Swagger UI 를 켠다 (application.yml 기본값은 꺼짐)
+    enabled: true
   jwt:
     # 32바이트 이상 임의 문자열. 예: openssl rand -base64 48
     secret:
