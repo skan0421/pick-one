@@ -1,15 +1,7 @@
-// 올리기 탭. 아직 빈 화면이다
-import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
+// 올리기 탭. 화면 내용은 src/compose/ComposeForm.tsx 에 있다.
+// src/app 아래에는 화면의 주소를 정하는 파일만 두고, 나머지 코드는 밖에 둔다
+import { ComposeForm } from '../../compose/ComposeForm';
 
 export default function PostScreen() {
-  return (
-    <View style={styles.center}>
-      <Text variant="headlineSmall">올리기</Text>
-    </View>
-  );
+  return <ComposeForm />;
 }
-
-const styles = StyleSheet.create({
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-});

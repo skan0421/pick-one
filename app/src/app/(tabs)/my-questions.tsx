@@ -1,15 +1,6 @@
-// 내 고민 탭. 아직 빈 화면이다
-import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
+// 내 고민 탭. 화면 내용은 src/mine/MyQuestionsList.tsx 에 있다
+import { MyQuestionsList } from '../../mine/MyQuestionsList';
 
 export default function MyQuestionsScreen() {
-  return (
-    <View style={styles.center}>
-      <Text variant="headlineSmall">내 고민</Text>
-    </View>
-  );
+  return <MyQuestionsList />;
 }
-
-const styles = StyleSheet.create({
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-});

@@ -1,7 +1,7 @@
 # pick-one 앱 (Expo)
 
 pick-one 백엔드에 붙는 React Native(Expo) 앱입니다. 같은 코드로 휴대폰 앱과 웹이 함께 동작합니다.
-지금은 가입 → 휴대폰 인증 → 피드에서 투표까지 됩니다. 디자인보다 실제 서버와 맞물려 동작하는 것을 우선했습니다.
+지금은 가입 → 휴대폰 인증 → 피드에서 투표, 고민 올리기(글형·사진형), 내 고민 보기·삭제까지 됩니다. 디자인보다 실제 서버와 맞물려 동작하는 것을 우선했습니다.
 
 ## 기술 선택
 
@@ -40,6 +40,7 @@ EXPO_PUBLIC_API_URL=http://192.168.0.12:8080
 - 휴대폰과 PC 가 같은 Wi-Fi 에 있어야 합니다.
 - 연결이 안 되면 Windows 방화벽이 8080 포트의 들어오는 연결을 막고 있는지 확인합니다.
 - 웹과 달리 앱에는 CORS 제한이 없으므로 서버의 허용 origin 설정은 바꾸지 않아도 됩니다.
+- 사진을 올리거나 보려면 저장소 주소도 바꿔야 합니다. 아래 [휴대폰에서 사진 올리기·보기](#휴대폰에서-사진-올리기보기-저장소-주소) 를 봅니다.
 
 ### 집 밖에서 휴대폰으로 접속하기 (Tailscale)
 
@@ -68,7 +69,50 @@ Tailscale 은 내 기기들끼리만 통하는 사설망을 만들어 주고, �
 - **Windows 방화벽**: 처음 실행할 때 뜨는 "액세스 허용" 창에서 Node.js(개발 서버, 8081)와 Java(백엔드, 8080)를 허용해야 합니다. 창을 놓쳤다면 "Windows Defender 방화벽 → 앱 허용" 에서 두 항목을 허용합니다.
 - **.env 를 고친 뒤 개발 서버를 다시 시작했는지**: 서버 주소는 시작할 때 한 번만 읽습니다.
 - **휴대폰 브라우저로 웹 버전을 열 때만** 백엔드의 CORS 설정이 필요합니다. 주소가 `http://100.101.102.103:8081` 로 바뀌므로 백엔드를 `CORS_ALLOWED_ORIGINS=http://localhost:8081,http://100.101.102.103:8081` 과 함께 실행합니다. Expo Go 앱은 브라우저가 아니라서 해당하지 않습니다.
-- **앱에서 직접 올린 사진이 안 보일 때**: 로컬 저장소(MinIO)의 사진 주소는 `localhost:9000` 으로 만들어지므로 휴대폰에서는 열리지 않습니다. 샘플 데이터의 사진은 외부 주소라 보입니다.
+- **사진을 올릴 수 없거나 올린 사진이 안 보일 때**: 저장소 주소가 `localhost:9000` 인 상태입니다. 바로 아래 절대로 바꿉니다. 샘플 데이터의 사진은 외부 주소라 설정과 관계없이 보입니다.
+
+### 휴대폰에서 사진 올리기·보기: 저장소 주소
+
+사진은 백엔드를 거치지 않고 앱이 저장소(로컬은 MinIO, 9000 포트)와 직접 주고받습니다. 그래서 서버 주소(`EXPO_PUBLIC_API_URL`)와 별개로 **저장소 주소**도 휴대폰이 닿을 수 있는 주소여야 합니다.
+
+기본 설정은 `http://localhost:9000` 이라 휴대폰에서는 두 가지가 모두 안 됩니다.
+
+- 올리기: 백엔드가 만들어 준 업로드 주소가 `http://localhost:9000/...` 이라 휴대폰은 자기 자신에게 보내게 됩니다.
+- 보기: 고민에 저장된 사진 주소도 `http://localhost:9000/...` 입니다.
+
+앱에서 주소의 `localhost` 만 PC 의 IP 로 바꿔 보내는 방법은 쓸 수 없습니다. 업로드 주소의 서명에 호스트가 들어 있어서, 호스트를 바꾸면 저장소가 403 으로 거절합니다 (실제로 확인함).
+
+**백엔드 코드를 고치지 않고 설정만으로 해결됩니다.** 백엔드는 설정의 저장소 주소로 업로드 주소와 사진 주소를 만들기 때문에, 그 값을 PC 의 IP 로 바꾸면 됩니다. 둘 중 하나를 고릅니다. (`100.101.102.103` 은 예시. 같은 Wi-Fi 에서 쓸 때는 PC 의 내부 IP)
+
+방법 1. 환경변수로 그때만 바꾸기 (설정 파일을 건드리지 않음)
+
+```powershell
+$env:PICKONE_STORAGE_ENDPOINT="http://100.101.102.103:9000"; ./gradlew bootRun
+```
+
+방법 2. `src/main/resources/application-local.yml` 을 고치기 (git 에 올라가지 않는 파일)
+
+```yaml
+pickone:
+  storage:
+    endpoint: http://100.101.102.103:9000
+```
+
+| 확인한 것 (PC 에서, 방법 1) | 결과 |
+|---|---|
+| 업로드 주소와 사진 주소의 호스트 | `100.x.y.z:9000` 으로 바뀜 |
+| 그 주소로 올리기 → 고민 등록 → 사진 보기 | 모두 성공 |
+| 같은 PC 의 웹 브라우저에서 사진형 등록 | 성공. PC 도 자기 Tailscale IP 로 저장소에 닿으므로 웹과 휴대폰을 함께 쓸 수 있음 |
+| 주소의 호스트만 바꿔서 올리기 | 403 |
+
+알아 둘 것:
+
+- **`STORAGE_ENDPOINT` 환경변수는 로컬에서 듣지 않습니다.** `application-local.yml` 에 `endpoint` 가 직접 적혀 있어 그 값이 우선합니다. 위의 `PICKONE_STORAGE_ENDPOINT` 는 설정 이름(`pickone.storage.endpoint`)을 그대로 환경변수로 쓴 것이라 파일보다 우선합니다.
+- **`public-base-url` 은 따로 정하지 않아도 됩니다.** 비워 두면 `{endpoint}/{bucket}` 이 되어 업로드 주소와 사진 주소가 같은 호스트를 씁니다.
+- **주소를 바꾸기 전에 올린 사진은 옛 주소 그대로입니다.** 사진 주소는 등록할 때 DB 에 저장되므로, `localhost:9000` 으로 올린 사진은 휴대폰에서 계속 안 보입니다. 주소를 바꾼 뒤 새로 올립니다.
+- **설정을 되돌리면 그 사이 올린 사진은 Tailscale 이 켜져 있을 때만 보입니다.**
+- **방화벽**: 9000 포트로 들어오는 연결이 허용돼 있어야 합니다. 저장소는 Docker 가 띄우므로 Node.js·Java 와 달리 "Docker Desktop Backend" 항목입니다. 휴대폰 브라우저에서 `http://100.101.102.103:9000/minio/health/live` 를 열어 오류 없이 빈 화면이 나오면 닿는 것입니다. 닿지 않으면 "Windows Defender 방화벽 → 앱 허용" 에서 Docker Desktop Backend 를 허용하거나 9000 포트의 인바운드 규칙을 추가합니다. 이 부분은 PC 에서만 확인했고 실제 휴대폰으로는 확인하지 못했습니다.
+- 저장소 쪽 CORS 는 따로 설정할 것이 없습니다. MinIO 가 요청한 origin 을 그대로 허용합니다.
 
 ### 웹에서 실행할 때: CORS
 
@@ -157,12 +201,66 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 웹에서는 마우스로 끌어도 스와이프가 됩니다. 헤드리스 Chromium 에서 마우스 끌기로 확인했고, 버튼 위에서 끌기 시작해도 투표 요청은 한 번만 나갑니다.
 휴대폰 브라우저의 터치와 실제 기기(Expo Go)에서는 아직 확인하지 못했습니다. 스와이프가 되지 않는 환경에서도 버튼만으로 모든 동작을 할 수 있습니다.
 
+## 고민 올리기
+
+| 항목 | 규칙 |
+|---|---|
+| 유형 | 글형 / 사진형 |
+| 본문 | 1~300자. 글자 수 표시 |
+| 글형 선택지 | 2~4개(추가·삭제 버튼), 각 1~20자. 같은 선택지는 올릴 수 없음 |
+| 사진형 | 사진 정확히 2장. 앨범에서 고르고, 웹에서는 파일 선택 창 |
+
+제출하면 앱이 먼저 검사하고, 통과한 것만 서버에 보냅니다. 서버가 거절하면 서버의 오류를 해당 입력칸 아래에 보여 줍니다.
+
+| 서버 응답 | 보여 주는 곳 |
+|---|---|
+| `VALIDATION_ERROR` 의 `content` | 본문 아래 |
+| `VALIDATION_ERROR` 의 `options[1].content` | 두 번째 선택지 아래 |
+| `QUESTION_OPTION_COUNT_INVALID`, `QUESTION_OPTION_TYPE_MISMATCH`, `IMAGE_URL_INVALID` | 선택지 목록 아래 |
+| 그 밖 (서버 연결 실패 등) | 제출 버튼 위 |
+
+등록되면 입력을 비우고 내 고민 탭으로 이동합니다. 목록이 최신순이라 방금 올린 고민이 맨 위에 옵니다.
+
+### 사진 업로드 흐름
+
+```
+사진 고르기 ─> 준비(필요하면 JPEG 변환·축소) ─> [올리기 버튼]
+   사진마다:  POST /uploads/images (형식, 크기)  ─> 업로드 주소 받음
+              PUT  업로드 주소 (사진 내용)         ─> 저장소로 직접
+   두 장 모두 성공 ─> POST /questions (사진 주소 2개)
+```
+
+- **형식과 크기가 정확히 같아야 합니다.** 업로드 주소의 서명에 발급 때 보낸 형식과 크기가 들어 있어, 1바이트라도 다르면 저장소가 403 으로 거절합니다. 그래서 선택 창이 알려 주는 크기를 믿지 않고, 실제로 읽은 내용의 크기를 발급에 보내고 그 내용을 그대로 올립니다.
+- **변환하는 경우**: 서버가 받지 않는 형식(아이폰 HEIC 등), 5MB 초과, 긴 변 1600 픽셀 초과. JPEG 로 바꾸며 긴 변 1600 → 1280 → 1024 → 800 순서로 5MB 이하가 될 때까지 줄입니다. 그 밖의 JPEG·PNG·WebP 는 그대로 올립니다.
+- **한 장이라도 실패하면 등록하지 않습니다.** 입력은 그대로 남고, 다시 누르면 실패한 사진만 다시 올립니다.
+- 올리는 동안 진행 표시가 보이고 제출 버튼과 사진 칸이 막힙니다. 진행은 "몇 장 끝났는지"까지만 보여 줍니다 (바이트 단위 진행률은 아님).
+- **웹에서 HEIC**: Chrome 등 HEIC 를 풀지 못하는 브라우저에서는 변환할 수 없어 "변환할 수 없는 사진 형식" 안내가 나옵니다. 휴대폰 앱에서는 기기가 변환합니다.
+
+## 내 고민
+
+| 동작 | 설명 |
+|---|---|
+| 목록 | 최신순. 본문, 유형, 상태(진행 중 / 숨김 / 종료), 참여 수, 선택지별 결과 막대. 막대는 피드와 같은 컴포넌트 |
+| 새로고침 | 당겨서 새로고침. 웹 브라우저에는 이 동작이 없어 위쪽의 새로고침 버튼을 씁니다 |
+| 이어 받기 | 목록 끝에 가까워지면 다음 쪽을 받습니다 |
+| 삭제 | 확인 창 → `DELETE /questions/{id}` → 목록에서 제거. 이미 삭제된 고민이면 에러 없이 목록에서만 뺍니다 |
+
+상단 노출(boost)은 표시만 하고, 쓰는 버튼은 아직 없습니다.
+
+## 확인하지 못한 것
+
+웹(헤드리스 Chromium)에서는 실제 서버·저장소에 붙여 확인했습니다. 아래는 실제 기기가 없어 확인하지 못했습니다.
+
+- 휴대폰 앱(Expo Go)에서 사진 고르기, HEIC → JPEG 변환, 업로드
+- 휴대폰에서 저장소(9000 포트)에 닿는지, 방화벽 허용이 필요한지
+- 피드의 터치 스와이프
+
 ## 검사 명령
 
 ```bash
 npm run typecheck   # 타입 검사 (tsc --noEmit)
 npm run lint        # 린트
-npm test            # 단위 테스트 (API 클라이언트, 피드 상태·투표 흐름·시각·스와이프 판정)
+npm test            # 단위 테스트 (API 클라이언트, 피드, 올리기 입력 규칙, 사진 준비·업로드 흐름, 내 고민 목록)
 ```
 
 CI 는 타입 검사와 린트만 돌립니다. 단위 테스트는 로컬에서 실행합니다.
@@ -191,7 +289,7 @@ app/
       client.ts               공통 요청 함수. 헤더 첨부, 에러 변환, 재발급
       errors.ts               ApiError
       config.ts               서버 주소
-      auth.ts, phone.ts, members.ts, questions.ts, votes.ts, points.ts   API 별 함수와 타입
+      auth.ts, phone.ts, members.ts, questions.ts, votes.ts, points.ts, uploads.ts   API 별 함수와 타입
     auth/                   로그인 상태
       AuthContext.tsx         현재 상태를 모든 화면에 제공
       session.ts              메모리에 든 토큰
@@ -208,10 +306,22 @@ app/
       SwipeArea.tsx           스와이프를 알아채는 영역
       QuestionCard.tsx        카드 한 장
       ResultBars.tsx          결과 막대
+    compose/                고민 올리기
+      composeRules.ts         입력 규칙, 서버 오류를 입력칸으로 나누기. 순수 함수
+      imagePrep.ts            사진을 변환할지, 얼마나 줄일지
+      uploadFlow.ts           발급 → 올리기 → 등록의 순서
+      imageTools.ts           사진 고르기·읽기·변환·올리기 (기기 기능)
+      ComposeForm.tsx         올리기 화면
+      ImageSlots.tsx          사진 두 칸
+    mine/                   내 고민
+      myQuestions.ts          목록 데이터 다루기. 순수 함수
+      queryKeys.ts            목록 캐시의 키
+      MyQuestionsList.tsx     목록 화면과 삭제 확인 창
+      MyQuestionCard.tsx      고민 한 건
     __tests__/              단위 테스트
 ```
 
-`feed/` 에서 `feedState`, `voteFlow`, `feedController`, `time`, `swipe` 다섯 파일은 React 를 쓰지 않습니다. 그래서 화면 없이 단위 테스트합니다.
+`feed/` 의 `feedState`, `voteFlow`, `feedController`, `time`, `swipe`, `compose/` 의 `composeRules`, `imagePrep`, `uploadFlow`, `mine/` 의 `myQuestions` 는 React 도 기기 기능도 쓰지 않습니다. 그래서 화면 없이 단위 테스트합니다.
 
 Java/Spring 에 빗대면 다음과 같습니다.
 
@@ -230,6 +340,11 @@ Java/Spring 에 빗대면 다음과 같습니다.
 | `app/(tabs)/index.tsx` | `@Controller`. 조립만 하고 규칙은 모름 |
 | `useQuery` 의 `queryKey`, `invalidateQueries` | `@Cacheable` 의 key, `@CacheEvict` |
 | 테스트의 `jest.fn()` | Mockito 의 `mock()` |
+| `compose/composeRules.ts` | Bean Validation + `Validator`. 서버의 `@Size`, `@NotBlank` 와 같은 규칙 |
+| `compose/imagePrep.ts` 의 `ImageTools`, `uploadFlow.ts` 의 `UploadApi` | 포트(인터페이스). 서버의 `ImageStorage`, `SmsSender` 와 같은 분리 |
+| `compose/imageTools.ts` | 어댑터(구현체). 서버의 `S3ImageStorage` |
+| `useInfiniteQuery` | 커서로 `Slice` 를 이어 받아 쌓아 두는 캐시 |
+| `useRef` 로 만든 제출 잠금 | `AtomicBoolean` (단일 스레드라 일반 값으로 충분) |
 
 ## 화면 흐름
 
