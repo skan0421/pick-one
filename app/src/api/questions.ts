@@ -62,3 +62,34 @@ export type QuestionResponse = {
 export function createQuestion(body: CreateQuestionRequest): Promise<QuestionResponse> {
   return request<QuestionResponse>('/questions', { method: 'POST', body });
 }
+
+// 내 고민 목록의 선택지. 피드와 달리 득표 결과가 함께 온다 (작성자는 투표하지 않아도 결과를 볼 수 있다)
+export type MyOption = OptionResponse & {
+  count: number;
+  percent: number;
+};
+
+export type MyQuestion = {
+  id: number;
+  questionType: QuestionType;
+  content: string;
+  status: QuestionStatus;
+  boostedUntil?: string; // 상단 노출이 끝나는 시각. 쓴 적이 없으면 오지 않는다
+  totalVotes: number;
+  options: MyOption[];
+  createdAt: string;
+};
+
+// GET /members/me/questions (docs/api.md 4.4). 최신순. 삭제한 고민은 빠지고 HIDDEN 은 상태와 함께 온다
+export function getMyQuestions(cursor?: string, size = 20): Promise<CursorPage<MyQuestion>> {
+  const params = new URLSearchParams({ size: String(size) });
+  if (cursor) {
+    params.set('cursor', cursor);
+  }
+  return request<CursorPage<MyQuestion>>(`/members/me/questions?${params.toString()}`);
+}
+
+// DELETE /questions/{id} (docs/api.md 4.5). 작성자만. 성공하면 본문 없는 204
+export function deleteQuestion(id: number): Promise<void> {
+  return request<void>(`/questions/${id}`, { method: 'DELETE' });
+}

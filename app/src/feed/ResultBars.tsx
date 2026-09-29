@@ -1,4 +1,5 @@
-// 투표 결과 막대. 서버가 준 percent 를 그대로 막대 길이로 쓴다
+// 투표 결과 막대. 서버가 준 percent 를 그대로 막대 길이로 쓴다.
+// 피드(투표 후 결과)와 내 고민 목록이 함께 쓴다
 import { StyleSheet, View } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
 
@@ -8,9 +9,11 @@ type ResultBarProps = {
   percent: number;
   count: number;
   mine: boolean; // 내가 고른 선택지
+  // testID 의 앞부분. 피드가 아닌 화면(내 고민)에서 쓸 때 구분하려고 바꾼다
+  testIDPrefix?: string;
 };
 
-export function ResultBar({ sortOrder, label, percent, count, mine }: ResultBarProps) {
+export function ResultBar({ sortOrder, label, percent, count, mine, testIDPrefix = 'feed-result' }: ResultBarProps) {
   const theme = useTheme();
   // 서버 값이 범위를 벗어나도 막대가 틀 밖으로 나가지 않게 한다
   const width = Math.min(100, Math.max(0, percent));
@@ -18,7 +21,7 @@ export function ResultBar({ sortOrder, label, percent, count, mine }: ResultBarP
   return (
     <View
       style={[styles.track, { backgroundColor: theme.colors.surfaceVariant }, mine && { borderColor: theme.colors.primary }]}
-      testID={`feed-result-${sortOrder}`}>
+      testID={`${testIDPrefix}-${sortOrder}`}>
       {/* 색이 칠해진 부분. 글자 아래에 깔린다 */}
       <View
         style={[
@@ -26,7 +29,7 @@ export function ResultBar({ sortOrder, label, percent, count, mine }: ResultBarP
           { width: `${width}%`, backgroundColor: mine ? theme.colors.primary : theme.colors.outlineVariant },
           { opacity: mine ? 0.35 : 0.6 },
         ]}
-        testID={`feed-result-bar-${sortOrder}`}
+        testID={`${testIDPrefix}-bar-${sortOrder}`}
       />
       <View style={styles.row}>
         <View style={styles.label}>
@@ -36,13 +39,13 @@ export function ResultBar({ sortOrder, label, percent, count, mine }: ResultBarP
             </Text>
           )}
           {mine && (
-            <Text variant="labelMedium" style={{ color: theme.colors.primary }} testID={`feed-result-mine-${sortOrder}`}>
+            <Text variant="labelMedium" style={{ color: theme.colors.primary }} testID={`${testIDPrefix}-mine-${sortOrder}`}>
               내 선택
             </Text>
           )}
         </View>
         <View style={styles.numbers}>
-          <Text variant="titleMedium" style={mine && styles.bold} testID={`feed-result-percent-${sortOrder}`}>
+          <Text variant="titleMedium" style={mine && styles.bold} testID={`${testIDPrefix}-percent-${sortOrder}`}>
             {percent}%
           </Text>
           <Text variant="labelSmall">{count}표</Text>
