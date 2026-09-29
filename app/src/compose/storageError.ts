@@ -44,6 +44,12 @@ export function storageUnreachable(): ApiError {
   return new ApiError(0, NETWORK_ERROR, '사진 저장소에 연결할 수 없습니다.');
 }
 
+// 제한 시간(api/timeout.ts 의 UPLOAD_TIMEOUT_MS) 안에 올리기가 끝나지 않았을 때.
+// 다시 올려도 안전하다. 같은 주소로의 PUT 은 같은 파일을 덮어쓸 뿐이다
+export function storageTimeout(): ApiError {
+  return new ApiError(0, NETWORK_ERROR, '사진 저장소가 응답하지 않습니다. 네트워크 연결을 확인해 주세요.');
+}
+
 function tagValue(body: string | null | undefined, tag: string): string | null {
   if (!body) {
     return null;

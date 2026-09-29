@@ -10,8 +10,9 @@
 // 주의: 공용 코드는 storageError.ts 에 둔다. 여기에 두면 웹 파일이 가져올 수 없다 (docs/troubleshooting.md 18)
 import { File } from 'expo-file-system';
 
+import { TimeoutError, UPLOAD_TIMEOUT_MS, withTimeout } from '../api/timeout';
 import type { PreparedImage } from './imagePrep';
-import { type PutFile, sizeMismatch, storageUnreachable, uploadFailure } from './storageError';
+import { type PutFile, sizeMismatch, storageTimeout, storageUnreachable, uploadFailure } from './storageError';
 
 // 파일의 크기를 읽는다. 내용은 읽지 않는다
 export async function readFile(uri: string): Promise<{ size: number }> {
@@ -34,14 +35,18 @@ export const putFile: PutFile = async (uploadUrl: string, image: PreparedImage) 
 
   let result: { status: number; body: string };
   try {
-    result = await file.upload(uploadUrl, {
-      // 기본값은 POST 다. 본문은 기본값(BINARY_CONTENT)대로 파일 내용 그 자체다
-      httpMethod: 'PUT',
-      // 발급 때 보낸 형식과 같아야 한다
-      headers: { 'Content-Type': image.contentType },
-    });
-  } catch {
-    throw storageUnreachable();
+    // 파일을 보내는 시간이 들어가므로 API 요청(15초)보다 긴 제한 시간을 쓴다. 시간이 지나면 signal 로 전송을 취소한다
+    result = await withTimeout(UPLOAD_TIMEOUT_MS, (signal) =>
+      file.upload(uploadUrl, {
+        // 기본값은 POST 다. 본문은 기본값(BINARY_CONTENT)대로 파일 내용 그 자체다
+        httpMethod: 'PUT',
+        // 발급 때 보낸 형식과 같아야 한다
+        headers: { 'Content-Type': image.contentType },
+        signal,
+      }),
+    );
+  } catch (error) {
+    throw error instanceof TimeoutError ? storageTimeout() : storageUnreachable();
   }
   // upload 는 403 같은 응답에도 예외를 던지지 않는다. 상태 코드를 직접 확인한다
   if (result.status < 200 || result.status >= 300) {

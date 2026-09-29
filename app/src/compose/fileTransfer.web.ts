@@ -5,8 +5,9 @@
 //
 // 주의: 여기서 './fileTransfer' 를 가져오면 안 된다. 웹에서는 이 파일 자신을 가리킨다 (docs/troubleshooting.md 18).
 // 공용 코드는 storageError.ts 에 있다
+import { TimeoutError, UPLOAD_TIMEOUT_MS, withTimeout } from '../api/timeout';
 import type { PreparedImage } from './imagePrep';
-import { type PutFile, sizeMismatch, storageUnreachable, uploadFailure } from './storageError';
+import { type PutFile, sizeMismatch, storageTimeout, storageUnreachable, uploadFailure } from './storageError';
 
 export async function readFile(uri: string): Promise<{ size: number; body: Blob }> {
   const response = await fetch(uri);
@@ -23,18 +24,24 @@ export const putFile: PutFile = async (uploadUrl: string, image: PreparedImage) 
     throw sizeMismatch(image.size, body.size);
   }
 
-  let response: Response;
+  // 파일을 보내는 시간이 들어가므로 API 요청(15초)보다 긴 제한 시간을 쓴다. 응답 본문을 읽는 시간까지 잰다
+  let result: { ok: boolean; status: number; text: string };
   try {
-    response = await fetch(uploadUrl, {
-      method: 'PUT',
-      // 발급 때 보낸 형식과 같아야 한다. Content-Length 는 브라우저가 body 의 크기로 붙인다
-      headers: { 'Content-Type': image.contentType },
-      body,
+    result = await withTimeout(UPLOAD_TIMEOUT_MS, async (signal) => {
+      const response = await fetch(uploadUrl, {
+        method: 'PUT',
+        // 발급 때 보낸 형식과 같아야 한다. Content-Length 는 브라우저가 body 의 크기로 붙인다
+        headers: { 'Content-Type': image.contentType },
+        body,
+        signal,
+      });
+      const text = response.ok ? '' : await response.text().catch(() => '');
+      return { ok: response.ok, status: response.status, text };
     });
-  } catch {
-    throw storageUnreachable();
+  } catch (error) {
+    throw error instanceof TimeoutError ? storageTimeout() : storageUnreachable();
   }
-  if (!response.ok) {
-    throw uploadFailure(response.status, await response.text().catch(() => ''));
+  if (!result.ok) {
+    throw uploadFailure(result.status, result.text);
   }
 };
