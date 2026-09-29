@@ -99,3 +99,33 @@ jobs:
             build/reports/tests/
             build/test-results/
           retention-days: 14
+
+  # Expo 앱(app/) 타입 검사와 린트.
+  # test 작업과 마찬가지로 paths 필터를 두지 않는다. 필수 체크로 지정된 작업이 필터로 건너뛰어지면
+  # 결과가 보고되지 않아 PR 이 계속 대기 상태로 남기 때문이다
+  app:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: app
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Node 22 설정
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      # package-lock.json 에 적힌 버전 그대로 설치
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: 타입 검사
+        run: npm run typecheck
+
+      - name: 린트
+        run: npm run lint
