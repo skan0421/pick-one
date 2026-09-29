@@ -58,3 +58,37 @@ export function formatRelativeTime(value: string, nowMs: number): string {
   const kst = new Date(time + KST_OFFSET_HOURS * HOUR);
   return `${kst.getUTCMonth() + 1}월 ${kst.getUTCDate()}일`;
 }
+
+// "9월 29일 21:05". 포인트 내역처럼 정확한 시각이 필요한 곳에 쓴다. KST 기준
+export function formatDateTime(value: string): string {
+  const time = parseServerTime(value);
+  if (time === null) {
+    return '';
+  }
+  const kst = new Date(time + KST_OFFSET_HOURS * HOUR);
+  const minute = String(kst.getUTCMinutes()).padStart(2, '0');
+  return `${kst.getUTCMonth() + 1}월 ${kst.getUTCDate()}일 ${kst.getUTCHours()}:${minute}`;
+}
+
+// 끝나는 시각까지 남은 시간. "1일 3시간 남음", "23시간 12분 남음", "5분 남음", "곧 끝남".
+// 이미 지났거나 형식이 다르면 '' (보여 줄 것이 없다)
+export function formatRemaining(until: string, nowMs: number): string {
+  const time = parseServerTime(until);
+  if (time === null || time <= nowMs) {
+    return '';
+  }
+  const left = time - nowMs;
+  if (left < MINUTE) {
+    return '곧 끝남';
+  }
+  const days = Math.floor(left / DAY);
+  const hours = Math.floor((left % DAY) / HOUR);
+  const minutes = Math.floor((left % HOUR) / MINUTE);
+  if (days > 0) {
+    return hours > 0 ? `${days}일 ${hours}시간 남음` : `${days}일 남음`;
+  }
+  if (hours > 0) {
+    return minutes > 0 ? `${hours}시간 ${minutes}분 남음` : `${hours}시간 남음`;
+  }
+  return `${minutes}분 남음`;
+}

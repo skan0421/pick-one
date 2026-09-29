@@ -1,18 +1,39 @@
-// 내 고민 목록 (GET /members/me/questions, docs/api.md 4.4) 과 삭제 (DELETE /questions/{id}, 4.5).
+// 내 고민 목록 (GET /members/me/questions, docs/api.md 4.4), 삭제 (DELETE /questions/{id}, 4.5),
+// 상단 노출 (POST /questions/{id}/boosts, 6.3).
 //
 // 목록은 useInfiniteQuery 로 받는다. "쪽을 이어 받는 목록"을 캐시에 쌓아 주는 도구다.
 // 피드는 카드 위치·투표 단계가 얽혀 있어 직접 만든 상태 기계를 썼지만,
 // 여기는 받아서 보여 주기만 하므로 라이브러리가 주는 것으로 충분하다
-import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useInfiniteQuery, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useRef, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { ActivityIndicator, Button, Dialog, IconButton, Portal, Snackbar, Text } from 'react-native-paper';
 
 import { errorMessage } from '../api/errors';
+import { boostQuestion, getBalance, type PointBalance } from '../api/points';
 import { deleteQuestion, getMyQuestions, type MyQuestion } from '../api/questions';
+import { markFeedStale } from '../feed/feedRefresh';
+import { POINT_BALANCE_KEY } from '../feed/useFeed';
+import { POINT_LEDGER_KEY } from '../my/queryKeys';
+import { BoostDialog } from './BoostDialog';
+import { previewBoost, submitBoost, type BoostApi } from './boostFlow';
+import { BoostKeys } from './boostKeys';
 import { MyQuestionCard } from './MyQuestionCard';
-import { flattenPages, isAlreadyDeleted, nextCursorOf, removeQuestion, type MyQuestionPages } from './myQuestions';
+import {
+  applyBoost,
+  flattenPages,
+  isAlreadyDeleted,
+  nextCursorOf,
+  removeQuestion,
+  type MyQuestionPages,
+} from './myQuestions';
 import { MY_QUESTIONS_KEY } from './queryKeys';
+import { newUuid } from './uuid';
+
+const boostApi: BoostApi = { boost: boostQuestion };
+// 상단 노출 요청의 키 저장소. 화면 밖(모듈)에 두어, 확인 창을 닫거나 다른 탭에 다녀와도 끝나지 않은 키가 남는다.
+// 앱을 완전히 종료하면 사라진다 (앱 범위의 싱글턴 빈)
+const boostKeys = new BoostKeys(newUuid);
 
 export function MyQuestionsList() {
   const queryClient = useQueryClient();
@@ -28,6 +49,16 @@ export function MyQuestionsList() {
   // 삭제 확인 창에 올라와 있는 고민. 없으면 창이 닫혀 있다
   const [target, setTarget] = useState<MyQuestion | null>(null);
   const [deleting, setDeleting] = useState(false);
+
+  // 상단 노출 확인 창에 올라와 있는 고민. 없으면 창이 닫혀 있다
+  const [boostTarget, setBoostTarget] = useState<MyQuestion | null>(null);
+  const [boosting, setBoosting] = useState(false);
+  const [boostError, setBoostError] = useState<string | undefined>(undefined);
+  // 요청 잠금. boosting 은 화면이 다시 그려진 뒤에야 버튼을 막으므로, 그 사이에 한 번 더 눌리면 요청이 두 번 나간다.
+  // useRef 의 값은 바꾸는 즉시 반영된다 (docs/troubleshooting.md 20)
+  const boostLocked = useRef(false);
+  // 확인 창에 보여 줄 잔액. 피드·마이 탭과 같은 캐시를 쓴다
+  const balance = useQuery({ queryKey: POINT_BALANCE_KEY, queryFn: getBalance });
   // 잠깐 보여 주는 안내. seq 는 안내마다 하나씩 늘어나는 번호다.
   // 앞 안내가 떠 있을 때 새 안내가 오면 번호가 바뀌어 새로 뜬다. 번호가 없으면 앞 안내의 타이머가 새 안내까지 일찍 닫는다
   const [notice, setNotice] = useState<{ seq: number; text: string } | null>(null);
@@ -82,6 +113,63 @@ export function MyQuestionsList() {
     setTarget(null);
   }
 
+  function openBoost(question: MyQuestion) {
+    setNow(Date.now());
+    setBoostError(undefined);
+    setBoostTarget(question);
+    // 다른 기기에서 포인트를 썼을 수 있으므로 창을 열 때 잔액을 다시 받는다
+    void balance.refetch();
+  }
+
+  async function confirmBoost() {
+    if (!boostTarget || boostLocked.current) {
+      return;
+    }
+    boostLocked.current = true;
+    setBoosting(true);
+    setBoostError(undefined);
+    // 키를 정하고 보내는 일은 boostFlow 가 한다. 실패해서 다시 누르면 같은 키가 나간다
+    const outcome = await submitBoost(boostApi, boostKeys, boostTarget.id);
+    setBoosting(false);
+    boostLocked.current = false;
+
+    switch (outcome.kind) {
+      case 'boosted': {
+        const { response } = outcome;
+        // 잔액: 응답에 든 값으로 바로 바꾸고, 오늘 적립 등 나머지는 서버에서 다시 받는다
+        queryClient.setQueryData<PointBalance>(POINT_BALANCE_KEY, (data) =>
+          data ? { ...data, balance: response.balanceAfter } : data,
+        );
+        void queryClient.invalidateQueries({ queryKey: POINT_BALANCE_KEY });
+        void queryClient.invalidateQueries({ queryKey: POINT_LEDGER_KEY });
+        // 내 고민 목록: 다시 받지 않고 그 고민의 끝나는 시각만 바꾼다. 보던 위치가 유지된다
+        queryClient.setQueryData<MyQuestionPages>(MY_QUESTIONS_KEY, (data) =>
+          applyBoost(data, response.questionId, response.boostedUntil),
+        );
+        markFeedStale();
+        setNow(Date.now());
+        setBoostTarget(null);
+        showNotice(`상단 노출을 시작했어요. -${response.cost}P`);
+        return;
+      }
+      case 'closed':
+      case 'gone':
+        // 목록이 낡았다. 창을 닫고 새로 받는다
+        setBoostTarget(null);
+        showNotice(outcome.message);
+        refresh();
+        return;
+      case 'insufficient':
+        // 창은 그대로 두고 잔액을 다시 받는다. 받은 잔액이 모자라면 확인 버튼이 막힌다
+        setBoostError(outcome.message);
+        void balance.refetch();
+        return;
+      default:
+        // retry, keyConflict: 창을 그대로 두어 바로 다시 시도할 수 있게 한다
+        setBoostError(outcome.message);
+    }
+  }
+
   if (list.isPending) {
     return (
       <View style={styles.center}>
@@ -107,7 +195,7 @@ export function MyQuestionsList() {
         testID="mine-list"
         data={items}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <MyQuestionCard question={item} now={now} onDelete={setTarget} />}
+        renderItem={({ item }) => <MyQuestionCard question={item} now={now} onDelete={setTarget} onBoost={openBoost} />}
         contentContainerStyle={styles.list}
         // 당겨서 새로고침. 웹 브라우저에는 이 동작이 없어서 위쪽에 새로고침 버튼을 함께 둔다
         onRefresh={refresh}
@@ -167,6 +255,16 @@ export function MyQuestionsList() {
           </Dialog.Actions>
         </Dialog>
       </Portal>
+
+      <BoostDialog
+        question={boostTarget}
+        preview={boostTarget ? previewBoost(boostTarget, balance.data?.balance, now) : null}
+        now={now}
+        busy={boosting}
+        error={boostError}
+        onConfirm={confirmBoost}
+        onDismiss={() => setBoostTarget(null)}
+      />
 
       <Snackbar
         key={notice?.seq ?? 0}

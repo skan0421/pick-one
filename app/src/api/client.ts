@@ -18,6 +18,9 @@ export type RequestOptions = {
   // false 면 Authorization 헤더를 붙이지 않는다 (가입·로그인·재발급).
   // 공개 API 라도 잘못된 토큰이 붙어 있으면 서버가 401 로 거부할 수 있어서 아예 보내지 않는다
   auth?: boolean;
+  // 요청에 덧붙일 헤더 (예: Idempotency-Key).
+  // 토큰이 만료되어 재발급 후 다시 보낼 때도 같은 값이 실린다. 같은 요청의 재전송이므로 그래야 한다
+  headers?: Record<string, string>;
 };
 
 // 재발급 응답에서 클라이언트가 쓰는 부분
@@ -121,7 +124,8 @@ async function refresh(refreshToken: string): Promise<void> {
 
 // 실제 HTTP 호출 한 번. 재시도·재발급 판단은 하지 않는다
 async function send<T>(path: string, options: RequestOptions, accessToken: string | null): Promise<T> {
-  const headers: Record<string, string> = { Accept: 'application/json' };
+  // 덧붙인 헤더를 먼저 넣고 기본 헤더를 뒤에 넣는다. 덧붙인 헤더가 Authorization 등을 덮어쓰지 못한다
+  const headers: Record<string, string> = { ...options.headers, Accept: 'application/json' };
   if (options.body !== undefined) {
     headers['Content-Type'] = 'application/json';
   }
