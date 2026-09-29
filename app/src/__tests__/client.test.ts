@@ -140,6 +140,26 @@ describe('에러 응답 파싱', () => {
     expect(error.fieldError('password')).toBeUndefined();
   });
 
+  it('한 입력칸에 오류가 여러 개면 모두 이어서 돌려준다', async () => {
+    server = () =>
+      respond(400, {
+        code: 'VALIDATION_ERROR',
+        message: '입력값이 올바르지 않습니다.',
+        errors: [
+          { field: 'password', reason: '비밀번호는 영문과 숫자를 모두 포함해야 합니다.' },
+          { field: 'nickname', reason: '닉네임은 2~30자여야 합니다.' },
+          { field: 'password', reason: '비밀번호는 8~64자여야 합니다.' },
+        ],
+      });
+
+    const error = await failure(request('/auth/signup', { method: 'POST', body: {}, auth: false }));
+
+    expect(error.fieldError('password')).toBe(
+      '비밀번호는 영문과 숫자를 모두 포함해야 합니다. 비밀번호는 8~64자여야 합니다.',
+    );
+    expect(error.fieldError('nickname')).toBe('닉네임은 2~30자여야 합니다.');
+  });
+
   it('errors 가 없는 에러 응답도 읽는다', async () => {
     server = () => respond(409, { code: 'MEMBER_EMAIL_DUPLICATE', message: '이미 가입된 이메일입니다.' });
 

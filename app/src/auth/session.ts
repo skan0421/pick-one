@@ -3,7 +3,8 @@
 // 메모리의 값을 쓴다. 저장소는 앱을 다시 켰을 때 복원하는 용도다.
 //
 // 모듈 최상위 변수는 앱 전체에서 하나만 존재한다 (Spring 의 싱글턴 빈 필드와 같다).
-import { clearTokens, loadTokens, saveTokens, type Tokens } from './tokenStorage';
+import { clearTokens, loadTokens, saveTokens } from './tokenStorage';
+import type { Tokens } from './tokens';
 
 let current: Tokens | null = null;
 

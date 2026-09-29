@@ -26,9 +26,11 @@ export class ApiError extends Error {
     this.fieldErrors = fieldErrors;
   }
 
-  // 특정 입력칸의 오류 문구를 찾는다. 없으면 undefined
+  // 특정 입력칸의 오류 문구를 찾는다. 없으면 undefined.
+  // 서버는 한 입력칸에 오류를 여러 개 줄 수 있다 (비밀번호가 짧으면서 숫자도 없는 경우 등). 모두 이어서 보여 준다
   fieldError(field: string): string | undefined {
-    return this.fieldErrors.find((e) => e.field === field)?.reason;
+    const reasons = this.fieldErrors.filter((e) => e.field === field).map((e) => e.reason);
+    return reasons.length > 0 ? reasons.join(' ') : undefined;
   }
 }
 
