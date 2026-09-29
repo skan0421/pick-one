@@ -9,6 +9,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ActivityIndicator, Button, PaperProvider, Text } from 'react-native-paper';
 
 import { AuthProvider, useAuth } from '../auth/AuthContext';
@@ -26,13 +27,17 @@ const queryClient = new QueryClient({
 export default function RootLayout() {
   // Provider 는 안쪽 화면 전체에 기능을 제공한다 (Spring 의 빈 등록과 비슷하다)
   return (
-    <QueryClientProvider client={queryClient}>
-      <PaperProvider>
-        <AuthProvider>
-          <RootNavigator />
-        </AuthProvider>
-      </PaperProvider>
-    </QueryClientProvider>
+    // GestureHandlerRootView 는 스와이프 같은 제스처를 쓰는 화면의 가장 바깥에 있어야 한다.
+    // 없으면 피드의 스와이프 영역(GestureDetector)이 오류를 낸다
+    <GestureHandlerRootView style={styles.root}>
+      <QueryClientProvider client={queryClient}>
+        <PaperProvider>
+          <AuthProvider>
+            <RootNavigator />
+          </AuthProvider>
+        </PaperProvider>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
   );
 }
 
@@ -79,5 +84,6 @@ function RootNavigator() {
 }
 
 const styles = StyleSheet.create({
+  root: { flex: 1 },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 16, padding: 24 },
 });
