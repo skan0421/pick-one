@@ -137,7 +137,7 @@ describe('prepareImage', () => {
 
     expect(conversions).toEqual([]);
     expect(prepared).toMatchObject({ uri: 'original', contentType: 'image/jpeg', size: 345_678 });
-    expect(prepared.body.size).toBe(345_678);
+    expect(prepared.body?.size).toBe(345_678);
   });
 
   it('PNG 와 WebP 는 형식을 유지한다', async () => {
@@ -235,6 +235,18 @@ describe('prepareImage', () => {
     const { tools } = fakeTools({ original: 123_456 });
     // fileSize 같은 값은 PickedImage 에 아예 없다. size 는 read 의 결과에서만 온다
     const prepared = await prepareImage(picked(), tools);
-    expect(prepared.size).toBe(prepared.body.size);
+    expect(prepared.size).toBe(prepared.body?.size);
+  });
+
+  it('앱처럼 내용 없이 크기만 읽어도 준비된다. 크기는 변환한 뒤의 파일 기준이다', async () => {
+    const sizes: Record<string, number> = { original: 9 * MB, 'converted-1': 700_000 };
+    const tools: ImageTools = {
+      read: jest.fn(async (uri: string) => ({ size: sizes[uri] })),
+      toJpeg: jest.fn(async () => ({ uri: 'converted-1' })),
+    };
+
+    const prepared = await prepareImage(picked({ width: 4000, height: 3000 }), tools);
+
+    expect(prepared).toEqual({ uri: 'converted-1', contentType: 'image/jpeg', size: 700_000, body: undefined });
   });
 });

@@ -111,7 +111,7 @@ pickone:
 - **`public-base-url` 은 따로 정하지 않아도 됩니다.** 비워 두면 `{endpoint}/{bucket}` 이 되어 업로드 주소와 사진 주소가 같은 호스트를 씁니다.
 - **주소를 바꾸기 전에 올린 사진은 옛 주소 그대로입니다.** 사진 주소는 등록할 때 DB 에 저장되므로, `localhost:9000` 으로 올린 사진은 휴대폰에서 계속 안 보입니다. 주소를 바꾼 뒤 새로 올립니다.
 - **설정을 되돌리면 그 사이 올린 사진은 Tailscale 이 켜져 있을 때만 보입니다.**
-- **방화벽**: 9000 포트로 들어오는 연결이 허용돼 있어야 합니다. 저장소는 Docker 가 띄우므로 Node.js·Java 와 달리 "Docker Desktop Backend" 항목입니다. 휴대폰 브라우저에서 `http://100.101.102.103:9000/minio/health/live` 를 열어 오류 없이 빈 화면이 나오면 닿는 것입니다. 닿지 않으면 "Windows Defender 방화벽 → 앱 허용" 에서 Docker Desktop Backend 를 허용하거나 9000 포트의 인바운드 규칙을 추가합니다. 이 부분은 PC 에서만 확인했고 실제 휴대폰으로는 확인하지 못했습니다.
+- **방화벽**: 9000 포트로 들어오는 연결이 허용돼 있어야 합니다. 저장소는 Docker 가 띄우므로 Node.js·Java 와 달리 "Docker Desktop Backend" 항목입니다. 휴대폰 브라우저에서 `http://100.101.102.103:9000/minio/health/live` 를 열어 오류 없이 빈 화면이 나오면 닿는 것입니다. 닿지 않으면 "Windows Defender 방화벽 → 앱 허용" 에서 Docker Desktop Backend 를 허용하거나 9000 포트의 인바운드 규칙을 추가합니다. 실제 안드로이드 폰에서 Tailscale 로 저장소에 닿아 사진이 올라가는 것을 확인했습니다.
 - 저장소 쪽 CORS 는 따로 설정할 것이 없습니다. MinIO 가 요청한 origin 을 그대로 허용합니다.
 
 ### 웹에서 실행할 때: CORS
@@ -230,7 +230,16 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
    두 장 모두 성공 ─> POST /questions (사진 주소 2개)
 ```
 
-- **형식과 크기가 정확히 같아야 합니다.** 업로드 주소의 서명에 발급 때 보낸 형식과 크기가 들어 있어, 1바이트라도 다르면 저장소가 403 으로 거절합니다. 그래서 선택 창이 알려 주는 크기를 믿지 않고, 실제로 읽은 내용의 크기를 발급에 보내고 그 내용을 그대로 올립니다.
+- **형식과 크기가 정확히 같아야 합니다.** 업로드 주소의 서명에 발급 때 보낸 형식과 크기가 들어 있어, 1바이트라도 다르면 저장소가 403 으로 거절합니다. 그래서 선택 창이 알려 주는 크기를 믿지 않고, 실제로 올릴 파일(변환했다면 변환한 뒤)의 크기를 발급에 보내고 그 파일을 그대로 올립니다.
+- **올리는 방식은 앱과 웹이 다릅니다.** 휴대폰 앱은 기기의 파일을 그대로 보냅니다 (`expo-file-system` 의 `File.upload`. 파일 길이가 `Content-Length` 로 나갑니다). 웹은 브라우저 메모리의 내용(Blob)을 `fetch` 로 보냅니다. 앱에서 웹과 같은 방식으로 올리면 저장소가 403 으로 거절했습니다 (`docs/troubleshooting.md` 23).
+- **저장소가 거절하면 이유가 문구에 나옵니다.** 예: "사진을 올리지 못했습니다. (HTTP 403, SignatureDoesNotMatch)". 같은 내용이 Expo 터미널(웹은 브라우저 콘솔)에 `[사진 업로드]` 로 시작하는 경고로도 남습니다.
+
+  | Code | 뜻 | 확인할 것 |
+  |---|---|---|
+  | `SignatureDoesNotMatch` | 발급 때와 다르게 보냄 | 형식, 크기, 주소의 호스트 (위 "저장소 주소") |
+  | `AccessDenied` | 주소가 만료됐거나 권한 없음 | 발급 후 5분이 지났는지 |
+  | `RequestTimeTooSkewed` | 기기 시계가 서버와 많이 다름 | 휴대폰과 PC 의 시각 |
+  | `MissingContentLength` | 크기를 밝히지 않고 보냄 | 올리는 방식 |
 - **변환하는 경우**: 서버가 받지 않는 형식(아이폰 HEIC 등), 5MB 초과, 긴 변 1600 픽셀 초과. JPEG 로 바꾸며 긴 변 1600 → 1280 → 1024 → 800 순서로 5MB 이하가 될 때까지 줄입니다. 그 밖의 JPEG·PNG·WebP 는 그대로 올립니다.
 - **한 장이라도 실패하면 등록하지 않습니다.** 입력은 그대로 남고, 다시 누르면 실패한 사진만 다시 올립니다.
 - 올리는 동안 진행 표시가 보이고 제출 버튼과 사진 칸이 막힙니다. 진행은 "몇 장 끝났는지"까지만 보여 줍니다 (바이트 단위 진행률은 아님).
@@ -249,10 +258,10 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 
 ## 확인하지 못한 것
 
-웹(헤드리스 Chromium)에서는 실제 서버·저장소에 붙여 확인했습니다. 아래는 실제 기기가 없어 확인하지 못했습니다.
+웹(헤드리스 Chromium)에서는 실제 서버·저장소에 붙여 확인했습니다. 실제 안드로이드 폰(Expo Go, Tailscale 경유)에서는 사진 2장 고르기 → 업로드 → 사진형 고민 등록을 확인했습니다 (`docs/troubleshooting.md` 23). 아래는 확인하지 못했습니다.
 
-- 휴대폰 앱(Expo Go)에서 사진 고르기, HEIC → JPEG 변환, 업로드
-- 휴대폰에서 저장소(9000 포트)에 닿는지, 방화벽 허용이 필요한지
+- 휴대폰 앱에서 HEIC → JPEG 변환
+- 아이폰에서의 사진 고르기·업로드
 - 피드의 터치 스와이프
 
 ## 검사 명령
@@ -260,7 +269,7 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 ```bash
 npm run typecheck   # 타입 검사 (tsc --noEmit)
 npm run lint        # 린트
-npm test            # 단위 테스트 (API 클라이언트, 피드, 올리기 입력 규칙, 사진 준비·업로드 흐름, 내 고민 목록)
+npm test            # 단위 테스트 (API 클라이언트, 피드, 올리기 입력 규칙, 사진 준비·업로드 흐름, 플랫폼별 업로드, 내 고민 목록)
 ```
 
 CI 는 타입 검사와 린트만 돌립니다. 단위 테스트는 로컬에서 실행합니다.
@@ -310,7 +319,10 @@ app/
       composeRules.ts         입력 규칙, 서버 오류를 입력칸으로 나누기. 순수 함수
       imagePrep.ts            사진을 변환할지, 얼마나 줄일지
       uploadFlow.ts           발급 → 올리기 → 등록의 순서
-      imageTools.ts           사진 고르기·읽기·변환·올리기 (기기 기능)
+      imageTools.ts           사진 고르기·변환 (기기 기능)
+      fileTransfer.ts         파일 크기 읽기, 저장소로 올리기 (앱)
+      fileTransfer.web.ts     파일 읽기, 저장소로 올리기 (웹)
+      storageError.ts         저장소가 거절한 이유 읽기 (앱·웹 공용). 순수 함수
       ComposeForm.tsx         올리기 화면
       ImageSlots.tsx          사진 두 칸
     mine/                   내 고민
@@ -333,7 +345,7 @@ Java/Spring 에 빗대면 다음과 같습니다.
 | `api/client.ts` | `RestClient` + 인터셉터 |
 | `AuthContext` | `SecurityContextHolder` |
 | `Promise`, `async/await` | `CompletableFuture` |
-| `tokenStorage.ts` / `.web.ts` | `@Profile` 로 갈아 끼우는 구현체 |
+| `tokenStorage.ts` / `.web.ts`, `fileTransfer.ts` / `.web.ts` | `@Profile` 로 갈아 끼우는 구현체 |
 | `feed/feedState.ts` 의 상태 | 불변 객체 (`record`). 고치지 않고 새로 만듦 |
 | `feed/feedState.ts` 의 `feedReducer` | 상태 기계의 전이 함수: (현재 상태, 일어난 일) → 다음 상태 |
 | `feed/feedController.ts` | `@Service`. 서버 호출 함수를 생성자로 주입받음 |
@@ -342,7 +354,7 @@ Java/Spring 에 빗대면 다음과 같습니다.
 | 테스트의 `jest.fn()` | Mockito 의 `mock()` |
 | `compose/composeRules.ts` | Bean Validation + `Validator`. 서버의 `@Size`, `@NotBlank` 와 같은 규칙 |
 | `compose/imagePrep.ts` 의 `ImageTools`, `uploadFlow.ts` 의 `UploadApi` | 포트(인터페이스). 서버의 `ImageStorage`, `SmsSender` 와 같은 분리 |
-| `compose/imageTools.ts` | 어댑터(구현체). 서버의 `S3ImageStorage` |
+| `compose/imageTools.ts`, `compose/fileTransfer.ts` | 어댑터(구현체). 서버의 `S3ImageStorage` |
 | `useInfiniteQuery` | 커서로 `Slice` 를 이어 받아 쌓아 두는 캐시 |
 | `useRef` 로 만든 제출 잠금 | `AtomicBoolean` (단일 스레드라 일반 값으로 충분) |
 

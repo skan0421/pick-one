@@ -30,17 +30,18 @@ export type PickedImage = {
 
 // 올릴 준비가 끝난 사진. contentType 과 size 는 발급 요청과 PUT 에 똑같이 쓰인다
 export type PreparedImage = {
-  uri: string; // 미리보기에 쓴다
+  uri: string; // 올릴 파일의 주소. 미리보기에도 쓴다
   contentType: string;
-  size: number;
-  body: Blob; // 올릴 내용 그 자체. size 는 이 내용의 크기다
+  size: number; // 올릴 파일(변환했다면 변환한 뒤)의 바이트 수
+  // 올릴 내용 그 자체 (웹). 앱에서는 없다. 앱은 내용을 메모리로 읽지 않고 uri 의 파일을 그대로 올린다
+  body?: Blob;
 };
 
 export type Resize = { width: number } | { height: number };
 
 export type ImageTools = {
-  // 파일을 읽어 내용과 크기를 돌려준다
-  read: (uri: string) => Promise<{ size: number; body: Blob }>;
+  // 파일의 크기를 돌려준다. 웹은 읽은 내용(body)도 함께 돌려준다
+  read: (uri: string) => Promise<{ size: number; body?: Blob }>;
   // JPEG 로 다시 저장한다. resize 가 있으면 그 크기로 줄인다 (비율 유지)
   toJpeg: (uri: string, resize: Resize | undefined, quality: number) => Promise<{ uri: string }>;
 };
@@ -123,7 +124,7 @@ export function resizeTarget(width: number, height: number, longSide: number): R
 export async function prepareImage(picked: PickedImage, tools: ImageTools): Promise<PreparedImage> {
   const mimeType = normalizeMimeType(picked.mimeType, picked.fileName);
 
-  let original: { size: number; body: Blob };
+  let original: { size: number; body?: Blob };
   try {
     original = await tools.read(picked.uri);
   } catch {
@@ -133,7 +134,7 @@ export async function prepareImage(picked: PickedImage, tools: ImageTools): Prom
     throw new ImagePrepError('UNREADABLE');
   }
 
-  // 선택 창이 알려 준 크기(fileSize)가 아니라 실제로 읽은 내용의 크기를 쓴다.
+  // 선택 창이 알려 준 크기(fileSize)가 아니라 실제 파일의 크기를 쓴다.
   // 발급 때 보낸 크기와 올리는 크기가 1바이트라도 다르면 저장소가 거절하기 때문이다
   const plan = planConversion({ mimeType, width: picked.width, height: picked.height, size: original.size });
   if (!plan.convert) {

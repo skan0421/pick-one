@@ -33,8 +33,8 @@ function fakeApi() {
       expiresAt: '2026-09-30T12:05:00',
     };
   });
-  const putFile = jest.fn(async (uploadUrl: string, contentType: string, body: Blob) => {
-    calls.push(`put:${uploadUrl}:${contentType}:${body.size}`);
+  const putFile = jest.fn(async (uploadUrl: string, image: PreparedImage) => {
+    calls.push(`put:${uploadUrl}:${image.contentType}:${image.size}`);
   });
   const createQuestion = jest.fn(async () => {
     calls.push('create');
@@ -69,7 +69,7 @@ describe('submitImageQuestion', () => {
     expect(outcome).toEqual({ kind: 'created', question: CREATED });
   });
 
-  it('발급 때 보낸 형식·크기와 PUT 의 형식·크기가 같다', async () => {
+  it('발급 때 보낸 형식·크기와 PUT 하는 사진의 형식·크기가 같다', async () => {
     const { api, issueUploadUrl, putFile } = fakeApi();
     const input = slots();
 
@@ -77,11 +77,12 @@ describe('submitImageQuestion', () => {
 
     input.forEach((slot, i) => {
       const issued = issueUploadUrl.mock.calls[i][0];
-      const [, putType, putBody] = putFile.mock.calls[i];
+      const [, putImage] = putFile.mock.calls[i];
       expect(issued).toEqual({ contentType: slot.image.contentType, size: slot.image.size });
-      expect(putType).toBe(issued.contentType);
-      expect(putBody.size).toBe(issued.size);
-      expect(putBody).toBe(slot.image.body);
+      // 발급에 쓴 바로 그 사진을 올린다 (다른 파일이나 다시 읽은 내용이 아니다)
+      expect(putImage).toBe(slot.image);
+      expect(putImage.contentType).toBe(issued.contentType);
+      expect(putImage.size).toBe(issued.size);
     });
   });
 
