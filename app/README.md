@@ -319,13 +319,13 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 
 ## 확인하지 못한 것
 
-웹(헤드리스 Chromium)에서는 실제 서버·저장소에 붙여 확인했습니다. 실제 안드로이드 폰(Expo Go, Tailscale 경유)에서는 사진 2장 고르기 → 업로드 → 사진형 고민 등록을 확인했습니다 (`docs/troubleshooting.md` 23). 아래는 확인하지 못했습니다.
+웹(헤드리스 Chromium)에서는 실제 서버·저장소에 붙여 확인했습니다. 실제 안드로이드 폰(Expo Go, Tailscale 경유)에서는 사진 2장 고르기 → 업로드 → 사진형 고민 등록을 확인했고 (`docs/troubleshooting.md` 23), 상단 노출·연장과 연결을 끊었을 때의 시간 초과·다시 시도도 확인했습니다 (`docs/troubleshooting.md` 24). 아래는 확인하지 못했습니다.
 
 - 휴대폰 앱에서 HEIC → JPEG 변환
 - 아이폰에서의 사진 고르기·업로드
 - 피드의 터치 스와이프
-- 실제 기기에서의 상단 노출, 마이 탭 (웹에서만 확인)
-- 실제 기기에서 연결을 끊었을 때의 시간 초과 (단위 테스트로만 확인. `docs/troubleshooting.md` 24)
+- 실제 기기에서의 마이 탭 (웹에서만 확인)
+- 실제 기기에서 사진 올리기의 시간 초과 (단위 테스트로만 확인)
 
 ## 검사 명령
 
