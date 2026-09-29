@@ -347,3 +347,24 @@ SDK 2.x 는 path-style 을 `S3Configuration`(구 방식)과 클라이언트 빌�
 자정 이후에도 전체 테스트 통과. 같은 회귀를 막기 위해 픽스처 주석에 근거를 남겼다.
 
 **관련 커밋** 내가 투표한 고민 목록 feat 커밋
+
+---
+
+## 18. 앱 웹 버전이 빈 화면 — 플랫폼별 파일(.web.ts)이 자기 자신을 import
+
+**문제 상황**
+앱(`app/`)의 타입 검사·린트·단위 테스트 17건이 모두 통과한 상태에서 웹 버전(`npx expo start --web`)을 열자 화면이 비어 있었다. 브라우저 콘솔에는 `Maximum call stack size exceeded`, 번들러 로그에는 `Require cycle: src/auth/tokenStorage.web.ts -> src/auth/tokenStorage.web.ts` 가 찍혔다.
+
+**원인**
+토큰 저장소는 앱용 `tokenStorage.ts`(expo-secure-store)와 웹용 `tokenStorage.web.ts`(sessionStorage)로 나뉘어 있고, 번들러(Metro)가 `./tokenStorage` 를 플랫폼에 맞는 파일로 바꿔 준다. 웹용 파일이 공용 타입과 `parseTokens` 를 `./tokenStorage` 에서 가져왔는데, 웹에서는 이 경로가 앱용 파일이 아니라 **웹용 파일 자신**으로 해석되어 자기 자신을 끝없이 불러왔다.
+검사가 잡지 못한 이유: 타입 검사(tsc)는 플랫폼 접미사를 모르므로 `./tokenStorage` 를 항상 `tokenStorage.ts` 로 해석하고, 단위 테스트(jest-expo)는 기본 플랫폼이 iOS 인 데다 저장소 모듈을 모의 객체로 바꿨다. 즉 웹용 파일을 실제로 실행한 검사가 하나도 없었다.
+
+**해결**
+- 공용 타입·함수·키를 플랫폼 접미사가 없는 다른 이름의 파일 `auth/tokens.ts` 로 옮기고, 두 저장소 파일 모두 거기서 가져온다.
+- 원칙: `.web.ts` 파일에서 같은 이름의 기본 파일을 import 하지 않는다. 두 파일에 같은 주의 주석을 남겼다.
+- 플랫폼별 파일은 정적 검사로 검증되지 않으므로, 웹 버전을 실제 브라우저로 여는 확인을 작업 완료 조건에 넣는다.
+
+**결과**
+헤드리스 브라우저로 실제 백엔드에 붙여 가입 → 휴대폰 인증 → 피드 → 재발급 → 탭 이동 → 로그아웃 → 재로그인을 확인한 18개 항목 통과(수정 전 0/18, 첫 화면에서 중단). 만료 401 이후 `/auth/refresh` 호출은 1회.
+
+**관련 커밋** 앱 뼈대 화면 feat 커밋

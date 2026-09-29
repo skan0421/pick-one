@@ -4,6 +4,7 @@
 
 사소한 고민을 올리면 모르는 사람들이 몇 초 만에 골라주는 고민 투표 앱의 **백엔드**입니다.
 화면보다 포인트 원장, 동시성, 개인정보 암호화 같은 설계와 문제 해결 과정을 보여주는 데 초점을 둔 포트폴리오입니다.
+동작 확인용 앱 뼈대(React Native/Expo)는 [app/](app/README.md) 에 있습니다.
 
 ## 핵심 기능
 
@@ -27,6 +28,7 @@
 | 테스트 | JUnit 5, Testcontainers | Compose 와 같은 MariaDB·Redis 이미지로 실제 락·스냅샷 동작을 검증 (H2 로는 재현 불가) |
 | 객체 저장소 | S3 호환 (로컬 MinIO, 운영 S3), AWS SDK v2 | 사진은 presigned PUT 으로 클라이언트가 직접 업로드, 서버는 URL 형식·존재만 검증. `images/*` 접두사만 공개 읽기 |
 | 인프라 | Docker Compose, GitHub Actions | 로컬 DB·Redis·MinIO 기동, PR·main push 마다 전체 테스트 실행 |
+| 앱 (`app/`) | React Native(Expo SDK 57), TypeScript, Expo Router, TanStack Query | 같은 코드로 앱과 웹 실행. 가입 → 휴대폰 인증 → 피드 조회 연결 확인용 뼈대 |
 
 ## 아키텍처
 
@@ -121,7 +123,7 @@ flowchart LR
   ./gradlew test jacocoTestReport   # build/reports/jacoco/test/html/index.html
   ```
 - **Testcontainers**: 통합 테스트는 `@IntegrationTest` 하나로 MariaDB 11.4·Redis 7.4 컨테이너를 띄우고 스프링 컨텍스트를 공유합니다. 테스트용 JWT·AES·HMAC 키는 JVM 마다 랜덤 생성하므로 저장소나 CI Secrets 에 키가 없습니다.
-- **CI**: [GitHub Actions](.github/workflows/ci.yml) 에서 PR·main push 마다 실행. 테스트 수와 커버리지 % 를 Job Summary 에 남기고, 커버리지 리포트는 항상, 테스트 리포트는 실패 시 artifact 로 업로드합니다.
+- **CI**: [GitHub Actions](.github/workflows/ci.yml) 에서 PR·main push 마다 실행. 테스트 수와 커버리지 % 를 Job Summary 에 남기고, 커버리지 리포트는 항상, 테스트 리포트는 실패 시 artifact 로 업로드합니다. 앱(`app/`)은 별도 작업(`app`)에서 타입 검사와 린트를 실행합니다.
 - **동시성 테스트 16개** (스레드를 래치로 동시에 출발시켜 실제 DB·Redis 경합을 만듦)
 
 | 영역 | 시나리오 | 기대 결과 |
@@ -175,6 +177,17 @@ flowchart LR
    - OpenAPI JSON: http://localhost:8080/v3/api-docs
    - 보호된 API 는 우측 상단 **Authorize** 버튼에 가입/로그인 응답의 `accessToken` 을 넣으면 호출할 수 있습니다 (Bearer JWT)
    - `pickone.swagger.enabled` 하나로 문서·UI·보안 예외를 함께 켜고 끕니다. **기본 꺼짐**이며, 로컬은 `application-local.yml` 에서 켭니다(예시 파일에 포함). 환경변수 `SWAGGER_ENABLED=true` 로도 켤 수 있습니다
+5. 앱(Expo) 실행 — 필요: Node.js 22 이상. 위 3번까지 마쳐 백엔드가 떠 있어야 합니다
+   ```bash
+   cd app
+   npm install
+   cp .env.example .env      # EXPO_PUBLIC_API_URL (기본 http://localhost:8080)
+   npx expo start --web      # http://localhost:8081
+   ```
+   - 가입 → 휴대폰 인증 → 피드 순서로 확인합니다. 인증번호는 3번 백엔드 로그의 `[SMS 본문]` 줄에 찍힙니다
+   - 웹은 CORS 허용 주소가 `http://localhost:8081` 이어야 합니다 (기본값. 바꾸려면 `CORS_ALLOWED_ORIGINS`)
+   - 휴대폰(Expo Go)에서 실행할 때는 `EXPO_PUBLIC_API_URL` 에 `localhost` 대신 PC 의 내부 IP 를 넣습니다. 휴대폰에서 `localhost` 는 휴대폰 자신을 가리키기 때문입니다
+   - 폴더 구조, 토큰 저장 방식과 보안상 트레이드오프는 [app/README.md](app/README.md)
 
 스키마 변경은 항상 새 `V{n}__{설명}.sql` 파일로 추가하며, push 된 마이그레이션은 수정하지 않습니다.
 
@@ -190,4 +203,5 @@ Claude 를 페어 프로그래머로 사용했습니다.
 
 - **소셜 로그인(카카오·구글)**: API 설계([api.md 2.6](docs/api.md))와 스키마(V2)는 준비됨, 구현 예정
 - **2차 기능**: 프로필 속성, 질문 대상 지정, 속성별 결과 분석(k-익명성) — 설계만 완료([api.md 9](docs/api.md))
-- **배포**: 클라우드 배포, 실제 SMS 발송기 연동, 화면
+- **화면**: 앱 뼈대(로그인·가입·휴대폰 인증·피드 목록)까지 완료. 투표·고민 올리기·내 고민·마이 화면은 구현 예정
+- **배포**: 클라우드 배포, 실제 SMS 발송기 연동
