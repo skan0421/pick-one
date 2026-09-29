@@ -2,6 +2,7 @@
 import { ApiError } from '../api/errors';
 import type { CursorPage, MyQuestion } from '../api/questions';
 import {
+  applyBoost,
   flattenPages,
   isAlreadyDeleted,
   isBoosted,
@@ -140,5 +141,36 @@ describe('isBoosted', () => {
 
   it('읽을 수 없는 시각이면 아니다', () => {
     expect(isBoosted({ boostedUntil: '내일' }, now)).toBe(false);
+  });
+});
+
+describe('applyBoost', () => {
+  it('그 고민의 끝나는 시각만 바꾼다', () => {
+    const data = pages(page([3, 2], 'c1'), page([1]));
+
+    const updated = applyBoost(data, 2, '2026-10-01T18:00:00');
+
+    expect(flattenPages(updated).map((item) => [item.id, item.boostedUntil])).toEqual([
+      [3, undefined],
+      [2, '2026-10-01T18:00:00'],
+      [1, undefined],
+    ]);
+  });
+
+  it('원본은 고치지 않고, 쪽 구조와 커서는 그대로 둔다', () => {
+    const data = pages(page([3, 2], 'c1'), page([1]));
+
+    const updated = applyBoost(data, 2, '2026-10-01T18:00:00');
+
+    expect(data.pages[0].items[1].boostedUntil).toBeUndefined();
+    expect(updated?.pages.map((p) => p.nextCursor)).toEqual(['c1', undefined]);
+    expect(updated?.pageParams).toEqual(data.pageParams);
+  });
+
+  it('목록에 없는 고민이거나 아직 받은 것이 없어도 문제없다', () => {
+    const data = pages(page([1]));
+
+    expect(flattenPages(applyBoost(data, 99, '2026-10-01T18:00:00'))).toEqual(flattenPages(data));
+    expect(applyBoost(undefined, 1, '2026-10-01T18:00:00')).toBeUndefined();
   });
 });

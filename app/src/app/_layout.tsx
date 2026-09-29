@@ -78,6 +78,9 @@ function RootNavigator() {
 
       <Stack.Protected guard={status === 'active'}>
         <Stack.Screen name="(tabs)" />
+        {/* 탭 위에 쌓이는 화면. 위쪽 머리글에 뒤로 가기가 생긴다 */}
+        <Stack.Screen name="point-ledger" options={{ headerShown: true, title: '포인트 내역' }} />
+        <Stack.Screen name="my-votes" options={{ headerShown: true, title: '내가 투표한 고민' }} />
       </Stack.Protected>
     </Stack>
   );

@@ -28,6 +28,8 @@ type AuthContextValue = {
   // 가입·로그인·휴대폰 인증 확인의 응답을 넘기면 토큰을 저장하고 상태를 바꾼다
   signIn: (response: TokenResponse) => Promise<void>;
   signOut: () => Promise<void>;
+  // 내 정보가 바뀌었을 때(닉네임 변경) 들고 있는 값을 바꾼다. 이 값을 쓰는 화면이 모두 다시 그려진다
+  updateMember: (member: MemberSummary) => void;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -138,8 +140,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setStartupAttempt((n) => n + 1);
   }, []);
 
+  const updateMember = useCallback((next: MemberSummary) => setMember(next), []);
+
   return (
-    <AuthContext.Provider value={{ status, member, startupError, retryStartup, signIn, signOut }}>
+    <AuthContext.Provider value={{ status, member, startupError, retryStartup, signIn, signOut, updateMember }}>
       {children}
     </AuthContext.Provider>
   );

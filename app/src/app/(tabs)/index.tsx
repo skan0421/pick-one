@@ -5,12 +5,14 @@
 //   서버와 엮기   src/feed/feedController.ts, useFeed.ts
 //   카드 그리기   src/feed/QuestionCard.tsx
 import { useQuery } from '@tanstack/react-query';
-import { useRef } from 'react';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useRef } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { ActivityIndicator, Button, Snackbar, Text } from 'react-native-paper';
 
 import { getBalance } from '../../api/points';
 import { useAuth } from '../../auth/AuthContext';
+import { feedVersion } from '../../feed/feedRefresh';
 import { QuestionCard } from '../../feed/QuestionCard';
 import { SwipeArea } from '../../feed/SwipeArea';
 import { canSwipeToChoose, optionForSwipe, type SwipeAxis, type SwipeDirection } from '../../feed/swipe';
@@ -32,6 +34,17 @@ function Feed() {
   // 지금 스와이프 중인지. useRef 는 바뀌어도 화면을 다시 그리지 않는 값이다 (화면 객체의 필드).
   // 버튼 위에서 스와이프를 시작하면 손을 떼는 순간 그 버튼도 눌린 것으로 처리될 수 있어, 스와이프 중의 누름은 무시한다
   const swiping = useRef(false);
+
+  // 이 탭이 다시 보일 때, 그 사이 다른 화면이 "피드를 새로 받아야 한다"고 표시했으면 새로 받는다 (feed/feedRefresh.ts)
+  const seenVersion = useRef(feedVersion());
+  useFocusEffect(
+    useCallback(() => {
+      if (seenVersion.current !== feedVersion()) {
+        seenVersion.current = feedVersion();
+        controller.refresh();
+      }
+    }, [controller]),
+  );
 
   function choose(optionId: number) {
     if (!swiping.current) {

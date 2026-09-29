@@ -1,5 +1,7 @@
-// 투표 API (docs/api.md 5.1, 5.2). ACTIVE 회원만 호출할 수 있다
+// 투표 API (docs/api.md 5.1 ~ 5.3). ACTIVE 회원만 호출할 수 있다
 import { request } from './client';
+import { pageQuery } from './paging';
+import type { CursorPage, OptionResponse, QuestionStatus, QuestionType } from './questions';
 
 // 선택지 하나의 득표. percent 는 서버가 소수점 1자리로 계산하고 합이 100 이 되게 보정해서 준다
 export type OptionTally = {
@@ -42,4 +44,31 @@ export function vote(questionId: number, optionId: number): Promise<VoteResponse
 
 export function getResults(questionId: number): Promise<VoteResultResponse> {
   return request<VoteResultResponse>(`/questions/${questionId}/results`);
+}
+
+// 내가 투표한 고민 한 건. 고민(question)과 득표(result)가 따로 오고, 선택지는 id 로 짝지어야 한다
+export type MyVoteItem = {
+  voteId: number;
+  votedAt: string;
+  question: {
+    id: number;
+    questionType: QuestionType;
+    content: string;
+    status: QuestionStatus;
+    boosted: boolean;
+    options: OptionResponse[];
+    author: { nickname: string };
+    createdAt: string;
+  };
+  myOptionId: number; // 내가 고른 선택지
+  result: {
+    totalVotes: number;
+    options: OptionTally[];
+  };
+};
+
+// GET /members/me/votes (docs/api.md 5.3). 투표한 시각의 최신순.
+// 삭제됐거나 숨겨진 고민은 빠지고, 종료(CLOSED)된 고민은 포함된다
+export function getMyVotes(cursor?: string, size = 20): Promise<CursorPage<MyVoteItem>> {
+  return request<CursorPage<MyVoteItem>>(`/members/me/votes?${pageQuery(cursor, size)}`);
 }

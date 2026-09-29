@@ -1,5 +1,5 @@
 // 서버 시각 해석 테스트. 기기의 시간대와 관계없이 KST 로 해석하는지 본다
-import { formatRelativeTime, parseServerTime } from '../feed/time';
+import { formatDateTime, formatRelativeTime, formatRemaining, parseServerTime } from '../feed/time';
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -68,5 +68,40 @@ describe('formatRelativeTime', () => {
 
   it('읽을 수 없는 시각이면 빈 글자', () => {
     expect(formatRelativeTime('어제', created)).toBe('');
+  });
+});
+
+describe('formatDateTime', () => {
+  it('월, 일, 시:분 을 KST 그대로 보여 준다', () => {
+    expect(formatDateTime('2026-09-29T21:05:30.123456')).toBe('9월 29일 21:05');
+    expect(formatDateTime('2026-10-01T00:00:00')).toBe('10월 1일 0:00');
+  });
+
+  it('읽을 수 없는 시각이면 빈 글자', () => {
+    expect(formatDateTime('어제')).toBe('');
+  });
+});
+
+describe('formatRemaining', () => {
+  const UNTIL = '2026-09-30T12:00:00'; // KST
+  const until = Date.UTC(2026, 8, 30, 3, 0, 0);
+
+  it.each([
+    [30 * SECOND, '곧 끝남'],
+    [MINUTE, '1분 남음'],
+    [59 * MINUTE + 59 * SECOND, '59분 남음'],
+    [HOUR, '1시간 남음'],
+    [23 * HOUR + 12 * MINUTE, '23시간 12분 남음'],
+    [DAY, '1일 남음'],
+    [DAY + 3 * HOUR + 20 * MINUTE, '1일 3시간 남음'],
+    [2 * DAY, '2일 남음'],
+  ])('%d 밀리초가 남았으면 "%s"', (left, expected) => {
+    expect(formatRemaining(UNTIL, until - left)).toBe(expected);
+  });
+
+  it('이미 끝났거나 읽을 수 없으면 빈 글자', () => {
+    expect(formatRemaining(UNTIL, until)).toBe('');
+    expect(formatRemaining(UNTIL, until + MINUTE)).toBe('');
+    expect(formatRemaining('내일', until)).toBe('');
   });
 });

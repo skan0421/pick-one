@@ -22,6 +22,7 @@ type Call = {
   url: string;
   method: string;
   authorization: string | undefined;
+  headers: Record<string, string>;
   body: unknown;
 };
 
@@ -87,6 +88,7 @@ beforeEach(async () => {
       url,
       method: init.method ?? 'GET',
       authorization: headers.Authorization,
+      headers,
       body: typeof init.body === 'string' ? JSON.parse(init.body) : undefined,
     };
     calls.push(call);
@@ -118,6 +120,43 @@ describe('요청 기본 동작', () => {
     server = () => respond(204);
 
     await expect(request('/auth/logout', { method: 'POST', body: { refreshToken: 'r' } })).resolves.toBeUndefined();
+  });
+});
+
+describe('덧붙인 헤더 (Idempotency-Key)', () => {
+  it('headers 로 넘긴 값을 요청에 싣는다. 본문이 없으면 Content-Type 은 보내지 않는다', async () => {
+    await setTokens({ accessToken: 'access-2', refreshToken: 'refresh-2' });
+
+    await request('/questions/42/boosts', { method: 'POST', headers: { 'Idempotency-Key': 'key-1' } });
+
+    expect(calls[0].method).toBe('POST');
+    expect(calls[0].headers['Idempotency-Key']).toBe('key-1');
+    expect(calls[0].authorization).toBe('Bearer access-2');
+    expect(calls[0].headers['Content-Type']).toBeUndefined();
+  });
+
+  it('토큰이 만료되어 재발급 후 다시 보낼 때도 같은 키를 싣는다', async () => {
+    // access-1 은 만료된 토큰이다. 첫 요청은 401, 재발급 후 두 번째 요청이 나간다
+    await request('/questions/42/boosts', { method: 'POST', headers: { 'Idempotency-Key': 'key-1' } });
+
+    const boosts = callsTo('/questions/42/boosts');
+    expect(boosts).toHaveLength(2);
+    expect(boosts.map((call) => call.headers['Idempotency-Key'])).toEqual(['key-1', 'key-1']);
+    expect(boosts.map((call) => call.authorization)).toEqual(['Bearer access-1', 'Bearer access-2']);
+  });
+
+  it('재발급 요청에는 키를 싣지 않는다', async () => {
+    await request('/questions/42/boosts', { method: 'POST', headers: { 'Idempotency-Key': 'key-1' } });
+
+    expect(callsTo('/auth/refresh')[0].headers['Idempotency-Key']).toBeUndefined();
+  });
+
+  it('덧붙인 헤더로 Authorization 을 바꿀 수 없다', async () => {
+    await setTokens({ accessToken: 'access-2', refreshToken: 'refresh-2' });
+
+    await request('/members/me', { headers: { Authorization: 'Bearer forged' } });
+
+    expect(calls[0].authorization).toBe('Bearer access-2');
   });
 });
 
