@@ -275,7 +275,7 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 | 상황 | 키 |
 |---|---|
 | 처음 누름 | 새로 만들어 기억 |
-| 결과를 모르는 실패(네트워크 오류, 서버 오류) 뒤 다시 누름 | **같은 키**. 확인 창을 닫았다 열거나 다른 탭에 다녀와도 같습니다 |
+| 결과를 모르는 실패(네트워크 오류, 시간 초과, 서버 오류) 뒤 다시 누름 | **같은 키**. 확인 창을 닫았다 열거나 다른 탭에 다녀와도 같습니다 |
 | 서버가 분명히 거절(잔액 부족 등) 뒤 다시 누름 | 같은 키 (빠진 것이 없으므로 그대로 써도 됩니다) |
 | 성공한 뒤 다시 누름(연장) | 새 키 |
 | `IDEMPOTENCY_KEY_CONFLICT` | 키를 버리고 다음에 새 키 |
@@ -286,7 +286,21 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 |---|---|
 | `POINT_INSUFFICIENT` | 창에 안내하고 잔액을 다시 받습니다 |
 | `QUESTION_CLOSED`, `QUESTION_NOT_FOUND`, `FORBIDDEN` | 창을 닫고 안내한 뒤 목록을 새로 받습니다 |
-| 네트워크 오류, `POINT_WALLET_CONFLICT`, 서버 오류 | 창을 그대로 두고 "다시 시도" |
+| 네트워크 오류, 시간 초과, `POINT_WALLET_CONFLICT`, 서버 오류 | 창을 그대로 두고 "다시 시도" |
+
+#### 요청의 제한 시간
+
+`fetch` 에는 기본 제한 시간이 없습니다. 연결이 끊긴 것을 기기가 알아채지 못하면 응답도 예외도 오지 않아 로딩이 끝나지 않습니다 (`docs/troubleshooting.md` 24). 그래서 모든 요청에 제한 시간을 둡니다 (`api/timeout.ts`).
+
+| 요청 | 제한 시간 | 적용한 곳 |
+|---|---|---|
+| 서버로 가는 모든 요청 (업로드 주소 발급, 토큰 재발급 포함) | 15초 | `api/client.ts` |
+| 사진 올리기 (저장소로 가는 PUT) | 60초 | `compose/fileTransfer.ts`, `compose/fileTransfer.web.ts` |
+
+- 시간이 지나면 요청을 취소하고(`AbortController`) 네트워크 오류와 같은 `NETWORK_ERROR` 로 실패합니다. 둘 다 서버가 처리했는지 알 수 없는 상황이어서 같은 방식으로 처리합니다.
+- 취소는 앱이 그만 기다린다는 뜻입니다. 요청이 이미 서버에 닿았다면 처리됐을 수 있습니다. 상단 노출은 다시 눌러도 같은 키가 나가므로 포인트가 한 번만 빠집니다.
+- 사진 올리기는 파일을 보내는 시간이 들어가 더 길게 잡았습니다. 올리는 사진은 줄인 뒤라 1MB 안팎입니다. 시간이 지나 실패한 사진은 그 칸만 다시 올립니다.
+- 고민 등록(`POST /questions`)에는 키가 없습니다. 시간 초과 뒤 다시 누르면 같은 고민이 두 번 등록될 수 있습니다.
 
 ## 마이
 
@@ -311,13 +325,14 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 - 아이폰에서의 사진 고르기·업로드
 - 피드의 터치 스와이프
 - 실제 기기에서의 상단 노출, 마이 탭 (웹에서만 확인)
+- 실제 기기에서 연결을 끊었을 때의 시간 초과 (단위 테스트로만 확인. `docs/troubleshooting.md` 24)
 
 ## 검사 명령
 
 ```bash
 npm run typecheck   # 타입 검사 (tsc --noEmit)
 npm run lint        # 린트
-npm test            # 단위 테스트 (API 클라이언트, 피드, 올리기 입력 규칙, 사진 준비·업로드 흐름, 플랫폼별 업로드, 내 고민 목록, 상단 노출, 닉네임 규칙, 포인트 내역, 내가 투표한 고민)
+npm test            # 단위 테스트 (API 클라이언트, 요청 제한 시간, 피드, 올리기 입력 규칙, 사진 준비·업로드 흐름, 플랫폼별 업로드, 내 고민 목록, 상단 노출, 닉네임 규칙, 포인트 내역, 내가 투표한 고민)
 ```
 
 CI 는 타입 검사와 린트만 돌립니다. 단위 테스트는 로컬에서 실행합니다.
@@ -345,7 +360,8 @@ app/
       point-ledger.tsx      /point-ledger  포인트 내역 (탭 위에 쌓이는 화면)
       my-votes.tsx          /my-votes      내가 투표한 고민 (탭 위에 쌓이는 화면)
     api/                    서버 호출
-      client.ts               공통 요청 함수. 헤더 첨부, 에러 변환, 재발급
+      client.ts               공통 요청 함수. 헤더 첨부, 에러 변환, 재발급, 제한 시간
+      timeout.ts              요청의 제한 시간 (API 15초, 사진 올리기 60초)
       errors.ts               ApiError
       config.ts               서버 주소
       paging.ts               커서로 이어 받는 목록의 공통 함수. 순수 함수
