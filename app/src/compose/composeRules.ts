@@ -63,6 +63,18 @@ export function validateTextDraft(content: string, options: string[]): ComposeEr
   return errors;
 }
 
+// 사진형 검증. filled 는 칸마다 사진이 준비됐는지다
+export function validateImageDraft(content: string, filled: boolean[]): ComposeErrors {
+  const errors: ComposeErrors = {
+    content: validateContent(content),
+    options: filled.map((ready) => (ready ? undefined : '사진을 골라 주세요.')),
+  };
+  if (filled.length !== IMAGE_COUNT) {
+    errors.optionList = `사진은 정확히 ${IMAGE_COUNT}장이어야 합니다.`;
+  }
+  return errors;
+}
+
 function hasDuplicate(options: string[]): boolean {
   const filled = options.map((option) => option.trim()).filter((option) => option.length > 0);
   return new Set(filled).size !== filled.length;

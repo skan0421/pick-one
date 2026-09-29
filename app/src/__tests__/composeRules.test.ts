@@ -10,6 +10,7 @@ import {
   removeOption,
   toTextRequest,
   validateContent,
+  validateImageDraft,
   validateTextDraft,
 } from '../compose/composeRules';
 
@@ -205,5 +206,26 @@ describe('서버 오류를 입력칸에 나누기', () => {
 
   it('어떤 오류든 결과에는 오류가 있다', () => {
     expect(hasErrors(errorsFromServer(new ApiError(500, 'INTERNAL_ERROR', '서버 오류'), 2))).toBe(true);
+  });
+});
+
+describe('사진형 검증', () => {
+  it('본문과 사진 2장이 있으면 오류가 없다', () => {
+    expect(hasErrors(validateImageDraft('뭐 입지', [true, true]))).toBe(false);
+  });
+
+  it('비어 있는 칸에 오류를 단다', () => {
+    const errors = validateImageDraft('뭐 입지', [true, false]);
+    expect(errors.options).toEqual([undefined, '사진을 골라 주세요.']);
+  });
+
+  it('본문 규칙은 글형과 같다', () => {
+    expect(validateImageDraft('', [true, true]).content).toBe('고민 내용을 입력해 주세요.');
+    expect(validateImageDraft('가'.repeat(301), [true, true]).content).toBe('고민 내용은 300자 이하여야 합니다.');
+  });
+
+  it('칸이 2개가 아니면 선택지 전체 오류', () => {
+    expect(validateImageDraft('뭐 입지', [true]).optionList).toBe('사진은 정확히 2장이어야 합니다.');
+    expect(validateImageDraft('뭐 입지', [true, true, true]).optionList).toBe('사진은 정확히 2장이어야 합니다.');
   });
 });
