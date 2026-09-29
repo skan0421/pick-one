@@ -11,7 +11,10 @@
 - Base URL: `/api/v1`
 - 리소스는 REST 명사 복수형 (`/questions`, `/members`, `/points`)
 - 요청/응답은 JSON (`Content-Type: application/json`)
-- 시각은 ISO-8601, KST 오프셋 포함 (`2026-09-27T17:30:00+09:00`)
+- 시각은 ISO-8601 로컬 시각이며 **오프셋(`+09:00`)과 `Z` 가 붙지 않는다** (`2026-09-27T17:30:00.123456`)
+  - 응답 DTO 의 시각 필드가 모두 `LocalDateTime` 이고 Jackson 기본 직렬화를 쓰기 때문이다. 기준 시간대는 서버 JVM 의 기본 시간대다. 로컬은 KST 이고, 운영 서버도 JVM 시간대를 `Asia/Seoul` 로 맞춰 KST 로 내려준다는 전제다
+  - 소수 초는 최대 6자리(마이크로초)이고 끝의 0 은 생략되므로 자릿수가 일정하지 않다 (실측 예: `2026-09-29T15:25:56.56359`). 아래 예시에서는 소수 초를 생략했다
+  - 클라이언트는 이 값을 KST 로 해석한다. 오프셋이 없는 문자열을 기기 시간대로 해석하면 KST 가 아닌 기기에서 시각이 어긋난다
 - ID 는 숫자(BIGINT), 응답에서는 JSON number 로 내려준다
 
 ### 1.2 인증
@@ -214,9 +217,13 @@ Expo 웹 버전이 브라우저에서 API 를 호출하므로 `/api/**` 에만 C
   ```json
   { "refreshToken": "eyJ..." }
   ```
-- 응답 `200`
+- 응답 `200` — 가입·로그인과 같은 형식. `member` 는 DB 의 현재 값이다
   ```json
-  { "accessToken": "eyJ...", "refreshToken": "eyJ..." }
+  {
+    "member": { "id": 7, "nickname": "고민많은사람", "signupStatus": "ACTIVE" },
+    "accessToken": "eyJ...",
+    "refreshToken": "eyJ..."
+  }
   ```
 - 처리: 1.3 의 판별 순서. 성공 시 rotation, 옛 jti 는 `refresh:used:{jti}` 로 이동. 새 access 의 `signupStatus` 는 옛 토큰을 복사하지 않고 DB 의 현재 값을 읽는다 (휴대폰 인증 완료가 재발급 시 반영됨)
 - 주요 에러: `AUTH_REFRESH_REUSED`(전체 세션 폐기), `AUTH_INVALID_TOKEN`, `MEMBER_SUSPENDED`
@@ -293,7 +300,7 @@ Spring Security OAuth2 Client 의 Authorization Code 흐름을 그대로 쓴다.
     "phoneVerified": true,
     "hideFromContacts": false,
     "pointBalance": 12,
-    "createdAt": "2026-09-27T17:00:00+09:00"
+    "createdAt": "2026-09-27T17:00:00"
   }
   ```
 - `provider` 는 이메일 가입이면 `"EMAIL"`. `pointBalance` 는 지갑이 없으면 0. 휴대폰 번호는 내려주지 않는다
@@ -374,12 +381,12 @@ interface SmsSender { void send(String phoneE164, String message); }
 - 응답 `200`
   ```json
   {
-    "member": { "id": 7, "signupStatus": "ACTIVE" },
+    "member": { "id": 7, "nickname": "고민많은사람", "signupStatus": "ACTIVE" },
     "accessToken": "eyJ...",
     "refreshToken": "eyJ..."
   }
   ```
-  access 토큰에 `signupStatus` 클레임이 들어 있으므로 상태 변경 후 토큰을 다시 발급한다.
+  가입·로그인과 같은 형식이다. access 토큰에 `signupStatus` 클레임이 들어 있으므로 상태 변경 후 토큰을 다시 발급한다.
 - 처리 (한 트랜잭션):
   1. `otp:{memberId}:{phoneHmac}` 조회. 없으면(다른 회원의 코드 포함) `OTP_EXPIRED`
   2. Lua 로 해시 비교. 불일치 시 attempts+1 후 `OTP_INVALID`(message 에 남은 시도 횟수), 5회째 실패면 코드 삭제 후 `OTP_ATTEMPT_EXCEEDED`
@@ -420,7 +427,7 @@ interface SmsSender { void send(String phoneE164, String message); }
     "status": "ACTIVE",
     "boostedUntil": null,
     "options": [ { "id": 101, "sortOrder": 1, "content": "카페" }, { "id": 102, "sortOrder": 2, "content": "밥집" } ],
-    "createdAt": "2026-09-27T17:30:00+09:00"
+    "createdAt": "2026-09-27T17:30:00"
   }
   ```
 - 처리: 선택지 개수·유형 규칙은 API 에서 검증 (erd.md 설계 메모). `sort_order` 는 요청 순서대로 1부터 부여
@@ -441,7 +448,7 @@ interface SmsSender { void send(String phoneE164, String message); }
         "boosted": true,
         "options": [ { "id": 101, "sortOrder": 1, "content": "카페" }, { "id": 102, "sortOrder": 2, "content": "밥집" } ],
         "author": { "nickname": "고민많은사람" },
-        "createdAt": "2026-09-27T17:30:00+09:00"
+        "createdAt": "2026-09-27T17:30:00"
       }
     ],
     "nextCursor": "eyJ...",
@@ -518,7 +525,7 @@ interface SmsSender { void send(String phoneE164, String message); }
     "isMine": false,
     "myVote": { "optionId": 101 },
     "result": { "totalVotes": 38, "options": [ { "optionId": 101, "count": 25, "percent": 65.8 }, { "optionId": 102, "count": 13, "percent": 34.2 } ] },
-    "createdAt": "2026-09-27T17:30:00+09:00"
+    "createdAt": "2026-09-27T17:30:00"
   }
   ```
 - `myVote` 와 `result` 는 내가 투표했거나 내 고민일 때만 채워지고, 아니면 null (JSON 생략). 득표 집계는 `vote` 를 `GROUP BY option_id` 한 값이고 percent 규칙은 5.2 와 같다
@@ -536,10 +543,10 @@ interface SmsSender { void send(String phoneE164, String message); }
         "questionType": "TEXT",
         "content": "소개팅 첫 만남, 카페 vs 밥집?",
         "status": "ACTIVE",
-        "boostedUntil": "2026-09-28T17:30:00+09:00",
+        "boostedUntil": "2026-09-28T17:30:00",
         "totalVotes": 38,
         "options": [ { "id": 101, "content": "카페", "count": 25, "percent": 65.8 }, { "id": 102, "content": "밥집", "count": 13, "percent": 34.2 } ],
-        "createdAt": "2026-09-27T17:30:00+09:00"
+        "createdAt": "2026-09-27T17:30:00"
       }
     ],
     "nextCursor": null,
@@ -566,7 +573,7 @@ interface SmsSender { void send(String phoneE164, String message); }
   {
     "uploadUrl": "http://localhost:9000/pickone-images/images/7/3f1c...-9a.jpg?X-Amz-Algorithm=...&X-Amz-Signature=...",
     "imageUrl": "http://localhost:9000/pickone-images/images/7/3f1c...-9a.jpg",
-    "expiresAt": "2026-09-29T18:05:00+09:00"
+    "expiresAt": "2026-09-29T18:05:00"
   }
   ```
 - 흐름
@@ -669,12 +676,12 @@ interface SmsSender { void send(String phoneE164, String message); }
     "items": [
       {
         "voteId": 9001,
-        "votedAt": "2026-09-29T17:55:00+09:00",
+        "votedAt": "2026-09-29T17:55:00",
         "question": {
           "id": 42, "questionType": "TEXT", "content": "소개팅 첫 만남, 카페 vs 밥집?", "status": "ACTIVE", "boosted": false,
           "options": [ { "id": 101, "sortOrder": 1, "content": "카페" }, { "id": 102, "sortOrder": 2, "content": "밥집" } ],
           "author": { "nickname": "고민많은사람" },
-          "createdAt": "2026-09-27T17:30:00+09:00"
+          "createdAt": "2026-09-27T17:30:00"
         },
         "myOptionId": 101,
         "result": { "totalVotes": 39, "options": [ { "optionId": 101, "count": 26, "percent": 66.7 }, { "optionId": 102, "count": 13, "percent": 33.3 } ] }
@@ -724,8 +731,8 @@ interface SmsSender { void send(String phoneE164, String message); }
   ```json
   {
     "items": [
-      { "id": 501, "amount": -100, "balanceAfter": 12, "txType": "BOOST_USE", "refType": "QUESTION", "refId": 42, "createdAt": "2026-09-27T18:00:00+09:00" },
-      { "id": 500, "amount": 1, "balanceAfter": 112, "txType": "VOTE_REWARD", "refType": "VOTE", "refId": 9001, "createdAt": "2026-09-27T17:55:00+09:00" }
+      { "id": 501, "amount": -100, "balanceAfter": 12, "txType": "BOOST_USE", "refType": "QUESTION", "refId": 42, "createdAt": "2026-09-27T18:00:00" },
+      { "id": 500, "amount": 1, "balanceAfter": 112, "txType": "VOTE_REWARD", "refType": "VOTE", "refId": 9001, "createdAt": "2026-09-27T17:55:00" }
     ],
     "nextCursor": "eyJ...",
     "hasNext": true
@@ -740,7 +747,7 @@ interface SmsSender { void send(String phoneE164, String message); }
   ```json
   {
     "questionId": 42,
-    "boostedUntil": "2026-09-28T18:00:00+09:00",
+    "boostedUntil": "2026-09-28T18:00:00",
     "cost": 100,
     "balanceAfter": 12,
     "ledgerId": 501
@@ -806,7 +813,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 - 요청 본문 없음
 - 응답 `201`
   ```json
-  { "blockedMemberId": 15, "createdAt": "2026-09-27T18:10:00+09:00" }
+  { "blockedMemberId": 15, "createdAt": "2026-09-27T18:10:00" }
   ```
 - 처리: `member_block(blocker_id = 나, blocked_id = id)`. 자기 자신은 API 와 `chk_member_block_not_self` 양쪽에서 막는다. 차단 즉시 양쪽 피드에서 서로의 고민이 사라진다 (4.2 조건 3)
 - **멱등**: 이미 차단한 상대를 다시 차단해도 201 이고 최초 차단 시각을 돌려준다. "존재 확인 → INSERT" 는 동시 요청에서 PK 위반이 나므로 `INSERT ... ON DUPLICATE KEY UPDATE` 한 문장으로 처리하고, `created_at` 은 `FOR UPDATE` 로 읽는다 (일반 SELECT 는 REPEATABLE READ 스냅샷 때문에 이긴 쪽이 막 커밋한 행을 못 본다, troubleshooting.md 10)
@@ -820,7 +827,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 - 인증: ACTIVE
 - 응답 `200`
   ```json
-  { "items": [ { "memberId": 15, "nickname": "누군가", "createdAt": "2026-09-27T18:10:00+09:00" } ] }
+  { "items": [ { "memberId": 15, "nickname": "누군가", "createdAt": "2026-09-27T18:10:00" } ] }
   ```
   차단 수는 많지 않으므로 페이징 없이 전체를 내려준다
 
