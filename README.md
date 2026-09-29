@@ -25,7 +25,8 @@
 | 스키마 관리 | Flyway | 스키마 변경을 `V{n}__*.sql` 버전 파일로만 관리, `ddl-auto=validate` 로 엔티티-스키마 불일치 시 기동 실패 |
 | Cache / 저장소 | Redis 7.4 | Refresh 토큰, OTP 코드·쿨다운·일일 한도. `SET NX`, `INCR`, Lua 스크립트로 check-then-act 경합 제거 |
 | 테스트 | JUnit 5, Testcontainers | Compose 와 같은 MariaDB·Redis 이미지로 실제 락·스냅샷 동작을 검증 (H2 로는 재현 불가) |
-| 인프라 | Docker Compose, GitHub Actions | 로컬 DB·Redis 기동, PR·main push 마다 전체 테스트 실행 |
+| 객체 저장소 | S3 호환 (로컬 MinIO, 운영 S3), AWS SDK v2 | 사진은 presigned PUT 으로 클라이언트가 직접 업로드, 서버는 URL 형식·존재만 검증. `images/*` 접두사만 공개 읽기 |
+| 인프라 | Docker Compose, GitHub Actions | 로컬 DB·Redis·MinIO 기동, PR·main push 마다 전체 테스트 실행 |
 
 ## 아키텍처
 
@@ -114,8 +115,8 @@ flowchart LR
 ./gradlew test   # Docker 실행 중이어야 함
 ```
 
-- **테스트 188건**: 테스트 메서드 176개 + 파라미터 테스트 2개가 7케이스씩 펼쳐져 실행 기준 188건, 전부 GitHub Actions 에서 통과
-- **커버리지 (JaCoCo, 2026-09-28 로컬 실측)**: 라인 **95.5%** (940/984), 브랜치 **83.5%** (340/407). 설정 클래스(`*Config`, `*Properties`)·DTO 패키지·Application 진입점은 측정에서 제외. 최소 기준으로 빌드를 막지는 않고 CI Job Summary 와 artifact(`jacoco-report`)로 공개합니다
+- **테스트 205건**: 테스트 메서드 193개 + 파라미터 테스트 2개가 7케이스씩 펼쳐져 실행 기준 205건, 전부 GitHub Actions 에서 통과 (통합 테스트는 MariaDB·Redis·MinIO 컨테이너 사용)
+- **커버리지 (JaCoCo, 2026-09-29 로컬 실측)**: 라인 **96.0%** (1046/1090), 브랜치 **84.6%** (368/435). 설정 클래스(`*Config`, `*Properties`)·DTO 패키지·Application 진입점은 측정에서 제외. 최소 기준으로 빌드를 막지는 않고 CI Job Summary 와 artifact(`jacoco-report`)로 공개합니다
   ```bash
   ./gradlew test jacocoTestReport   # build/reports/jacoco/test/html/index.html
   ```
@@ -145,21 +146,25 @@ flowchart LR
 
 1. 환경변수 파일 준비 (둘 다 git 미추적)
    ```bash
-   cp .env.example .env                                                        # DB_PASSWORD, DB_ROOT_PASSWORD 채우기
-   cp src/main/resources/application-local.yml.example src/main/resources/application-local.yml   # .env 와 같은 비밀번호 + JWT·암호화 키
+   cp .env.example .env                                                        # DB_PASSWORD, DB_ROOT_PASSWORD, MINIO_ROOT_USER/PASSWORD 채우기
+   cp src/main/resources/application-local.yml.example src/main/resources/application-local.yml   # .env 와 같은 비밀번호·MinIO 키 + JWT·암호화 키
    ```
-   비밀값 세 가지는 환경변수로도 줄 수 있습니다.
+   비밀값은 환경변수로도 줄 수 있습니다.
    | 설정 | 환경변수 | 형식 |
    |---|---|---|
    | `pickone.jwt.secret` | `JWT_SECRET` | 32바이트 이상 임의 문자열 |
    | `pickone.crypto.phone-aes-key` | `PHONE_AES_KEY` | Base64 32바이트 (`openssl rand -base64 32`) |
    | `pickone.crypto.phone-hmac-key` | `PHONE_HMAC_KEY` | 32바이트 이상 임의 문자열, AES 키와 다른 값 |
+   | `pickone.storage.endpoint` / `bucket` | `STORAGE_ENDPOINT` / `STORAGE_BUCKET` | 로컬 `http://localhost:9000` / `pickone-images` |
+   | `pickone.storage.access-key` / `secret-key` | `STORAGE_ACCESS_KEY` / `STORAGE_SECRET_KEY` | 로컬은 `.env` 의 `MINIO_ROOT_USER` / `MINIO_ROOT_PASSWORD` 와 같은 값 |
+   | `pickone.storage.public-base-url` | `STORAGE_PUBLIC_BASE_URL` | 선택. CDN 을 앞에 두면 그 주소. 비우면 `{endpoint}/{bucket}` |
 
    키를 바꾸면 기존 회원의 번호를 복호화·매칭할 수 없으므로 운영 중 교체에는 재암호화 마이그레이션이 필요합니다.
-2. DB·Redis 기동 (MariaDB 3307, Redis 6380. Refresh 토큰이 Redis 에 저장되므로 Redis 없이는 로그인이 실패합니다)
+2. DB·Redis·MinIO 기동 (MariaDB 3307, Redis 6380, MinIO API 9000 / 콘솔 9001. Refresh 토큰이 Redis 에 저장되므로 Redis 없이는 로그인이 실패합니다)
    ```bash
    docker compose up -d
    ```
+   `minio-init` 컨테이너가 버킷을 만들고 `images/*` 접두사만 익명 읽기를 허용하는 정책(`docker/minio/public-read-images.json`)을 건 뒤 종료합니다. MinIO 콘솔은 http://localhost:9001 (`.env` 의 루트 계정)
 3. 앱 실행 (기본 프로필 `local`, 기동 시 Flyway 가 `src/main/resources/db/migration` 을 적용)
    ```bash
    ./gradlew bootRun

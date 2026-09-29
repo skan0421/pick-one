@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface VoteRepository extends JpaRepository<Vote, Long> {
+public interface VoteRepository extends JpaRepository<Vote, Long>, VoteQueryRepository {
 
 	/** 내 투표 (uk_vote_member_id_question_id 인덱스) */
 	Optional<Vote> findByMemberIdAndQuestionId(Long memberId, Long questionId);

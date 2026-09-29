@@ -52,6 +52,10 @@ logging:
     com.pickone.phone.sms.LoggingSmsSender: DEBUG
 
 pickone:
+  cors:
+    # /api/** 허용 origin (쉼표 구분). 기본은 Expo 웹 개발 서버. 운영은 CORS_ALLOWED_ORIGINS 로 앱 웹 도메인 지정 (docs/api.md 1.9)
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:8081}
+
   swagger:
     # 기본 꺼짐. 로컬은 application-local.yml 에서 켜고, 필요하면 SWAGGER_ENABLED=true 환경변수로도 켤 수 있다
     enabled: ${SWAGGER_ENABLED:false}
@@ -87,6 +91,20 @@ pickone:
     # 연락처 업로드 상한과 JDBC 배치 크기 (docs/api.md 7.1)
     max-contacts: 5000
     batch-size: 1000
+
+  storage:
+    # S3 호환 객체 저장소 (로컬 MinIO, 운영 S3). 접속 정보는 환경변수 또는 application-local.yml 로 주입 (기본값 없음)
+    endpoint: ${STORAGE_ENDPOINT}
+    bucket: ${STORAGE_BUCKET}
+    access-key: ${STORAGE_ACCESS_KEY}
+    secret-key: ${STORAGE_SECRET_KEY}
+    region: ${STORAGE_REGION:ap-northeast-2}
+    # 앱이 이미지를 읽는 주소 접두사 (CDN 이 있으면 CDN). 비어 있으면 {endpoint}/{bucket}
+    public-base-url: ${STORAGE_PUBLIC_BASE_URL:}
+    # 사진 업로드 정책 (docs/api.md 4.6)
+    max-image-size: 5MB
+    presign-ttl: 5m
+    allowed-content-types: image/jpeg,image/png,image/webp
 
   crypto:
     # 휴대폰 번호 AES-GCM 키(Base64 32바이트)와 HMAC-SHA256 키(32바이트 이상). 서로 다른 값. 환경변수 주입, 기본값 없음

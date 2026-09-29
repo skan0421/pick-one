@@ -248,9 +248,9 @@ class PointConcurrencyTest {
 		insertGrant(s, amount, "DATE_SUB(NOW(6), INTERVAL 2 DAY)");
 	}
 
-	/** 오늘 적립한 것으로 기록 (일일 상한 판정에 포함) */
+	/** 오늘 적립한 것으로 기록 (일일 상한 판정에 포함). JVM 시각을 쓴다 — 앱의 @CreationTimestamp 와 같은 시계 (troubleshooting.md 17) */
 	private void grantToday(Session s, long amount) {
-		insertGrant(s, amount, "NOW(6)");
+		insertGrant(s, amount, java.time.LocalDateTime.now());
 	}
 
 	private void insertGrant(Session s, long amount, String createdAtExpression) {
@@ -258,6 +258,13 @@ class PointConcurrencyTest {
 		jdbc.update("INSERT INTO point_ledger (member_id, amount, balance_after, tx_type, ref_type, ref_id, idempotency_key, created_at) "
 				+ "VALUES (?, ?, ?, 'VOTE_REWARD', NULL, NULL, ?, " + createdAtExpression + ")",
 				s.memberId, amount, balance(s.memberId), "test:" + UUID.randomUUID());
+	}
+
+	private void insertGrant(Session s, long amount, java.time.LocalDateTime createdAt) {
+		jdbc.update("UPDATE point_wallet SET balance = balance + ? WHERE member_id = ?", amount, s.memberId);
+		jdbc.update("INSERT INTO point_ledger (member_id, amount, balance_after, tx_type, ref_type, ref_id, idempotency_key, created_at) "
+				+ "VALUES (?, ?, ?, 'VOTE_REWARD', NULL, NULL, ?, ?)",
+				s.memberId, amount, balance(s.memberId), "test:" + UUID.randomUUID(), createdAt);
 	}
 
 	private Created create(Session s, String body) throws Exception {

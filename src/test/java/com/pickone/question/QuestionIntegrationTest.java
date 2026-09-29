@@ -11,6 +11,7 @@ import com.pickone.global.security.jwt.JwtTokenProvider;
 import com.pickone.hide.domain.HideRelation;
 import com.pickone.hide.repository.HideRelationRepository;
 import com.pickone.member.domain.SignupStatus;
+import com.pickone.support.ImageUploadTestSupport;
 import com.pickone.support.IntegrationTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ class QuestionIntegrationTest {
 	private static final String TEXT_BODY = """
 			{"questionType":"TEXT","content":"%s","options":[{"content":"카페"},{"content":"밥집"}]}""";
 	private static final String IMAGE_BODY = """
-			{"questionType":"IMAGE","content":"%s","options":[{"imageUrl":"https://img/a.jpg"},{"imageUrl":"https://img/b.jpg"}]}""";
+			{"questionType":"IMAGE","content":"%s","options":[{"imageUrl":"%s"},{"imageUrl":"%s"}]}""";
 
 	@Autowired MockMvc mockMvc;
 	@Autowired ObjectMapper objectMapper;
@@ -64,10 +65,14 @@ class QuestionIntegrationTest {
 		}
 
 		@Test
-		void 사진형은_정확히_2장으로_등록된다() throws Exception {
-			create(activeMember(), IMAGE_BODY.formatted("면접 뭐 입지"))
+		void 사진형은_본인이_업로드한_이미지_2장으로_등록된다() throws Exception {
+			Session me = activeMember();
+			String a = ImageUploadTestSupport.uploadImage(mockMvc, objectMapper, me.accessToken, "image/jpeg", ImageUploadTestSupport.fakeImage(300));
+			String b = ImageUploadTestSupport.uploadImage(mockMvc, objectMapper, me.accessToken, "image/png", ImageUploadTestSupport.fakeImage(300));
+
+			create(me, IMAGE_BODY.formatted("면접 뭐 입지", a, b))
 					.andExpect(status().isCreated())
-					.andExpect(jsonPath("$.options[0].imageUrl").value("https://img/a.jpg"))
+					.andExpect(jsonPath("$.options[0].imageUrl").value(a))
 					.andExpect(jsonPath("$.options[0].content").doesNotExist());
 		}
 

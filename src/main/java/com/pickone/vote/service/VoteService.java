@@ -2,6 +2,10 @@ package com.pickone.vote.service;
 
 import com.pickone.global.error.BusinessException;
 import com.pickone.global.error.ErrorCode;
+import com.pickone.global.paging.CursorCodec;
+import com.pickone.global.paging.CursorPage;
+import com.pickone.global.paging.KeysetCursor;
+import com.pickone.global.paging.PageSize;
 import com.pickone.global.time.KstDates;
 import com.pickone.point.repository.PointDailyCounterStore;
 import com.pickone.point.service.OptimisticRetryExecutor;
@@ -9,12 +13,20 @@ import com.pickone.question.domain.Question;
 import com.pickone.question.domain.QuestionStatus;
 import com.pickone.question.repository.QuestionRepository;
 import com.pickone.vote.domain.Vote;
+import com.pickone.vote.dto.MyVoteItemResponse;
 import com.pickone.vote.dto.VoteResponse;
 import com.pickone.vote.dto.VoteResultResponse;
+import com.pickone.vote.repository.OptionCount;
+import com.pickone.vote.repository.VoteQueryRepository.MyVoteRow;
 import com.pickone.vote.repository.VoteRepository;
 import com.pickone.vote.service.VoteResultCalculator.Tally;
 import com.pickone.vote.service.VoteTransaction.VoteOutcome;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -37,6 +49,7 @@ public class VoteService {
 	private final PointDailyCounterStore dailyCounterStore;
 	private final QuestionRepository questionRepository;
 	private final VoteRepository voteRepository;
+	private final CursorCodec cursorCodec;
 
 	public VoteResponse vote(Long memberId, Long questionId, Long optionId) {
 		VoteOutcome outcome = retryExecutor.execute("vote question=" + questionId,
@@ -74,6 +87,38 @@ public class VoteService {
 		// 작성자는 자기 고민에 투표할 수 없으므로 myOptionId 는 null
 		Long myOptionId = myVote.map(v -> v.getOption().getId()).orElse(null);
 		return VoteResultResponse.of(question, myOptionId, tally);
+	}
+
+	/**
+	 * 내가 투표한 고민 목록 (docs/api.md 5.3). 쿼리 수는 페이지당 3회로 고정:
+	 * vote 행 조회(ID 단계) + 고민·작성자·선택지 fetch join + 페이지 전체 득표 집계.
+	 */
+	@Transactional(readOnly = true)
+	public CursorPage<MyVoteItemResponse> myVotes(Long memberId, String cursor, Integer size) {
+		int pageSize = PageSize.normalize(size);
+		KeysetCursor after = cursor == null ? null : cursorCodec.decode(cursor, KeysetCursor.class);
+		List<MyVoteRow> rows = voteRepository.findMyVotes(memberId, after, pageSize + 1);
+
+		boolean hasNext = rows.size() > pageSize;
+		List<MyVoteRow> visible = hasNext ? rows.subList(0, pageSize) : rows;
+		if (visible.isEmpty()) {
+			return CursorPage.of(List.of(), null, false);
+		}
+		List<Long> questionIds = visible.stream().map(MyVoteRow::questionId).toList();
+		Map<Long, Question> questions = questionRepository.findAllWithAuthorAndOptionsByIdIn(questionIds).stream()
+				.collect(Collectors.toMap(Question::getId, Function.identity()));
+		Map<Long, List<OptionCount>> counts = VoteResultCalculator.groupByQuestion(voteRepository.countByQuestions(questionIds));
+
+		LocalDateTime now = LocalDateTime.now();
+		List<MyVoteItemResponse> items = visible.stream()
+				.map(row -> {
+					Question q = questions.get(row.questionId());
+					return MyVoteItemResponse.of(row, q, VoteResultCalculator.tally(q.getOptions(), counts.getOrDefault(q.getId(), List.of())), now);
+				})
+				.toList();
+		MyVoteRow last = visible.get(visible.size() - 1);
+		String next = hasNext ? cursorCodec.encode(new KeysetCursor(last.votedAt(), last.voteId())) : null;
+		return CursorPage.of(items, next, hasNext);
 	}
 
 }

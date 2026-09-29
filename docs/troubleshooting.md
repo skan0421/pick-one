@@ -271,3 +271,79 @@ Swagger 기본값을 꺼짐(`${SWAGGER_ENABLED:false}`)으로 바꾸고 로컬�
 로컬 `application-local.yml` 에 `pickone.swagger.enabled: true` 가 있는 상태에서 전체 188건 통과, `SwaggerDisabledIntegrationTest` 는 401 확인. 테스트 결과가 개발자 PC 의 로컬 파일 유무와 무관해졌다.
 
 **관련 커밋** `1bf1cd6`(Swagger 기본값 변경으로 드러남), 이 항목을 추가한 fix 커밋
+
+---
+
+## 14. MinIO 공식 Docker 이미지를 받을 수 없음 (`minio/minio`, `quay.io/minio/minio` 404)
+
+**문제 상황**
+사진 업로드용 S3 호환 저장소로 MinIO 를 docker-compose 와 Testcontainers 에 넣었는데, 통합 테스트 컨텍스트가 `Can't get Docker image: minio/minio:RELEASE.2025-09-07T16-13-09Z ... pull access denied for minio/minio, repository does not exist` 로 뜨지 않았다. 태그를 바꿔도(`RELEASE.2025-04-22T22-12-26Z`, `latest`), `quay.io/minio/minio` 로 바꿔도 같았고 Docker Hub API 도 저장소에 404 를 돌려줬다.
+
+**원인**
+2026-09 기준 MinIO 의 공식 컨테이너 이미지 저장소(Docker Hub `minio/minio`, `minio/mc`, quay.io)가 공개 pull 이 되지 않는다. Testcontainers 의 `MinIOContainer` 모듈은 이 공식 이미지의 실행 명령(`server --console-address :9001 /data`)을 전제한다.
+
+**해결**
+- 받아지는 MinIO 이미지 중 `bitnamilegacy/minio:2025.7.23-debian-12-r5`(+ `bitnamilegacy/minio-client:2025.7.21-debian-12-r3`)를 compose 와 테스트 양쪽에 같은 태그로 쓴다. 데이터 경로는 `/bitnami/minio/data`, 헬스체크는 `/minio/health/live`.
+- 테스트는 `MinIOContainer` 대신 `GenericContainer` 로 띄우고(`MINIO_ROOT_USER/PASSWORD`, 9000 노출, HTTP 헬스체크 대기) `DynamicPropertyRegistrar` 로 `pickone.storage.*` 를 주입한다. 버킷 생성과 `images/*` 익명 읽기 정책은 `TestStorageConfiguration` 이 컨텍스트 기동 시 적용한다.
+- 앱 코드는 `ImageStorage` 포트 뒤의 AWS SDK v2 구현이라 이미지가 무엇이든(어떤 S3 호환 저장소든) 영향이 없다. Bitnami legacy 이미지는 갱신이 멈춘 이미지이므로, 운영은 S3 를 쓰고 로컬 이미지는 compose 의 `image:` 한 줄만 바꾸면 된다.
+
+**결과**
+업로드 통합 테스트 8건 통과: 발급 → 실제 presigned PUT(200) → 사진형 고민 등록, 형식·크기 불일치 PUT 은 403, 익명 GET 은 `images/*` 만 200 이고 버킷 목록·`private/*` 는 403.
+
+**관련 커밋** 사진 업로드 feat 커밋
+
+---
+
+## 15. AWS SDK v2: `ForcePathStyle has been configured on both S3Configuration and the client`
+
+**문제 상황**
+`S3Client.builder().serviceConfiguration(S3Configuration.pathStyleAccessEnabled(true)).forcePathStyle(true)` 로 만들자 기동 시 `IllegalStateException: ForcePathStyle has been configured on both S3Configuration and the client/global level` 이 났다.
+
+**원인**
+SDK 2.x 는 path-style 을 `S3Configuration`(구 방식)과 클라이언트 빌더의 `forcePathStyle`(신 방식) 두 곳에서 받는데, 둘 다 주면 거부한다. `S3Presigner.Builder` 에는 `forcePathStyle` 이 없어 `serviceConfiguration` 만 쓸 수 있다.
+
+**해결**
+클라이언트는 `forcePathStyle(true)` 만, 프리사이너는 `serviceConfiguration(S3Configuration.pathStyleAccessEnabled(true))` 만 설정한다. MinIO 는 virtual-host 스타일이 기본이 아니라 path-style(`{endpoint}/{bucket}/{key}`)이 필요하다.
+
+**결과**
+컨텍스트 기동 정상, presigned URL 이 `http://host:port/{bucket}/images/...` 형태로 생성되어 MinIO 가 서명을 검증한다.
+
+**관련 커밋** 사진 업로드 feat 커밋
+
+---
+
+## 16. EXPLAIN 테스트가 데이터가 적을 때 풀스캔을 보여줌 (인덱스 검증의 함정)
+
+**문제 상황**
+내가 투표한 고민 목록용 인덱스 `idx_vote_member_id_created_at`(V5)을 추가하고, 실제 서비스 SQL 을 `EXPLAIN` 하는 테스트를 만들었더니 `type=ALL, key=null, Extra=Using where; Using filesort` 로 인덱스를 전혀 쓰지 않았다.
+
+**원인**
+테스트 DB 의 vote 테이블에는 이 회원의 표 40행이 거의 전부였다. `member_id = :me` 가 테이블의 대부분을 만족하면 옵티마이저는 인덱스 ref + 되돌아 읽기보다 풀스캔 + filesort 를 싸다고 판단한다. 인덱스가 잘못된 게 아니라 데이터 분포가 실제와 달랐다.
+
+**해결**
+테스트에서 다른 회원 60명을 DB 에 직접 만들고 같은 고민들에 투표한 행 2,400건을 `batchUpdate` 로 넣어(내 표는 전체의 1.6%) `ANALYZE TABLE` 뒤에 EXPLAIN 한다. EXPLAIN 으로 인덱스를 검증할 때는 "필터 조건이 걸러내는 비율" 이 실제 서비스와 비슷해야 한다는 점을 테스트 주석과 api.md 5.3 에 남겼다.
+
+**결과**
+첫 페이지 `type=ref, key=idx_vote_member_id_created_at, rows=40, Extra=Using where`, 커서 이후 `type=range, rows=20`. 둘 다 filesort 없음 (MyVotesExplainTest 가 단정).
+
+**관련 커밋** 내가 투표한 고민 목록 feat 커밋
+
+---
+
+## 17. KST 자정 이후 일일 적립 상한 테스트가 실패 — DB 시계(UTC)와 JVM 시계(KST) 불일치
+
+**문제 상황**
+전체 테스트를 KST 자정이 지난 시각에 돌리자 `일일_적립_상한에_도달하면_투표는_되지만_적립은_없다` 와 동시성 테스트 `일일_상한_직전에_동시에_투표하면_…` 이 실패했다(`earned` 가 true, 적립 3건). 낮에는 항상 통과하던 테스트다.
+
+**원인**
+두 테스트는 "오늘 이미 적립한" 원장 행을 `INSERT ... created_at = NOW(6)` 으로 넣는다. Testcontainers MariaDB 는 기본 시간대가 UTC 라 `NOW()` 가 UTC 시각인데, 앱은 `@CreationTimestamp`(JVM, KST) 로 쓰고 `KstDates.startOfTodayInSystemZone()`(KST 자정) 과 비교한다. KST 00:00~09:00 에는 DB 의 `NOW()` 가 아직 "어제" 라 상한 판정에서 빠졌다. 서비스 코드는 항상 JVM 시계로 쓰므로 실제 데이터에는 문제가 없고, 테스트 픽스처만 다른 시계를 썼다.
+
+**해결**
+- 픽스처의 `created_at` 을 `LocalDateTime.now()` 파라미터로 넣어 앱과 같은 시계를 쓴다.
+- Testcontainers MariaDB 에 `TZ=Asia/Seoul` 을 줘 docker-compose 와 시간대를 맞춘다 (compose 는 이미 `TZ: Asia/Seoul`).
+- 원칙: "오늘" 을 판정하는 코드와 그 테스트 픽스처는 같은 시계를 써야 한다. DB 함수(`NOW()`)로 시각을 만드는 픽스처는 시간대가 다른 환경에서 시간대 경계 근처에 깨진다.
+
+**결과**
+자정 이후에도 전체 테스트 통과. 같은 회귀를 막기 위해 픽스처 주석에 근거를 남겼다.
+
+**관련 커밋** 내가 투표한 고민 목록 feat 커밋

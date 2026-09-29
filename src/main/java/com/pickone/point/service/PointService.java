@@ -5,6 +5,7 @@ import com.pickone.global.error.ErrorCode;
 import com.pickone.global.paging.CursorCodec;
 import com.pickone.global.paging.CursorPage;
 import com.pickone.global.paging.KeysetCursor;
+import com.pickone.global.paging.PageSize;
 import com.pickone.global.time.KstDates;
 import com.pickone.point.PointProperties;
 import com.pickone.point.domain.PointLedger;
@@ -27,9 +28,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @EnableConfigurationProperties(PointProperties.class)
 public class PointService {
-
-	public static final int DEFAULT_PAGE_SIZE = 20;
-	public static final int MAX_PAGE_SIZE = 50;
 
 	private final PointWalletRepository pointWalletRepository;
 	private final PointLedgerRepository pointLedgerRepository;
@@ -55,7 +53,7 @@ public class PointService {
 	/** 내역: created_at DESC, id DESC 키셋 커서 (idx_point_ledger_member_id_created_at) */
 	@Transactional(readOnly = true)
 	public CursorPage<PointLedgerItemResponse> ledger(Long memberId, String cursor, Integer size) {
-		int pageSize = normalizeSize(size);
+		int pageSize = PageSize.normalize(size);
 		Limit limit = Limit.of(pageSize + 1);
 		List<PointLedger> page;
 		if (cursor == null) {
@@ -74,13 +72,6 @@ public class PointService {
 			next = cursorCodec.encode(new KeysetCursor(last.getCreatedAt(), last.getId()));
 		}
 		return CursorPage.of(visible.stream().map(PointLedgerItemResponse::from).toList(), next, hasNext);
-	}
-
-	private static int normalizeSize(Integer size) {
-		if (size == null || size < 1) {
-			return DEFAULT_PAGE_SIZE;
-		}
-		return Math.min(size, MAX_PAGE_SIZE);
 	}
 
 }

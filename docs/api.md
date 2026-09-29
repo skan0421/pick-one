@@ -87,6 +87,9 @@
 | `QUESTION_OPTION_COUNT_INVALID` | 400 | TEXT 2~4개 / IMAGE 2개 규칙 위반 |
 | `QUESTION_OPTION_TYPE_MISMATCH` | 400 | TEXT 인데 image_url, IMAGE 인데 content 가 옴 |
 | `QUESTION_CLOSED` | 409 | 종료된 고민에 투표/boost |
+| `IMAGE_TYPE_NOT_ALLOWED` | 400 | 업로드 URL 발급 시 jpeg/png/webp 가 아닌 형식 |
+| `IMAGE_TOO_LARGE` | 400 | 업로드 URL 발급 시 크기 상한(설정값, 기본 5MB) 초과 |
+| `IMAGE_URL_INVALID` | 400 | 고민 등록의 `imageUrl` 이 본인이 발급받아 업로드한 주소가 아님 (외부 URL, 다른 회원 키, 미업로드 키) |
 | `VOTE_ALREADY_VOTED` | 409 | 같은 고민에 두 번 투표 (`uk_vote_member_id_question_id`) |
 | `VOTE_OPTION_MISMATCH` | 400 | 선택지가 해당 고민의 것이 아님 (`fk_vote_option` 복합 FK) |
 | `VOTE_OWN_QUESTION` | 403 | 자기 고민에 투표 |
@@ -146,8 +149,15 @@
 | 닉네임 | 2~30자, 한글/영문/숫자 |
 | 고민 본문 | 1~300자 |
 | 텍스트 선택지 | 1~20자, 2~4개 |
-| 사진 선택지 | `image_url` 500자, 정확히 2개 |
+| 사진 선택지 | `image_url` 500자, 정확히 2개. 4.6 으로 발급받아 업로드한 본인 주소만 허용 |
 | 휴대폰 번호 | 한국 휴대폰 번호(010/011/016/017/018/019), 서버에서 E.164(`+8210...`) 로 정규화. 아니면 `PHONE_INVALID_FORMAT` |
+
+### 1.9 CORS
+Expo 웹 버전이 브라우저에서 API 를 호출하므로 `/api/**` 에만 CORS 를 연다 (Swagger 경로 등에는 CORS 헤더가 붙지 않는다).
+- 허용 origin: `pickone.cors.allowed-origins`(환경변수 `CORS_ALLOWED_ORIGINS`, 쉼표 구분). 로컬 기본값은 Expo 웹 개발 서버 `http://localhost:8081`. 정확한 문자열 비교이며 와일드카드 패턴은 쓰지 않는다
+- 허용 메서드 `GET, POST, PUT, PATCH, DELETE, OPTIONS`, 허용 헤더 `Authorization, Content-Type, Idempotency-Key`, preflight 캐시 1시간
+- **`Access-Control-Allow-Credentials` 는 내지 않는다.** 인증은 `Authorization: Bearer` 헤더이고 쿠키·세션을 쓰지 않는다. 네이티브 앱(RN)은 CORS 대상이 아니다
+- Spring Security 의 `CorsFilter` 가 인가 필터보다 앞에 있어, 허용 origin 의 preflight(OPTIONS) 는 토큰 없이 200 으로 통과하고 허용되지 않은 origin 의 preflight 는 403 이다
 
 ---
 
@@ -414,8 +424,8 @@ interface SmsSender { void send(String phoneE164, String message); }
   }
   ```
 - 처리: 선택지 개수·유형 규칙은 API 에서 검증 (erd.md 설계 메모). `sort_order` 는 요청 순서대로 1부터 부여
-- 이미지 업로드 자체는 1차 범위 밖이다. 클라이언트가 접근 가능한 URL 을 넘긴다고 가정하고, 이후 presigned URL 발급 API 를 추가한다
-- 주요 에러: `VALIDATION_ERROR`, `QUESTION_OPTION_COUNT_INVALID`, `QUESTION_OPTION_TYPE_MISMATCH`, `SIGNUP_INCOMPLETE`
+- 이미지는 4.6 의 업로드 URL 로 먼저 올린 뒤 그 `imageUrl` 을 넘긴다. 서버는 개수·형식 검사를 통과한 뒤 각 `imageUrl` 이 `{publicBaseUrl}/images/{내 회원 ID}/{uuid}.{ext}` 형식이고 저장소에 실제로 있는지(HEAD) 확인한다. 아니면 `IMAGE_URL_INVALID`
+- 주요 에러: `VALIDATION_ERROR`, `QUESTION_OPTION_COUNT_INVALID`, `QUESTION_OPTION_TYPE_MISMATCH`, `IMAGE_URL_INVALID`, `SIGNUP_INCOMPLETE`
 
 ### 4.2 GET /questions/feed — 투표 피드
 - 인증: ACTIVE
@@ -544,6 +554,38 @@ interface SmsSender { void send(String phoneE164, String message); }
 - 처리: `deleted_at = NOW()` 소프트 삭제. 투표·원장은 남긴다 (포인트 불변식 유지). boost 잔여 시간은 환불하지 않는다
 - 주요 에러: `QUESTION_NOT_FOUND`, `FORBIDDEN`
 
+### 4.6 POST /uploads/images — 사진 업로드 URL 발급
+- 인증: ACTIVE
+- 요청
+  ```json
+  { "contentType": "image/jpeg", "size": 183422 }
+  ```
+  `size` 는 바이트. 허용 형식 `image/jpeg`, `image/png`, `image/webp`(설정 `pickone.storage.allowed-content-types`), 최대 크기 `pickone.storage.max-image-size`(기본 5MB)
+- 응답 `200`
+  ```json
+  {
+    "uploadUrl": "http://localhost:9000/pickone-images/images/7/3f1c...-9a.jpg?X-Amz-Algorithm=...&X-Amz-Signature=...",
+    "imageUrl": "http://localhost:9000/pickone-images/images/7/3f1c...-9a.jpg",
+    "expiresAt": "2026-09-29T18:05:00+09:00"
+  }
+  ```
+- 흐름
+  1. 서버는 파일을 받지 않는다. 형식·크기를 검증하고 객체 키 `images/{memberId}/{uuid}.{ext}` 로 **presigned PUT URL**(유효 시간 `pickone.storage.presign-ttl`, 기본 5분)을 만든다
+  2. 클라이언트가 `uploadUrl` 로 직접 `PUT` 한다. 발급 시 선언한 `Content-Type` 과 `Content-Length` 가 서명에 포함되므로 다르게 올리면 저장소가 403 으로 거절한다
+  3. 고민 등록(4.1)에 `imageUrl` 을 넣는다. 서버는 URL 형식(내 회원 폴더 + UUID)과 실제 존재(HEAD)를 확인한다. 키에 회원 ID 가 들어 있어 남의 이미지·외부 URL 은 형식만으로 걸러진다
+- 저장소: `ImageStorage` 인터페이스(`SmsSender` 와 같은 포트 분리) 뒤에 AWS SDK v2 구현 하나. 로컬은 docker-compose 의 MinIO, 운영은 S3 호환 저장소를 `pickone.storage.*`(endpoint, bucket, access/secret key, public-base-url) 설정만으로 교체한다. 접근 키는 환경변수·`application-local.yml` 에만 둔다
+- **이미지 읽기 방식 (결정: `images/*` 접두사만 공개 읽기)**
+
+  | | 공개 읽기 (접두사 한정) | 읽기용 presigned URL |
+  |---|---|---|
+  | 앱 표시 | 저장된 `imageUrl` 을 그대로 `<Image>` 에 사용, CDN 캐시 가능 | 응답마다 서명 URL 생성(피드 20건 × 2장), 캐시 불가, 만료되면 재요청 |
+  | 접근 제어 | URL 을 아는 누구나 읽음. 삭제·HIDDEN 뒤에도 링크는 유효 | 조회 시점에 권한 판단 가능 |
+  | 열거 방지 | 키가 `{uuid}` 라 추측 불가 + `ListBucket` 을 열지 않아 목록 조회 불가 | 불필요 |
+
+  게시된 고민 사진은 피드에서 모든 ACTIVE 회원에게 보이는 **공개 콘텐츠**라 비공개 접근 제어의 이득이 작고, 읽기 서명은 피드 한 페이지에 서명 40개를 만들고 캐시를 막는다. 그래서 버킷 정책으로 `arn:aws:s3:::{bucket}/images/*` 에 `s3:GetObject` 만 익명 허용한다 (`s3:ListBucket` 없음 — `docker/minio/public-read-images.json`, 테스트는 같은 정책을 컨테이너에 적용해 목록 조회 403·`images/` 밖 객체 403 을 확인). 삭제·HIDDEN 고민의 객체 정리는 배포 단계 과제(수명 주기 규칙 또는 정리 배치)
+- 배포 단계 과제: 발급 횟수 제한(회원당 분당), 발급만 받고 등록하지 않은 객체 정리
+- 주요 에러: `VALIDATION_ERROR`, `IMAGE_TYPE_NOT_ALLOWED`, `IMAGE_TOO_LARGE`
+
 ---
 
 ## 5. 투표
@@ -617,6 +659,52 @@ interface SmsSender { void send(String phoneE164, String message); }
   ```
 - `percent` 는 소수점 1자리. 반올림 합이 100 이 아니면 가장 큰 항목에서 보정한다. 작성자는 `myOptionId = null`
 - 주요 에러: `QUESTION_NOT_FOUND`, `RESULT_NOT_ALLOWED`
+
+### 5.3 GET /members/me/votes — 내가 투표한 고민 목록
+- 인증: ACTIVE
+- 요청: `?cursor=&size=20` (정렬 투표 시각 `vote.created_at DESC, vote.id DESC`, `idx_vote_member_id_created_at` V5)
+- 응답 `200`
+  ```json
+  {
+    "items": [
+      {
+        "voteId": 9001,
+        "votedAt": "2026-09-29T17:55:00+09:00",
+        "question": {
+          "id": 42, "questionType": "TEXT", "content": "소개팅 첫 만남, 카페 vs 밥집?", "status": "ACTIVE", "boosted": false,
+          "options": [ { "id": 101, "sortOrder": 1, "content": "카페" }, { "id": 102, "sortOrder": 2, "content": "밥집" } ],
+          "author": { "nickname": "고민많은사람" },
+          "createdAt": "2026-09-27T17:30:00+09:00"
+        },
+        "myOptionId": 101,
+        "result": { "totalVotes": 39, "options": [ { "optionId": 101, "count": 26, "percent": 66.7 }, { "optionId": 102, "count": 13, "percent": 33.3 } ] }
+      }
+    ],
+    "nextCursor": "eyJ...",
+    "hasNext": true
+  }
+  ```
+- **제외 규칙과 근거**: 상세 API(4.3)가 404 를 주는 항목은 목록에서도 뺀다. "목록에 보이는 항목은 모두 열 수 있다" 를 지키기 위해서다. 투표·적립 기록(vote, point_ledger)은 그대로 남으므로 포인트 불변식에는 영향이 없다
+
+  | 대상 | 처리 | 근거 |
+  |---|---|---|
+  | 삭제된 고민 (`deleted_at IS NOT NULL`) | 제외 | 상세 404. 내 고민 목록(4.4)도 삭제된 글은 제외 |
+  | 신고로 HIDDEN 된 고민 | 제외 | 상세 404. 운영자가 REJECTED 로 되돌리면 다시 보인다 |
+  | 차단 관계(양방향) 작성자의 고민 | 제외 | 상세 404. 차단 해제 시 다시 보인다 |
+  | 작성자가 지인 숨기기를 켜고 나를 등록 | 제외 | 상세 404. 작성자가 끄면 다시 보인다 |
+  | CLOSED 고민 | **포함** (`status: CLOSED`) | 결과 조회(5.2)가 가능하므로 목록에서도 연다 |
+
+- **쿼리 수**: 페이지당 3회로 고정 — vote 행(ID·선택지·시각) 조회 1회 + 고민·작성자·선택지 fetch join 1회 + 페이지 전체 득표 집계(`GROUP BY question_id, option_id`) 1회. 항목 수와 무관하며 `MyVotesQueryCountTest` 가 3회 이하를 고정한다
+- **EXPLAIN** (MariaDB 11.4, `MyVotesExplainTest` 가 실제 서비스 SQL 을 EXPLAIN 해 단정. 내 표 40행 + 다른 회원 표 2,400행)
+
+  | 단계 | key | type | rows | Extra |
+  |---|---|---|---|---|
+  | 첫 페이지 | `idx_vote_member_id_created_at` | ref | 40 | Using where (filesort 없음) |
+  | 커서 이후 | `idx_vote_member_id_created_at` | range | 20 | Using where (filesort 없음) |
+  | (V5 전, 참고) | 없음 | ALL | 40 | Using where; Using filesort |
+
+  `member_id = :me` 로 인덱스 ref 접근 후 인덱스 순서(`created_at`, 뒤에 붙는 PK `id`)가 `ORDER BY` 와 일치해 filesort 없이 LIMIT 만큼 읽고 멈춘다. V1 인덱스(`uk_vote_member_id_question_id`)만 있을 때는 `Using filesort` 였다. 차단·지인 숨김 서브쿼리는 MATERIALIZED 로 각자 PK/인덱스를 탄다
+- 주요 에러: `VALIDATION_ERROR`(잘못된 커서)
 
 ---
 
@@ -759,7 +847,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.1 프로필 속성
 회원이 성별·출생연도·MBTI·학력을 직접 입력한다. 지금은 본인 입력이지만 나중에 본인인증(PASS 등)과 연동하면 검증된 값으로 승격할 수 있도록 속성별 `verified` 플래그를 둔다.
 
-- 테이블 초안 `member_profile` (V5)
+- 테이블 초안 `member_profile` (V6)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | member_id | BIGINT PK, FK | |
@@ -776,7 +864,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.2 질문 대상 지정
 작성자가 "20대 여성에게만 물어보기" 처럼 대상을 정한다.
 
-- 테이블 초안 `question_target` (V6)
+- 테이블 초안 `question_target` (V7)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | question_id | BIGINT PK, FK | 행이 없으면 조건 없음 |
@@ -851,11 +939,14 @@ member_social_account
 ### V4 — 신고 상세 컬럼 (적용됨)
 `V4__report_detail.sql`: `report.detail VARCHAR(200) NULL`. 8.4 의 선택 입력 `detail` 저장용
 
-### V5 — 프로필 속성 (2차)
-파일명 예: `V5__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+### V5 — 내가 투표한 고민 목록 인덱스 (적용됨)
+`V5__vote_member_created_index.sql`: `idx_vote_member_id_created_at (member_id, created_at)`. V1 의 vote 인덱스는 `uk_vote_member_id_question_id(member_id, question_id)` 와 `idx_vote_question_id_option_id` 뿐이라 회원의 투표를 최신순으로 읽을 인덱스가 없었다. 5.3 EXPLAIN 참고
 
-### V6 — 질문 대상 지정 (2차)
-파일명 예: `V6__question_target.sql`. 9.2 의 `question_target` 테이블 생성
+### V6 — 프로필 속성 (2차)
+파일명 예: `V6__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+
+### V7 — 질문 대상 지정 (2차)
+파일명 예: `V7__question_target.sql`. 9.2 의 `question_target` 테이블 생성
 
 ### 이후 후보
 - 랭킹·알림·카테고리: 기획서 "이후 추가 기능"
@@ -883,8 +974,10 @@ member_social_account
 | GET | /questions/{id} | ACTIVE | 상세 |
 | GET | /members/me/questions | ACTIVE | 내 고민 목록 (커서) |
 | DELETE | /questions/{id} | ACTIVE | 삭제 |
+| POST | /uploads/images | ACTIVE | 사진 업로드 URL 발급 (presigned PUT) |
 | POST | /questions/{id}/votes | ACTIVE | 투표 |
 | GET | /questions/{id}/results | ACTIVE | 결과 |
+| GET | /members/me/votes | ACTIVE | 내가 투표한 고민 목록 (커서) |
 | GET | /points/balance | ACTIVE | 잔액 |
 | GET | /points/ledger | ACTIVE | 내역 (커서) |
 | POST | /questions/{id}/boosts | ACTIVE | 상단 노출 (Idempotency-Key) |
