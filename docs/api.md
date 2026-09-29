@@ -612,13 +612,14 @@ interface SmsSender { void send(String phoneE164, String message); }
       "myOptionId": 101,
       "options": [ { "optionId": 101, "count": 26, "percent": 66.7 }, { "optionId": 102, "count": 13, "percent": 33.3 } ]
     },
-    "pointReward": { "earned": true, "amount": 1, "reason": null }
+    "pointReward": { "earned": true, "amount": 1 }
   }
   ```
-  일일 상한에 걸리면 투표는 성공하고 `pointReward` 만 달라진다.
+  일일 상한에 걸리면 투표는 성공하고 `pointReward` 만 달라진다. `reason` 은 적립되지 않았을 때만 온다 (null 필드는 응답에서 생략).
   ```json
   "pointReward": { "earned": false, "amount": 0, "reason": "DAILY_LIMIT_REACHED" }
   ```
+  `result.options` 는 sortOrder 순서이고 0표인 선택지도 들어 있다. 선택지의 글·사진은 들어 있지 않으므로 클라이언트는 `optionId` 로 피드의 선택지와 짝짓는다.
 
 - **트랜잭션 흐름** (1~5 가 `VoteTransaction.execute` 한 트랜잭션. 하나라도 실패하면 전체 롤백)
   1. 고민 조회: 없음·삭제·HIDDEN·양방향 차단·지인 숨김 → `QUESTION_NOT_FOUND`(상세와 같은 규칙), CLOSED → `QUESTION_CLOSED`, 내 고민 → `VOTE_OWN_QUESTION`, 선택지가 이 고민 것이 아님 → `VOTE_OPTION_MISMATCH`, 지갑 없음 → `POINT_WALLET_NOT_FOUND`
@@ -664,7 +665,9 @@ interface SmsSender { void send(String phoneE164, String message); }
     ]
   }
   ```
-- `percent` 는 소수점 1자리. 반올림 합이 100 이 아니면 가장 큰 항목에서 보정한다. 작성자는 `myOptionId = null`
+- `percent` 는 소수점 1자리. 반올림 합이 100 이 아니면 가장 큰 항목에서 보정한다
+- 작성자가 조회하면 `myOptionId` 가 없다 (null 필드는 응답에서 생략)
+- 사진형 고민의 선택지에는 `content` 대신 `imageUrl` 이 온다
 - 주요 에러: `QUESTION_NOT_FOUND`, `RESULT_NOT_ALLOWED`
 
 ### 5.3 GET /members/me/votes — 내가 투표한 고민 목록
