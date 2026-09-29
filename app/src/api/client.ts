@@ -4,6 +4,7 @@
 //  1. Authorization 헤더 자동 첨부
 //  2. 서버 에러 응답을 ApiError 로 변환
 //  3. access 토큰이 만료(401 AUTH_EXPIRED_TOKEN)되면 재발급 후 원래 요청을 한 번 재시도
+//  4. 제한 시간(15초) 안에 응답이 없으면 그만 기다리고 NETWORK_ERROR 로 실패 (api/timeout.ts)
 //
 // 가장 중요한 규칙: 재발급 요청은 동시에 하나만 나가야 한다.
 // 서버는 이미 쓴 refresh 토큰이 다시 오면 탈취로 보고 그 회원의 모든 기기를 로그아웃시킨다 (docs/api.md 1.3).
@@ -11,6 +12,7 @@
 import { clearSession, getTokens, setTokens } from '../auth/session';
 import { getApiBaseUrl } from './config';
 import { ApiError, NETWORK_ERROR, parseErrorResponse } from './errors';
+import { REQUEST_TIMEOUT_MS, TimeoutError, withTimeout } from './timeout';
 
 export type RequestOptions = {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -21,6 +23,9 @@ export type RequestOptions = {
   // 요청에 덧붙일 헤더 (예: Idempotency-Key).
   // 토큰이 만료되어 재발급 후 다시 보낼 때도 같은 값이 실린다. 같은 요청의 재전송이므로 그래야 한다
   headers?: Record<string, string>;
+  // HTTP 호출 한 번의 제한 시간(ms). 기본값은 REQUEST_TIMEOUT_MS(15초).
+  // 재발급 후 다시 보낼 때는 처음부터 다시 잰다
+  timeoutMs?: number;
 };
 
 // 재발급 응답에서 클라이언트가 쓰는 부분
@@ -111,7 +116,7 @@ async function refresh(refreshToken: string): Promise<void> {
     await setTokens({ accessToken: response.accessToken, refreshToken: response.refreshToken });
   } catch (error) {
     // 서버가 거절한 경우(만료·폐기·재사용 감지·정지 회원)에만 세션을 끝낸다.
-    // 네트워크 오류는 토큰이 아직 유효할 수 있으므로 지우지 않는다.
+    // 네트워크 오류(시간 초과 포함)는 토큰이 아직 유효할 수 있으므로 지우지 않는다.
     // 다만 서버가 교체를 마쳤는데 응답만 유실됐다면 다음 재발급은 재사용으로 감지된다.
     // 클라이언트에서 막을 수 없는 경우이며, 그때는 아래 분기로 와서 다시 로그인하게 된다
     if (error instanceof ApiError && error.code !== NETWORK_ERROR) {
@@ -133,31 +138,44 @@ async function send<T>(path: string, options: RequestOptions, accessToken: strin
     headers.Authorization = `Bearer ${accessToken}`;
   }
 
-  let response: Response;
   try {
-    response = await fetch(getApiBaseUrl() + path, {
-      method: options.method ?? 'GET',
-      headers,
-      body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
+    // 제한 시간은 응답 본문을 다 읽을 때까지 잰다. 헤더만 오고 본문이 멈추는 경우도 끝나야 한다
+    return await withTimeout(options.timeoutMs ?? REQUEST_TIMEOUT_MS, async (signal) => {
+      let response: Response;
+      try {
+        response = await fetch(getApiBaseUrl() + path, {
+          method: options.method ?? 'GET',
+          headers,
+          body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
+          signal,
+        });
+      } catch {
+        // fetch 는 HTTP 오류(4xx, 5xx)에는 예외를 던지지 않는다. 예외가 났다면 서버에 닿지 못한 것이다
+        throw new ApiError(
+          0,
+          NETWORK_ERROR,
+          '서버에 연결할 수 없습니다. 서버가 켜져 있는지, EXPO_PUBLIC_API_URL 이 맞는지 확인하세요.',
+        );
+      }
+
+      if (!response.ok) {
+        throw await parseErrorResponse(response);
+      }
+
+      // 204 No Content (로그아웃 등) 는 본문이 없다
+      if (response.status === 204) {
+        return undefined as T;
+      }
+      // 본문이 비어 있는 2xx 응답도 견딘다
+      const text = await response.text();
+      return (text ? JSON.parse(text) : undefined) as T;
     });
-  } catch {
-    // fetch 는 HTTP 오류(4xx, 5xx)에는 예외를 던지지 않는다. 예외가 났다면 서버에 닿지 못한 것이다
-    throw new ApiError(
-      0,
-      NETWORK_ERROR,
-      '서버에 연결할 수 없습니다. 서버가 켜져 있는지, EXPO_PUBLIC_API_URL 이 맞는지 확인하세요.',
-    );
+  } catch (error) {
+    if (error instanceof TimeoutError) {
+      // 네트워크 오류와 같은 코드로 던진다. 둘 다 "서버가 처리했는지 모른다"는 같은 상황이고,
+      // 코드가 같아야 재발급(토큰을 지우지 않음)과 화면의 다시 시도 안내가 똑같이 동작한다
+      throw new ApiError(0, NETWORK_ERROR, '서버가 응답하지 않습니다. 네트워크 연결을 확인해 주세요.');
+    }
+    throw error;
   }
-
-  if (!response.ok) {
-    throw await parseErrorResponse(response);
-  }
-
-  // 204 No Content (로그아웃 등) 는 본문이 없다
-  if (response.status === 204) {
-    return undefined as T;
-  }
-  // 본문이 비어 있는 2xx 응답도 견딘다
-  const text = await response.text();
-  return (text ? JSON.parse(text) : undefined) as T;
 }

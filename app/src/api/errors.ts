@@ -10,7 +10,7 @@ export type FieldError = {
 };
 
 // 서버가 아니라 앱이 만들어 내는 코드
-export const NETWORK_ERROR = 'NETWORK_ERROR'; // 서버에 닿지 못함 (주소 오류, 서버 꺼짐, CORS 차단 등)
+export const NETWORK_ERROR = 'NETWORK_ERROR'; // 서버에 닿지 못했거나 제한 시간 안에 응답이 없음 (주소 오류, 서버 꺼짐, CORS 차단 등)
 export const UNKNOWN_ERROR = 'UNKNOWN_ERROR'; // 응답이 약속된 에러 형식이 아님
 
 export class ApiError extends Error {

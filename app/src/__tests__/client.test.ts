@@ -24,6 +24,7 @@ type Call = {
   authorization: string | undefined;
   headers: Record<string, string>;
   body: unknown;
+  signal: AbortSignal | undefined; // 요청을 취소하는 신호 (제한 시간)
 };
 
 function respond(status: number, body?: unknown): FakeResponse {
@@ -90,6 +91,7 @@ beforeEach(async () => {
       authorization: headers.Authorization,
       headers,
       body: typeof init.body === 'string' ? JSON.parse(init.body) : undefined,
+      signal: init.signal ?? undefined,
     };
     calls.push(call);
     return server(call);
@@ -234,6 +236,137 @@ describe('에러 응답 파싱', () => {
 
     expect(error).toBeInstanceOf(ApiError);
     expect(error.code).toBe('NETWORK_ERROR');
+  });
+});
+
+// 실제로 15초를 기다리지 않고 가짜 시계를 돌린다
+describe('제한 시간', () => {
+  // 응답하지 않는 서버. 취소 신호도 무시한다 (연결이 끊긴 줄 모르고 기다리는 상황)
+  const silent = () => new Promise<FakeResponse>(() => undefined);
+  // 응답하지 않다가, 앱이 취소하면 실제 fetch 처럼 예외로 끝나는 서버
+  const abortable = (call: Call) =>
+    new Promise<FakeResponse>((_, reject) => {
+      call.signal?.addEventListener('abort', () => reject(new Error('Aborted')));
+    });
+
+  beforeEach(async () => {
+    jest.useFakeTimers();
+    await setTokens({ accessToken: 'access-2', refreshToken: 'refresh-2' });
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('15초 동안 응답이 없으면 NETWORK_ERROR 로 실패하고 요청을 취소한다', async () => {
+    server = abortable;
+
+    const pending = failure(request('/questions/feed'));
+    await jest.advanceTimersByTimeAsync(15_000);
+    const error = await pending;
+
+    expect(error.status).toBe(0);
+    expect(error.code).toBe('NETWORK_ERROR');
+    expect(error.message).toBe('서버가 응답하지 않습니다. 네트워크 연결을 확인해 주세요.');
+    expect(calls[0].signal?.aborted).toBe(true);
+  });
+
+  it('15초가 되기 직전에는 아직 기다린다', async () => {
+    server = silent;
+    let settled = false;
+
+    const pending = failure(request('/questions/feed')).then(() => {
+      settled = true;
+    });
+    await jest.advanceTimersByTimeAsync(14_999);
+    expect(settled).toBe(false);
+    expect(calls[0].signal?.aborted).toBe(false);
+
+    await jest.advanceTimersByTimeAsync(1);
+    await pending;
+    expect(settled).toBe(true);
+  });
+
+  it('fetch 가 취소 신호를 무시해도 15초에 끝난다', async () => {
+    server = silent;
+
+    const pending = failure(request('/questions/feed'));
+    await jest.advanceTimersByTimeAsync(15_000);
+
+    expect((await pending).code).toBe('NETWORK_ERROR');
+  });
+
+  it('응답 헤더만 오고 본문이 멈춰도 15초에 끝난다', async () => {
+    server = () => ({
+      ok: true,
+      status: 200,
+      json: () => new Promise(() => undefined),
+      text: () => new Promise<string>(() => undefined),
+    });
+
+    const pending = failure(request('/questions/feed'));
+    await jest.advanceTimersByTimeAsync(15_000);
+
+    expect((await pending).code).toBe('NETWORK_ERROR');
+  });
+
+  it('timeoutMs 로 요청마다 제한 시간을 바꿀 수 있다', async () => {
+    server = silent;
+
+    const pending = failure(request('/questions/feed', { timeoutMs: 3_000 }));
+    await jest.advanceTimersByTimeAsync(3_000);
+
+    expect((await pending).code).toBe('NETWORK_ERROR');
+  });
+
+  it('제때 응답하면 취소하지 않고 타이머를 남기지 않는다', async () => {
+    await request('/members/me');
+
+    expect(calls[0].signal?.aborted).toBe(false);
+    expect(jest.getTimerCount()).toBe(0);
+  });
+
+  it('시간 초과된 요청을 스스로 다시 보내지 않는다 (다시 시도는 사용자가 정한다)', async () => {
+    server = silent;
+
+    const pending = failure(request('/questions/42/boosts', { method: 'POST', headers: { 'Idempotency-Key': 'key-1' } }));
+    await jest.advanceTimersByTimeAsync(60_000);
+    await pending;
+
+    expect(calls).toHaveLength(1);
+    expect(callsTo('/auth/refresh')).toHaveLength(0);
+  });
+
+  it('재발급이 시간 초과되면 토큰을 지우지 않는다 (네트워크 오류와 같다)', async () => {
+    const expired = jest.fn();
+    setSessionExpiredHandler(expired);
+    await setTokens({ accessToken: 'access-1', refreshToken: 'refresh-1' });
+    server = (call) => (call.url.endsWith('/auth/refresh') ? silent() : respond(401, EXPIRED));
+
+    const pending = failure(request('/a'));
+    await jest.advanceTimersByTimeAsync(15_000);
+    const error = await pending;
+
+    expect(error.code).toBe('NETWORK_ERROR');
+    expect(getTokens()).toEqual({ accessToken: 'access-1', refreshToken: 'refresh-1' });
+    expect(expired).not.toHaveBeenCalled();
+    // 재발급에 실패했으면 원래 요청을 다시 보내지 않는다
+    expect(callsTo('/a')).toHaveLength(1);
+  });
+
+  it('재발급 후 다시 보내는 요청은 제한 시간을 처음부터 다시 잰다', async () => {
+    await setTokens({ accessToken: 'access-1', refreshToken: 'refresh-1' });
+    // 요청마다 10초 뒤에 응답하는 서버. 세 번(401, 재발급, 재시도)을 합치면 30초지만 각각은 15초 안이다
+    server = async (call) => {
+      await new Promise((resolve) => setTimeout(resolve, 10_000));
+      return rotatingServer(call);
+    };
+
+    const pending = request('/a');
+    await jest.advanceTimersByTimeAsync(30_000);
+
+    await expect(pending).resolves.toEqual({ path: 'http://test-server:8080/api/v1/a' });
+    expect(callsTo('/a')).toHaveLength(2);
   });
 });
 

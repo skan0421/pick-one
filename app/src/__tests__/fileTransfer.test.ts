@@ -13,7 +13,11 @@ import type { PreparedImage } from '../compose/imagePrep';
 import { UPLOAD_FAILED } from '../compose/storageError';
 
 type FakeFile = { exists: boolean; size: number };
-type UploadCall = { uri: string; url: string; options: { httpMethod?: string; headers?: Record<string, string> } };
+type UploadCall = {
+  uri: string;
+  url: string;
+  options: { httpMethod?: string; headers?: Record<string, string>; signal?: AbortSignal };
+};
 
 // 가짜 기기 파일. jest.mock 안에서 쓰는 변수는 이름이 mock 으로 시작해야 한다
 const mockFiles: Record<string, FakeFile> = {};
@@ -83,6 +87,8 @@ beforeEach(() => {
 
 afterEach(() => {
   warn.mockRestore();
+  // 제한 시간 테스트가 켠 가짜 시계를 되돌린다
+  jest.useRealTimers();
 });
 
 describe('앱 (fileTransfer.ts)', () => {
@@ -112,9 +118,44 @@ describe('앱 (fileTransfer.ts)', () => {
     await nativeTransfer.putFile(UPLOAD_URL, image);
 
     expect(mockUploads).toEqual([
-      { uri: image.uri, url: UPLOAD_URL, options: { httpMethod: 'PUT', headers: { 'Content-Type': 'image/jpeg' } } },
+      {
+        uri: image.uri,
+        url: UPLOAD_URL,
+        // signal 은 제한 시간이 지났을 때 전송을 취소하는 신호다
+        options: { httpMethod: 'PUT', headers: { 'Content-Type': 'image/jpeg' }, signal: expect.any(AbortSignal) },
+      },
     ]);
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('60초 안에 끝나지 않으면 전송을 취소하고 NETWORK_ERROR 로 실패한다', async () => {
+    jest.useFakeTimers();
+    mockUpload = () => new Promise(() => undefined);
+
+    const pending = failure(nativeTransfer.putFile(UPLOAD_URL, image));
+    await jest.advanceTimersByTimeAsync(60_000);
+    const error = await pending;
+
+    expect(error.status).toBe(0);
+    expect(error.code).toBe(NETWORK_ERROR);
+    expect(error.message).toBe('사진 저장소가 응답하지 않습니다. 네트워크 연결을 확인해 주세요.');
+    expect(mockUploads[0].options.signal?.aborted).toBe(true);
+  });
+
+  it('API 요청의 제한 시간(15초)을 넘겨도 올리기는 계속한다', async () => {
+    jest.useFakeTimers();
+    // 45초 걸리는 업로드
+    mockUpload = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 45_000));
+      return { status: 200, body: '', headers: {} };
+    };
+
+    const pending = nativeTransfer.putFile(UPLOAD_URL, image);
+    await jest.advanceTimersByTimeAsync(45_000);
+
+    await expect(pending).resolves.toBeUndefined();
+    expect(mockUploads[0].options.signal?.aborted).toBe(false);
+    expect(jest.getTimerCount()).toBe(0);
   });
 
   it('로그인 토큰 등 다른 헤더를 붙이지 않는다 (서명이 인증을 대신한다)', async () => {
@@ -229,6 +270,21 @@ describe('웹 (fileTransfer.web.ts)', () => {
 
     expect(fetchMock).not.toHaveBeenCalled();
     expect(error.message).toContain('사진 크기가 달라졌습니다');
+  });
+
+  it('60초 안에 끝나지 않으면 전송을 취소하고 NETWORK_ERROR 로 실패한다', async () => {
+    jest.useFakeTimers();
+    fetchMock.mockImplementationOnce(() => new Promise(() => undefined));
+
+    const pending = failure(webTransfer.putFile(UPLOAD_URL, image));
+    await jest.advanceTimersByTimeAsync(59_999);
+    expect(fetchMock.mock.calls[0][1].signal.aborted).toBe(false);
+    await jest.advanceTimersByTimeAsync(1);
+    const error = await pending;
+
+    expect(error.code).toBe(NETWORK_ERROR);
+    expect(error.message).toBe('사진 저장소가 응답하지 않습니다. 네트워크 연결을 확인해 주세요.');
+    expect(fetchMock.mock.calls[0][1].signal.aborted).toBe(true);
   });
 
   it('저장소에 닿지 못하면 NETWORK_ERROR', async () => {
