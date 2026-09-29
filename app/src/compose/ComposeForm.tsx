@@ -4,7 +4,8 @@
 //   composeRules.ts  입력 규칙, 서버 오류를 입력칸으로 나누기   (Spring 의 Validator)
 //   imagePrep.ts     사진을 변환할지, 얼마나 줄일지
 //   uploadFlow.ts    발급 → 올리기 → 등록의 순서
-//   imageTools.ts    사진 고르기·읽기·변환·올리기 (기기 기능)
+//   imageTools.ts    사진 고르기·변환 (기기 기능)
+//   fileTransfer.ts  파일 크기 읽기·저장소로 올리기 (기기 기능. 웹은 fileTransfer.web.ts)
 import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { useRef, useState } from 'react';
@@ -32,7 +33,8 @@ import {
 } from './composeRules';
 import { prepareImage } from './imagePrep';
 import { EMPTY_SLOT, ImageSlots, type ImageSlot } from './ImageSlots';
-import { imageTools, pickImage, putFile } from './imageTools';
+import { putFile } from './fileTransfer';
+import { imageTools, pickImage } from './imageTools';
 import { submitImageQuestion, type UploadApi, type UploadSlot } from './uploadFlow';
 
 const EMPTY_OPTIONS = ['', ''];

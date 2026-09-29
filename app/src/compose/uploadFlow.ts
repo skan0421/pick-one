@@ -9,11 +9,12 @@ import { ApiError, errorMessage } from '../api/errors';
 import type { CreateQuestionRequest, QuestionResponse } from '../api/questions';
 import type { IssueUploadRequest, IssueUploadResponse } from '../api/uploads';
 import type { PreparedImage } from './imagePrep';
+import type { PutFile } from './storageError';
 
 export type UploadApi = {
   issueUploadUrl: (body: IssueUploadRequest) => Promise<IssueUploadResponse>;
-  // uploadUrl 로 내용을 PUT 한다. 실패하면 예외를 던진다
-  putFile: (uploadUrl: string, contentType: string, body: Blob) => Promise<void>;
+  // uploadUrl 로 사진을 PUT 한다. 형식은 image.contentType, 내용은 image 가 가리키는 파일이다. 실패하면 예외를 던진다
+  putFile: PutFile;
   createQuestion: (body: CreateQuestionRequest) => Promise<QuestionResponse>;
 };
 
@@ -82,6 +83,6 @@ export async function submitImageQuestion(
 async function uploadOne(api: UploadApi, image: PreparedImage): Promise<string> {
   // 발급 때 보낸 형식·크기가 서명에 들어간다. 아래 PUT 도 같은 값으로 보내야 한다
   const issued = await api.issueUploadUrl({ contentType: image.contentType, size: image.size });
-  await api.putFile(issued.uploadUrl, image.contentType, image.body);
+  await api.putFile(issued.uploadUrl, image);
   return issued.imageUrl;
 }
