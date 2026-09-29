@@ -254,7 +254,54 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 | 이어 받기 | 목록 끝에 가까워지면 다음 쪽을 받습니다 |
 | 삭제 | 확인 창 → `DELETE /questions/{id}` → 목록에서 제거. 이미 삭제된 고민이면 에러 없이 목록에서만 뺍니다 |
 
-상단 노출(boost)은 표시만 하고, 쓰는 버튼은 아직 없습니다.
+### 상단 노출
+
+진행 중인 내 고민에는 "100P로 24시간 상단 노출" 버튼이 있습니다. 이미 노출 중이면 "연장"으로 바뀌고, 끝나는 시각에 24시간이 이어 붙습니다.
+
+| 동작 | 설명 |
+|---|---|
+| 확인 창 | 차감(-100P), 현재 잔액, 차감 후 잔액. 창을 열 때 잔액을 다시 받습니다 |
+| 잔액 부족 | 모자란 금액을 안내하고 확인 버튼을 막습니다. 요청은 보내지 않습니다 |
+| 성공 | `POST /questions/{id}/boosts` → 잔액·포인트 내역 갱신, 카드에 "상단 노출 중 · 남은 시간" 표시. 목록은 다시 받지 않습니다 |
+| 피드 | 피드 탭으로 돌아오면 피드를 새로 받습니다 |
+
+비용(100P)과 시간(24시간)은 서버 설정값인데 미리 알려 주는 API 가 없어, 확인 창에는 앱에 적어 둔 기본값을 보여 줍니다. 실제로 빠진 금액은 응답의 `cost` 입니다.
+
+#### 포인트가 두 번 빠지지 않게 하기 (Idempotency-Key)
+
+요청을 보냈는데 응답을 받지 못하면 앱은 서버가 처리했는지 알 수 없습니다. 이때 새 요청을 보내면 100P 가 한 번 더 빠질 수 있습니다.
+그래서 요청마다 `Idempotency-Key` 헤더에 UUID 를 붙이고, 서버는 같은 키가 다시 오면 빼지 않고 처음 결과를 돌려줍니다 (`docs/api.md` 1.6).
+
+| 상황 | 키 |
+|---|---|
+| 처음 누름 | 새로 만들어 기억 |
+| 결과를 모르는 실패(네트워크 오류, 서버 오류) 뒤 다시 누름 | **같은 키**. 확인 창을 닫았다 열거나 다른 탭에 다녀와도 같습니다 |
+| 서버가 분명히 거절(잔액 부족 등) 뒤 다시 누름 | 같은 키 (빠진 것이 없으므로 그대로 써도 됩니다) |
+| 성공한 뒤 다시 누름(연장) | 새 키 |
+| `IDEMPOTENCY_KEY_CONFLICT` | 키를 버리고 다음에 새 키 |
+
+키는 앱이 켜져 있는 동안만 기억합니다. 앱을 완전히 종료하면 사라집니다.
+
+| 에러 코드 | 처리 |
+|---|---|
+| `POINT_INSUFFICIENT` | 창에 안내하고 잔액을 다시 받습니다 |
+| `QUESTION_CLOSED`, `QUESTION_NOT_FOUND`, `FORBIDDEN` | 창을 닫고 안내한 뒤 목록을 새로 받습니다 |
+| 네트워크 오류, `POINT_WALLET_CONFLICT`, 서버 오류 | 창을 그대로 두고 "다시 시도" |
+
+## 마이
+
+| 항목 | 설명 |
+|---|---|
+| 닉네임 | "변경" → 입력 창. 2~30자, 한글·영문·숫자. 앱이 먼저 검사하고 `PATCH /members/me`. 이미 쓰는 닉네임이면 입력칸 아래에 안내 |
+| 내 포인트 | 잔액, 오늘 적립 / 일일 상한. `GET /points/balance`. 피드와 같은 캐시를 써서 투표·상단 노출 뒤 함께 바뀝니다 |
+| 포인트 내역 | `/point-ledger`. 최신순. 종류(투표 참여 / 상단 노출), 금액, 그 뒤 잔액, 시각 |
+| 내가 투표한 고민 | `/my-votes`. 투표한 시각의 최신순. 내가 고른 선택지 강조, 지금의 결과 막대 |
+| 지인에게 숨기기, 차단 목록 | 자리만 있습니다 (준비 중) |
+| 로그아웃 | |
+
+잔액은 `GET /members/me` 의 `pointBalance` 가 아니라 `GET /points/balance` 로 받습니다. 앞의 값은 서버가 항상 0 을 줍니다.
+
+포인트 내역과 내가 투표한 고민은 같은 목록 틀(`my/PagedList.tsx`)을 씁니다. 받는 중·실패·빈 목록·새로고침·이어 받기는 틀이 하고, 한 줄을 어떻게 그릴지만 화면마다 다릅니다.
 
 ## 확인하지 못한 것
 
@@ -263,13 +310,14 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 - 휴대폰 앱에서 HEIC → JPEG 변환
 - 아이폰에서의 사진 고르기·업로드
 - 피드의 터치 스와이프
+- 실제 기기에서의 상단 노출, 마이 탭 (웹에서만 확인)
 
 ## 검사 명령
 
 ```bash
 npm run typecheck   # 타입 검사 (tsc --noEmit)
 npm run lint        # 린트
-npm test            # 단위 테스트 (API 클라이언트, 피드, 올리기 입력 규칙, 사진 준비·업로드 흐름, 플랫폼별 업로드, 내 고민 목록)
+npm test            # 단위 테스트 (API 클라이언트, 피드, 올리기 입력 규칙, 사진 준비·업로드 흐름, 플랫폼별 업로드, 내 고민 목록, 상단 노출, 닉네임 규칙, 포인트 내역, 내가 투표한 고민)
 ```
 
 CI 는 타입 검사와 린트만 돌립니다. 단위 테스트는 로컬에서 실행합니다.
@@ -293,11 +341,14 @@ app/
         index.tsx             /              피드
         post.tsx              /post          올리기
         my-questions.tsx      /my-questions  내 고민
-        my.tsx                /my            마이 (로그아웃)
+        my.tsx                /my            마이
+      point-ledger.tsx      /point-ledger  포인트 내역 (탭 위에 쌓이는 화면)
+      my-votes.tsx          /my-votes      내가 투표한 고민 (탭 위에 쌓이는 화면)
     api/                    서버 호출
       client.ts               공통 요청 함수. 헤더 첨부, 에러 변환, 재발급
       errors.ts               ApiError
       config.ts               서버 주소
+      paging.ts               커서로 이어 받는 목록의 공통 함수. 순수 함수
       auth.ts, phone.ts, members.ts, questions.ts, votes.ts, points.ts, uploads.ts   API 별 함수와 타입
     auth/                   로그인 상태
       AuthContext.tsx         현재 상태를 모든 화면에 제공
@@ -310,7 +361,8 @@ app/
       voteFlow.ts             투표 한 번의 흐름. 에러 코드별 처리
       feedController.ts       위 둘과 서버 호출을 엮음
       useFeed.ts              feedController 를 화면에 연결
-      time.ts                 서버 시각(KST) 해석, "3분 전" 표시
+      time.ts                 서버 시각(KST) 해석, "3분 전"·"23시간 남음" 표시
+      feedRefresh.ts          다른 화면이 "피드를 새로 받아야 한다"고 남기는 표시
       swipe.ts                스와이프 방향 판정
       SwipeArea.tsx           스와이프를 알아채는 영역
       QuestionCard.tsx        카드 한 장
@@ -328,12 +380,26 @@ app/
     mine/                   내 고민
       myQuestions.ts          목록 데이터 다루기. 순수 함수
       queryKeys.ts            목록 캐시의 키
-      MyQuestionsList.tsx     목록 화면과 삭제 확인 창
+      MyQuestionsList.tsx     목록 화면, 삭제·상단 노출 확인
       MyQuestionCard.tsx      고민 한 건
+      boostKeys.ts            상단 노출 요청의 Idempotency-Key 규칙. 순수 로직
+      boostFlow.ts            상단 노출 한 번의 흐름. 에러 코드별 처리
+      BoostDialog.tsx         상단 노출 확인 창
+      uuid.ts                 UUID 만들기
+    my/                     마이
+      MyHome.tsx              마이 탭 화면
+      nicknameRules.ts        닉네임 입력 규칙. 순수 함수
+      NicknameDialog.tsx      닉네임 변경 창
+      PagedList.tsx           이어 받는 목록의 공통 틀
+      ledger.ts               포인트 내역 표시 규칙. 순수 함수
+      PointLedgerList.tsx     포인트 내역 화면
+      myVotes.ts              내가 투표한 고민 데이터 다루기. 순수 함수
+      MyVotesList.tsx         내가 투표한 고민 화면
+      queryKeys.ts            목록 캐시의 키
     __tests__/              단위 테스트
 ```
 
-`feed/` 의 `feedState`, `voteFlow`, `feedController`, `time`, `swipe`, `compose/` 의 `composeRules`, `imagePrep`, `uploadFlow`, `mine/` 의 `myQuestions` 는 React 도 기기 기능도 쓰지 않습니다. 그래서 화면 없이 단위 테스트합니다.
+`feed/` 의 `feedState`, `voteFlow`, `feedController`, `time`, `swipe`, `compose/` 의 `composeRules`, `imagePrep`, `uploadFlow`, `mine/` 의 `myQuestions`, `boostKeys`, `boostFlow`, `my/` 의 `nicknameRules`, `ledger`, `myVotes`, `api/paging` 은 React 도 기기 기능도 쓰지 않습니다. 그래서 화면 없이 단위 테스트합니다.
 
 Java/Spring 에 빗대면 다음과 같습니다.
 
