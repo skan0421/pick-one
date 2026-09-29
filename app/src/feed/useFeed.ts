@@ -6,6 +6,7 @@ import { useEffect, useState, useSyncExternalStore } from 'react';
 import type { PointBalance } from '../api/points';
 import { getFeed } from '../api/questions';
 import { getResults, vote } from '../api/votes';
+import { MY_VOTES_KEY, POINT_LEDGER_KEY } from '../my/queryKeys';
 import { FeedController } from './feedController';
 import { currentCard } from './feedState';
 
@@ -25,6 +26,9 @@ export function useFeed() {
           // 투표하면 잔액이 바뀐다. 캐시를 무효로 표시하면 잔액을 쓰는 화면이 알아서 다시 받아 온다 (@CacheEvict)
           onVoteSettled: () => {
             void queryClient.invalidateQueries({ queryKey: POINT_BALANCE_KEY });
+            // 포인트 내역과 내가 투표한 고민에도 한 줄이 늘었다
+            void queryClient.invalidateQueries({ queryKey: POINT_LEDGER_KEY });
+            void queryClient.invalidateQueries({ queryKey: MY_VOTES_KEY });
           },
           dailyLimit: () => queryClient.getQueryData<PointBalance>(POINT_BALANCE_KEY)?.dailyEarnLimit,
         },
