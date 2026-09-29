@@ -111,7 +111,7 @@ pickone:
 - **`public-base-url` 은 따로 정하지 않아도 됩니다.** 비워 두면 `{endpoint}/{bucket}` 이 되어 업로드 주소와 사진 주소가 같은 호스트를 씁니다.
 - **주소를 바꾸기 전에 올린 사진은 옛 주소 그대로입니다.** 사진 주소는 등록할 때 DB 에 저장되므로, `localhost:9000` 으로 올린 사진은 휴대폰에서 계속 안 보입니다. 주소를 바꾼 뒤 새로 올립니다.
 - **설정을 되돌리면 그 사이 올린 사진은 Tailscale 이 켜져 있을 때만 보입니다.**
-- **방화벽**: 9000 포트로 들어오는 연결이 허용돼 있어야 합니다. 저장소는 Docker 가 띄우므로 Node.js·Java 와 달리 "Docker Desktop Backend" 항목입니다. 휴대폰 브라우저에서 `http://100.101.102.103:9000/minio/health/live` 를 열어 오류 없이 빈 화면이 나오면 닿는 것입니다. 닿지 않으면 "Windows Defender 방화벽 → 앱 허용" 에서 Docker Desktop Backend 를 허용하거나 9000 포트의 인바운드 규칙을 추가합니다. 이 부분은 PC 에서만 확인했고 실제 휴대폰으로는 확인하지 못했습니다.
+- **방화벽**: 9000 포트로 들어오는 연결이 허용돼 있어야 합니다. 저장소는 Docker 가 띄우므로 Node.js·Java 와 달리 "Docker Desktop Backend" 항목입니다. 휴대폰 브라우저에서 `http://100.101.102.103:9000/minio/health/live` 를 열어 오류 없이 빈 화면이 나오면 닿는 것입니다. 닿지 않으면 "Windows Defender 방화벽 → 앱 허용" 에서 Docker Desktop Backend 를 허용하거나 9000 포트의 인바운드 규칙을 추가합니다. 실제 안드로이드 폰에서 Tailscale 로 저장소에 닿아 사진이 올라가는 것을 확인했습니다.
 - 저장소 쪽 CORS 는 따로 설정할 것이 없습니다. MinIO 가 요청한 origin 을 그대로 허용합니다.
 
 ### 웹에서 실행할 때: CORS
@@ -258,10 +258,10 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 
 ## 확인하지 못한 것
 
-웹(헤드리스 Chromium)에서는 실제 서버·저장소에 붙여 확인했습니다. 아래는 실제 기기가 없어 확인하지 못했습니다.
+웹(헤드리스 Chromium)에서는 실제 서버·저장소에 붙여 확인했습니다. 실제 안드로이드 폰(Expo Go, Tailscale 경유)에서는 사진 2장 고르기 → 업로드 → 사진형 고민 등록을 확인했습니다 (`docs/troubleshooting.md` 23). 아래는 확인하지 못했습니다.
 
-- 휴대폰 앱(Expo Go)에서 HEIC → JPEG 변환
-- 휴대폰 앱에서 고친 업로드 방식(`File.upload`)으로 사진이 올라가는지. 고치기 전에는 안드로이드에서 403 이었습니다 (`docs/troubleshooting.md` 23). 아이폰은 확인한 적이 없습니다
+- 휴대폰 앱에서 HEIC → JPEG 변환
+- 아이폰에서의 사진 고르기·업로드
 - 피드의 터치 스와이프
 
 ## 검사 명령
