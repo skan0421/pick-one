@@ -303,7 +303,8 @@ Spring Security OAuth2 Client 의 Authorization Code 흐름을 그대로 쓴다.
     "createdAt": "2026-09-27T17:00:00"
   }
   ```
-- `provider` 는 이메일 가입이면 `"EMAIL"`. `pointBalance` 는 지갑이 없으면 0. 휴대폰 번호는 내려주지 않는다
+- `provider` 는 이메일 가입이면 `"EMAIL"`. 휴대폰 번호는 내려주지 않는다
+- `pointBalance` 는 지갑 잔액(`point_wallet.balance`)이며 6.1 의 `balance` 와 같은 값이다. 지갑이 없으면(`PENDING_PHONE`) 0
 
 ### 2.8 PATCH /members/me — 내 정보 수정
 - 인증: 로그인
@@ -312,6 +313,12 @@ Spring Security OAuth2 Client 의 Authorization Code 흐름을 그대로 쓴다.
   { "nickname": "새닉네임" }
   ```
 - 응답 `200`: 2.7 과 같은 형식
+- 부분 수정이다. 요청에 들어 있는 필드만 바꾸고, 필수 필드는 없다
+  - 바꿀 수 있는 필드는 `nickname` 하나다. `hideFromContacts` 는 7.2 로 바꾼다
+  - `nickname` 이 없거나 `null` 이면 바꾸지 않는다. 본문이 `{}` 이어도 200 으로 현재 정보를 돌려준다
+  - `nickname` 을 보냈다면 1.8 의 규칙으로 검증한다. 빈 문자열·공백도 `VALIDATION_ERROR`
+  - 지금 쓰는 닉네임을 그대로 보내면 200 (변경 없음)
+  - 그 밖의 필드(`email`, `pointBalance` 등)는 받아도 무시한다
 - 주요 에러: `VALIDATION_ERROR`, `MEMBER_NICKNAME_DUPLICATE`
 
 ---

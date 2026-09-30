@@ -513,3 +513,32 @@ HEIC 선택 시 안내 문구 표시: 없음 → 있음. 사진형 올리기 검
 - 남은 것: 고민 등록(`POST /questions`)에는 `Idempotency-Key` 가 없다. 시간 초과 뒤 다시 누르면, 서버가 첫 요청을 이미 처리했을 경우 같은 고민이 두 번 등록될 수 있다. 제한 시간이 없던 때에는 드러나지 않던 경우다.
 
 **관련 커밋** 앱 요청 제한 시간 fix 커밋
+
+---
+
+## 25. 내 정보 API 가 문서와 다르게 동작 — pointBalance 는 항상 0, PATCH 는 nickname 필수
+
+**문제 상황**
+`docs/api.md` 와 서버의 동작이 두 군데에서 달랐다.
+- `GET /members/me` 의 `pointBalance` 가 포인트가 있는 회원에게도 0 이었다. 문서 2.7 은 지갑 잔액을 준다고 적혀 있다.
+- `PATCH /members/me` 에 `nickname` 을 빼고 보내면 400 `VALIDATION_ERROR` 였다. 문서 2.8 은 "바꿀 필드만" 보낸다고 적혀 있다.
+
+앱은 첫 번째 문제를 알고 잔액을 `GET /points/balance` 로 받고 있었다(코드 주석에 "서버가 항상 0 을 준다"). 그래서 화면에는 드러나지 않았다.
+
+**원인**
+- `MemberResponse.from` 이 `pointBalance` 자리에 `0L` 을 그대로 넣었다. 회원 API 는 지갑보다 먼저 만들었고, 지갑을 만든 뒤 이 자리를 채우지 않았다.
+- `UpdateMemberRequest.nickname` 에 `@NotBlank` 가 붙어 있었다. 바꿀 수 있는 필드가 닉네임 하나라 "닉네임 변경 API" 로 만들었고, 부분 수정이라는 문서의 계약은 반영되지 않았다.
+- 통합 테스트가 잡지 못한 이유: `pointBalance` 는 지갑이 없는 회원(`PENDING_PHONE`)으로만 확인해 0 이 맞는 값이었다. PATCH 는 `nickname` 을 보내는 경우만 있었다.
+
+**해결**
+- 서버를 문서에 맞췄다.
+- `MemberService` 가 지갑을 읽어 `pointBalance` 에 넣는다. 지갑이 없으면 0 이다. PATCH 의 응답도 같은 값을 준다.
+- `nickname` 의 필수 조건만 없앴다. 길이(2~30자)와 문자(한글·영문·숫자) 규칙, 중복 검사는 그대로다. `nickname` 이 없거나 `null` 이면 바꾸지 않고 현재 정보를 돌려준다. 빈 문자열은 "보낸 값"이므로 전처럼 400 이다.
+- 앱은 동작을 바꾸지 않았다. 두 API 의 응답에서 `id`, `nickname`, `signupStatus` 만 쓰고, 닉네임 변경은 항상 `nickname` 을 보낸다. 잔액은 계속 `GET /points/balance` 로 받는다(오늘 적립과 상한이 함께 필요하다). 낡은 주석만 고쳤다.
+
+**결과**
+- 포인트가 있는 회원의 `pointBalance`: 0 → 지갑 잔액. 투표 3회 뒤 3, 상단 노출 뒤 52 이고, 네 값(`pointBalance`, `GET /points/balance` 의 `balance`, 원장 합계, 지갑 잔액)이 모두 같다.
+- `nickname` 없는 PATCH: 400 → 200 (변경 없음).
+- 통합 테스트 13건 추가(포인트 잔액 5, 부분 수정 8). 기존 회원 테스트 7건은 고치지 않고 통과.
+
+**관련 커밋** 내 정보 API fix 커밋
