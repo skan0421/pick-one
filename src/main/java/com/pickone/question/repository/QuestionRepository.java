@@ -20,6 +20,9 @@ public interface QuestionRepository extends JpaRepository<Question, Long>, Quest
 	@Query("SELECT q FROM Question q JOIN FETCH q.author LEFT JOIN FETCH q.options WHERE q.id = :id")
 	Optional<Question> findWithAuthorAndOptionsById(@Param("id") Long id);
 
+	/** 등록 요청의 Idempotency-Key 로 조회 (uk_question_idempotency_key). 재요청 판정에 쓴다 */
+	Optional<Question> findByIdempotencyKey(String idempotencyKey);
+
 	/** SELECT ... FOR UPDATE. 같은 고민에 대한 신고 누적 판정을 직렬화한다 (ReportService) */
 	@Lock(LockModeType.PESSIMISTIC_WRITE)
 	@Query("SELECT q FROM Question q WHERE q.id = :id")

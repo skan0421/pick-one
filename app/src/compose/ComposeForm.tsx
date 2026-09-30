@@ -4,6 +4,8 @@
 //   composeRules.ts  입력 규칙, 서버 오류를 입력칸으로 나누기   (Spring 의 Validator)
 //   imagePrep.ts     사진을 변환할지, 얼마나 줄일지
 //   uploadFlow.ts    발급 → 올리기 → 등록의 순서
+//   composeKey.ts    등록 요청에 붙일 Idempotency-Key 규칙
+//   createFlow.ts    키를 붙여 등록하고, 결과에 따라 키를 유지하거나 버림
 //   imageTools.ts    사진 고르기·변환 (기기 기능)
 //   fileTransfer.ts  파일 크기 읽기·저장소로 올리기 (기기 기능. 웹은 fileTransfer.web.ts)
 import { useQueryClient } from '@tanstack/react-query';
@@ -13,9 +15,11 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, HelperText, IconButton, ProgressBar, SegmentedButtons, Text, TextInput } from 'react-native-paper';
 
 import { errorMessage } from '../api/errors';
-import { createQuestion, type QuestionType } from '../api/questions';
+import { createQuestion, type CreateQuestionRequest, type QuestionType } from '../api/questions';
 import { issueUploadUrl } from '../api/uploads';
 import { MY_QUESTIONS_KEY } from '../mine/queryKeys';
+import { newUuid } from '../mine/uuid';
+import { ComposeKey } from './composeKey';
 import {
   addOption,
   canAddOption,
@@ -31,6 +35,7 @@ import {
   validateTextDraft,
   type ComposeErrors,
 } from './composeRules';
+import { createWithKey, type CreateApi } from './createFlow';
 import { prepareImage } from './imagePrep';
 import { EMPTY_SLOT, ImageSlots, type ImageSlot } from './ImageSlots';
 import { putFile } from './fileTransfer';
@@ -46,7 +51,17 @@ const GUIDES: Record<QuestionType, string> = {
   IMAGE: '사진형은 얼굴 대신 옷만 보이게',
 };
 
-const uploadApi: UploadApi = { issueUploadUrl, putFile, createQuestion };
+// 등록 요청의 키. 화면 밖에 두어, 결과를 모르는 실패 뒤 다른 탭에 다녀와도 같은 키가 나가게 한다 (mine/MyQuestionsList.tsx 의 boostKeys 와 같다)
+const composeKey = new ComposeKey(newUuid);
+const createApi: CreateApi = { createQuestion };
+
+// 글형·사진형 모두 이 함수로 등록한다. 키는 여기서만 붙는다
+function create(body: CreateQuestionRequest) {
+  return createWithKey(createApi, composeKey, body);
+}
+
+// 사진형은 사진을 다 올린 뒤 등록한다. 발급과 PUT 에는 키가 붙지 않는다
+const uploadApi: UploadApi = { issueUploadUrl, putFile, createQuestion: create };
 
 export function ComposeForm() {
   const router = useRouter();
@@ -179,7 +194,7 @@ export function ComposeForm() {
   // 돌려주는 값: 등록됐으면 true
   async function submitText(): Promise<boolean> {
     try {
-      await createQuestion(toTextRequest(content, options));
+      await create(toTextRequest(content, options));
       return true;
     } catch (error) {
       // 2. 서버가 거절했다면 서버의 오류를 해당 입력칸 아래에 보여 준다

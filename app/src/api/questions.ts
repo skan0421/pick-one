@@ -59,8 +59,18 @@ export type QuestionResponse = {
   createdAt: string;
 };
 
-export function createQuestion(body: CreateQuestionRequest): Promise<QuestionResponse> {
-  return request<QuestionResponse>('/questions', { method: 'POST', body });
+// POST /questions (docs/api.md 4.1).
+//
+// idempotencyKey 는 "이 고민을 올리겠다"는 의도의 이름표다 (docs/api.md 1.6).
+// 서버는 같은 이름표와 같은 내용이 다시 오면 새로 등록하지 않고 처음 등록한 고민을 돌려준다.
+// 그래서 응답을 받지 못해 다시 보낼 때는 반드시 같은 값을 넣어야 한다. 값을 정하는 규칙은 compose/composeKey.ts 에 있다.
+// 서버는 키 없는 요청도 받지만(전과 같이 매번 새로 등록), 앱은 항상 키를 보낸다
+export function createQuestion(body: CreateQuestionRequest, idempotencyKey: string): Promise<QuestionResponse> {
+  return request<QuestionResponse>('/questions', {
+    method: 'POST',
+    body,
+    headers: { 'Idempotency-Key': idempotencyKey },
+  });
 }
 
 // 내 고민 목록의 선택지. 피드와 달리 득표 결과가 함께 온다 (작성자는 투표하지 않아도 결과를 볼 수 있다)

@@ -24,9 +24,11 @@ import java.util.List;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 /**
- * 고민. 스키마는 V1__init_schema.sql 의 question 테이블.
+ * 고민. 스키마는 V1__init_schema.sql 의 question 테이블 + V6__question_idempotency_key.sql.
  * 선택지는 고민과 생명주기를 같이 하므로 cascade + orphanRemoval 로 관리한다.
  */
 @Entity
@@ -58,6 +60,15 @@ public class Question extends BaseTimeEntity {
 	@Column(name = "boosted_until")
 	private LocalDateTime boostedUntil;
 
+	/** 등록 요청의 Idempotency-Key. 헤더 없이 등록했으면 NULL (docs/api.md 4.1) */
+	@Column(name = "idempotency_key", length = 100, updatable = false)
+	private String idempotencyKey;
+
+	/** 등록 요청 내용의 SHA-256. 키가 있을 때만 채운다. 컬럼이 CHAR(64) 라 JDBC 타입을 CHAR 로 명시 */
+	@JdbcTypeCode(SqlTypes.CHAR)
+	@Column(name = "request_hash", length = 64, updatable = false)
+	private String requestHash;
+
 	@Column(name = "deleted_at")
 	private LocalDateTime deletedAt;
 
@@ -65,16 +76,27 @@ public class Question extends BaseTimeEntity {
 	@OrderBy("sortOrder ASC")
 	private List<QuestionOption> options = new ArrayList<>();
 
-	private Question(Member author, QuestionType questionType, String content) {
+	private Question(Member author, QuestionType questionType, String content, String idempotencyKey, String requestHash) {
 		this.author = author;
 		this.questionType = questionType;
 		this.content = content;
 		this.status = QuestionStatus.ACTIVE;
+		this.idempotencyKey = idempotencyKey;
+		this.requestHash = requestHash;
 	}
 
-	/** 선택지 개수·형식 규칙은 호출자(서비스)가 검증한 뒤 넘긴다. sort_order 는 넘어온 순서대로 1부터 부여 */
+	/** Idempotency-Key 없이 등록 */
 	public static Question create(Member author, QuestionType questionType, String content, List<OptionDraft> drafts) {
-		Question question = new Question(author, questionType, content);
+		return create(author, questionType, content, drafts, null, null);
+	}
+
+	/**
+	 * 선택지 개수·형식 규칙은 호출자(서비스)가 검증한 뒤 넘긴다. sort_order 는 넘어온 순서대로 1부터 부여.
+	 * idempotencyKey 와 requestHash 는 함께 있거나 함께 없다
+	 */
+	public static Question create(Member author, QuestionType questionType, String content, List<OptionDraft> drafts,
+			String idempotencyKey, String requestHash) {
+		Question question = new Question(author, questionType, content, idempotencyKey, requestHash);
 		int order = 1;
 		for (OptionDraft draft : drafts) {
 			question.options.add(new QuestionOption(question, order++, draft.content(), draft.imageUrl()));
@@ -84,6 +106,11 @@ public class Question extends BaseTimeEntity {
 
 	public boolean isOwnedBy(Long memberId) {
 		return author.getId().equals(memberId);
+	}
+
+	/** 같은 회원이 같은 내용으로 등록한 고민인지 (멱등 재응답 판정) */
+	public boolean isCreatedBy(Long memberId, String requestHash) {
+		return isOwnedBy(memberId) && requestHash != null && requestHash.equals(this.requestHash);
 	}
 
 	public boolean isDeleted() {

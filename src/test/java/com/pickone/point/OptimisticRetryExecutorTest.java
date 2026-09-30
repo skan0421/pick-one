@@ -123,6 +123,27 @@ class OptimisticRetryExecutorTest {
 	}
 
 	@Test
+	void 고민_등록의_Idempotency_Key_유니크_위반도_한_번만_재실행한다() {
+		AtomicInteger attempts = new AtomicInteger();
+
+		String result = executor.execute("test", () -> {
+			if (attempts.incrementAndGet() == 1) {
+				throw violation("question.uk_question_idempotency_key");
+			}
+			return "replayed";
+		});
+		assertThat(result).isEqualTo("replayed");
+		assertThat(attempts.get()).isEqualTo(2);
+
+		AtomicInteger again = new AtomicInteger();
+		assertThatThrownBy(() -> executor.execute("test", () -> {
+			again.incrementAndGet();
+			throw violation("uk_question_idempotency_key");
+		})).isInstanceOf(DataIntegrityViolationException.class);
+		assertThat(again.get()).isEqualTo(2);
+	}
+
+	@Test
 	void 트랜잭션_안에서_호출하면_IllegalStateException() {
 		TransactionSynchronizationManager.setActualTransactionActive(true);
 

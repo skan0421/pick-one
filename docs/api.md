@@ -101,7 +101,7 @@
 | `POINT_WALLET_NOT_FOUND` | 409 | 지갑 없음 (ACTIVE 전환 전) |
 | `POINT_WALLET_CONFLICT` | 409 | 지갑 낙관적 락 충돌 재시도(총 4회)를 모두 소진. 잠시 후 다시 시도 |
 | `IDEMPOTENCY_KEY_REQUIRED` | 400 | 포인트 사용 API 에 헤더 누락 |
-| `IDEMPOTENCY_KEY_CONFLICT` | 409 | 같은 키로 다른 요청 본문 |
+| `IDEMPOTENCY_KEY_CONFLICT` | 409 | 같은 키로 다른 요청 (다른 대상, 다른 내용, 다른 회원) |
 | `BLOCK_SELF` | 400 | 자기 자신 차단 (`chk_member_block_not_self`) |
 | `BLOCK_ALREADY_EXISTS` | 409 | (미사용) 중복 차단은 멱등 처리해 201 을 돌려준다 (8.1) |
 | `REPORT_DUPLICATE` | 409 | 같은 고민 중복 신고 (`uk_report_reporter_id_question_id`) |
@@ -121,14 +121,25 @@
 - 커서는 `(정렬키, id)` 를 JSON → base64url 로 감싼 불투명 문자열이다. 클라이언트는 해석하지 않고 그대로 돌려준다. 정렬키는 API 마다 다르다 (피드: boosted 여부 + created_at, 내역: created_at)
 - `hasNext=false` 면 `nextCursor` 는 null
 
-### 1.6 Idempotency-Key (포인트 사용 API)
-포인트를 **차감**하는 API(`POST /questions/{id}/boosts`)는 `Idempotency-Key: <UUID>` 헤더가 필수다. 네트워크 재시도로 포인트가 두 번 빠지는 것을 막는다.
+### 1.6 Idempotency-Key (포인트 사용, 고민 등록)
+응답을 받지 못한 클라이언트는 서버가 요청을 처리했는지 알 수 없다. 그때 같은 요청을 다시 보내도 한 번만 처리되도록 `Idempotency-Key: <UUID>` 헤더를 쓴다.
 
-- 키는 `point_ledger.idempotency_key`(유니크) 에 그대로 저장된다
-- 같은 키 + 같은 대상으로 재요청 → 최초 처리 결과를 그대로 200 으로 반환 (차감 없음)
-- 같은 키 + 다른 대상(다른 questionId) → 409 `IDEMPOTENCY_KEY_CONFLICT`
-- 헤더 없음 → 400 `IDEMPOTENCY_KEY_REQUIRED`
-- 적립(투표 보상)은 서버가 `vote:{voteId}` 형태로 키를 만들어 같은 컬럼에 저장한다. 클라이언트 헤더는 필요 없다
+| API | 헤더 | 막는 것 | 키를 저장하는 곳 |
+|---|---|---|---|
+| `POST /questions/{id}/boosts` (6.3) | 필수 | 포인트가 두 번 빠지는 것 | `point_ledger.idempotency_key` |
+| `POST /questions` (4.1) | 선택 | 같은 고민이 두 번 등록되는 것 | `question.idempotency_key` |
+
+공통 규칙
+- 키는 UUID 형식이어야 한다. 아니면 400 `VALIDATION_ERROR`. 앞뒤 공백은 떼고 본다
+- 같은 키 + 같은 요청으로 재요청 → 최초 처리 결과를 그대로 반환 (다시 처리하지 않음)
+- 같은 키 + 다른 요청 → 409 `IDEMPOTENCY_KEY_CONFLICT`. 다른 회원이 쓴 키도 같다 (키는 저장하는 테이블 안에서 전역 유니크)
+- 같은 키의 동시 요청 → 하나만 처리하고 나머지는 같은 결과를 받는다. 진 쪽이 유니크 제약에서 대기하다 위반이 나면 트랜잭션을 한 번 다시 실행해 이긴 쪽의 결과를 찾는다
+- 두 API 의 키는 따로 관리한다 (저장하는 테이블이 다르다)
+
+API 별 차이
+- 상단 노출: "같은 요청" 은 같은 회원·같은 고민이다. 헤더 없음 → 400 `IDEMPOTENCY_KEY_REQUIRED`
+- 고민 등록: "같은 요청" 은 같은 회원·같은 내용(유형, 본문, 선택지)이다. 헤더가 없으면 키 없이 등록한다 (매번 새 고민)
+- 적립(투표 보상)은 서버가 `vote:{voteId}` 형태로 키를 만들어 `point_ledger.idempotency_key` 에 저장한다. 클라이언트 헤더는 필요 없다
 
 ### 1.7 포인트 정책 (설정값)
 아래 수치는 `application.yml` 의 `pickone.point.*` 설정값이며 코드에 하드코딩하지 않는다.
@@ -409,6 +420,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 
 ### 4.1 POST /questions — 고민 등록
 - 인증: ACTIVE
+- 헤더: `Idempotency-Key: <UUID>` 선택 (1.6). 응답을 받지 못해 다시 보낼 때 같은 고민이 두 번 등록되지 않게 한다
 - 요청 (텍스트형)
   ```json
   {
@@ -439,7 +451,15 @@ interface SmsSender { void send(String phoneE164, String message); }
   ```
 - 처리: 선택지 개수·유형 규칙은 API 에서 검증 (erd.md 설계 메모). `sort_order` 는 요청 순서대로 1부터 부여
 - 이미지는 4.6 의 업로드 URL 로 먼저 올린 뒤 그 `imageUrl` 을 넘긴다. 서버는 개수·형식 검사를 통과한 뒤 각 `imageUrl` 이 `{publicBaseUrl}/images/{내 회원 ID}/{uuid}.{ext}` 형식이고 저장소에 실제로 있는지(HEAD) 확인한다. 아니면 `IMAGE_URL_INVALID`
-- 주요 에러: `VALIDATION_ERROR`, `QUESTION_OPTION_COUNT_INVALID`, `QUESTION_OPTION_TYPE_MISMATCH`, `IMAGE_URL_INVALID`, `SIGNUP_INCOMPLETE`
+- **Idempotency-Key 가 있을 때** (`QuestionCreateTransaction.execute` 한 트랜잭션. `QuestionService` 가 트랜잭션 없이 헤더 검증 후 6.3 과 같은 재시도 실행기로 호출)
+  0. 헤더 검증: UUID 형식이 아니면 `VALIDATION_ERROR`. 없음·공백이면 키 없는 등록으로 처리
+  1. 요청 내용의 지문을 계산한다: 유형, 본문, 선택지(순서대로 `content` 와 `imageUrl`)를 앞뒤 공백을 떼고 "길이:값" 으로 이어 SHA-256
+  2. `question` 에서 `idempotency_key` 조회. 있으면 `member_id = 나 AND request_hash = 지문` 일 때만 그 고민으로 **201** 과 처음과 같은 본문을 반환 (등록 없음, 아래 검증과 저장소 확인도 하지 않음). 다른 내용·다른 회원의 키면 `IDEMPOTENCY_KEY_CONFLICT`
+  3. 없으면 위 처리대로 검증하고 `INSERT question(..., idempotency_key, request_hash)` — IDENTITY 라 즉시 실행
+  - 재요청의 응답은 그 고민의 지금 상태다. 그 사이 상단 노출을 썼다면 `boostedUntil` 이 채워져 있다. 삭제한 고민의 키로 다시 보내도 새로 등록하지 않는다
+  - 검증에서 거절된 요청(4xx)은 저장되지 않으므로 키를 쓰지 않은 것이다. 고친 내용을 같은 키로 보내면 등록된다
+- **같은 키 동시 요청**: 둘 다 2단계를 통과하지만 3단계 INSERT 에서 진 쪽이 `uk_question_idempotency_key` 에 대기하다 이긴 쪽 커밋 후 위반이 난다. 재시도 실행기가 이 위반을 **1회 재실행**으로 처리하고, 재실행된 트랜잭션은 2단계에서 이긴 쪽의 고민을 찾아 같은 응답을 돌려준다. 고민은 1개 (`QuestionIdempotencyIntegrationTest`: 4건 동시 요청에 201 4건, 본문 4개 동일, 고민 1개)
+- 주요 에러: `VALIDATION_ERROR`, `QUESTION_OPTION_COUNT_INVALID`, `QUESTION_OPTION_TYPE_MISMATCH`, `IMAGE_URL_INVALID`, `IDEMPOTENCY_KEY_CONFLICT`, `SIGNUP_INCOMPLETE`
 
 ### 4.2 GET /questions/feed — 투표 피드
 - 인증: ACTIVE
@@ -864,7 +884,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.1 프로필 속성
 회원이 성별·출생연도·MBTI·학력을 직접 입력한다. 지금은 본인 입력이지만 나중에 본인인증(PASS 등)과 연동하면 검증된 값으로 승격할 수 있도록 속성별 `verified` 플래그를 둔다.
 
-- 테이블 초안 `member_profile` (V6)
+- 테이블 초안 `member_profile` (V7)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | member_id | BIGINT PK, FK | |
@@ -881,7 +901,7 @@ interface SmsSender { void send(String phoneE164, String message); }
 ### 9.2 질문 대상 지정
 작성자가 "20대 여성에게만 물어보기" 처럼 대상을 정한다.
 
-- 테이블 초안 `question_target` (V7)
+- 테이블 초안 `question_target` (V8)
   | 컬럼 | 타입 | 설명 |
   |---|---|---|
   | question_id | BIGINT PK, FK | 행이 없으면 조건 없음 |
@@ -959,11 +979,14 @@ member_social_account
 ### V5 — 내가 투표한 고민 목록 인덱스 (적용됨)
 `V5__vote_member_created_index.sql`: `idx_vote_member_id_created_at (member_id, created_at)`. V1 의 vote 인덱스는 `uk_vote_member_id_question_id(member_id, question_id)` 와 `idx_vote_question_id_option_id` 뿐이라 회원의 투표를 최신순으로 읽을 인덱스가 없었다. 5.3 EXPLAIN 참고
 
-### V6 — 프로필 속성 (2차)
-파일명 예: `V6__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+### V6 — 고민 등록 Idempotency-Key (적용됨)
+`V6__question_idempotency_key.sql`: `question.idempotency_key VARCHAR(100) NULL`, `question.request_hash CHAR(64) NULL`, `uk_question_idempotency_key (idempotency_key)`. 키 없이 등록한 고민과 기존 행은 NULL 이고, 유니크 인덱스는 NULL 을 여러 개 허용한다. 4.1 참고
 
-### V7 — 질문 대상 지정 (2차)
-파일명 예: `V7__question_target.sql`. 9.2 의 `question_target` 테이블 생성
+### V7 — 프로필 속성 (2차)
+파일명 예: `V7__member_profile.sql`. 9.1 의 `member_profile` 테이블 생성
+
+### V8 — 질문 대상 지정 (2차)
+파일명 예: `V8__question_target.sql`. 9.2 의 `question_target` 테이블 생성
 
 ### 이후 후보
 - 랭킹·알림·카테고리: 기획서 "이후 추가 기능"
