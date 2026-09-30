@@ -1,0 +1,825 @@
+{
+ "model": "exaone3.5:7.8b",
+ "format": "label",
+ "questionId": "leisure",
+ "topic": "취미",
+ "method": "1x8",
+ "personaCount": 30,
+ "wallSeconds": 3.926060800004052,
+ "promptTokensPerPersona": 286.6333333333333,
+ "evalTokensPerPersona": 39.43333333333333,
+ "seconds100": 13.08686933334684,
+ "failureCount": 2,
+ "failureKinds": {
+  "reason_too_long": 2
+ },
+ "personaTexts": {
+  "1": "#1: 35세 여성, 대구, 건물 청소원(경력 12년 (베테랑)), 대졸, 연애 중, 부모와 함께, 경제적으로 빠듯한 편. 신중한 편, 개방적인 편",
+  "2": "#2: 16세 여성, 경기, 고등학생(고등학교 1학년), 고등학교 재학, 연애 중, 부모와 함께, 경제적으로 보통. 안정을 찾는 편, 개방적인 편",
+  "3": "#3: 58세 남성, 인천, 경비원(경력 2년 (신입)), 고졸, 기혼, 배우자와 둘이, 경제적으로 보통. 즉흥적인 편, 감정 표현이 큰 편",
+  "4": "#4: 39세 여성, 서울, 가사·육아(가사·육아), 대졸, 솔로, 부모와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "5": "#5: 18세 남성, 서울, 고등학생(고등학교 3학년), 고등학교 재학, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 전통을 중시하는 편",
+  "6": "#6: 52세 남성, 인천, 교사(경력 3년 (중견)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 모험을 즐기는 편, 아끼는 편",
+  "7": "#7: 67세 여성, 충남, 은퇴(은퇴), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "8": "#8: 67세 여성, 전북, 지게차 기사(경력 5년 (중견)), 중졸 이하, 이혼·사별, 1인 가구, 경제적으로 보통. 안정을 찾는 편, 전통을 중시하는 편",
+  "9": "#9: 24세 여성, 경기, 주방 보조(경력 5년 (중견)), 대졸, 썸 타는 중, 1인 가구, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "10": "#10: 63세 여성, 충남, 사무직 회사원(경력 8년 (중견)), 고졸, 이혼·사별, 1인 가구, 경제적으로 보통. 외향적인 편, 전통을 중시하는 편",
+  "11": "#11: 51세 남성, 경기, 약사(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 잘 쓰는 편, 안정을 찾는 편",
+  "12": "#12: 37세 남성, 전북, 전기 기사(경력 18년 (베테랑)), 대졸, 솔로, 1인 가구, 경제적으로 보통. 전통을 중시하는 편, 즉흥적인 편",
+  "13": "#13: 52세 남성, 경기, 경리(경력 3년 (중견)), 고졸, 솔로, 부모와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편",
+  "14": "#14: 40세 여성, 서울, 경리(경력 18년 (베테랑)), 대학원졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 즉흥적인 편, 잘 쓰는 편",
+  "15": "#15: 69세 여성, 경기, 은퇴(은퇴), 중졸 이하, 기혼, 배우자와 둘이, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "16": "#16: 56세 여성, 인천, 공무원(경력 12년 (베테랑)), 중졸 이하, 연애 중, 1인 가구, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "17": "#17: 59세 여성, 제주, 음식점 직원(경력 8년 (중견)), 전문대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 아끼는 편, 감정 표현이 큰 편",
+  "18": "#18: 49세 남성, 서울, 물리치료사(경력 18년 (베테랑)), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 외향적인 편, 전통을 중시하는 편",
+  "19": "#19: 54세 여성, 대구, 구직·쉬는 중(구직·쉬는 중), 대졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정 표현이 큰 편, 개방적인 편",
+  "20": "#20: 58세 남성, 전북, 전기 기사(경력 2년 (신입)), 대졸, 이혼·사별, 1인 가구, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "21": "#21: 15세 여성, 충남, 건물 청소원(경력 1년 (신입)), 고졸, 연애 중, 부모와 함께, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "22": "#22: 51세 남성, 인천, 가사·육아(가사·육아), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "23": "#23: 58세 여성, 서울, 물류센터 작업자(경력 12년 (베테랑)), 대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 모험을 즐기는 편",
+  "24": "#24: 31세 여성, 부산, 용접공(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 안정을 찾는 편, 아끼는 편",
+  "25": "#25: 29세 여성, 강원, 구직·쉬는 중(구직·쉬는 중), 대학원졸, 연애 중, 1인 가구, 경제적으로 보통. 아끼는 편, 안정을 찾는 편",
+  "26": "#26: 68세 여성, 충북, 음식점 직원(경력 1년 (신입)), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 내향적인 편",
+  "27": "#27: 61세 남성, 경기, 자동차 정비사(경력 3년 (중견)), 중졸 이하, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 외향적인 편, 신중한 편",
+  "28": "#28: 49세 남성, 충남, 요양보호사(경력 25년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 신중한 편, 모험을 즐기는 편",
+  "29": "#29: 31세 남성, 충북, 가사·육아(가사·육아), 고졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정을 안 드러내는 편, 내향적인 편",
+  "30": "#30: 34세 여성, 경기, 주방 보조(경력 8년 (중견)), 대졸, 솔로, 형제·친구와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편"
+ },
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "가족",
+   "reason": "경제적 여건상 가족과 함께하는 시간을 소중히 여긴다.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께하는 시간을 소중히 여긴다 (살아온 이야기: 추석에 부모님과 함께 저녁을 먹으며 오래된 가족사진을 꺼내보며 옛 추억을 나누었다.)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "친구·연인",
+   "reason": "사랑하는 사람과 함께 시간 보내며 행복을 느껴요.",
+   "judge": {
+    "specific": true,
+    "evidence": "연애 중, 데이트 중 우연히 거리 축제에서 만난 그와 함께 불꽃놀이를 감상하며, 조용히 손을 잡았다. 안정감 속에서 사랑을 느꼈다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "가족",
+   "reason": "배우자와 함께 하는 시간이 가장 편안하고 의미있어요.",
+   "judge": {
+    "specific": true,
+    "evidence": "배우자와 둘이, 주말마다 아내와 함께 인천 해변을 산책하며",
+    "error": null
+   }
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "혼자",
+   "reason": "아이들과 이야기하며 조용히 시간 보내는 게 편해.",
+   "judge": {
+    "specific": false,
+    "evidence": "",
+    "error": null
+   }
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "친구·연인",
+   "reason": "조용히 시간 보내며 생각 정리",
+   "judge": {
+    "specific": false,
+    "evidence": "",
+    "error": null
+   }
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "가족",
+   "reason": "배우자와 자녀와 함께 모험 가득한 주말 보내기 좋아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "배우자·자녀와 함께",
+    "error": null
+   }
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "가족",
+   "reason": "가족과 함께 조용히 시간을 보내는 게 편안하고 의미 있어요.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께, 배우자·자녀와 함께",
+    "error": null
+   }
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "혼자",
+   "reason": "조용히 여가를 즐기며 여유를 만끽해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 주말마다 마을 공원에서 조용히 골프 연습을 하며, 옛날 친구들과의 추억을 떠올렸다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "친구·연인",
+   "reason": "썸 타는 관계, 함께 즐기며 시간 보내고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "썸 타는 중",
+    "error": null
+   }
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "가족",
+   "reason": "가족과 함께 조용히 시간 보내며 추억 공유하고 싶어요.",
+   "judge": {
+    "specific": false,
+    "evidence": "",
+    "error": null
+   }
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "가족",
+   "reason": "가족과 함께 여유로운 시간 보내며 소소한 행복 찾는 게 우선.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 주말 아침에 동네 공원 산책을 하며 손을 잡고 조용히 웃음꽃을 피웠다. 안정감이 가슴을 채웠다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "친구·연인",
+   "reason": "함께하는 재미와 새로운 경험이 좋아요.",
+   "judge": {
+    "specific": false,
+    "evidence": "",
+    "error": null
+   }
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "혼자",
+   "reason": "자유로운 모험을 위해 시간을 혼자 즐기는 편입니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 모험을 즐기는 편, 즉흥적인 편 / 살아온 이야기: 주말 산악 등반 중 갑자기 폭풍우를 만나 잠시 고립되었지만, 즉흥적으로 비옷을 찾아 꺼내 입으며 모험을 즐겼다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "가족",
+   "reason": "가족과 함께하는 시간이 가장 편안하고 의미있어.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께하는 시간이 제일 편하다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "가족",
+   "reason": "배우자와 함께 시간 보내며 서로의 일상 나누는 게 편안해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동, 살아온 이야기",
+    "error": null
+   }
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "가족",
+   "reason": "함께 웃고 이야기하며 소중한 시간을 나누고 싶어요.",
+   "judge": {
+    "specific": false,
+    "evidence": "",
+    "error": null
+   }
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "혼자",
+   "reason": "아끼는 생활로 주말은 조용히 보내며 절약해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 아끼는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "가족",
+   "reason": "가족과 함께 시간을 보내며 경제적 어려움을 잠시 잊고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 시간을 보내며 경제적 어려움을 잠시 잊고 싶어.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "가족",
+   "reason": "가족과 함께 시간을 보내며 경제적인 어려움을 잠시 잊고 싶어요.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 시간을 보내며 경제적인 어려움을 잠시 잊고 싶어요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "혼자",
+   "reason": "평화롭고 개인적인 시간을 즐기는 편입니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 주말마다 가까운 공원에서 조용히 피아노를 치며, 때로는 눈물 글썽이며 영화의 감동적인 장면을 피아노 선율로 재탄생시켰다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "친구·연인",
+   "reason": "연애 중이니 데이트나 함께 즐거운 시간 보내고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "연애 중",
+    "error": null
+   }
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "가족",
+   "reason": "자녀와 함께 시간 보내며 가족 유대 강화",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 시간 보내며 자녀의 학교 프로젝트를 도와주며, 매주 일요일 오후 지역 커뮤니티 센터에서 골프 레슨을 받는 등 가족과의 활동을 강조하고 있음.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "혼자",
+   "reason": "조용한 시간이 필요하고, 경제적 여건도 여유롭지 않아서",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 평소 행동: 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "가족",
+   "reason": "아이들과 함께하는 시간이 가장 소중하고 안정적이니까요.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 주말 아침, 조용한 해운대 해안을 산책하며 일상의 평온함을 공유했다. / 퇴근 후 혼자 용접 작업을 즐기며, 작은 모형 배를 완성해 자녀에게 선물했다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "친구·연인",
+   "reason": "안정적인 관계에서 편안한 시간 보내고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "연애 중, 안정을 찾는 편, 기념일 저녁, 연인과 함께 조용한 식당에서 조용히 대화를 나누며, 서로를 더 잘 이해하려 노력하는 모습에 행복감을 느꼈다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "가족",
+   "reason": "배우자와 자녀와 함께 시간 보내며 소통하길 선호합니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "배우자·자녀와 함께",
+    "error": null
+   }
+  },
+  {
+   "personaId": 27,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "가족",
+   "reason": "가족과 함께 시간을 보내며 서로의 이야기를 나누는 것이 가장 편안하고 의미있어요."
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "가족",
+   "reason": "배우자와 자녀와 함께 시간을 보내며 가족 간의 유대감을 강화합니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "배우자·자녀와 함께, 살아온 이야기: 결혼 기념일을 맞아 배우자와 함께 조용한 온천 마을을 방문해, 둘만의 시간을 소중히 여기며 손을 잡고 산책했다. / 자녀의 대학 입학 날, 학교 앞에서 가슴 벅찬 순간을 참지 못하고 눈물을 흘리며 손을 흔들었다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "가족",
+   "reason": "경제적 어려움으로 배우자와 상의하며 시간 보내는 것이 안정적입니다.",
+   "judge": {
+    "specific": false,
+    "evidence": "",
+    "error": null
+   }
+  },
+  {
+   "personaId": 30,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "친구·연인",
+   "reason": "spontanous adventures with someone special sound better."
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 115325.5677696,
+   "endedAt": 115326.4750001,
+   "wallSeconds": 0.9072305000008782,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"가족\",\"reason\":\"경제적 여건상 가족과 함께하는 시간을 소중히 여긴다.\"}]}",
+   "promptTokens": 286,
+   "evalTokens": 38,
+   "evalSeconds": 0.630818,
+   "promptSeconds": 0.118777,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 115325.5680523,
+   "endedAt": 115326.6187251,
+   "wallSeconds": 1.0506727999891154,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"친구·연인\",\"reason\":\"사랑하는 사람과 함께 시간 보내며 행복을 느껴요.\"}]}",
+   "promptTokens": 280,
+   "evalTokens": 40,
+   "evalSeconds": 0.763897,
+   "promptSeconds": 0.129402999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 115325.5682568,
+   "endedAt": 115326.5964463,
+   "wallSeconds": 1.0281894999934593,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"가족\",\"reason\":\"배우자와 함께 하는 시간이 가장 편안하고 의미있어요.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 39,
+   "evalSeconds": 0.70616,
+   "promptSeconds": 0.16445,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 115325.568457,
+   "endedAt": 115326.4519166,
+   "wallSeconds": 0.8834595999942394,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"혼자\",\"reason\":\"아이들과 이야기하며 조용히 시간 보내는 게 편해.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 37,
+   "evalSeconds": 0.582321,
+   "promptSeconds": 0.144149,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 115325.5687601,
+   "endedAt": 115326.2880585,
+   "wallSeconds": 0.7192983999993885,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"친구·연인\",\"reason\":\"조용히 시간 보내며 생각 정리\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 33,
+   "evalSeconds": 0.387784,
+   "promptSeconds": 0.174613,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 115325.5690782,
+   "endedAt": 115326.5969344,
+   "wallSeconds": 1.0278562000021338,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"가족\",\"reason\":\"배우자와 자녀와 함께 모험 가득한 주말 보내기 좋아요.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 39,
+   "evalSeconds": 0.676178,
+   "promptSeconds": 0.194917,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 115325.5694636,
+   "endedAt": 115326.5960197,
+   "wallSeconds": 1.0265560999978334,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"가족\",\"reason\":\"가족과 함께 조용히 시간을 보내는 게 편안하고 의미 있어요.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 39,
+   "evalSeconds": 0.716487,
+   "promptSeconds": 0.153976,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 115325.5697826,
+   "endedAt": 115326.3113184,
+   "wallSeconds": 0.7415357999998378,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"혼자\",\"reason\":\"조용히 여가를 즐기며 여유를 만끽해요.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 34,
+   "evalSeconds": 0.400968,
+   "promptSeconds": 0.184597,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 115326.2880947,
+   "endedAt": 115327.2738688,
+   "wallSeconds": 0.9857741000014357,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"친구·연인\",\"reason\":\"썸 타는 관계, 함께 즐기며 시간 보내고 싶어\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 40,
+   "evalSeconds": 0.859014,
+   "promptSeconds": 0.084869,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 115326.3113534,
+   "endedAt": 115327.1910372,
+   "wallSeconds": 0.8796837999980198,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"가족\",\"reason\":\"가족과 함께 조용히 시간 보내며 추억 공유하고 싶어요.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 38,
+   "evalSeconds": 0.766247,
+   "promptSeconds": 0.094708,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 115326.4519566,
+   "endedAt": 115327.5199308,
+   "wallSeconds": 1.0679742000065744,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"가족\",\"reason\":\"가족과 함께 여유로운 시간 보내며 소소한 행복 찾는 게 우선.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 41,
+   "evalSeconds": 0.934259,
+   "promptSeconds": 0.091438,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 115326.4750444,
+   "endedAt": 115327.3670678,
+   "wallSeconds": 0.8920234000106575,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"친구·연인\",\"reason\":\"함께하는 재미와 새로운 경험이 좋아요.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 38,
+   "evalSeconds": 0.771204,
+   "promptSeconds": 0.1015,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 115326.5960574,
+   "endedAt": 115327.4504667,
+   "wallSeconds": 0.854409299994586,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"혼자\",\"reason\":\"자유로운 모험을 위해 시간을 혼자 즐기는 편입니다.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 38,
+   "evalSeconds": 0.642735,
+   "promptSeconds": 0.136955,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 115326.5964884,
+   "endedAt": 115327.5308902,
+   "wallSeconds": 0.9344017999974312,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"가족\",\"reason\":\"가족과 함께하는 시간이 가장 편안하고 의미있어.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 39,
+   "evalSeconds": 0.70303,
+   "promptSeconds": 0.156828,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 115326.5969703,
+   "endedAt": 115327.6671948,
+   "wallSeconds": 1.0702244999993127,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"가족\",\"reason\":\"배우자와 함께 시간 보내며 서로의 일상 나누는 게 편안해요.\"}]}",
+   "promptTokens": 280,
+   "evalTokens": 41,
+   "evalSeconds": 0.849328,
+   "promptSeconds": 0.146967,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 115326.6187717,
+   "endedAt": 115327.6532096,
+   "wallSeconds": 1.0344379000016488,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"가족\",\"reason\":\"함께 웃고 이야기하며 소중한 시간을 나누고 싶어요.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 40,
+   "evalSeconds": 0.815212,
+   "promptSeconds": 0.166901,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 115327.1910729,
+   "endedAt": 115328.1227644,
+   "wallSeconds": 0.9316915000090376,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"혼자\",\"reason\":\"아끼는 생활로 주말은 조용히 보내며 절약해요.\"}]}",
+   "promptTokens": 287,
+   "evalTokens": 38,
+   "evalSeconds": 0.838609,
+   "promptSeconds": 0.054679,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 115327.2739092,
+   "endedAt": 115328.3250124,
+   "wallSeconds": 1.0511032000067644,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"가족\",\"reason\":\"가족과 함께 시간을 보내며 경제적 어려움을 잠시 잊고 싶어.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 42,
+   "evalSeconds": 0.971805,
+   "promptSeconds": 0.054333,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 115327.3671101,
+   "endedAt": 115328.4910988,
+   "wallSeconds": 1.123988699997426,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"가족\",\"reason\":\"가족과 함께 시간을 보내며 경제적인 어려움을 잠시 잊고 싶어요.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 43,
+   "evalSeconds": 1.030675,
+   "promptSeconds": 0.061108,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 115327.4504993,
+   "endedAt": 115328.3140389,
+   "wallSeconds": 0.8635396000026958,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"혼자\",\"reason\":\"평화롭고 개인적인 시간을 즐기는 편입니다.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 38,
+   "evalSeconds": 0.783796,
+   "promptSeconds": 0.054322,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 115327.5199682,
+   "endedAt": 115328.4761605,
+   "wallSeconds": 0.9561923000001116,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"친구·연인\",\"reason\":\"연애 중이니 데이트나 함께 즐거운 시간 보내고 싶어\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 40,
+   "evalSeconds": 0.834012,
+   "promptSeconds": 0.074346,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 115327.5309399,
+   "endedAt": 115328.2299964,
+   "wallSeconds": 0.6990565000014612,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"가족\",\"reason\":\"자녀와 함께 시간 보내며 가족 유대 강화\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 35,
+   "evalSeconds": 0.577375,
+   "promptSeconds": 0.084777,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 115327.6532482,
+   "endedAt": 115328.6510895,
+   "wallSeconds": 0.9978412999917055,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"혼자\",\"reason\":\"조용한 시간이 필요하고, 경제적 여건도 여유롭지 않아서\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 42,
+   "evalSeconds": 0.869728,
+   "promptSeconds": 0.083525,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 115327.6672422,
+   "endedAt": 115328.6372428,
+   "wallSeconds": 0.9700006000057328,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"가족\",\"reason\":\"아이들과 함께하는 시간이 가장 소중하고 안정적이니까요.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 41,
+   "evalSeconds": 0.845214,
+   "promptSeconds": 0.094234,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 115328.122804,
+   "endedAt": 115329.2969017,
+   "wallSeconds": 1.174097700000857,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"친구·연인\",\"reason\":\"안정적인 관계에서 편안한 시간 보내고 싶어.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 40,
+   "evalSeconds": 1.081245,
+   "promptSeconds": 0.06158,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 115328.2300329,
+   "endedAt": 115329.3620932,
+   "wallSeconds": 1.1320603000058327,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"가족\",\"reason\":\"배우자와 자녀와 함께 시간 보내며 소통하길 선호합니다.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 40,
+   "evalSeconds": 1.03747,
+   "promptSeconds": 0.061534,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 115328.3140719,
+   "endedAt": 115329.4932989,
+   "wallSeconds": 1.1792270000005374,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"가족\",\"reason\":\"가족과 함께 시간을 보내며 서로의 이야기를 나누는 것이 가장 편안하고 의미있어요.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 47,
+   "evalSeconds": 1.054306,
+   "promptSeconds": 0.083874,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 115328.3250672,
+   "endedAt": 115329.4624554,
+   "wallSeconds": 1.1373882000043523,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"가족\",\"reason\":\"배우자와 자녀와 함께 시간을 보내며 가족 간의 유대감을 강화합니다.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 44,
+   "evalSeconds": 1.01283,
+   "promptSeconds": 0.094406,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 115328.4762078,
+   "endedAt": 115329.4932403,
+   "wallSeconds": 1.017032499992638,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"가족\",\"reason\":\"경제적 어려움으로 배우자와 상의하며 시간 보내는 것이 안정적입니다.\"}]}",
+   "promptTokens": 287,
+   "evalTokens": 43,
+   "evalSeconds": 0.881048,
+   "promptSeconds": 0.083034,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 115328.4911509,
+   "endedAt": 115329.3827148,
+   "wallSeconds": 0.8915639000042574,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"친구·연인\",\"reason\":\" spontanous adventures with someone special sound better.\"}]}",
+   "promptTokens": 287,
+   "evalTokens": 36,
+   "evalSeconds": 0.760907,
+   "promptSeconds": 0.092662,
+   "doneReason": "stop"
+  }
+ ],
+ "repeat": 2
+}

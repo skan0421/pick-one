@@ -1,0 +1,817 @@
+{
+ "model": "exaone3.5:7.8b",
+ "format": "label",
+ "questionId": "job",
+ "topic": "직장",
+ "method": "1x8",
+ "personaCount": 30,
+ "wallSeconds": 4.598475199993118,
+ "promptTokensPerPersona": 291.6333333333333,
+ "evalTokensPerPersona": 43.36666666666667,
+ "seconds100": 15.328250666643726,
+ "failureCount": 4,
+ "failureKinds": {
+  "reason_too_long": 4
+ },
+ "personaTexts": {
+  "1": "#1: 35세 여성, 대구, 건물 청소원(경력 12년 (베테랑)), 대졸, 연애 중, 부모와 함께, 경제적으로 빠듯한 편. 신중한 편, 개방적인 편",
+  "2": "#2: 16세 여성, 경기, 고등학생(고등학교 1학년), 고등학교 재학, 연애 중, 부모와 함께, 경제적으로 보통. 안정을 찾는 편, 개방적인 편",
+  "3": "#3: 58세 남성, 인천, 경비원(경력 2년 (신입)), 고졸, 기혼, 배우자와 둘이, 경제적으로 보통. 즉흥적인 편, 감정 표현이 큰 편",
+  "4": "#4: 39세 여성, 서울, 가사·육아(가사·육아), 대졸, 솔로, 부모와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "5": "#5: 18세 남성, 서울, 고등학생(고등학교 3학년), 고등학교 재학, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 전통을 중시하는 편",
+  "6": "#6: 52세 남성, 인천, 교사(경력 3년 (중견)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 모험을 즐기는 편, 아끼는 편",
+  "7": "#7: 67세 여성, 충남, 은퇴(은퇴), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "8": "#8: 67세 여성, 전북, 지게차 기사(경력 5년 (중견)), 중졸 이하, 이혼·사별, 1인 가구, 경제적으로 보통. 안정을 찾는 편, 전통을 중시하는 편",
+  "9": "#9: 24세 여성, 경기, 주방 보조(경력 5년 (중견)), 대졸, 썸 타는 중, 1인 가구, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "10": "#10: 63세 여성, 충남, 사무직 회사원(경력 8년 (중견)), 고졸, 이혼·사별, 1인 가구, 경제적으로 보통. 외향적인 편, 전통을 중시하는 편",
+  "11": "#11: 51세 남성, 경기, 약사(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 잘 쓰는 편, 안정을 찾는 편",
+  "12": "#12: 37세 남성, 전북, 전기 기사(경력 18년 (베테랑)), 대졸, 솔로, 1인 가구, 경제적으로 보통. 전통을 중시하는 편, 즉흥적인 편",
+  "13": "#13: 52세 남성, 경기, 경리(경력 3년 (중견)), 고졸, 솔로, 부모와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편",
+  "14": "#14: 40세 여성, 서울, 경리(경력 18년 (베테랑)), 대학원졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 즉흥적인 편, 잘 쓰는 편",
+  "15": "#15: 69세 여성, 경기, 은퇴(은퇴), 중졸 이하, 기혼, 배우자와 둘이, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "16": "#16: 56세 여성, 인천, 공무원(경력 12년 (베테랑)), 중졸 이하, 연애 중, 1인 가구, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "17": "#17: 59세 여성, 제주, 음식점 직원(경력 8년 (중견)), 전문대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 아끼는 편, 감정 표현이 큰 편",
+  "18": "#18: 49세 남성, 서울, 물리치료사(경력 18년 (베테랑)), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 외향적인 편, 전통을 중시하는 편",
+  "19": "#19: 54세 여성, 대구, 구직·쉬는 중(구직·쉬는 중), 대졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정 표현이 큰 편, 개방적인 편",
+  "20": "#20: 58세 남성, 전북, 전기 기사(경력 2년 (신입)), 대졸, 이혼·사별, 1인 가구, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "21": "#21: 15세 여성, 충남, 건물 청소원(경력 1년 (신입)), 고졸, 연애 중, 부모와 함께, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "22": "#22: 51세 남성, 인천, 가사·육아(가사·육아), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "23": "#23: 58세 여성, 서울, 물류센터 작업자(경력 12년 (베테랑)), 대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 모험을 즐기는 편",
+  "24": "#24: 31세 여성, 부산, 용접공(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 안정을 찾는 편, 아끼는 편",
+  "25": "#25: 29세 여성, 강원, 구직·쉬는 중(구직·쉬는 중), 대학원졸, 연애 중, 1인 가구, 경제적으로 보통. 아끼는 편, 안정을 찾는 편",
+  "26": "#26: 68세 여성, 충북, 음식점 직원(경력 1년 (신입)), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 내향적인 편",
+  "27": "#27: 61세 남성, 경기, 자동차 정비사(경력 3년 (중견)), 중졸 이하, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 외향적인 편, 신중한 편",
+  "28": "#28: 49세 남성, 충남, 요양보호사(경력 25년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 신중한 편, 모험을 즐기는 편",
+  "29": "#29: 31세 남성, 충북, 가사·육아(가사·육아), 고졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정을 안 드러내는 편, 내향적인 편",
+  "30": "#30: 34세 여성, 경기, 주방 보조(경력 8년 (중견)), 대졸, 솔로, 형제·친구와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편"
+ },
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "적성·흥미",
+   "reason": "오랫동안 청소를 하며 흥미와 적성을 키워왔어요, 마음 맞는 일이 가장 지속가능해요."
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "내가 좋아하는 일을 해야지 오래도록 행복할 수 있어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 아는 길로만 다니고 새 식당은 남이 먼저 가 본 뒤에 간다 / 영화 보다가 잘 운다 / 살아온 이야기: 고등학교 졸업 전 인턴십으로 지역 도서관에서 책 분류를 맡았다. 조심스럽게 업무를 배우며, 안정적인 환경 속에서 지식을 쌓았다. / 영화 감상회 동아리에 참여해 '그믐밤의 별'을 보며 눈물을 흘렸고, 감정이 풍부한 그 순간이 소중했다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "배우자와 아이들을 위해 내가 happiest할 때를 최우선으로 생각해.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족, 평소 행동, 살아온 이야기",
+    "error": null
+   }
+  },
+  {
+   "personaId": 4,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "적성·흥미",
+   "reason": "아이들과 함께하는 시간도 즐겁지만, 적성에 맞는 일을 하는 게 더 행복할 것 같아요."
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "미래에 행복하고 성공하려면 현재 흥미로운 분야가 중요해.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소엔 아끼지만 여행이나 선물엔 아끼지 않는다 / 혼자 도서관에서 책을 읽다가, 멀리서 조용히 웃는 모습을 발견하고 잠시 멈춰 그 모습을 지켜보았다. / 고등학교 내 봉사활동에서 학생들의 안내 역할을 맡아 전통 문화 행사를 성공적으로 이끌었다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "아이들과 함께 할 때 가장 행복해서, 가르치는 일도 적성에 맞아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "가르치는 일도 적성에 맞아요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "무엇보다 행복해야 하니까요, 좋아하는 일을 해야죠.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 커피는 집에서 내려 텀블러에 담아 다닌다 / 새로운 커피 머신은 몇 달 동안 고민 끝에 구매했지만, 주로 집에서 직접 내린 커피를 텀블러에 담아 다니며 비용을 아끼곤 했다. / 살아온 이야기: 은퇴 후에도 지역 커뮤니티 센터에서 가끔 자원봉사를 하며, 젊은 학생들의 숙제 도움을 주는 것이 뿌듯했다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "안정성",
+   "reason": "평생 안정된 직장이 가장 큰 가치죠.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "끊임없이 성장하고 만족하며 일하고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 커피는 집에서 내려 텀블러에 담아 다닌다 / 고맙다는 말을 문자로는 해도 얼굴 보고는 잘 못 한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다 / 매주 토요일마다 동네 공원에서 열리는 작은 악기 연주 모임에 참여해, 조심스럽게 기타를 연주하며 새로운 곡을 배웠다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "돈도 중요하지만, 오랫동안 즐겁게 일할 수 있어야죠.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 주말 약속이 비어 있으면 불안해서 누구든 불러낸다 / 살아온 이야기: 주말마다 근처 공원에서 정원 가꾸기를 즐겼다. 흙을 만지며 평온함을 느끼고, 작은 꽃들이 피어나는 모습에 만족감을 가졌다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "안정성",
+   "reason": "가족과 안정적인 미래를 위해 경제적인 안정성이 최우선입니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 가족 건강을 위해 최신 영양 보충제를 골라 약국에서 구매하며 안심했다, 퇴근 후 조용한 도서관에서 고전 문학을 읽으며 하루를 마무리했다, 아내와 함께 주말 아침에 동네 공원 산책을 하며 안정감을 느꼈다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 12,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "적성·흥미",
+   "reason": "오랜 경력에도 불구하고, 진정한 만족감은 내 손으로 만드는 일에서 비롯되니까."
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "모험 좋아하니까요, 적성 맞는 일하면 행복하고 오래 할 수 있어요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 모험을 즐기는 편, 즉흥적인 편 / 살아온 이야기: 팀 프로젝트 마감일 앞두고 밤샘 작업을 선택했다. 커피 한 잔에 힘을 얻어 즉흥적으로 아이디어를 내놓았고, 결과는 놀라웠. / 주말 산악 등반 중 갑자기 폭풍우를 만나 잠시 고립되었지만, 즉흥적으로 비옷을 찾아 꺼내 입으며 모험을 즐겼다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "가족과 함께하는 삶, 적성 맞는 일이 행복을 더해줘요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 여행은 숙소만 잡고 나머지는 가서 정한다 / 마음에 들면 가격표를 보기 전에 계산대로 간다 / 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 가족과 함께하는 삶, 자녀의 학교 공연을 보며 만족감을 느끼는 점 등은 그녀가 개인의 흥미와 적성에 맞는 일을 통해 행복을 추구하며, 이는 그녀의 일상 행동과 가족 중심의 가치관에서 드러납니다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "내가 좋아하는 일을 해야지 행복하고 즐겁게 살 수 있어요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 은퇴 후에도 지역 커뮤니티 센터에서 자원봉사로 어린이들과 함께 텃밭 가꾸는 일을 하며 하루를 보람차게 보냈다. / 살아온 이야기: 가을이면 마을 뒷산에서 숲길 산책하며, 조용히 떨어진 단풍잎을 모아 책꽂이에 장식하는 걸 즐겼다. (이는 그녀가 흥미와 적성에 맞는 활동에서 행복을 찾는 경향을 보여줌)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "돈보다 즐겁게 일하는 게 장기적으로 행복해지니까.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소엔 아끼지만 여행이나 선물엔 아끼지 않는다 / 살아가는 이야기에서 예산을 과감하게 늘려 연인과 특별한 시간을 갖는 모습 - 돈보다 즐겁게 시간을 보내는 가치를 보여줌",
+    "error": null
+   }
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "안정성",
+   "reason": "경제적으로 빠듯해서 안정적인 수입이 최우선입니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "안정성",
+   "reason": "가족을 위해 안정적인 수입이 최우선이야.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 가족을 위해 안정적인 수입이 최우선이야.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 19,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "적성·흥미",
+   "reason": "배우자와 경제적 부담을 덜고 행복하게 살려면 내가 재미있고 잘하는 일이 최고야."
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "안정성",
+   "reason": "퇴직 후 여유로운 생활을 위해 안정적인 직업이 필수야.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 안정을 찾는 편, 퇴직 후 여유로운 생활을 위해 안정적인 직업이 필수야.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "청소할 때 기분 좋아서 적성 찾은 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 영화 보다다가 잘 운다 / 청소할 때 기분 좋아서 적성 찾은 것 같아요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "안정성",
+   "reason": "가족과 함께 안정적인 미래를 위해 안정성이 최우선이야.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 안정적인 미래를 위해 안정성이 최우선이야.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "부모 돕는 여유 생기게 흥미로운 일이 최고",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 해 본 적 없는 일이면 오히려 먼저 손을 든다, 살아온 이야기: 어린 시절 친구의 결혼식에서 축하 공연을 자청해 노래를 불렀다. 그때 느낀 뿌듯함이 외로운 지금도 가끔 떠올랐다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "안정성",
+   "reason": "가족 부양 때문에 장기적인 안정성이 최우선이지.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족 부양 때문에 장기적인 안정성이 최우선이지.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "내가 행복해야 오래 일할 수 있어, 결국 적성과 흥미가 최우선이야.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다 / 안정을 찾는 편, 살아온 이야기: 대학원 졸업 후, 강원은 안정적인 프리랜서 기획가로 일하며 매달 예산을 철저히 관리하며 프로젝트를 진행했다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "자녀와 함께 하는 일상에서 진심으로 즐길 수 있는 일이 제일 중요해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "자녀와 함께 하는 일상에서 진심으로 즐길 수 있는 일이 제일 중요해요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "오랜 경력으로 적성 맞는 일이 가장 행복하고 잘 할 수 있다 생각해.",
+   "judge": {
+    "specific": true,
+    "evidence": "오랜 경력으로 적성 맞는 일이 가장 행복하고 잘 할 수 있다 생각해.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "25년 경력, 진심으로 즐기는 일이 가장 중요해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "25년 경력, 진심으로 즐기는 일이 가장 중요해요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "가족을 위해 즐겁게 일하고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "가족을 위해 즐겁게 일하고 싶어",
+    "error": null
+   }
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "적성·흥미",
+   "reason": "모험 좋아하니까 적성 맞는 일이 최고지!",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 모험을 즐기는 편, 즉흥적인 편 / 살아온 이야기: 주말마다 한강변 자전거 도로를 달려, 즉흥적인 경로 변경으로 새로운 경치를 발견할 때마다 설렘이 가득했다, 주방에서 바쁜 하루를 보내던 중, 동료들과 함께 새로운 레시피를 실험하며 모험심에 찬 웃음이 떠나지 않았다",
+    "error": null
+   }
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 115306.9762569,
+   "endedAt": 115308.3312655,
+   "wallSeconds": 1.3550086000032024,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"적성·흥미\",\"reason\":\"오랫동안 청소를 하며 흥미와 적성을 키워왔어요, 마음 맞는 일이 가장 지속가능해요.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 50,
+   "evalSeconds": 1.012058,
+   "promptSeconds": 0.111123,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 115306.9765388,
+   "endedAt": 115307.8931274,
+   "wallSeconds": 0.9165886000118917,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"적성·흥미\",\"reason\":\"내가 좋아하는 일을 해야지 오래도록 행복할 수 있어.\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 41,
+   "evalSeconds": 0.564847,
+   "promptSeconds": 0.120279,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 115306.9767827,
+   "endedAt": 115308.1365958,
+   "wallSeconds": 1.1598130999918794,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"적성·흥미\",\"reason\":\"배우자와 아이들을 위해 내가 happiest할 때를 최우선으로 생각해.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 45,
+   "evalSeconds": 0.76134,
+   "promptSeconds": 0.166855,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 115306.9770423,
+   "endedAt": 115308.4476502,
+   "wallSeconds": 1.4706079000025056,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"적성·흥미\",\"reason\":\"아이들과 함께하는 시간도 즐겁지만, 적성에 맞는 일을 하는 게 더 행복할 것 같아요.\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 55,
+   "evalSeconds": 1.110184,
+   "promptSeconds": 0.129437,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 115306.9772849,
+   "endedAt": 115307.9169205,
+   "wallSeconds": 0.9396356000070227,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"적성·흥미\",\"reason\":\"미래에 행복하고 성공하려면 현재 흥미로운 분야가 중요해.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 42,
+   "evalSeconds": 0.551256,
+   "promptSeconds": 0.15718,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 115306.977566,
+   "endedAt": 115308.159788,
+   "wallSeconds": 1.1822220000030939,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"적성·흥미\",\"reason\":\"아이들과 함께 할 때 가장 행복해서, 가르치는 일도 적성에 맞아요.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 46,
+   "evalSeconds": 0.803501,
+   "promptSeconds": 0.147902,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 115306.9778586,
+   "endedAt": 115307.9163467,
+   "wallSeconds": 0.9384881000005407,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"적성·흥미\",\"reason\":\"무엇보다 행복해야 하니까요, 좋아하는 일을 해야죠.\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 42,
+   "evalSeconds": 0.569274,
+   "promptSeconds": 0.138877,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 115306.9781516,
+   "endedAt": 115307.7710806,
+   "wallSeconds": 0.7929290000029141,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"안정성\",\"reason\":\"평생 안정된 직장이 가장 큰 가치죠.\"}]}",
+   "promptTokens": 296,
+   "evalTokens": 35,
+   "evalSeconds": 0.386235,
+   "promptSeconds": 0.17623,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 115307.7712074,
+   "endedAt": 115308.739435,
+   "wallSeconds": 0.9682275999948615,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"적성·흥미\",\"reason\":\"끊임없이 성장하고 만족하며 일하고 싶어.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 38,
+   "evalSeconds": 0.895282,
+   "promptSeconds": 0.043988,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 115307.8931669,
+   "endedAt": 115308.9409988,
+   "wallSeconds": 1.0478318999957992,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"적성·흥미\",\"reason\":\"돈도 중요하지만, 오랫동안 즐겁게 일할 수 있어야죠.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 43,
+   "evalSeconds": 0.854966,
+   "promptSeconds": 0.132270999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 115307.9163836,
+   "endedAt": 115308.918619,
+   "wallSeconds": 1.0022354000102496,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"안정성\",\"reason\":\"가족과 안정적인 미래를 위해 경제적인 안정성이 최우선입니다.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 42,
+   "evalSeconds": 0.810125,
+   "promptSeconds": 0.154655,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 115307.9169601,
+   "endedAt": 115309.1171281,
+   "wallSeconds": 1.200167999995756,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"적성·흥미\",\"reason\":\"오랜 경력에도 불구하고, 진정한 만족감은 내 손으로 만드는 일에서 비롯되니까.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 48,
+   "evalSeconds": 1.018997,
+   "promptSeconds": 0.144369,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 115308.1366303,
+   "endedAt": 115309.2262698,
+   "wallSeconds": 1.0896395000017947,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"적성·흥미\",\"reason\":\"모험 좋아하니까요, 적성 맞는 일하면 행복하고 오래 할 수 있어요.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 47,
+   "evalSeconds": 0.98305,
+   "promptSeconds": 0.066387,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 115308.1598273,
+   "endedAt": 115309.2496471,
+   "wallSeconds": 1.0898198000068078,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"적성·흥미\",\"reason\":\"가족과 함께하는 삶, 적성 맞는 일이 행복을 더해줘요.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 47,
+   "evalSeconds": 0.944716,
+   "promptSeconds": 0.053776,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 115308.331308,
+   "endedAt": 115309.3554711,
+   "wallSeconds": 1.0241631000099005,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"적성·흥미\",\"reason\":\"내가 좋아하는 일을 해야지 행복하고 즐겁게 살 수 있어요.\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 44,
+   "evalSeconds": 0.949771,
+   "promptSeconds": 0.049676,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 115308.4476928,
+   "endedAt": 115309.478318,
+   "wallSeconds": 1.0306252000009408,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"적성·흥미\",\"reason\":\"돈보다 즐겁게 일하는 게 장기적으로 행복해지니까.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 43,
+   "evalSeconds": 0.938979,
+   "promptSeconds": 0.053266,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 115308.7395883,
+   "endedAt": 115309.7225322,
+   "wallSeconds": 0.982943900002283,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"안정성\",\"reason\":\"경제적으로 빠듯해서 안정적인 수입이 최우선입니다.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 38,
+   "evalSeconds": 0.891307,
+   "promptSeconds": 0.053064,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 115308.9186529,
+   "endedAt": 115309.8746075,
+   "wallSeconds": 0.955954599994584,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"안정성\",\"reason\":\"가족을 위해 안정적인 수입이 최우선이야.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 37,
+   "evalSeconds": 0.817961,
+   "promptSeconds": 0.083468,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 115308.9410477,
+   "endedAt": 115310.4267441,
+   "wallSeconds": 1.4856963999918662,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"적성·흥미\",\"reason\":\"배우자와 경제적 부담을 덜고 행복하게 살려면 내가 재미있고 잘하는 일이 최고야.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 54,
+   "evalSeconds": 1.359738,
+   "promptSeconds": 0.093674,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 115309.1171738,
+   "endedAt": 115310.0707655,
+   "wallSeconds": 0.9535917000030167,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"안정성\",\"reason\":\"퇴직 후 여유로운 생활을 위해 안정적인 직업이 필수야.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 41,
+   "evalSeconds": 0.85929,
+   "promptSeconds": 0.053879,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 115309.2263116,
+   "endedAt": 115310.2989534,
+   "wallSeconds": 1.0726417999976547,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"적성·흥미\",\"reason\":\"청소할 때 기분 좋아서 적성 찾은 것 같아요.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 42,
+   "evalSeconds": 0.932678,
+   "promptSeconds": 0.084581,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 115309.2496901,
+   "endedAt": 115310.1687656,
+   "wallSeconds": 0.9190755000017816,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"안정성\",\"reason\":\"가족과 함께 안정적인 미래를 위해 안정성이 최우선이야.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 40,
+   "evalSeconds": 0.792095,
+   "promptSeconds": 0.094865,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 115309.3555166,
+   "endedAt": 115310.191241,
+   "wallSeconds": 0.835724399992614,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"적성·흥미\",\"reason\":\"부모 돕는 여유 생기게 흥미로운 일이 최고\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 40,
+   "evalSeconds": 0.752264,
+   "promptSeconds": 0.044212,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 115309.47836,
+   "endedAt": 115310.4031868,
+   "wallSeconds": 0.9248268000083044,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"안정성\",\"reason\":\"가족 부양 때문에 장기적인 안정성이 최우선이지.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 38,
+   "evalSeconds": 0.832471,
+   "promptSeconds": 0.052859,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 115309.7225778,
+   "endedAt": 115311.1335616,
+   "wallSeconds": 1.4109838000003947,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"적성·흥미\",\"reason\":\"내가 행복해야 오래 일할 수 있어, 결국 적성과 흥미가 최우선이야.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 47,
+   "evalSeconds": 1.329946,
+   "promptSeconds": 0.053247,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 115309.8746486,
+   "endedAt": 115311.3716524,
+   "wallSeconds": 1.497003800002858,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"적성·흥미\",\"reason\":\"자녀와 함께 하는 일상에서 진심으로 즐길 수 있는 일이 제일 중요해요.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 47,
+   "evalSeconds": 1.395409,
+   "promptSeconds": 0.053613,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 115310.0708018,
+   "endedAt": 115311.5741881,
+   "wallSeconds": 1.5033862999989651,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"적성·흥미\",\"reason\":\"오랜 경력으로 적성 맞는 일이 가장 행복하고 잘 할 수 있다 생각해.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 47,
+   "evalSeconds": 1.406008,
+   "promptSeconds": 0.063475,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 115310.1688001,
+   "endedAt": 115311.5561928,
+   "wallSeconds": 1.3873926999949617,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"적성·흥미\",\"reason\":\"25년 경력, 진심으로 즐기는 일이 가장 중요해요.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 43,
+   "evalSeconds": 1.257844,
+   "promptSeconds": 0.082174,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 115310.1912836,
+   "endedAt": 115311.4585846,
+   "wallSeconds": 1.2673009999998612,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"적성·흥미\",\"reason\":\"가족을 위해 즐겁게 일하고 싶어\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 38,
+   "evalSeconds": 1.148592,
+   "promptSeconds": 0.093861,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 115310.2989874,
+   "endedAt": 115311.5375324,
+   "wallSeconds": 1.2385450000001583,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"적성·흥미\",\"reason\":\"모험 좋아하니까 적성 맞는 일이 최고지!\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 41,
+   "evalSeconds": 1.148541,
+   "promptSeconds": 0.057906,
+   "doneReason": "stop"
+  }
+ ],
+ "repeat": 2
+}

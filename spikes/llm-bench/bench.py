@@ -38,14 +38,15 @@ SYSTEM_PROMPT = (
 )
 
 
-def user_prompt(question: dict, personas: list[dict]) -> str:
+def user_prompt(question: dict, personas: list[dict], describe_fn=describe) -> str:
+    """describe_fn: 인물 한 명을 프롬프트 문장으로 바꾸는 함수. 2차 실험(spikes/persona-format)이 다른 형태를 끼워 넣는다"""
     options = ' / '.join(f'"{o}"' for o in question['options'])
     lines = [
         f"고민: {question['content']}",
         f'선택지: {options}',
         '',
         f'답할 인물 {len(personas)}명:',
-        *[describe(p) for p in personas],
+        *[describe_fn(p) for p in personas],
         '',
         f'{len(personas)}명 모두 하나씩, 아래 형식의 JSON 으로만 답한다. personaId 는 위 목록의 # 번호를 그대로 쓴다. '
         'choice 는 선택지 문구를 그대로 쓴다. reason 은 40자 이내 한국어 한 문장.',
@@ -86,7 +87,7 @@ def response_schema(question: dict, count: int) -> dict:
     }
 
 
-def chat(model: str, question: dict, personas: list[dict], timeout: float = 600) -> dict:
+def chat(model: str, question: dict, personas: list[dict], timeout: float = 600, describe_fn=describe) -> dict:
     """요청 1건. 응답 원문과 Ollama 가 준 토큰 수·시간을 함께 돌려준다. HTTP 오류는 예외 대신 error 로 담는다"""
     body = {
         'model': model,
@@ -101,7 +102,7 @@ def chat(model: str, question: dict, personas: list[dict], timeout: float = 600)
         },
         'messages': [
             {'role': 'system', 'content': SYSTEM_PROMPT},
-            {'role': 'user', 'content': user_prompt(question, personas)},
+            {'role': 'user', 'content': user_prompt(question, personas, describe_fn)},
         ],
     }
     started = time.perf_counter()

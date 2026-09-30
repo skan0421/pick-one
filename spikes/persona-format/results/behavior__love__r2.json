@@ -1,0 +1,831 @@
+{
+ "model": "exaone3.5:7.8b",
+ "format": "behavior",
+ "questionId": "love",
+ "topic": "연애",
+ "method": "1x8",
+ "personaCount": 30,
+ "wallSeconds": 6.617187199997716,
+ "promptTokensPerPersona": 348.93333333333334,
+ "evalTokensPerPersona": 42.766666666666666,
+ "seconds100": 22.057290666659053,
+ "failureCount": 0,
+ "failureKinds": {},
+ "personaTexts": {
+  "1": "#1: 35세 여성, 대구, 건물 청소원(경력 12년 (베테랑)), 대졸, 연애 중, 부모와 함께, 경제적으로 빠듯한 편. 신중한 편, 개방적인 편\n  평소 행동: 물건 하나 사기 전에 후기를 세 번은 찾아본다 / 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 친한 사람 몇 명과는 자주 만나지만 새 모임에는 잘 안 나간다 / 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다",
+  "2": "#2: 16세 여성, 경기, 고등학생(고등학교 1학년), 고등학교 재학, 연애 중, 부모와 함께, 경제적으로 보통. 안정을 찾는 편, 개방적인 편\n  평소 행동: 아는 길로만 다니고 새 식당은 남이 먼저 가 본 뒤에 간다 / 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 영화 보다가 잘 운다 / 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다",
+  "3": "#3: 58세 남성, 인천, 경비원(경력 2년 (신입)), 고졸, 기혼, 배우자와 둘이, 경제적으로 보통. 즉흥적인 편, 감정 표현이 큰 편\n  평소 행동: 여행은 숙소만 잡고 나머지는 가서 정한다 / 기쁘면 바로 전화해서 자랑하고, 서운하면 그 자리에서 말한다 / 마음에 들면 가격표를 보기 전에 계산대로 간다 / 적금 말고는 돈을 굴려 본 적이 없다",
+  "4": "#4: 39세 여성, 서울, 가사·육아(가사·육아), 대졸, 솔로, 부모와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편\n  평소 행동: 커피는 집에서 내려 텀블러에 담아 다닌다 / 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다",
+  "5": "#5: 18세 남성, 서울, 고등학생(고등학교 3학년), 고등학교 재학, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 전통을 중시하는 편\n  평소 행동: 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 결혼은 때가 되면 하는 것이라고 말한다 / 아는 길로만 다니고 새 식당은 남이 먼저 가 본 뒤에 간다 / 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다",
+  "6": "#6: 52세 남성, 인천, 교사(경력 3년 (중견)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 모험을 즐기는 편, 아끼는 편\n  평소 행동: 주식·코인에 월급의 일부를 꾸준히 넣는다 / 커피는 집에서 내려 텀블러에 담아 다닌다 / 고맙다는 말을 문자로는 해도 얼굴 보고는 잘 못 한다 / 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다",
+  "7": "#7: 67세 여성, 충남, 은퇴(은퇴), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편\n  평소 행동: 커피는 집에서 내려 텀블러에 담아 다닌다 / 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다 / 제사나 명절 모임은 참석하지만 형식은 줄이자는 쪽이다",
+  "8": "#8: 67세 여성, 전북, 지게차 기사(경력 5년 (중견)), 중졸 이하, 이혼·사별, 1인 가구, 경제적으로 보통. 안정을 찾는 편, 전통을 중시하는 편\n  평소 행동: 적금 말고는 돈을 굴려 본 적이 없다 / 명절 아침에는 온 가족이 모여야 한다고 생각한다 / 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다 / 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다",
+  "9": "#9: 24세 여성, 경기, 주방 보조(경력 5년 (중견)), 대졸, 썸 타는 중, 1인 가구, 경제적으로 보통. 개방적인 편, 아끼는 편\n  평소 행동: 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 커피는 집에서 내려 텀블러에 담아 다닌다 / 고맙다는 말을 문자로는 해도 얼굴 보고는 잘 못 한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다",
+  "10": "#10: 63세 여성, 충남, 사무직 회사원(경력 8년 (중견)), 고졸, 이혼·사별, 1인 가구, 경제적으로 보통. 외향적인 편, 전통을 중시하는 편\n  평소 행동: 주말 약속이 비어 있으면 불안해서 누구든 불러낸다 / 결혼은 때가 되면 하는 것이라고 말한다 / 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다",
+  "11": "#11: 51세 남성, 경기, 약사(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 잘 쓰는 편, 안정을 찾는 편\n  평소 행동: 배달 앱을 하루에 한 번은 켠다 / 적금 말고는 돈을 굴려 본 적이 없다 / 제사나 명절 모임은 참석하지만 형식은 줄이자는 쪽이다 / 친한 사람 몇 명과는 자주 만나지만 새 모임에는 잘 안 나간다",
+  "12": "#12: 37세 남성, 전북, 전기 기사(경력 18년 (베테랑)), 대졸, 솔로, 1인 가구, 경제적으로 보통. 전통을 중시하는 편, 즉흥적인 편\n  평소 행동: 결혼은 때가 되면 하는 것이라고 말한다 / 여행은 숙소만 잡고 나머지는 가서 정한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다",
+  "13": "#13: 52세 남성, 경기, 경리(경력 3년 (중견)), 고졸, 솔로, 부모와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편\n  평소 행동: 주식·코인에 월급의 일부를 꾸준히 넣는다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다 / 제사나 명절 모임은 참석하지만 형식은 줄이자는 쪽이다",
+  "14": "#14: 40세 여성, 서울, 경리(경력 18년 (베테랑)), 대학원졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 즉흥적인 편, 잘 쓰는 편\n  평소 행동: 여행은 숙소만 잡고 나머지는 가서 정한다 / 마음에 들면 가격표를 보기 전에 계산대로 간다 / 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다",
+  "15": "#15: 69세 여성, 경기, 은퇴(은퇴), 중졸 이하, 기혼, 배우자와 둘이, 경제적으로 보통. 개방적인 편, 아끼는 편\n  평소 행동: 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 친한 사람 몇 명과는 자주 만나지만 새 모임에는 잘 안 나간다",
+  "16": "#16: 56세 여성, 인천, 공무원(경력 12년 (베테랑)), 중졸 이하, 연애 중, 1인 가구, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편\n  평소 행동: 기쁘면 바로 전화해서 자랑하고, 서운하면 그 자리에서 말한다 / 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다",
+  "17": "#17: 59세 여성, 제주, 음식점 직원(경력 8년 (중견)), 전문대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 아끼는 편, 감정 표현이 큰 편\n  평소 행동: 커피는 집에서 내려 텀블러에 담아 다닌다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 제사나 명절 모임은 참석하지만 형식은 줄이자는 쪽이다",
+  "18": "#18: 49세 남성, 서울, 물리치료사(경력 18년 (베테랑)), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 외향적인 편, 전통을 중시하는 편\n  평소 행동: 주말 약속이 비어 있으면 불안해서 누구든 불러낸다 / 결혼은 때가 되면 하는 것이라고 말한다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다",
+  "19": "#19: 54세 여성, 대구, 구직·쉬는 중(구직·쉬는 중), 대졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정 표현이 큰 편, 개방적인 편\n  평소 행동: 영화 보다가 잘 운다 / 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다 / 물건 하나 사기 전에 후기를 세 번은 찾아본다",
+  "20": "#20: 58세 남성, 전북, 전기 기사(경력 2년 (신입)), 대졸, 이혼·사별, 1인 가구, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편\n  평소 행동: 배달 앱을 하루에 한 번은 켠다 / 아는 길로만 다니고 새 식당은 남이 먼저 가 본 뒤에 간다 / 명절 아침에는 온 가족이 모여야 한다고 생각한다 / 영화 보다가 잘 운다",
+  "21": "#21: 15세 여성, 충남, 건물 청소원(경력 1년 (신입)), 고졸, 연애 중, 부모와 함께, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편\n  평소 행동: 영화 보다가 잘 운다 / 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 제사나 명절 모임은 참석하지만 형식은 줄이자는 쪽이다",
+  "22": "#22: 51세 남성, 인천, 가사·육아(가사·육아), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편\n  평소 행동: 배달 앱을 하루에 한 번은 켠다 / 적금 말고는 돈을 굴려 본 적이 없다 / 친한 사람 몇 명과는 자주 만나지만 새 모임에는 잘 안 나간다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다",
+  "23": "#23: 58세 여성, 서울, 물류센터 작업자(경력 12년 (베테랑)), 대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 모험을 즐기는 편\n  평소 행동: 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 해 본 적 없는 일이면 오히려 먼저 손을 든다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다",
+  "24": "#24: 31세 여성, 부산, 용접공(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 안정을 찾는 편, 아끼는 편\n  평소 행동: 적금 말고는 돈을 굴려 본 적이 없다 / 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다 / 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다",
+  "25": "#25: 29세 여성, 강원, 구직·쉬는 중(구직·쉬는 중), 대학원졸, 연애 중, 1인 가구, 경제적으로 보통. 아끼는 편, 안정을 찾는 편\n  평소 행동: 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다 / 제사나 명절 모임은 참석하지만 형식은 줄이자는 쪽이다",
+  "26": "#26: 68세 여성, 충북, 음식점 직원(경력 1년 (신입)), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 내향적인 편\n  평소 행동: 배달 앱을 하루에 한 번은 켠다 / 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다",
+  "27": "#27: 61세 남성, 경기, 자동차 정비사(경력 3년 (중견)), 중졸 이하, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 외향적인 편, 신중한 편\n  평소 행동: 처음 보는 사람에게 먼저 말을 걸고 번호를 받는다 / 약속 장소는 미리 지도로 동선까지 확인해 둔다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다 / 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다",
+  "28": "#28: 49세 남성, 충남, 요양보호사(경력 25년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 신중한 편, 모험을 즐기는 편\n  평소 행동: 물건 하나 사기 전에 후기를 세 번은 찾아본다 / 해 본 적 없는 일이면 오히려 먼저 손을 든다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다 / 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다",
+  "29": "#29: 31세 남성, 충북, 가사·육아(가사·육아), 고졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정을 안 드러내는 편, 내향적인 편\n  평소 행동: 속상해도 겉으로는 별일 없는 척한다 / 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 명절에 꼭 모여야 한다는 생각이 없고 각자 편한 대로 하자는 쪽이다 / 물건 하나 사기 전에 후기를 세 번은 찾아본다",
+  "30": "#30: 34세 여성, 경기, 주방 보조(경력 8년 (중견)), 대졸, 솔로, 형제·친구와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편\n  평소 행동: 주식·코인에 월급의 일부를 꾸준히 넣는다 / 메뉴는 1초 만에 고르고, 후회해도 금방 잊는다 / 제사나 명절 모임은 참석하지만 형식은 줄이자는 쪽이다 / 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다"
+ },
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경제적으로 빠듯해서 지금은 조심스럽다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "안정적인 관계를 먼저 경험해보고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "감정 표현 크게, 더 기다리면 후회할 듯",
+   "judge": {
+    "specific": true,
+    "evidence": "감정 표현이 큰 편, 기쁘면 바로 전화해서 자랑하고, 서운하면 그 자리에서 말한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "조용히 관찰하며 관계의 자연스러운 흐름을 존중하고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다, 혼자 보내는 시간이 제일 편하다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "현재 상황이 불안정해 더 알아가는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 평소 행동: 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "현재 상태 확인 후 안정적 관계로 발전시키는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이며 안정적인 미래를 위해 조용히 투자하는 만족감을 느끼는 태도와 매달 월급의 일부를 꾸준히 투자하는 신중한 성격이 반영되어 있으며, 이는 좀 더 관계를 관찰하고 안정적으로 발전시키려는 태도와 일치한다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "좀 더 시간을 두고 관계를 자연스럽게 발전시키는 게 좋을 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다 / 좀 더 시간을 두고 관계를 자연스럽게 발전시키는 게 좋을 것 같아요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "관계가 자연스럽게 성숙할 때까지 기다리는 게 좋을 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편, 관계가 자연스럽게 성숙할 때까지 기다리는 경향",
+    "error": null
+   }
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "우리 시간이 아깝지 않잖아, 솔직한 관계 시작이 좋지 않을까.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 고맙다는 말을 문자로는 해도 얼굴 보고는 잘 못 한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경험상 타이밍이 중요해요, 더 알아보고 결정하죠.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 주말 약속이 비어 있으면 불안해서 누구든 불러낸다 / 결혼은 때가 되면 하는 것이라고 말한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "안정적인 관계를 우선시하니까요.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "때가 되면 결혼도 하는거니까, 지금이 가장 적절해 보여.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 결혼은 때가 되면 하는 것이라고 말한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "마음이 답답해지느니, 긍정적인 결과를 기대하며 먼저 움직이는 게 나아.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 즉흥적인 편, 큰 결정은 하루 정도 생각하고 작은 결정은 바로 정한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "관계 진도가 더 중요하지 않아, 진실된 마음을 전하는 게 나아.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 즉흥적인 편, 잘 쓰는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "더 오래 지켜보면 서로의 마음이 더 확실해질 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "더 알아가며 서로 맞는지 확인하고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 기쁘면 바로 전화해서 자랑하고, 서운하면 그 자리에서 말한다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경제적 여유가 없어 부담 줄이고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "아이들과 경제적 안정이 우선이니, 좀 더 신중하게 결정해야겠어.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 가족이 우선",
+    "error": null
+   }
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "솔직함이 관계 발전의 첫걸음이라 믿어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 솔직함을 중요시하는 태도와 감정 표현이 큰 편으로, 관계 발전에 있어서도 직접적인 행동을 선호할 것으로 보임",
+    "error": null
+   }
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "먼저 고백하기 보단 관계 깊이를 더 알고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 잘 쓰는 편, 안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "감정 표현이 크니, 지금의 마음을 솔직하게 전하는 게 나을 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "감정 표현이 큰 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "안정을 중시하니 관계의 자연스러운 흐름을 지켜보는 게 좋아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "아직은 안정적인 관계가 필요해 보여",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다, 경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "안정을 위해 감정이 확실해지길 기다리겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편, 아끼는 편, 좀 더 지켜본다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "현재 상황이 안정적이지 않아 조금 더 확신을 갖고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "조용히 시간을 두고 보는 게 더 자연스러울 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "가족처럼 신중하게 관계 발전을 지켜보는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께하는 따뜻한 순간들과 신중한 성격, 관계 발전에 대해 신중하게 접근하는 태도 (평소 행동: 신중한 편, 살아온 이야기: 가족과의 소중한 순간들)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "관계 깊이 확인 후 신중하게 고백하고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소엔 아끼지만 여행이나 선물엔 아끼지 않는다, 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다, 관계 깊이 확인 후 신중하게 고백하고 싶어.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "현재 경제적 부담이 크니, 좀 더 안정적인 상황을 위해 지켜볼게요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제 상황",
+    "error": null
+   }
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "기회는 늘 올 수 있지만, 지금의 설렘을 놓치지 않고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소엔 아끼지만 여행이나 선물엔 아끼지 않는다 / 즉흥적인 편, 순간적인 연결감에 가슴이 설레었다.",
+    "error": null
+   }
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 115260.2236018,
+   "endedAt": 115261.3350826,
+   "wallSeconds": 1.1114807999983896,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경제적으로 빠듯해서 지금은 조심스럽다.\"}]}",
+   "promptTokens": 348,
+   "evalTokens": 37,
+   "evalSeconds": 0.52086,
+   "promptSeconds": 0.225785,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 115260.2238883,
+   "endedAt": 115261.4392051,
+   "wallSeconds": 1.215316800007713,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"좀 더 지켜본다\",\"reason\":\"안정적인 관계를 먼저 경험해보고 싶어.\"}]}",
+   "promptTokens": 337,
+   "evalTokens": 39,
+   "evalSeconds": 0.61534,
+   "promptSeconds": 0.235061,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 115260.2241638,
+   "endedAt": 115261.3504991,
+   "wallSeconds": 1.1263352999958443,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"먼저 고백한다\",\"reason\":\"감정 표현 크게, 더 기다리면 후회할 듯\"}]}",
+   "promptTokens": 344,
+   "evalTokens": 38,
+   "evalSeconds": 0.498619,
+   "promptSeconds": 0.263074,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 115260.2244298,
+   "endedAt": 115261.5609677,
+   "wallSeconds": 1.3365379000024404,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"좀 더 지켜본다\",\"reason\":\"조용히 관찰하며 관계의 자연스러운 흐름을 존중하고 싶어.\"}]}",
+   "promptTokens": 341,
+   "evalTokens": 42,
+   "evalSeconds": 0.699441,
+   "promptSeconds": 0.272547,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 115260.2247603,
+   "endedAt": 115261.5369811,
+   "wallSeconds": 1.312220799998613,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"좀 더 지켜본다\",\"reason\":\"현재 상황이 불안정해 더 알아가는 게 좋겠다.\"}]}",
+   "promptTokens": 349,
+   "evalTokens": 41,
+   "evalSeconds": 0.704216,
+   "promptSeconds": 0.244252,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 115260.22512,
+   "endedAt": 115261.6962571,
+   "wallSeconds": 1.471137100001215,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"좀 더 지켜본다\",\"reason\":\"현재 상태 확인 후 안정적 관계로 발전시키는 게 좋겠다.\"}]}",
+   "promptTokens": 342,
+   "evalTokens": 42,
+   "evalSeconds": 0.756467,
+   "promptSeconds": 0.07825,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 115260.2254939,
+   "endedAt": 115261.8244335,
+   "wallSeconds": 1.598939600007725,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"좀 더 지켜본다\",\"reason\":\"좀 더 시간을 두고 관계를 자연스럽게 발전시키는 게 좋을 것 같아요.\"}]}",
+   "promptTokens": 339,
+   "evalTokens": 48,
+   "evalSeconds": 0.982161,
+   "promptSeconds": 0.253646,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 115260.2258206,
+   "endedAt": 115261.8018353,
+   "wallSeconds": 1.576014699996449,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"좀 더 지켜본다\",\"reason\":\"관계가 자연스럽게 성숙할 때까지 기다리는 게 좋을 것 같아요.\"}]}",
+   "promptTokens": 350,
+   "evalTokens": 46,
+   "evalSeconds": 0.871659,
+   "promptSeconds": 0.341331,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 115261.3351259,
+   "endedAt": 115262.8704272,
+   "wallSeconds": 1.5353012999985367,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"먼저 고백한다\",\"reason\":\"우리 시간이 아깝지 않잖아, 솔직한 관계 시작이 좋지 않을까.\"}]}",
+   "promptTokens": 348,
+   "evalTokens": 44,
+   "evalSeconds": 1.431514,
+   "promptSeconds": 0.05386,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 115261.3505335,
+   "endedAt": 115262.6556089,
+   "wallSeconds": 1.3050753999996232,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경험상 타이밍이 중요해요, 더 알아보고 결정하죠.\"}]}",
+   "promptTokens": 357,
+   "evalTokens": 42,
+   "evalSeconds": 1.205492,
+   "promptSeconds": 0.065007,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 115261.4392605,
+   "endedAt": 115262.2992336,
+   "wallSeconds": 0.859973099999479,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"좀 더 지켜본다\",\"reason\":\"안정적인 관계를 우선시하니까요.\"}]}",
+   "promptTokens": 349,
+   "evalTokens": 37,
+   "evalSeconds": 0.776985,
+   "promptSeconds": 0.053573,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 115261.5370172,
+   "endedAt": 115263.2430613,
+   "wallSeconds": 1.706044100006693,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"먼저 고백한다\",\"reason\":\"때가 되면 결혼도 하는거니까, 지금이 가장 적절해 보여.\"}]}",
+   "promptTokens": 356,
+   "evalTokens": 45,
+   "evalSeconds": 1.557845,
+   "promptSeconds": 0.08317,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 115261.5610139,
+   "endedAt": 115263.732339,
+   "wallSeconds": 2.1713250999891898,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"먼저 고백한다\",\"reason\":\"마음이 답답해지느니, 긍정적인 결과를 기대하며 먼저 움직이는 게 나아.\"}]}",
+   "promptTokens": 345,
+   "evalTokens": 48,
+   "evalSeconds": 2.036753,
+   "promptSeconds": 0.093382,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 115261.6963089,
+   "endedAt": 115263.7327089,
+   "wallSeconds": 2.0363999999972293,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"먼저 고백한다\",\"reason\":\"관계 진도가 더 중요하지 않아, 진실된 마음을 전하는 게 나아.\"}]}",
+   "promptTokens": 349,
+   "evalTokens": 46,
+   "evalSeconds": 1.95833,
+   "promptSeconds": 0.045595,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 115261.8018724,
+   "endedAt": 115264.0883918,
+   "wallSeconds": 2.286519400004181,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"좀 더 지켜본다\",\"reason\":\"더 오래 지켜보면 서로의 마음이 더 확실해질 것 같아요.\"}]}",
+   "promptTokens": 345,
+   "evalTokens": 44,
+   "evalSeconds": 2.136047,
+   "promptSeconds": 0.091256,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 115261.8244824,
+   "endedAt": 115263.2666134,
+   "wallSeconds": 1.4421310000034282,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"좀 더 지켜본다\",\"reason\":\"더 알아가며 서로 맞는지 확인하고 싶어\"}]}",
+   "promptTokens": 352,
+   "evalTokens": 40,
+   "evalSeconds": 1.298762,
+   "promptSeconds": 0.10673,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 115262.2992731,
+   "endedAt": 115264.7029935,
+   "wallSeconds": 2.4037204000051133,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경제적 여유가 없어 부담 줄이고 싶어\"}]}",
+   "promptTokens": 350,
+   "evalTokens": 40,
+   "evalSeconds": 2.077234,
+   "promptSeconds": 0.122455,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 115262.6556544,
+   "endedAt": 115265.3318561,
+   "wallSeconds": 2.6762017000000924,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"좀 더 지켜본다\",\"reason\":\"아이들과 경제적 안정이 우선이니, 좀 더 신중하게 결정해야겠어.\"}]}",
+   "promptTokens": 356,
+   "evalTokens": 48,
+   "evalSeconds": 2.379447,
+   "promptSeconds": 0.127243,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 115262.8704715,
+   "endedAt": 115264.9786621,
+   "wallSeconds": 2.1081905999890296,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"먼저 고백한다\",\"reason\":\"솔직함이 관계 발전의 첫걸음이라 믿어.\"}]}",
+   "promptTokens": 345,
+   "evalTokens": 39,
+   "evalSeconds": 1.785667,
+   "promptSeconds": 0.088128,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 115263.2431045,
+   "endedAt": 115265.331349,
+   "wallSeconds": 2.0882445000024745,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"좀 더 지켜본다\",\"reason\":\"먼저 고백하기 보단 관계 깊이를 더 알고 싶어.\"}]}",
+   "promptTokens": 341,
+   "evalTokens": 41,
+   "evalSeconds": 1.665821,
+   "promptSeconds": 0.129116,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 115263.2666469,
+   "endedAt": 115266.3509706,
+   "wallSeconds": 3.084323700008099,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"먼저 고백한다\",\"reason\":\"감정 표현이 크니, 지금의 마음을 솔직하게 전하는 게 나을 것 같아요.\"}]}",
+   "promptTokens": 341,
+   "evalTokens": 49,
+   "evalSeconds": 2.632882,
+   "promptSeconds": 0.181587,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 115263.7323915,
+   "endedAt": 115266.3087246,
+   "wallSeconds": 2.576333100005286,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"좀 더 지켜본다\",\"reason\":\"안정을 중시하니 관계의 자연스러운 흐름을 지켜보는 게 좋아요.\"}]}",
+   "promptTokens": 348,
+   "evalTokens": 44,
+   "evalSeconds": 2.089699999,
+   "promptSeconds": 0.195738,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 115263.7327407,
+   "endedAt": 115265.3628734,
+   "wallSeconds": 1.6301326999964658,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"좀 더 지켜본다\",\"reason\":\"아직은 안정적인 관계가 필요해 보여\"}]}",
+   "promptTokens": 356,
+   "evalTokens": 39,
+   "evalSeconds": 1.195373,
+   "promptSeconds": 0.144365,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 115264.0884421,
+   "endedAt": 115266.0214672,
+   "wallSeconds": 1.933025100006489,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"좀 더 지켜본다\",\"reason\":\"안정을 위해 감정이 확실해지길 기다리겠다.\"}]}",
+   "promptTokens": 358,
+   "evalTokens": 40,
+   "evalSeconds": 1.590935,
+   "promptSeconds": 0.095824,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 115264.7030385,
+   "endedAt": 115266.6313531,
+   "wallSeconds": 1.928314600008889,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"좀 더 지켜본다\",\"reason\":\"현재 상황이 안정적이지 않아 조금 더 확신을 갖고 싶어.\"}]}",
+   "promptTokens": 361,
+   "evalTokens": 45,
+   "evalSeconds": 1.6814,
+   "promptSeconds": 0.096778,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 115264.9787056,
+   "endedAt": 115266.6946827,
+   "wallSeconds": 1.7159771000006003,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"좀 더 지켜본다\",\"reason\":\"조용히 시간을 두고 보는 게 더 자연스러울 것 같아요.\"}]}",
+   "promptTokens": 353,
+   "evalTokens": 44,
+   "evalSeconds": 1.448963,
+   "promptSeconds": 0.106647,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 115265.3313877,
+   "endedAt": 115266.7679056,
+   "wallSeconds": 1.4365179000014905,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"좀 더 지켜본다\",\"reason\":\"가족처럼 신중하게 관계 발전을 지켜보는 게 좋겠다.\"}]}",
+   "promptTokens": 355,
+   "evalTokens": 42,
+   "evalSeconds": 0.760926,
+   "promptSeconds": 0.243467,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 115265.3318992,
+   "endedAt": 115266.7453814,
+   "wallSeconds": 1.4134822000050917,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"좀 더 지켜본다\",\"reason\":\"관계 깊이 확인 후 신중하게 고백하고 싶어.\"}]}",
+   "promptTokens": 353,
+   "evalTokens": 40,
+   "evalSeconds": 0.843044,
+   "promptSeconds": 0.138988,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 115265.362919,
+   "endedAt": 115266.8124044,
+   "wallSeconds": 1.4494853999931365,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"좀 더 지켜본다\",\"reason\":\"현재 경제적 부담이 크니, 좀 더 안정적인 상황을 위해 지켜볼게요.\"}]}",
+   "promptTokens": 349,
+   "evalTokens": 47,
+   "evalSeconds": 0.85738,
+   "promptSeconds": 0.191523,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 115266.0215143,
+   "endedAt": 115266.8401448,
+   "wallSeconds": 0.8186304999981076,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"먼저 고백한다\",\"reason\":\"기회는 늘 올 수 있지만, 지금의 설렘을 놓치지 않고 싶어.\"}]}",
+   "promptTokens": 351,
+   "evalTokens": 46,
+   "evalSeconds": 0.546703,
+   "promptSeconds": 0.102806,
+   "doneReason": "stop"
+  }
+ ],
+ "repeat": 2
+}

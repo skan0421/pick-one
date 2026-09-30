@@ -1,0 +1,831 @@
+{
+ "model": "exaone3.5:7.8b",
+ "format": "label",
+ "questionId": "spend",
+ "topic": "소비",
+ "method": "1x8",
+ "personaCount": 30,
+ "wallSeconds": 6.151900299999397,
+ "promptTokensPerPersona": 304.6333333333333,
+ "evalTokensPerPersona": 42.766666666666666,
+ "seconds100": 20.506334333331324,
+ "failureCount": 0,
+ "failureKinds": {},
+ "personaTexts": {
+  "1": "#1: 35세 여성, 대구, 건물 청소원(경력 12년 (베테랑)), 대졸, 연애 중, 부모와 함께, 경제적으로 빠듯한 편. 신중한 편, 개방적인 편",
+  "2": "#2: 16세 여성, 경기, 고등학생(고등학교 1학년), 고등학교 재학, 연애 중, 부모와 함께, 경제적으로 보통. 안정을 찾는 편, 개방적인 편",
+  "3": "#3: 58세 남성, 인천, 경비원(경력 2년 (신입)), 고졸, 기혼, 배우자와 둘이, 경제적으로 보통. 즉흥적인 편, 감정 표현이 큰 편",
+  "4": "#4: 39세 여성, 서울, 가사·육아(가사·육아), 대졸, 솔로, 부모와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "5": "#5: 18세 남성, 서울, 고등학생(고등학교 3학년), 고등학교 재학, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 전통을 중시하는 편",
+  "6": "#6: 52세 남성, 인천, 교사(경력 3년 (중견)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 모험을 즐기는 편, 아끼는 편",
+  "7": "#7: 67세 여성, 충남, 은퇴(은퇴), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "8": "#8: 67세 여성, 전북, 지게차 기사(경력 5년 (중견)), 중졸 이하, 이혼·사별, 1인 가구, 경제적으로 보통. 안정을 찾는 편, 전통을 중시하는 편",
+  "9": "#9: 24세 여성, 경기, 주방 보조(경력 5년 (중견)), 대졸, 썸 타는 중, 1인 가구, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "10": "#10: 63세 여성, 충남, 사무직 회사원(경력 8년 (중견)), 고졸, 이혼·사별, 1인 가구, 경제적으로 보통. 외향적인 편, 전통을 중시하는 편",
+  "11": "#11: 51세 남성, 경기, 약사(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 잘 쓰는 편, 안정을 찾는 편",
+  "12": "#12: 37세 남성, 전북, 전기 기사(경력 18년 (베테랑)), 대졸, 솔로, 1인 가구, 경제적으로 보통. 전통을 중시하는 편, 즉흥적인 편",
+  "13": "#13: 52세 남성, 경기, 경리(경력 3년 (중견)), 고졸, 솔로, 부모와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편",
+  "14": "#14: 40세 여성, 서울, 경리(경력 18년 (베테랑)), 대학원졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 즉흥적인 편, 잘 쓰는 편",
+  "15": "#15: 69세 여성, 경기, 은퇴(은퇴), 중졸 이하, 기혼, 배우자와 둘이, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "16": "#16: 56세 여성, 인천, 공무원(경력 12년 (베테랑)), 중졸 이하, 연애 중, 1인 가구, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "17": "#17: 59세 여성, 제주, 음식점 직원(경력 8년 (중견)), 전문대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 아끼는 편, 감정 표현이 큰 편",
+  "18": "#18: 49세 남성, 서울, 물리치료사(경력 18년 (베테랑)), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 외향적인 편, 전통을 중시하는 편",
+  "19": "#19: 54세 여성, 대구, 구직·쉬는 중(구직·쉬는 중), 대졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정 표현이 큰 편, 개방적인 편",
+  "20": "#20: 58세 남성, 전북, 전기 기사(경력 2년 (신입)), 대졸, 이혼·사별, 1인 가구, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "21": "#21: 15세 여성, 충남, 건물 청소원(경력 1년 (신입)), 고졸, 연애 중, 부모와 함께, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "22": "#22: 51세 남성, 인천, 가사·육아(가사·육아), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "23": "#23: 58세 여성, 서울, 물류센터 작업자(경력 12년 (베테랑)), 대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 모험을 즐기는 편",
+  "24": "#24: 31세 여성, 부산, 용접공(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 안정을 찾는 편, 아끼는 편",
+  "25": "#25: 29세 여성, 강원, 구직·쉬는 중(구직·쉬는 중), 대학원졸, 연애 중, 1인 가구, 경제적으로 보통. 아끼는 편, 안정을 찾는 편",
+  "26": "#26: 68세 여성, 충북, 음식점 직원(경력 1년 (신입)), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 내향적인 편",
+  "27": "#27: 61세 남성, 경기, 자동차 정비사(경력 3년 (중견)), 중졸 이하, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 외향적인 편, 신중한 편",
+  "28": "#28: 49세 남성, 충남, 요양보호사(경력 25년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 신중한 편, 모험을 즐기는 편",
+  "29": "#29: 31세 남성, 충북, 가사·육아(가사·육아), 고졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정을 안 드러내는 편, 내향적인 편",
+  "30": "#30: 34세 여성, 경기, 주방 보조(경력 8년 (중견)), 대졸, 솔로, 형제·친구와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편"
+ },
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "지금은 생활비 때문에 여유가 없어 나중에 여유 자금을 모으는 게 현명해.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "지금 사면 학업에 필요한 도구를 빨리 확보할 수 있어 편리해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편, 학업에 필요한 도구를 빨리 확보할 수 있어 편리해요",
+    "error": null
+   }
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "가족과 함께 새 노트북으로 즐겁게 일할 생각에 설레네요.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 즐겁게 일할 생각에 설레는 점은 그의 기혼 상태와 배우자와의 긍정적인 관계, 그리고 즉흥적이면서도 감정 표현이 큰 성격이 결합되어 현재의 기쁨과 미래의 가족 활동에 대한 기대감을 반영하고 있음.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "아이들 교육비도 중요해서 조금 더 모아서 좋은 선택을 하고 싶어요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이고 아끼는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "현재 경제 상황으로 할부는 부담스러워",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족 경제 안정을 위해 현재 지출 최소화.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이며 가족과 함께 안정적인 생활을 유지하려는 경향 (가족 경제 안정을 위해 현재 지출 최소화)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족 경제를 위해 조금 더 아끼고 모으는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이며 아끼는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "경제 안정을 위해 우선 저축이 필요해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이며 안정을 찾는 편이고, 평소 행동에서 돈을 굴려 본 경험이 적고 적금 위주로 관리하는 점을 고려할 때 저축과 안정적인 경제 관리를 우선시하는 경향이 보임",
+    "error": null
+   }
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "현재 필요한 노트북으로 업무 효율 높이는 게 우선이지.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이지만 현재 필요한 도구로 업무 효율을 높이는 것이 중요하다고 생각하며, 개방적이고 아끼는 편이지만 필요한 투자에는 유연하게 대응하는 태도를 보임",
+    "error": null
+   }
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "현재 경제적 안정을 위해 저축을 우선하고 싶어요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이며 가계부를 쓰고 예산을 조정하는 습관이 있어 저축을 우선하는 경향이 보임",
+    "error": null
+   }
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족 경제 안정이 우선이라 조금 더 모아야겠어",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 가족 건강을 위해 지출을 신중하게 하며 안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "즉흥적으로 필요한 도구는 바로 확보해야지.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 즉흥적인 편, 필요한 도구는 바로 확보하려는 경향",
+    "error": null
+   }
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "즉흥적인 결정으로 새 노트북으로 업무 효율 올리고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소엔 아끼지만 여행이나 선물엔 아끼지 않는다 / 즉흥적인 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "가족과 함께 편리한 사용이 중요하고, 장기 할부 덕분에 부담 덜어줘요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이지만 장기 할부 덕분에 부담을 덜 수 있다는 점에서 가족과 함께 편리한 사용을 중시하는 평소 행동과 연결됨",
+    "error": null
+   }
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "지금은 절약하며 미래를 위해 저축하는 게 현명해.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 아끼는 편, 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 맞춘다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "지금 당장 필요한데, 무이자라 부담 덜할 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다, 지금 당장 필요한데, 무이자라 부담 덜할 것 같아요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "아껴야 가족도 편하고, 장기적인 계획이 좋지.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 아끼는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족 먼저 챙기느라 지금은 힘들어",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 가족 먼저 챙기느라 지금은 힘들어",
+    "error": null
+   }
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "지금은 아껴쓰며 가족에게 더 좋은 것 선물하고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 물건 하나 사기 전에 후기를 세 번은 찾아본다, 배우자와 둘이, 우리 둘만의 미래에 대한 꿈을 다시 한번 확인하며 미소 지었다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "안정적인 재정 관리가 중요해요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "지금 바로 필요하니까 부모님께 허락 받고 할부 하자!",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 부모와 함께, 평소 행동: 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다 -> 지금 바로 필요하니까 부모님께 허락 받고 할부 하자!",
+    "error": null
+   }
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족 경제 안정을 위해 지금보다는 나중에 구매하는 게 나을 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이며 안정을 찾는 편이라는 점과 돈을 굴려 본 경험이 적다는 점에서 장기적인 경제 안정을 우선시하는 경향이 보임",
+    "error": null
+   }
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "현재 예산으로는 부담이라 좀 더 모아서 안전하게 구매해야겠어.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족 생활비 우선시, 장기적 안정 위해 저축 우선",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 안정을 찾는 편, 아끼는 편, 매달 예산 계획을 세우며, 적금 말고는 돈을 굴려 본 적이 없다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "안정적인 결제 계획이 현재 생활에 부담 덜어줘서.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통. 아끼는 편, 안정을 찾는 편 / 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 맞춘다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족에게 부담주기 싫어 좀 더 절약해서 나중에 사는 게 나아.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 가족에게 부담주기 싫어",
+    "error": null
+   }
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "장기적으로 경제적 안정을 위해 지금의 지출을 최소화해야 합니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통이며, 장기적인 경제적 안정을 중요시하는 태도가 가족을 위한 신중한 지출 결정에도 반영되고 있음 (직업: 자동차 정비사, 경제 상황: 경제적으로 보통)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "가족 경제 안정이 우선, 신중하게 자금 확보해야죠.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 보통, 신중한 편, 가족에 대한 책임감",
+    "error": null
+   }
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "모아서 나중에 산다",
+   "reason": "현재 경제적 여유가 부족해 할부는 부담스러워요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "할부로 지금 산다",
+   "reason": "즉흥적인 삶을 위해 지금 즐기자!",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 즉흥적인 편, 모험을 즐기는 편",
+    "error": null
+   }
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 115283.81188,
+   "endedAt": 115285.9179502,
+   "wallSeconds": 2.1060702000104357,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"모아서 나중에 산다\",\"reason\":\"지금은 생활비 때문에 여유가 없어 나중에 여유 자금을 모으는 게 현명해.\"}]}",
+   "promptTokens": 304,
+   "evalTokens": 48,
+   "evalSeconds": 1.201906,
+   "promptSeconds": 0.110775,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 115283.8121451,
+   "endedAt": 115285.5430676,
+   "wallSeconds": 1.7309224999917205,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"할부로 지금 산다\",\"reason\":\"지금 사면 학업에 필요한 도구를 빨리 확보할 수 있어 편리해요.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 44,
+   "evalSeconds": 0.817456,
+   "promptSeconds": 0.120356,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 115283.8123925,
+   "endedAt": 115285.4001066,
+   "wallSeconds": 1.5877141000091797,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"할부로 지금 산다\",\"reason\":\"가족과 함께 새 노트북으로 즐겁게 일할 생각에 설레네요.\"}]}",
+   "promptTokens": 302,
+   "evalTokens": 42,
+   "evalSeconds": 0.664814,
+   "promptSeconds": 0.129713,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 115283.8126758,
+   "endedAt": 115285.7759965,
+   "wallSeconds": 1.9633207000006223,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"모아서 나중에 산다\",\"reason\":\"아이들 교육비도 중요해서 조금 더 모아서 좋은 선택을 하고 싶어요.\"}]}",
+   "promptTokens": 296,
+   "evalTokens": 45,
+   "evalSeconds": 1.031435999,
+   "promptSeconds": 0.139065,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 115283.812976,
+   "endedAt": 115285.2003056,
+   "wallSeconds": 1.3873295999947004,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"모아서 나중에 산다\",\"reason\":\"현재 경제 상황으로 할부는 부담스러워\"}]}",
+   "promptTokens": 301,
+   "evalTokens": 38,
+   "evalSeconds": 0.446118,
+   "promptSeconds": 0.148556,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 115283.8133303,
+   "endedAt": 115285.2004929,
+   "wallSeconds": 1.3871625999890966,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족 경제 안정을 위해 현재 지출 최소화.\"}]}",
+   "promptTokens": 302,
+   "evalTokens": 38,
+   "evalSeconds": 0.436863,
+   "promptSeconds": 0.157926,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 115283.8136841,
+   "endedAt": 115285.4009472,
+   "wallSeconds": 1.5872631000092952,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족 경제를 위해 조금 더 아끼고 모으는 게 좋겠다.\"}]}",
+   "promptTokens": 296,
+   "evalTokens": 42,
+   "evalSeconds": 0.62782,
+   "promptSeconds": 0.167388,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 115283.8140226,
+   "endedAt": 115285.2009224,
+   "wallSeconds": 1.386899800010724,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"모아서 나중에 산다\",\"reason\":\"경제 안정을 위해 우선 저축이 필요해요.\"}]}",
+   "promptTokens": 309,
+   "evalTokens": 38,
+   "evalSeconds": 0.418262,
+   "promptSeconds": 0.176828,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 115285.200342,
+   "endedAt": 115286.3924637,
+   "wallSeconds": 1.192121700005373,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"할부로 지금 산다\",\"reason\":\"현재 필요한 노트북으로 업무 효율 높이는 게 우선이지.\"}]}",
+   "promptTokens": 303,
+   "evalTokens": 40,
+   "evalSeconds": 1.039942,
+   "promptSeconds": 0.113954,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 115285.2005227,
+   "endedAt": 115286.6237586,
+   "wallSeconds": 1.4232359000016004,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"모아서 나중에 산다\",\"reason\":\"현재 경제적 안정을 위해 저축을 우선하고 싶어요.\"}]}",
+   "promptTokens": 308,
+   "evalTokens": 42,
+   "evalSeconds": 1.251279,
+   "promptSeconds": 0.133757,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 115285.2009477,
+   "endedAt": 115286.4153486,
+   "wallSeconds": 1.214400900003966,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족 경제 안정이 우선이라 조금 더 모아야겠어\"}]}",
+   "promptTokens": 308,
+   "evalTokens": 41,
+   "evalSeconds": 1.052752,
+   "promptSeconds": 0.123919,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 115285.4001671,
+   "endedAt": 115286.6817508,
+   "wallSeconds": 1.2815836999943713,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"할부로 지금 산다\",\"reason\":\"즉흥적으로 필요한 도구는 바로 확보해야지.\"}]}",
+   "promptTokens": 306,
+   "evalTokens": 40,
+   "evalSeconds": 1.012852,
+   "promptSeconds": 0.212533,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 115285.4009875,
+   "endedAt": 115286.9145689,
+   "wallSeconds": 1.5135813999950187,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"할부로 지금 산다\",\"reason\":\"즉흥적인 결정으로 새 노트북으로 업무 효율 올리고 싶어.\"}]}",
+   "promptTokens": 302,
+   "evalTokens": 44,
+   "evalSeconds": 1.301035,
+   "promptSeconds": 0.157254,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 115285.543102,
+   "endedAt": 115287.1322805,
+   "wallSeconds": 1.5891784999985248,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"할부로 지금 산다\",\"reason\":\"가족과 함께 편리한 사용이 중요하고, 장기 할부 덕분에 부담 덜어줘요.\"}]}",
+   "promptTokens": 306,
+   "evalTokens": 48,
+   "evalSeconds": 1.356753,
+   "promptSeconds": 0.106107,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 115285.7760413,
+   "endedAt": 115287.0605415,
+   "wallSeconds": 1.2845001999958185,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"모아서 나중에 산다\",\"reason\":\"지금은 절약하며 미래를 위해 저축하는 게 현명해.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 44,
+   "evalSeconds": 1.156521,
+   "promptSeconds": 0.104312,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 115285.9179946,
+   "endedAt": 115287.339419,
+   "wallSeconds": 1.4214244000031613,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"할부로 지금 산다\",\"reason\":\"지금 당장 필요한데, 무이자라 부담 덜할 것 같아요.\"}]}",
+   "promptTokens": 308,
+   "evalTokens": 44,
+   "evalSeconds": 1.289208,
+   "promptSeconds": 0.116159,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 115286.3925052,
+   "endedAt": 115288.1970437,
+   "wallSeconds": 1.8045385000004899,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"모아서 나중에 산다\",\"reason\":\"아껴야 가족도 편하고, 장기적인 계획이 좋지.\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 45,
+   "evalSeconds": 1.573697,
+   "promptSeconds": 0.198977,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 115286.4153836,
+   "endedAt": 115287.9012224,
+   "wallSeconds": 1.4858387999993283,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족 먼저 챙기느라 지금은 힘들어\"}]}",
+   "promptTokens": 310,
+   "evalTokens": 39,
+   "evalSeconds": 1.327466,
+   "promptSeconds": 0.149378,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 115286.6237979,
+   "endedAt": 115288.3455581,
+   "wallSeconds": 1.7217602000018815,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"모아서 나중에 산다\",\"reason\":\"지금은 아껴쓰며 가족에게 더 좋은 것 선물하고 싶어.\"}]}",
+   "promptTokens": 308,
+   "evalTokens": 46,
+   "evalSeconds": 1.579138,
+   "promptSeconds": 0.127927,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 115286.6817886,
+   "endedAt": 115288.0353721,
+   "wallSeconds": 1.3535834999929648,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"모아서 나중에 산다\",\"reason\":\"안정적인 재정 관리가 중요해요.\"}]}",
+   "promptTokens": 307,
+   "evalTokens": 38,
+   "evalSeconds": 1.158875,
+   "promptSeconds": 0.109765,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 115286.9146091,
+   "endedAt": 115288.6139376,
+   "wallSeconds": 1.6993285000062315,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"할부로 지금 산다\",\"reason\":\"지금 바로 필요하니까 부모님께 허락 받고 할부 하자!\"}]}",
+   "promptTokens": 306,
+   "evalTokens": 43,
+   "evalSeconds": 1.568022,
+   "promptSeconds": 0.106885,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 115287.0605818,
+   "endedAt": 115288.9514802,
+   "wallSeconds": 1.8908984000008786,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족 경제 안정을 위해 지금보다는 나중에 구매하는 게 나을 것 같아요.\"}]}",
+   "promptTokens": 303,
+   "evalTokens": 49,
+   "evalSeconds": 1.751693,
+   "promptSeconds": 0.115563,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 115287.1323188,
+   "endedAt": 115288.9057021,
+   "wallSeconds": 1.7733833000093,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"모아서 나중에 산다\",\"reason\":\"현재 예산으로는 부담이라 좀 더 모아서 안전하게 구매해야겠어.\"}]}",
+   "promptTokens": 308,
+   "evalTokens": 46,
+   "evalSeconds": 1.492508,
+   "promptSeconds": 0.125195,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 115287.3394605,
+   "endedAt": 115288.6857188,
+   "wallSeconds": 1.346258299992769,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족 생활비 우선시, 장기적 안정 위해 저축 우선\"}]}",
+   "promptTokens": 308,
+   "evalTokens": 40,
+   "evalSeconds": 1.070017,
+   "promptSeconds": 0.089825,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 115287.901273,
+   "endedAt": 115289.6117446,
+   "wallSeconds": 1.7104716000030749,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"할부로 지금 산다\",\"reason\":\"안정적인 결제 계획이 현재 생활에 부담 덜어줘서.\"}]}",
+   "promptTokens": 306,
+   "evalTokens": 42,
+   "evalSeconds": 1.576744,
+   "promptSeconds": 0.109871,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 115288.0354066,
+   "endedAt": 115289.786443,
+   "wallSeconds": 1.7510364000045229,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족에게 부담주기 싫어 좀 더 절약해서 나중에 사는 게 나아.\"}]}",
+   "promptTokens": 307,
+   "evalTokens": 46,
+   "evalSeconds": 1.616737,
+   "promptSeconds": 0.109471,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 115288.1970854,
+   "endedAt": 115289.8961816,
+   "wallSeconds": 1.6990961999981664,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"모아서 나중에 산다\",\"reason\":\"장기적으로 경제적 안정을 위해 지금의 지출을 최소화해야 합니다.\"}]}",
+   "promptTokens": 307,
+   "evalTokens": 45,
+   "evalSeconds": 1.565489,
+   "promptSeconds": 0.110018,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 115288.3456011,
+   "endedAt": 115289.924184,
+   "wallSeconds": 1.5785829000087688,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"모아서 나중에 산다\",\"reason\":\"가족 경제 안정이 우선, 신중하게 자금 확보해야죠.\"}]}",
+   "promptTokens": 307,
+   "evalTokens": 43,
+   "evalSeconds": 1.324024,
+   "promptSeconds": 0.10267,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 115288.6139845,
+   "endedAt": 115289.963202,
+   "wallSeconds": 1.349217499999213,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"모아서 나중에 산다\",\"reason\":\"현재 경제적 여유가 부족해 할부는 부담스러워요.\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 43,
+   "evalSeconds": 1.209334,
+   "promptSeconds": 0.115609,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 115288.6857557,
+   "endedAt": 115289.9429423,
+   "wallSeconds": 1.2571865999925649,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"할부로 지금 산다\",\"reason\":\"즉흥적인 삶을 위해 지금 즐기자!\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 40,
+   "evalSeconds": 1.087524,
+   "promptSeconds": 0.100292,
+   "doneReason": "stop"
+  }
+ ],
+ "repeat": 2
+}

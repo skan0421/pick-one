@@ -1,0 +1,831 @@
+{
+ "model": "exaone3.5:7.8b",
+ "format": "label",
+ "questionId": "love",
+ "topic": "연애",
+ "method": "1x8",
+ "personaCount": 30,
+ "wallSeconds": 6.543444700000691,
+ "promptTokensPerPersona": 287.6333333333333,
+ "evalTokensPerPersona": 42.233333333333334,
+ "seconds100": 21.81148233333564,
+ "failureCount": 0,
+ "failureKinds": {},
+ "personaTexts": {
+  "1": "#1: 35세 여성, 대구, 건물 청소원(경력 12년 (베테랑)), 대졸, 연애 중, 부모와 함께, 경제적으로 빠듯한 편. 신중한 편, 개방적인 편",
+  "2": "#2: 16세 여성, 경기, 고등학생(고등학교 1학년), 고등학교 재학, 연애 중, 부모와 함께, 경제적으로 보통. 안정을 찾는 편, 개방적인 편",
+  "3": "#3: 58세 남성, 인천, 경비원(경력 2년 (신입)), 고졸, 기혼, 배우자와 둘이, 경제적으로 보통. 즉흥적인 편, 감정 표현이 큰 편",
+  "4": "#4: 39세 여성, 서울, 가사·육아(가사·육아), 대졸, 솔로, 부모와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "5": "#5: 18세 남성, 서울, 고등학생(고등학교 3학년), 고등학교 재학, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 전통을 중시하는 편",
+  "6": "#6: 52세 남성, 인천, 교사(경력 3년 (중견)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 모험을 즐기는 편, 아끼는 편",
+  "7": "#7: 67세 여성, 충남, 은퇴(은퇴), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "8": "#8: 67세 여성, 전북, 지게차 기사(경력 5년 (중견)), 중졸 이하, 이혼·사별, 1인 가구, 경제적으로 보통. 안정을 찾는 편, 전통을 중시하는 편",
+  "9": "#9: 24세 여성, 경기, 주방 보조(경력 5년 (중견)), 대졸, 썸 타는 중, 1인 가구, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "10": "#10: 63세 여성, 충남, 사무직 회사원(경력 8년 (중견)), 고졸, 이혼·사별, 1인 가구, 경제적으로 보통. 외향적인 편, 전통을 중시하는 편",
+  "11": "#11: 51세 남성, 경기, 약사(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 잘 쓰는 편, 안정을 찾는 편",
+  "12": "#12: 37세 남성, 전북, 전기 기사(경력 18년 (베테랑)), 대졸, 솔로, 1인 가구, 경제적으로 보통. 전통을 중시하는 편, 즉흥적인 편",
+  "13": "#13: 52세 남성, 경기, 경리(경력 3년 (중견)), 고졸, 솔로, 부모와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편",
+  "14": "#14: 40세 여성, 서울, 경리(경력 18년 (베테랑)), 대학원졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 즉흥적인 편, 잘 쓰는 편",
+  "15": "#15: 69세 여성, 경기, 은퇴(은퇴), 중졸 이하, 기혼, 배우자와 둘이, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "16": "#16: 56세 여성, 인천, 공무원(경력 12년 (베테랑)), 중졸 이하, 연애 중, 1인 가구, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "17": "#17: 59세 여성, 제주, 음식점 직원(경력 8년 (중견)), 전문대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 아끼는 편, 감정 표현이 큰 편",
+  "18": "#18: 49세 남성, 서울, 물리치료사(경력 18년 (베테랑)), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 외향적인 편, 전통을 중시하는 편",
+  "19": "#19: 54세 여성, 대구, 구직·쉬는 중(구직·쉬는 중), 대졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정 표현이 큰 편, 개방적인 편",
+  "20": "#20: 58세 남성, 전북, 전기 기사(경력 2년 (신입)), 대졸, 이혼·사별, 1인 가구, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "21": "#21: 15세 여성, 충남, 건물 청소원(경력 1년 (신입)), 고졸, 연애 중, 부모와 함께, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "22": "#22: 51세 남성, 인천, 가사·육아(가사·육아), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "23": "#23: 58세 여성, 서울, 물류센터 작업자(경력 12년 (베테랑)), 대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 모험을 즐기는 편",
+  "24": "#24: 31세 여성, 부산, 용접공(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 안정을 찾는 편, 아끼는 편",
+  "25": "#25: 29세 여성, 강원, 구직·쉬는 중(구직·쉬는 중), 대학원졸, 연애 중, 1인 가구, 경제적으로 보통. 아끼는 편, 안정을 찾는 편",
+  "26": "#26: 68세 여성, 충북, 음식점 직원(경력 1년 (신입)), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 내향적인 편",
+  "27": "#27: 61세 남성, 경기, 자동차 정비사(경력 3년 (중견)), 중졸 이하, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 외향적인 편, 신중한 편",
+  "28": "#28: 49세 남성, 충남, 요양보호사(경력 25년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 신중한 편, 모험을 즐기는 편",
+  "29": "#29: 31세 남성, 충북, 가사·육아(가사·육아), 고졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정을 안 드러내는 편, 내향적인 편",
+  "30": "#30: 34세 여성, 경기, 주방 보조(경력 8년 (중견)), 대졸, 솔로, 형제·친구와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편"
+ },
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경제적 여건 때문에 서두르고 싶지 않아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "안정감을 위해 확신이 들면 빠르게 결정하고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "감정 표현 크게, 관계 진전 빠르게 원할 듯",
+   "judge": {
+    "specific": true,
+    "evidence": "감정 표현이 큰 편, 기쁘면 바로 전화해서 자랑하고, 서운하면 그 자리에서 말한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "아이들 때문에 지금은 조금 더 신중해야 할 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족 (부모와 함께)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "부모님과 경제적 상황 때문에 조금 더 신중해야 할 것 같아.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "가족처럼 생각해서 더 알아보고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족처럼 생각해서 더 알아보고 싶어.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "조용히 지켜보며 그의 반응을 알아보는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다 / 조용히 지켜보며 그의 반응을 알아보는 게 좋겠다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경험상 너무 일찍 고백하면 좋지 않아, 조금 더 시간을 갖고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 적금 말고는 돈을 굴려 본 적이 없다 / 명절 아침에는 온 가족이 모여야 한다고 생각한다 / 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다 / 가계부를 쓰고 한 달 예산을 넘기면 다음 달에 메운다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "관계 진전을 위해 용기 내고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다 / 고맙다는 말을 문자로는 해도 얼굴 보고는 잘 못 한다 / 남들이 하는 정도의 새 시도는 따라가지만 앞장서지는 않는다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "관계 발전을 천천히 지켜보는 게 좋을 것 같아요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다, 주말 약속이 비어 있으면 불안해서 누구든 불러낸다 / 관계 발전을 천천히 지켜보는 게 좋을 것 같아요.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "안정적인 관계를 위해, 현재 상황을 좀 더 확실히 파악하고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편, 경제적으로 빠듯한 편, 가족 중심적인 삶, 현재 상황을 좀 더 확실히 파악하고 싶어함",
+    "error": null
+   }
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "관계의 확실함이 중요하고, 시간은 놓치면 되돌릴 수 없어.",
+   "judge": {
+    "specific": true,
+    "evidence": "관계의 확실함이 중요하고, 시간은 놓치면 되돌릴 수 없어.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "썸 타는 기간이 길어지면 불안하니, 먼저 솔직해지는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 즉흥적인 편, 큰 결정은 하루 정도 생각하고 작은 결정은 바로 정한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "가족 생각하면 조심스럽네, 확실한 신호 필요해.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족 생각하면 조심스럽네, 확실한 신호 필요해.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "지금은 여유롭게 더 알아가는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다 / 친한 사람 몇 명과는 자주 만나지만 새 모임에는 잘 안 나간다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "감정 표현 조심, 관계 깊이 알아보고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "감정 표현이 큰 편, 내향적인 편, 평소엔 아끼지만 여행이나 선물엔 아끼지 않는다, 살아온 이야기: 오랜만의 여행에서 아끼던 예산을 과감하게 늘려, 연인과 함께한 특별한 저녁 식사에 최고급 와인을 샀다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "감정 표현이 큰 편이라 마음을 솔직하게 전하는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "감정 표현이 큰 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경제적 여유가 부족해서 지금은 신중해야 합니다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "감정 표현이 큰 편이라 지금이 기회야.",
+   "judge": {
+    "specific": true,
+    "evidence": "감정 표현이 큰 편이라 지금이 기회야.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "아직 확신이 필요하고, 그의 반응을 좀 더 보고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 안정을 찾는 편, 살아온 이야기: 퇴근 후엔 동료들과 맥주 한 잔하며 안정적인 직장 생활의 기틀을 다졌다. / 주말마다 가까운 공원에서 조용히 피아노를 치며, 확신을 가지기 전에 상황을 관찰하는 태도를 보임",
+    "error": null
+   }
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "지금은 조심스럽게 관계를 쌓아가는 게 좋아 보여.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 모임 약속이 잡히면 전날부터 빠질 핑계를 생각한다 / 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "아이들 때문에 서두르지 않고 상황을 좀 더 보는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족 - 배우자·자녀와 함께, 아이들 때문에 서두르지 않고 상황을 좀 더 보는 게 좋겠다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경제적 여유가 없어 지금 결정하면 부담될까 봐.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경제적 안정이 우선, 지금은 관계보다 안정감이 필요해.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편. 안정을 찾는 편, 아끼는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "안정적인 관계를 중요하게 생각해서 더 지켜보고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편, 평소 행동: 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다, 살아온 이야기: 기념일 저녁, 강원은 연인과 함께 조용히 대화를 나누며 서로를 더 잘 이해하려 노력하는 모습에 행복감을 느꼈다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "아직은 조심스럽게 관계를 발전시키는 게 좋아 보여.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 큰 결정은 하루 정도 생각하고, 작은 건 바로 정한다, 내향적인 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "가족처럼 생각하고 싶어 조금 더 지켜보려 해.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과의 따뜻한 관계와 함께하는 시간을 중요시하는 태도 (\"가족 생일 선물로 고급 카메라를 고르며, 평소 아끼던 예산을 조금 더 투자해 기쁨을 선물하고 싶었다.\", \"주말 저녁, 아내와 함께 조용한 카페에서 차를 마시며 오랜 대화를 나누다 서로의 꿈과 희망에 대해 진솔하게 이야기했다.\")",
+    "error": null
+   }
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "경험상, 타이밍이 중요해 조금 더 보는 게 나을 것 같아.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소엔 아끼지만 여행이나 선물엔 아끼지 않는다, 살아온 이야기: 자녀의 대학 입학 날, 학교 앞에서 가슴 벅찬 순간을 참지 못하고 눈물을 흘리며 손을 흔들었다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "좀 더 지켜본다",
+   "reason": "지금은 경제적 부담이 커서, 좀 더 안정적인 관계를 원하거든.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제 상황",
+    "error": null
+   }
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "먼저 고백한다",
+   "reason": "지금 느낌이면 타이밍이 맞으니, 용기 내서 고백해보는 게 좋겠다.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 즉흥적인 편, 순간적인 연결감에 가슴이 설레었다.",
+    "error": null
+   }
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 115110.3772707,
+   "endedAt": 115111.2276491,
+   "wallSeconds": 0.8503783999913139,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경제적 여건 때문에 서두르고 싶지 않아요.\"}]}",
+   "promptTokens": 287,
+   "evalTokens": 40,
+   "evalSeconds": 0.665035,
+   "promptSeconds": 0.105069,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 115110.3776186,
+   "endedAt": 115111.2521099,
+   "wallSeconds": 0.8744912999973167,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"먼저 고백한다\",\"reason\":\"안정감을 위해 확신이 들면 빠르게 결정하고 싶어.\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 41,
+   "evalSeconds": 0.677424,
+   "promptSeconds": 0.117038,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 115110.3779131,
+   "endedAt": 115111.0887789,
+   "wallSeconds": 0.7108657999924617,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"먼저 고백한다\",\"reason\":\"감정 표현 크게, 관계 진전 빠르게 원할 듯\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 38,
+   "evalSeconds": 0.448223,
+   "promptSeconds": 0.182348,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 115110.3782102,
+   "endedAt": 115111.432377,
+   "wallSeconds": 1.0541668000078062,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"좀 더 지켜본다\",\"reason\":\"아이들 때문에 지금은 조금 더 신중해야 할 것 같아요.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 43,
+   "evalSeconds": 0.823981,
+   "promptSeconds": 0.150477,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 115110.3784499,
+   "endedAt": 115111.4563331,
+   "wallSeconds": 1.0778831999923568,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"좀 더 지켜본다\",\"reason\":\"부모님과 경제적 상황 때문에 조금 더 신중해야 할 것 같아.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 44,
+   "evalSeconds": 0.826592,
+   "promptSeconds": 0.171839,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 115110.3787116,
+   "endedAt": 115111.0635005,
+   "wallSeconds": 0.6847888999909628,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"좀 더 지켜본다\",\"reason\":\"가족처럼 생각해서 더 알아보고 싶어.\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 37,
+   "evalSeconds": 0.466007,
+   "promptSeconds": 0.139899,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 115110.3789867,
+   "endedAt": 115111.2285706,
+   "wallSeconds": 0.8495838999951957,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"좀 더 지켜본다\",\"reason\":\"조용히 지켜보며 그의 반응을 알아보는 게 좋겠다.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 40,
+   "evalSeconds": 0.60929,
+   "promptSeconds": 0.161478,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 115110.3794482,
+   "endedAt": 115111.6933051,
+   "wallSeconds": 1.3138569000002462,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경험상 너무 일찍 고백하면 좋지 않아, 조금 더 시간을 갖고 싶어.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 47,
+   "evalSeconds": 1.106428,
+   "promptSeconds": 0.129312999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 115111.0635415,
+   "endedAt": 115112.1690999,
+   "wallSeconds": 1.1055583999986993,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"먼저 고백한다\",\"reason\":\"관계 진전을 위해 용기 내고 싶어.\"}]}",
+   "promptTokens": 286,
+   "evalTokens": 35,
+   "evalSeconds": 0.967072,
+   "promptSeconds": 0.090253,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 115111.0888307,
+   "endedAt": 115112.4676843,
+   "wallSeconds": 1.3788536000065506,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"좀 더 지켜본다\",\"reason\":\"관계 발전을 천천히 지켜보는 게 좋을 것 같아요.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 42,
+   "evalSeconds": 1.254299,
+   "promptSeconds": 0.10156,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 115111.2276971,
+   "endedAt": 115113.2400253,
+   "wallSeconds": 2.012328199998592,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"좀 더 지켜본다\",\"reason\":\"안정적인 관계를 위해, 현재 상황을 좀 더 확실히 파악하고 싶어.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 46,
+   "evalSeconds": 1.844226,
+   "promptSeconds": 0.113463,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 115111.2286169,
+   "endedAt": 115112.7343773,
+   "wallSeconds": 1.505760400003055,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"먼저 고백한다\",\"reason\":\"관계의 확실함이 중요하고, 시간은 놓치면 되돌릴 수 없어.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 44,
+   "evalSeconds": 1.328366,
+   "promptSeconds": 0.123497,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 115111.2521583,
+   "endedAt": 115113.8916228,
+   "wallSeconds": 2.639464499996393,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"먼저 고백한다\",\"reason\":\"썸 타는 기간이 길어지면 불안하니, 먼저 솔직해지는 게 좋겠다.\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 47,
+   "evalSeconds": 2.47465,
+   "promptSeconds": 0.13452,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 115111.4324293,
+   "endedAt": 115112.73496,
+   "wallSeconds": 1.302530700006173,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"좀 더 지켜본다\",\"reason\":\"가족 생각하면 조심스럽네, 확실한 신호 필요해.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 41,
+   "evalSeconds": 1.080194,
+   "promptSeconds": 0.097686,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 115111.456374,
+   "endedAt": 115112.7354017,
+   "wallSeconds": 1.2790277000021888,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"좀 더 지켜본다\",\"reason\":\"지금은 여유롭게 더 알아가는 게 좋겠다.\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 41,
+   "evalSeconds": 1.070483999,
+   "promptSeconds": 0.107799,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 115111.6933485,
+   "endedAt": 115113.3194697,
+   "wallSeconds": 1.6261211999953957,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"좀 더 지켜본다\",\"reason\":\"감정 표현 조심, 관계 깊이 알아보고 싶어\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 39,
+   "evalSeconds": 1.421554,
+   "promptSeconds": 0.111162,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 115112.1691628,
+   "endedAt": 115114.4478975,
+   "wallSeconds": 2.2787346999975853,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"먼저 고백한다\",\"reason\":\"감정 표현이 큰 편이라 마음을 솔직하게 전하는 게 좋겠다.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 44,
+   "evalSeconds": 2.041601,
+   "promptSeconds": 0.105749,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 115112.4677273,
+   "endedAt": 115114.7117465,
+   "wallSeconds": 2.2440192000067327,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경제적 여유가 부족해서 지금은 신중해야 합니다.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 40,
+   "evalSeconds": 2.016731,
+   "promptSeconds": 0.102873,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 115112.7344201,
+   "endedAt": 115114.9949656,
+   "wallSeconds": 2.2605455000011716,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"먼저 고백한다\",\"reason\":\"감정 표현이 큰 편이라 지금이 기회야.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 38,
+   "evalSeconds": 1.508562,
+   "promptSeconds": 0.374611,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 115112.734996,
+   "endedAt": 115115.6137825,
+   "wallSeconds": 2.878786500004935,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"좀 더 지켜본다\",\"reason\":\"아직 확신이 필요하고, 그의 반응을 좀 더 보고 싶어.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 44,
+   "evalSeconds": 2.294517,
+   "promptSeconds": 0.207664,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 115112.7354343,
+   "endedAt": 115115.2809449,
+   "wallSeconds": 2.5455106000008527,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"좀 더 지켜본다\",\"reason\":\"지금은 조심스럽게 관계를 쌓아가는 게 좋아 보여.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 42,
+   "evalSeconds": 1.879028,
+   "promptSeconds": 0.290242,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 115113.2400632,
+   "endedAt": 115115.9981755,
+   "wallSeconds": 2.7581122999981744,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"좀 더 지켜본다\",\"reason\":\"아이들 때문에 서두르지 않고 상황을 좀 더 보는 게 좋겠다.\"}]}",
+   "promptTokens": 286,
+   "evalTokens": 46,
+   "evalSeconds": 2.161455,
+   "promptSeconds": 0.133017,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 115113.3195047,
+   "endedAt": 115115.3036312,
+   "wallSeconds": 1.9841264999995474,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경제적 여유가 없어 지금 결정하면 부담될까 봐.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 42,
+   "evalSeconds": 1.412538,
+   "promptSeconds": 0.188218,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 115113.8916652,
+   "endedAt": 115115.9988788,
+   "wallSeconds": 2.10721360000025,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경제적 안정이 우선, 지금은 관계보다 안정감이 필요해.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 44,
+   "evalSeconds": 1.866478,
+   "promptSeconds": 0.110908,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 115114.4479492,
+   "endedAt": 115116.6654394,
+   "wallSeconds": 2.2174902000115253,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"좀 더 지켜본다\",\"reason\":\"안정적인 관계를 중요하게 생각해서 더 지켜보고 싶어.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 44,
+   "evalSeconds": 1.968864,
+   "promptSeconds": 0.108343,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 115114.7117959,
+   "endedAt": 115116.6960332,
+   "wallSeconds": 1.9842372999992222,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"좀 더 지켜본다\",\"reason\":\"아직은 조심스럽게 관계를 발전시키는 게 좋아 보여.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 42,
+   "evalSeconds": 1.715816,
+   "promptSeconds": 0.11236,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 115114.9950061,
+   "endedAt": 115116.7249938,
+   "wallSeconds": 1.7299877000041306,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"좀 더 지켜본다\",\"reason\":\"가족처럼 생각하고 싶어 조금 더 지켜보려 해.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 40,
+   "evalSeconds": 1.471357,
+   "promptSeconds": 0.10884,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 115115.2809798,
+   "endedAt": 115116.9005578,
+   "wallSeconds": 1.6195780000125524,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"좀 더 지켜본다\",\"reason\":\"경험상, 타이밍이 중요해 조금 더 보는 게 나을 것 같아.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 45,
+   "evalSeconds": 1.216724,
+   "promptSeconds": 0.156988,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 115115.303666,
+   "endedAt": 115116.9196248,
+   "wallSeconds": 1.6159587999864016,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"좀 더 지켜본다\",\"reason\":\"지금은 경제적 부담이 커서, 좀 더 안정적인 관계를 원하거든.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 46,
+   "evalSeconds": 1.180605,
+   "promptSeconds": 0.212113,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 115115.6138234,
+   "endedAt": 115116.919562,
+   "wallSeconds": 1.3057386000000406,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"먼저 고백한다\",\"reason\":\"지금 느낌이면 타이밍이 맞으니, 용기 내서 고백해보는 게 좋겠다.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 45,
+   "evalSeconds": 0.953292,
+   "promptSeconds": 0.106295,
+   "doneReason": "stop"
+  }
+ ],
+ "repeat": 1
+}

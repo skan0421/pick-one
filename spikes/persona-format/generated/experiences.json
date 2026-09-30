@@ -1,0 +1,2394 @@
+{
+ "model": "exaone3.5:7.8b",
+ "concurrency": 8,
+ "personaCount": 30,
+ "wallSeconds": 26.42918720000307,
+ "secondsPerPersona": 0.880972906666769,
+ "estimatedSecondsPer1000": 880.972906666769,
+ "accepted": 28,
+ "attemptsTotal": 36,
+ "regexProblems": 1,
+ "llmReviewProblems": 7,
+ "generatedTokens": 9152,
+ "results": [
+  {
+   "personaId": 1,
+   "experiences": [
+    {
+     "topic": "가족",
+     "text": "추석에 부모님과 함께 저녁을 먹으며 오래된 가족사진을 꺼내보며 옛 추억을 나누었다."
+    },
+    {
+     "topic": "소비",
+     "text": "오랜 고민 끝에 중고 카페트를 구매해 집에 따뜻함을 더했고, 그 만족감으로 친구에게도 추천했다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말마다 대구 공원에서 드론을 날려 사진을 찍으며 순간의 아름다움을 포착했다."
+    },
+    {
+     "topic": "직장",
+     "text": "건물 청소를 마치고 나서, 젊은 직원이 버린 낡은 책을 발견해 근처 도서관에 기증했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 496,
+      "evalTokens": 161,
+      "wallSeconds": 2.429950200006715
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 391,
+      "evalTokens": 75,
+      "wallSeconds": 1.6830748000065796
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "대구"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "추석에 부모님과 함께 저녁을 먹으며 오래된 가족사진을 꺼내보며 옛 추억을 나누었다."
+      },
+      {
+       "topic": "소비",
+       "text": "오랜 고민 끝에 중고 카페트를 구매해 집에 따뜻함을 더했고, 그 만족감으로 친구에게도 추천했다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 대구 공원에서 드론을 날려 사진을 찍으며 순간의 아름다움을 포착했다."
+      },
+      {
+       "topic": "직장",
+       "text": "건물 청소를 마치고 나서, 젊은 직원이 버린 낡은 책을 발견해 근처 도서관에 기증했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.11320199999318
+  },
+  {
+   "personaId": 2,
+   "experiences": [
+    {
+     "topic": "직장",
+     "text": "고등학교 졸업 전 인턴십으로 지역 도서관에서 책 분류를 맡았다. 조심스럽게 업무를 배우며, 안정적인 환경 속에서 지식을 쌓았다."
+    },
+    {
+     "topic": "소비",
+     "text": "새로 오픈한 카페를 가보기로 결심하고, 친구들이 먼저 방문한 후기를 꼼꼼히 확인한 후 주말 아침에 갔다."
+    },
+    {
+     "topic": "취미",
+     "text": "영화 감상회 동아리에 참여해 '그믐밤의 별'을 보며 눈물을 흘렸고, 감정이 풍부한 그 순간이 소중했다."
+    },
+    {
+     "topic": "연애",
+     "text": "데이트 중 우연히 거리 축제에서 만난 그와 함께 불꽃놀이를 감상하며, 조용히 손을 잡았다. 안정감 속에서 사랑을 느꼈다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 485,
+      "evalTokens": 185,
+      "wallSeconds": 3.2427884000062477
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 419,
+      "evalTokens": 73,
+      "wallSeconds": 1.5729059000004781
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": true,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "직장",
+       "text": "고등학교 졸업 전 인턴십으로 지역 도서관에서 책 분류를 맡았다. 조심스럽게 업무를 배우며, 안정적인 환경 속에서 지식을 쌓았다."
+      },
+      {
+       "topic": "소비",
+       "text": "새로 오픈한 카페를 가보기로 결심하고, 친구들이 먼저 방문한 후기를 꼼꼼히 확인한 후 주말 아침에 갔다."
+      },
+      {
+       "topic": "취미",
+       "text": "영화 감상회 동아리에 참여해 '그믐밤의 별'을 보며 눈물을 흘렸고, 감정이 풍부한 그 순간이 소중했다."
+      },
+      {
+       "topic": "연애",
+       "text": "데이트 중 우연히 거리 축제에서 만난 그와 함께 불꽃놀이를 감상하며, 조용히 손을 잡았다. 안정감 속에서 사랑을 느꼈다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.815851399995154
+  },
+  {
+   "personaId": 3,
+   "experiences": [
+    {
+     "topic": "직장",
+     "text": "어느 늦은 밤, 인천의 아파트 단지에서 경비 업무 중 갑자기 침입 경보가 울렸다. 긴장 속에서도 당황하지 않고 신속하게 상황을 처리하며, 동료들에게 안심시키는 말을 건넸다."
+    },
+    {
+     "topic": "소비",
+     "text": "여행 가기로 결정한 날, 공항 근처 호텔을 즉흥적으로 예약하고 나서 현지 식당에서 맛있는 점심을 즐기며 여유롭게 지출했다. 가격표를 보지도 않고 좋아하는 음식을 주문했다."
+    },
+    {
+     "topic": "가족",
+     "text": "아내와 저녁을 먹으며 갑자기 그녀가 웃으며 말했다. '당신이 자랑스럽다며?' 나는 즉시 전화를 걸어 그날 회사에서의 작은 성공을 자랑하며 그녀의 웃음소리에 마음이 따스해졌다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말마다 아내와 함께 인천 해변을 산책하며, 우연히 발견한 오래된 등대 근처에서 앉아 조용히 이야기를 나누었다. 그 순간의 평온함이 일상의 피로를 녹여냈다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 491,
+      "evalTokens": 250,
+      "wallSeconds": 4.377729600004386
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 484,
+      "evalTokens": 75,
+      "wallSeconds": 1.331673900000169
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "인천"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "직장",
+       "text": "어느 늦은 밤, 인천의 아파트 단지에서 경비 업무 중 갑자기 침입 경보가 울렸다. 긴장 속에서도 당황하지 않고 신속하게 상황을 처리하며, 동료들에게 안심시키는 말을 건넸다."
+      },
+      {
+       "topic": "소비",
+       "text": "여행 가기로 결정한 날, 공항 근처 호텔을 즉흥적으로 예약하고 나서 현지 식당에서 맛있는 점심을 즐기며 여유롭게 지출했다. 가격표를 보지도 않고 좋아하는 음식을 주문했다."
+      },
+      {
+       "topic": "가족",
+       "text": "아내와 저녁을 먹으며 갑자기 그녀가 웃으며 말했다. '당신이 자랑스럽다며?' 나는 즉시 전화를 걸어 그날 회사에서의 작은 성공을 자랑하며 그녀의 웃음소리에 마음이 따스해졌다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 아내와 함께 인천 해변을 산책하며, 우연히 발견한 오래된 등대 근처에서 앉아 조용히 이야기를 나누었다. 그 순간의 평온함이 일상의 피로를 녹여냈다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 5.709557199996198
+  },
+  {
+   "personaId": 4,
+   "experiences": [
+    {
+     "topic": "가족",
+     "text": "주말 아침, 부모님과 함께 조용한 카페에서 커피를 마시며 오래된 사진을 보며 옛 추억을 떠올렸다."
+    },
+    {
+     "topic": "직장",
+     "text": "회사에서 프로젝트 마감 기한이 다가오자, 집에서 내린 커피를 텀블러에 담아 집중력을 높여 늦은 밤까지 일했다."
+    },
+    {
+     "topic": "취미",
+     "text": "혼자 공원을 걷다 조용히 피아노 연주곡을 들으며 주변의 조용한 풍경에 흠뻑 빠져들어 편안함을 느꼈다."
+    },
+    {
+     "topic": "연애",
+     "text": "혼자 책을 읽으며 주말 오후를 보내던 어느 날, 옛 연인의 연락이 왔다. 짧은 통화 후, 평온한 마음으로 다시 혼자만의 시간으로 돌아갔다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 500,
+      "evalTokens": 180,
+      "wallSeconds": 2.9781787999963854
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 410,
+      "evalTokens": 73,
+      "wallSeconds": 1.6262331000034465
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "주말 아침, 부모님과 함께 조용한 카페에서 커피를 마시며 오래된 사진을 보며 옛 추억을 떠올렸다."
+      },
+      {
+       "topic": "직장",
+       "text": "회사에서 프로젝트 마감 기한이 다가오자, 집에서 내린 커피를 텀블러에 담아 집중력을 높여 늦은 밤까지 일했다."
+      },
+      {
+       "topic": "취미",
+       "text": "혼자 공원을 걷다 조용히 피아노 연주곡을 들으며 주변의 조용한 풍경에 흠뻑 빠져들어 편안함을 느꼈다."
+      },
+      {
+       "topic": "연애",
+       "text": "혼자 책을 읽으며 주말 오후를 보내던 어느 날, 옛 연인의 연락이 왔다. 짧은 통화 후, 평온한 마음으로 다시 혼자만의 시간으로 돌아갔다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.604550999996718
+  },
+  {
+   "personaId": 5,
+   "experiences": [
+    {
+     "topic": "소비",
+     "text": "주말 장터에서 부모님과 함께 저렴한 전통 한복을 골라 구입하며, 오랜 전통의 아름다움에 만족했다."
+    },
+    {
+     "topic": "연애",
+     "text": "혼자 도서관에서 책을 읽다가, 멀리서 조용히 웃는 모습을 발견하고 잠시 멈춰 그 모습을 지켜보았다."
+    },
+    {
+     "topic": "가족",
+     "text": "설날 아침, 가족 모두가 모여 전통 음식을 준비하며 이야기꽃을 피우는 가운데 조용히 차를 마셨다."
+    },
+    {
+     "topic": "직장",
+     "text": "고등학교 내 봉사활동에서 학생들의 안내 역할을 맡아 전통 문화 행사를 성공적으로 이끌었다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 507,
+      "evalTokens": 161,
+      "wallSeconds": 2.428713699991931
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 395,
+      "evalTokens": 73,
+      "wallSeconds": 1.5991735999996308
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "수능 준비 중에도 오래된 친구와 함께 오랜만에 찾은 전통찻집에서 특별한 차 한 잔을 즐겼다."
+      },
+      {
+       "topic": "연애",
+       "text": "고등학교 졸업식 날, 조용한 공원에서 오랜 짝사랑이 마침내 말을 걸어와 함께 조용히 시간을 보냈다."
+      },
+      {
+       "topic": "가족",
+       "text": "추석 명절, 부모님과 함께 전통 음식을 만들며 어릴 적 이야기를 나누며 따뜻한 저녁을 보냈다."
+      },
+      {
+       "topic": "직장",
+       "text": "대학 진학 후 첫 학기, 전통 문화 연구소 인턴으로서 조상 기록 복원 작업에 집중하며 배움의 길을 걷기 시작했다."
+      }
+     ],
+     "problems": [
+      "LLM 검수: 학생인데 회사에 정규로 다님"
+     ]
+    },
+    {
+     "attempt": 2,
+     "generation": {
+      "error": null,
+      "promptTokens": 534,
+      "evalTokens": 156,
+      "wallSeconds": 2.5423636000050465
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 390,
+      "evalTokens": 73,
+      "wallSeconds": 1.7121755999978632
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "주말 장터에서 부모님과 함께 저렴한 전통 한복을 골라 구입하며, 오랜 전통의 아름다움에 만족했다."
+      },
+      {
+       "topic": "연애",
+       "text": "혼자 도서관에서 책을 읽다가, 멀리서 조용히 웃는 모습을 발견하고 잠시 멈춰 그 모습을 지켜보았다."
+      },
+      {
+       "topic": "가족",
+       "text": "설날 아침, 가족 모두가 모여 전통 음식을 준비하며 이야기꽃을 피우는 가운데 조용히 차를 마셨다."
+      },
+      {
+       "topic": "직장",
+       "text": "고등학교 내 봉사활동에서 학생들의 안내 역할을 맡아 전통 문화 행사를 성공적으로 이끌었다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 8.282718600006774
+  },
+  {
+   "personaId": 6,
+   "experiences": [
+    {
+     "topic": "가족",
+     "text": "토요일 아침, 아내와 함께 아이들이 좋아하는 공원에서 산책하며, 햇살 아래 아이들의 웃음소리에 마음이 따스해졌다."
+    },
+    {
+     "topic": "취미",
+     "text": "여름밤, 아내와 함께 인천의 조용한 강변에서 별을 관찰하며, 간단한 망원경으로 별자리를 설명하는 재미를 느꼈다."
+    },
+    {
+     "topic": "소비",
+     "text": "매달 월급의 일부를 조용히 주식 계좌에 적립하며, 안정적인 미래를 위해 조용히 투자하는 만족감을 느꼈다."
+    },
+    {
+     "topic": "연애",
+     "text": "연말 저녁, 아내와 함께 조용한 레스토랑에서 따뜻한 차를 마시며, 서로의 일상 이야기를 나누고 작은 선물로 마음을 전했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 489,
+      "evalTokens": 181,
+      "wallSeconds": 2.977093199995579
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 414,
+      "evalTokens": 75,
+      "wallSeconds": 1.7175966000068001
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [
+       "인천"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "토요일 아침, 아내와 함께 아이들이 좋아하는 공원에서 산책하며, 햇살 아래 아이들의 웃음소리에 마음이 따스해졌다."
+      },
+      {
+       "topic": "취미",
+       "text": "여름밤, 아내와 함께 인천의 조용한 강변에서 별을 관찰하며, 간단한 망원경으로 별자리를 설명하는 재미를 느꼈다."
+      },
+      {
+       "topic": "소비",
+       "text": "매달 월급의 일부를 조용히 주식 계좌에 적립하며, 안정적인 미래를 위해 조용히 투자하는 만족감을 느꼈다."
+      },
+      {
+       "topic": "연애",
+       "text": "연말 저녁, 아내와 함께 조용한 레스토랑에서 따뜻한 차를 마시며, 서로의 일상 이야기를 나누고 작은 선물로 마음을 전했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.694839800009504
+  },
+  {
+   "personaId": 7,
+   "experiences": [
+    {
+     "topic": "취미",
+     "text": "가을이 되자 아침마다 동네 산책로에서 천천히 산책하며 국화꽃 향기에 취해 여유를 즐겼다."
+    },
+    {
+     "topic": "연애",
+     "text": "결혼기념일 아침, 함께 읽던 오래된 소설책을 꺼내 배우자의 손을 잡고 조용히 서로를 바라보며 따뜻한 미소를 나누었다."
+    },
+    {
+     "topic": "소비",
+     "text": "새로운 커피 머신은 몇 달 동안 고민 끝에 구매했지만, 주로 집에서 직접 내린 커피를 텀블러에 담아 다니며 비용을 아끼곤 했다."
+    },
+    {
+     "topic": "직장",
+     "text": "은퇴 후에도 지역 커뮤니티 센터에서 가끔 자원봉사를 하며, 젊은 학생들의 숙제 도움을 주는 것이 뿌듯했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 486,
+      "evalTokens": 176,
+      "wallSeconds": 2.8046681999985594
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 408,
+      "evalTokens": 73,
+      "wallSeconds": 1.555436099995859
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "취미",
+       "text": "가을이 되자 아침마다 동네 산책로에서 천천히 산책하며 국화꽃 향기에 취해 여유를 즐겼다."
+      },
+      {
+       "topic": "연애",
+       "text": "결혼기념일 아침, 함께 읽던 오래된 소설책을 꺼내 배우자의 손을 잡고 조용히 서로를 바라보며 따뜻한 미소를 나누었다."
+      },
+      {
+       "topic": "소비",
+       "text": "새로운 커피 머신은 몇 달 동안 고민 끝에 구매했지만, 주로 집에서 직접 내린 커피를 텀블러에 담아 다니며 비용을 아끼곤 했다."
+      },
+      {
+       "topic": "직장",
+       "text": "은퇴 후에도 지역 커뮤니티 센터에서 가끔 자원봉사를 하며, 젊은 학생들의 숙제 도움을 주는 것이 뿌듯했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.360260500005097
+  },
+  {
+   "personaId": 8,
+   "experiences": [
+    {
+     "topic": "연애",
+     "text": "어린 시절 첫사랑에게 보낸 편지가 아직 간직하고 있던 낡은 상자에서 발견되었다."
+    },
+    {
+     "topic": "소비",
+     "text": "명절 준비로 마트에서 물건을 사며, 가계부에 기록하며 조심스럽게 예산을 지키려 했다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말마다 마을 공원에서 조용히 골프 연습을 하며, 옛날 친구들과의 추억을 떠올렸다."
+    },
+    {
+     "topic": "가족",
+     "text": "설날 아침, 혼자인 주방에서 전통 음식을 준비하며 오랜 친구처럼 전화로 가족들에게 인사를 전했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 509,
+      "evalTokens": 154,
+      "wallSeconds": 2.2258325000002515
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 388,
+      "evalTokens": 73,
+      "wallSeconds": 1.6309720999997808
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "연애",
+       "text": "어린 시절 첫사랑에게 보낸 편지가 아직 간직하고 있던 낡은 상자에서 발견되었다."
+      },
+      {
+       "topic": "소비",
+       "text": "명절 준비로 마트에서 물건을 사며, 가계부에 기록하며 조심스럽게 예산을 지키려 했다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 마을 공원에서 조용히 골프 연습을 하며, 옛날 친구들과의 추억을 떠올렸다."
+      },
+      {
+       "topic": "가족",
+       "text": "설날 아침, 혼자인 주방에서 전통 음식을 준비하며 오랜 친구처럼 전화로 가족들에게 인사를 전했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 3.858298499995726
+  },
+  {
+   "personaId": 9,
+   "experiences": [
+    {
+     "topic": "연애",
+     "text": "어느 저녁, 카페에서 만난 그와 함께 노을을 바라보며 조용히 손을 잡았다. 마음이 설레면서도 차분하게 그의 눈빛을 마주쳤다."
+    },
+    {
+     "topic": "소비",
+     "text": "주말 아침, 집에서 직접 내린 커피를 텀블러에 담아 출근하며 하루를 시작했다. 절약하면서도 품질은 놓치지 않았다."
+    },
+    {
+     "topic": "가족",
+     "text": "추석 연휴, 혼자라도 가족들에게는 항상 먼저 전화를 걸어 인사를 전했다. 따뜻한 목소리로 그리움을 전했다."
+    },
+    {
+     "topic": "취미",
+     "text": "매주 토요일마다 동네 공원에서 열리는 작은 악기 연주 모임에 참여해, 조심스럽게 기타를 연주하며 새로운 곡을 배웠다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 499,
+      "evalTokens": 180,
+      "wallSeconds": 3.132184200003394
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 414,
+      "evalTokens": 73,
+      "wallSeconds": 1.6674951000022702
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": true,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "연애",
+       "text": "썸 타는 그 남자와 함께 늦은 밤 카페에 앉아, 테라스의 별을 보며 조용히 손을 잡았다. 따뜻한 기분이 가슴을 감싸는 듯했다."
+      },
+      {
+       "topic": "소비",
+       "text": "주말 아침, 직접 내린 커피를 텀블러에 담아 출근하며, 근처 카페의 고급 커피보다 저렴한 가격에 만족감을 느꼈다."
+      },
+      {
+       "topic": "가족",
+       "text": "명절 연휴, 고향 집에서 가족들과 함께 간단한 점심을 준비하며, 어머니의 전통 음식 레시피를 조용히 기록했다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 동네 공원에서 조용히 러닝을 즐기며, 주변 풍경을 감상하며 마음의 평온을 찾았다."
+      }
+     ],
+     "problems": [
+      "LLM 검수: 썸 타는 중인데 연인·배우자가 나옴"
+     ]
+    },
+    {
+     "attempt": 2,
+     "generation": {
+      "error": null,
+      "promptTokens": 530,
+      "evalTokens": 200,
+      "wallSeconds": 3.478921000001719
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 433,
+      "evalTokens": 73,
+      "wallSeconds": 1.645756199999596
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": true,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "연애",
+       "text": "불금 저녁, 그와 같이 작은 카페에 앉아 커피를 마시며 날씨 이야기를 나누다가, 갑자기 그가 손을 내밀어 깜짝 놀라면서도 미소 지었다."
+      },
+      {
+       "topic": "소비",
+       "text": "장보기를 마치고 집으로 돌아오며, 특별히 필요한 것 외에도 새 주방 도구 세트를 눈여겨 보며, 다음 월급날을 기다리며 마음을 달래었다."
+      },
+      {
+       "topic": "가족",
+       "text": "추석 때 집에 돌아와 부모님과 함께 저녁을 먹으며, 조용한 식탁 분위기 속에서도 가족 모두에게 각자의 이야기를 들어주며 따뜻함을 느꼈다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말 아침, 동네 공원에서 조깅을 하며 주변 풍경을 즐기다가, 우연히 만난 친구와 함께 가벼운 대화를 나누며 웃음을 터뜨렸다."
+      }
+     ],
+     "problems": [
+      "LLM 검수: 썸 타는 중인데 연인·배우자가 나옴"
+     ]
+    },
+    {
+     "attempt": 3,
+     "generation": {
+      "error": null,
+      "promptTokens": 530,
+      "evalTokens": 187,
+      "wallSeconds": 2.852234200006933
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 417,
+      "evalTokens": 73,
+      "wallSeconds": 1.7434229000064079
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": true,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "연애",
+       "text": "어느 저녁, 카페에서 만난 그와 함께 노을을 바라보며 조용히 손을 잡았다. 마음이 설레면서도 차분하게 그의 눈빛을 마주쳤다."
+      },
+      {
+       "topic": "소비",
+       "text": "주말 아침, 집에서 직접 내린 커피를 텀블러에 담아 출근하며 하루를 시작했다. 절약하면서도 품질은 놓치지 않았다."
+      },
+      {
+       "topic": "가족",
+       "text": "추석 연휴, 혼자라도 가족들에게는 항상 먼저 전화를 걸어 인사를 전했다. 따뜻한 목소리로 그리움을 전했다."
+      },
+      {
+       "topic": "취미",
+       "text": "매주 토요일마다 동네 공원에서 열리는 작은 악기 연주 모임에 참여해, 조심스럽게 기타를 연주하며 새로운 곡을 배웠다."
+      }
+     ],
+     "problems": [
+      "LLM 검수: 썸 타는 중인데 연인·배우자가 나옴"
+     ]
+    }
+   ],
+   "accepted": false,
+   "wallSeconds": 14.520517799988738
+  },
+  {
+   "personaId": 10,
+   "experiences": [
+    {
+     "topic": "가족",
+     "text": "추석에 고향에 내려가 부모님과 함께 저녁을 먹으며 옛 추억을 떠올렸다. 따뜻한 식탁 아래, 옛날 이야기로 웃음이 가득했다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말마다 근처 공원에서 정원 가꾸기를 즐겼다. 흙을 만지며 평온함을 느끼고, 작은 꽃들이 피어나는 모습에 만족감을 가졌다."
+    },
+    {
+     "topic": "소비",
+     "text": "새 스마트폰을 사고 싶었지만, 가계부를 확인하며 신중하게 예산을 조정하고 중고폰을 구매했다. 절약하면서도 필요한 것은 얻었다."
+    },
+    {
+     "topic": "직장",
+     "text": "회의실에서 중견 동료들과 함께 프로젝트 계획을 세우며 전통적인 팀워크를 강조했다. 모두의 의견을 경청하고 조화롭게 일하는 모습에 자부심을 느꼈다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 515,
+      "evalTokens": 208,
+      "wallSeconds": 3.801878799989936
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 437,
+      "evalTokens": 73,
+      "wallSeconds": 1.5976894999912474
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "추석에 고향에 내려가 부모님과 함께 저녁을 먹으며 옛 추억을 떠올렸다. 따뜻한 식탁 아래, 옛날 이야기로 웃음이 가득했다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 근처 공원에서 정원 가꾸기를 즐겼다. 흙을 만지며 평온함을 느끼고, 작은 꽃들이 피어나는 모습에 만족감을 가졌다."
+      },
+      {
+       "topic": "소비",
+       "text": "새 스마트폰을 사고 싶었지만, 가계부를 확인하며 신중하게 예산을 조정하고 중고폰을 구매했다. 절약하면서도 필요한 것은 얻었다."
+      },
+      {
+       "topic": "직장",
+       "text": "회의실에서 중견 동료들과 함께 프로젝트 계획을 세우며 전통적인 팀워크를 강조했다. 모두의 의견을 경청하고 조화롭게 일하는 모습에 자부심을 느꼈다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 5.399727199997869
+  },
+  {
+   "personaId": 11,
+   "experiences": [
+    {
+     "topic": "취미",
+     "text": "퇴근 후 조용한 도서관에서 고전 문학을 읽으며 하루를 마무리했다. 낡은 책장 속 향기 속에서 평온함을 찾았다."
+    },
+    {
+     "topic": "연애",
+     "text": "아내와 함께 주말 아침에 동네 공원 산책을 하며 손을 잡고 조용히 웃음꽃을 피웠다. 안정감이 가슴을 채웠다."
+    },
+    {
+     "topic": "가족",
+     "text": "자녀의 학교 축제에 참석해 작은 무대 위에서 춤을 추는 아이를 보며 따뜻한 미소를 지었다. 자부심과 행복이 가득했다."
+    },
+    {
+     "topic": "소비",
+     "text": "적금 외에 특별히 투자한 적은 없었지만, 가족 건강을 위해 최신 영양 보충제를 골라 약국에서 구매하며 안심했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 495,
+      "evalTokens": 187,
+      "wallSeconds": 3.3425233000016306
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 420,
+      "evalTokens": 73,
+      "wallSeconds": 1.63204689999111
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "취미",
+       "text": "퇴근 후 조용한 도서관에서 고전 문학을 읽으며 하루를 마무리했다. 낡은 책장 속 향기 속에서 평온함을 찾았다."
+      },
+      {
+       "topic": "연애",
+       "text": "아내와 함께 주말 아침에 동네 공원 산책을 하며 손을 잡고 조용히 웃음꽃을 피웠다. 안정감이 가슴을 채웠다."
+      },
+      {
+       "topic": "가족",
+       "text": "자녀의 학교 축제에 참석해 작은 무대 위에서 춤을 추는 아이를 보며 따뜻한 미소를 지었다. 자부심과 행복이 가득했다."
+      },
+      {
+       "topic": "소비",
+       "text": "적금 외에 특별히 투자한 적은 없었지만, 가족 건강을 위해 최신 영양 보충제를 골라 약국에서 구매하며 안심했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.974722600003588
+  },
+  {
+   "personaId": 12,
+   "experiences": [
+    {
+     "topic": "가족",
+     "text": "추석 때 고향에 내려가 부모님과 함께 전통 음식을 만들며 옛 이야기를 나누었다."
+    },
+    {
+     "topic": "연애",
+     "text": "혼자 여행 중 우연히 만난 여성과 카페에서 우연히 같은 영화를 보며 미소를 주고받았다."
+    },
+    {
+     "topic": "직장",
+     "text": "현장에서 긴급 수리를 위해 늦은 밤까지 일하고, 다음 날 아침 팀원들과 커피를 나누며 힘을 되찾았다."
+    },
+    {
+     "topic": "소비",
+     "text": "오래된 가전제품을 드디어 새것으로 교체하며, 기존 모델의 가격을 비교해 합리적인 구매를 했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 514,
+      "evalTokens": 178,
+      "wallSeconds": 2.9446535000024596
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 408,
+      "evalTokens": 73,
+      "wallSeconds": 1.6795773999911034
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": true,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "추석 때 고향에 내려가 조상님께 절하고, 오랜 시간 침묵 속에서 가족들의 웃음소리만 들렸다."
+      },
+      {
+       "topic": "연애",
+       "text": "여행 중 우연히 만난 사람과 밤 늦게까지 카페에서 이야기 나누며, 마음이 편안함을 느꼈지만 집으로 돌아가는 길은 조금 아쉬웠다."
+      },
+      {
+       "topic": "직장",
+       "text": "공사 현장에서 긴급 수리 요청을 받고, 즉흥적으로 새로운 장비로 문제를 해결하며 동료들로부터 칭찬을 받았다."
+      },
+      {
+       "topic": "소비",
+       "text": "중고 가전제품 매장에서 예산 내에서 가장 효율적인 모델을 골라 구매하고, 절약한 돈으로 작은 취미용품을 샀다."
+      }
+     ],
+     "problems": [
+      "LLM 검수: 자녀가 없는 가족 형태인데 자녀가 나옴"
+     ]
+    },
+    {
+     "attempt": 2,
+     "generation": {
+      "error": null,
+      "promptTokens": 544,
+      "evalTokens": 159,
+      "wallSeconds": 2.3994154000101844
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 389,
+      "evalTokens": 73,
+      "wallSeconds": 1.6710137999907602
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": true,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "추석 때 고향에 내려가 부모님과 함께 전통 음식을 만들며 옛 이야기를 나누었다."
+      },
+      {
+       "topic": "연애",
+       "text": "혼자 여행 중 우연히 만난 여성과 카페에서 우연히 같은 영화를 보며 미소를 주고받았다."
+      },
+      {
+       "topic": "직장",
+       "text": "현장에서 긴급 수리를 위해 늦은 밤까지 일하고, 다음 날 아침 팀원들과 커피를 나누며 힘을 되찾았다."
+      },
+      {
+       "topic": "소비",
+       "text": "오래된 가전제품을 드디어 새것으로 교체하며, 기존 모델의 가격을 비교해 합리적인 구매를 했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 8.694977599996491
+  },
+  {
+   "personaId": 13,
+   "experiences": [
+    {
+     "topic": "소비",
+     "text": "설 명절, 부모님께 고급 이어폰 선물하며 미소 지었다. 평소 아끼지만 특별한 날엔 아낌없이 썼다."
+    },
+    {
+     "topic": "가족",
+     "text": "퇴근 후 부모님과 함께 저녁 식사하며, 최근 주식 수익 이야기를 나누며 흥미로운 눈빛을 주고받았다."
+    },
+    {
+     "topic": "직장",
+     "text": "팀 프로젝트 마감일 앞두고 밤샘 작업을 선택했다. 커피 한 잔에 힘을 얻어 즉흥적으로 아이디어를 내놓았고, 결과는 놀라웠다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말 산악 등반 중 갑자기 폭풍우를 만나 잠시 고립되었지만, 즉흥적으로 비옷을 찾아 꺼내 입으며 모험을 즐겼다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 503,
+      "evalTokens": 172,
+      "wallSeconds": 2.6608911999937845
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 406,
+      "evalTokens": 65,
+      "wallSeconds": 1.5145240999991074
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "설 명절, 부모님께 고급 이어폰 선물하며 미소 지었다. 평소 아끼지만 특별한 날엔 아낌없이 썼다."
+      },
+      {
+       "topic": "가족",
+       "text": "퇴근 후 부모님과 함께 저녁 식사하며, 최근 주식 수익 이야기를 나누며 흥미로운 눈빛을 주고받았다."
+      },
+      {
+       "topic": "직장",
+       "text": "팀 프로젝트 마감일 앞두고 밤샘 작업을 선택했다. 커피 한 잔에 힘을 얻어 즉흥적으로 아이디어를 내놓았고, 결과는 놀라웠다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말 산악 등반 중 갑자기 폭풍우를 만나 잠시 고립되었지만, 즉흥적으로 비옷을 찾아 꺼내 입으며 모험을 즐겼다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.175558700007969
+  },
+  {
+   "personaId": 14,
+   "experiences": [
+    {
+     "topic": "직장",
+     "text": "회사 연말 파티에서 즉흥적으로 팀 프로젝트 아이디어를 제안하며 동료들의 박수를 받았다."
+    },
+    {
+     "topic": "소비",
+     "text": "여행 중 갑자기 멋진 현지 레스토랑을 발견하고 망설임 없이 고급 식사를 즐겼다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말 아침, 서울의 작은 도서관에서 우연히 발견한 희귀 서적을 구입하며 행복한 미소를 지었다."
+    },
+    {
+     "topic": "가족",
+     "text": "자녀의 학교 공연을 보며 눈물을 글썽이며, 그 순간 가장 큰 만족감을 느꼈다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 494,
+      "evalTokens": 145,
+      "wallSeconds": 2.020553499998641
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 379,
+      "evalTokens": 75,
+      "wallSeconds": 1.7255077000008896
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "서울"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "직장",
+       "text": "회사 연말 파티에서 즉흥적으로 팀 프로젝트 아이디어를 제안하며 동료들의 박수를 받았다."
+      },
+      {
+       "topic": "소비",
+       "text": "여행 중 갑자기 멋진 현지 레스토랑을 발견하고 망설임 없이 고급 식사를 즐겼다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말 아침, 서울의 작은 도서관에서 우연히 발견한 희귀 서적을 구입하며 행복한 미소를 지었다."
+      },
+      {
+       "topic": "가족",
+       "text": "자녀의 학교 공연을 보며 눈물을 글썽이며, 그 순간 가장 큰 만족감을 느꼈다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 3.7462185000040336
+  },
+  {
+   "personaId": 15,
+   "experiences": [
+    {
+     "topic": "연애",
+     "text": "결혼 30주년 기념일, 배우자와 함께 작은 정원에서 촛불 밝히고 오랜 추억 이야기 나누며 따뜻한 웃음꽃 피웠다."
+    },
+    {
+     "topic": "취미",
+     "text": "가을이면 마을 뒷산에서 숲길 산책하며, 조용히 떨어진 단풍잎을 모아 책꽂이에 장식하는 걸 즐겼다."
+    },
+    {
+     "topic": "직장",
+     "text": "은퇴 후에도 지역 커뮤니티 센터에서 자원봉사로 어린이들과 함께 텃밭 가꾸는 일을 하며 하루를 보람차게 보냈다."
+    },
+    {
+     "topic": "가족",
+     "text": "매주 일요일 아침, 배우자와 함께 간단한 아침 식사를 준비하며 가족처럼 편안한 대화를 나누는 것이 일상의 행복이었다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 491,
+      "evalTokens": 176,
+      "wallSeconds": 3.3476036000065506
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 408,
+      "evalTokens": 73,
+      "wallSeconds": 1.2373449000006076
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "연애",
+       "text": "결혼 30주년 기념일, 배우자와 함께 작은 정원에서 촛불 밝히고 오랜 추억 이야기 나누며 따뜻한 웃음꽃 피웠다."
+      },
+      {
+       "topic": "취미",
+       "text": "가을이면 마을 뒷산에서 숲길 산책하며, 조용히 떨어진 단풍잎을 모아 책꽂이에 장식하는 걸 즐겼다."
+      },
+      {
+       "topic": "직장",
+       "text": "은퇴 후에도 지역 커뮤니티 센터에서 자원봉사로 어린이들과 함께 텃밭 가꾸는 일을 하며 하루를 보람차게 보냈다."
+      },
+      {
+       "topic": "가족",
+       "text": "매주 일요일 아침, 배우자와 함께 간단한 아침 식사를 준비하며 가족처럼 편안한 대화를 나누는 것이 일상의 행복이었다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.585110600004555
+  },
+  {
+   "personaId": 16,
+   "experiences": [
+    {
+     "topic": "직장",
+     "text": "인천청사에서 12년 근속 중, 예산 검토 회의에서 열정적으로 아이디어를 제시하며 동료들의 박수를 받았다."
+    },
+    {
+     "topic": "소비",
+     "text": "오랜만의 여행에서 아끼던 예산을 과감하게 늘려, 연인과 함께한 특별한 저녁 식사에 최고급 와인을 샀다."
+    },
+    {
+     "topic": "취미",
+     "text": "퇴근길에 작은 화분 하나를 사 들고 와, 조용한 방에서 식물을 키우며 평온함을 찾았다."
+    },
+    {
+     "topic": "가족",
+     "text": "가끔 전화로 혼자 사는 삶을 털어놓자, 연인이 따뜻한 위로와 함께 주말에 집에 와서 함께 저녁을 먹자고 제안했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 499,
+      "evalTokens": 175,
+      "wallSeconds": 2.8830845000047702
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 409,
+      "evalTokens": 75,
+      "wallSeconds": 1.7769748999999138
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": true,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "인천"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "직장",
+       "text": "인천청사에서 12년 근속 중, 예산 검토 회의에서 열정적으로 아이디어를 제시하며 동료들의 박수를 받았다."
+      },
+      {
+       "topic": "소비",
+       "text": "오랜만의 여행에서 아끼던 예산을 과감하게 늘려, 연인과 함께한 특별한 저녁 식사에 최고급 와인을 샀다."
+      },
+      {
+       "topic": "취미",
+       "text": "퇴근길에 작은 화분 하나를 사 들고 와, 조용한 방에서 식물을 키우며 평온함을 찾았다."
+      },
+      {
+       "topic": "가족",
+       "text": "가끔 전화로 혼자 사는 삶을 털어놓자, 연인이 따뜻한 위로와 함께 주말에 집에 와서 함께 저녁을 먹자고 제안했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.660221999991336
+  },
+  {
+   "personaId": 17,
+   "experiences": [
+    {
+     "topic": "연애",
+     "text": "봄날 벚꽃길에서 옛 연인을 우연히 마주쳤다. 오랜만의 만남에 설렘이 가슴을 울렸지만, 지금은 멀리서 그 모습을 바라보며 조용히 미소 지었다."
+    },
+    {
+     "topic": "가족",
+     "text": "부모님의 생일을 맞아 제주 전통 음식을 직접 만들어 식탁에 올렸다. 가족 모두의 미소가 가득한 저녁은 언제나 뿌듯함을 준다."
+    },
+    {
+     "topic": "직장",
+     "text": "오늘도 손님들에게 따뜻한 미소와 함께 제주 특산물 요리를 선보였다. 바쁜 하루 후, 일터에서 얻은 작은 성취감이 가슴을 채워갔다."
+    },
+    {
+     "topic": "소비",
+     "text": "텀블러에 내린 커피를 들고 출근했다. 저렴한 커피 원두를 구입해 매일 즐기는 작은 행복이 경제적인 여유를 조금 더 만들어준다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 508,
+      "evalTokens": 199,
+      "wallSeconds": 3.329764400012209
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 431,
+      "evalTokens": 75,
+      "wallSeconds": 1.803159000002779
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "제주"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "연애",
+       "text": "봄날 벚꽃길에서 옛 연인을 우연히 마주쳤다. 오랜만의 만남에 설렘이 가슴을 울렸지만, 지금은 멀리서 그 모습을 바라보며 조용히 미소 지었다."
+      },
+      {
+       "topic": "가족",
+       "text": "부모님의 생일을 맞아 제주 전통 음식을 직접 만들어 식탁에 올렸다. 가족 모두의 미소가 가득한 저녁은 언제나 뿌듯함을 준다."
+      },
+      {
+       "topic": "직장",
+       "text": "오늘도 손님들에게 따뜻한 미소와 함께 제주 특산물 요리를 선보였다. 바쁜 하루 후, 일터에서 얻은 작은 성취감이 가슴을 채워갔다."
+      },
+      {
+       "topic": "소비",
+       "text": "텀블러에 내린 커피를 들고 출근했다. 저렴한 커피 원두를 구입해 매일 즐기는 작은 행복이 경제적인 여유를 조금 더 만들어준다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 5.133083299995633
+  },
+  {
+   "personaId": 18,
+   "experiences": [
+    {
+     "topic": "취미",
+     "text": "주말마다 아내와 함께 공원에서 배드민턴을 치며, 땀 흘리며 웃음꽃 피우는 순간이 가장 행복했다."
+    },
+    {
+     "topic": "연애",
+     "text": "결혼 기념일에 아내와 함께 전통찻집을 찾아 옛날 차를 마시며, 서로의 손을 잡고 조용한 대화 속에 깊은 애정을 느꼈다."
+    },
+    {
+     "topic": "가족",
+     "text": "자녀의 학교 운동회에서 늦게까지 남아 응원하며, 그 순간 가족 모두가 하나 되는 따스함을 가슴 깊이 간직했다."
+    },
+    {
+     "topic": "소비",
+     "text": "새 스마트폰 대신 오래된 노트북을 수리해 사용하며, 가족에게 맛있는 집밥을 직접 만들어 주는 것이 더 큰 만족감을 주었다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 502,
+      "evalTokens": 184,
+      "wallSeconds": 2.9951643999957014
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 418,
+      "evalTokens": 73,
+      "wallSeconds": 1.7324036000063643
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "취미",
+       "text": "주말마다 아내와 함께 공원에서 배드민턴을 치며, 땀 흘리며 웃음꽃 피우는 순간이 가장 행복했다."
+      },
+      {
+       "topic": "연애",
+       "text": "결혼 기념일에 아내와 함께 전통찻집을 찾아 옛날 차를 마시며, 서로의 손을 잡고 조용한 대화 속에 깊은 애정을 느꼈다."
+      },
+      {
+       "topic": "가족",
+       "text": "자녀의 학교 운동회에서 늦게까지 남아 응원하며, 그 순간 가족 모두가 하나 되는 따스함을 가슴 깊이 간직했다."
+      },
+      {
+       "topic": "소비",
+       "text": "새 스마트폰 대신 오래된 노트북을 수리해 사용하며, 가족에게 맛있는 집밥을 직접 만들어 주는 것이 더 큰 만족감을 주었다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.727712699997937
+  },
+  {
+   "personaId": 19,
+   "experiences": [
+    {
+     "topic": "가족",
+     "text": "배우자와 함께 저녁 식사 중, 아이 이야기가 나오자 눈가가 촉촉해졌다. 우리 둘만의 미래에 대한 꿈을 다시 한번 확인하며 미소 지었다."
+    },
+    {
+     "topic": "소비",
+     "text": "새로 나온 가전제품의 리뷰를 꼼꼼히 읽은 후, 할인 행사 첫날에 곧바로 구매 버튼을 눌렀다. 절약과 실용 사이에서 균형을 맞추려 노력했다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말마다 대구의 공원에서 영화를 보는 모임을 주최했다. 감정 표현이 큰 편이라, 영화 속 감동 장면마다 함께 눈물을 흘리는 친구들과의 순간이 소중했다."
+    },
+    {
+     "topic": "직장",
+     "text": "마지막 회사 프로젝트에서 팀의 아이디어를 적극적으로 제안해 인정받았다. 퇴근 후엔 배우자와 함께 그 성과를 공유하며 성취감을 느꼈다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 491,
+      "evalTokens": 202,
+      "wallSeconds": 3.432491100000334
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 434,
+      "evalTokens": 75,
+      "wallSeconds": 1.5685893000045326
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "대구"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "대구의 따스한 햇살 아래, 주말 아침 배우자와 함께 아침 식사를 하며 아이들의 웃음소리가 가득했던 그날, 작은 행복에 눈물이 났다."
+      },
+      {
+       "topic": "소비",
+       "text": "가계부를 확인하며 겨울 코트를 살까 고민하다, 가족 모두 만족할 수 있는 따뜻한 겨울 이불 세트를 선택하며 실용적인 행복을 느꼈다."
+      },
+      {
+       "topic": "취미",
+       "text": "영화관에서 최신 영화를 보던 중 감동적인 장면에 배우자의 손을 꽉 쥐며 눈물을 흘렸고, 그 순간 우리 둘만의 특별한 추억이 되었다."
+      },
+      {
+       "topic": "직장",
+       "text": "마지막 회사 프로젝트 발표 날, 긴장 속에서도 배우자에게 보낸 응원 메시지 덕분에 힘을 얻어 최선을 다해 프레젠테이션을 마무리했다."
+      }
+     ],
+     "problems": [
+      "LLM 검수: 자녀가 없는 가족 형태인데 자녀가 나옴"
+     ]
+    },
+    {
+     "attempt": 2,
+     "generation": {
+      "error": null,
+      "promptTokens": 521,
+      "evalTokens": 205,
+      "wallSeconds": 3.576017300001695
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 439,
+      "evalTokens": 75,
+      "wallSeconds": 1.958726700002444
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "대구시"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "아이들이 커가는 모습을 지켜보며, 가끔은 눈물 글썽여 영화 속 슬픈 장면에 울음을 터뜨렸다. 오늘도 둘째가 첫 발걸음을 떼며 기뻐하며 웃었다."
+      },
+      {
+       "topic": "소비",
+       "text": "새 가전제품을 사기 전에 밤을 세워 수많은 리뷰를 읽고 나서야 안심하고 결제 버튼을 눌렀다. 가계부를 펼치며 예산을 다시 한번 확인했다."
+      },
+      {
+       "topic": "취미",
+       "text": "늦은 밤, 대구시내의 조용한 카페에서 홀로 커피를 마시며, 좋아하는 영화를 보며 감정 표현이 넘쳐 눈물이 흐르는 순간을 즐겼다."
+      },
+      {
+       "topic": "직장",
+       "text": "지난 직장에서의 프로젝트 발표 날, 긴장감 속에서도 배우자에게 응원 메시지를 보내며 힘을 얻었고, 결국 성공적으로 마무리 지었다."
+      }
+     ],
+     "problems": [
+      "LLM 검수: 자녀가 없는 가족 형태인데 자녀가 나옴"
+     ]
+    },
+    {
+     "attempt": 3,
+     "generation": {
+      "error": null,
+      "promptTokens": 521,
+      "evalTokens": 211,
+      "wallSeconds": 5.882709400000749
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 440,
+      "evalTokens": 75,
+      "wallSeconds": 0.6719047999940813
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "대구"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "배우자와 함께 저녁 식사 중, 아이 이야기가 나오자 눈가가 촉촉해졌다. 우리 둘만의 미래에 대한 꿈을 다시 한번 확인하며 미소 지었다."
+      },
+      {
+       "topic": "소비",
+       "text": "새로 나온 가전제품의 리뷰를 꼼꼼히 읽은 후, 할인 행사 첫날에 곧바로 구매 버튼을 눌렀다. 절약과 실용 사이에서 균형을 맞추려 노력했다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 대구의 공원에서 영화를 보는 모임을 주최했다. 감정 표현이 큰 편이라, 영화 속 감동 장면마다 함께 눈물을 흘리는 친구들과의 순간이 소중했다."
+      },
+      {
+       "topic": "직장",
+       "text": "마지막 회사 프로젝트에서 팀의 아이디어를 적극적으로 제안해 인정받았다. 퇴근 후엔 배우자와 함께 그 성과를 공유하며 성취감을 느꼈다."
+      }
+     ],
+     "problems": [
+      "성향을 설명함: 주말마다 대구의 공원에서 영화를 보는 모임을 주최했다. 감정 표현이 큰 …"
+     ]
+    }
+   ],
+   "accepted": false,
+   "wallSeconds": 17.090903599993908
+  },
+  {
+   "personaId": 20,
+   "experiences": [
+    {
+     "topic": "직장",
+     "text": "회사 발령 첫날, 신입 교육을 받으며 빠르게 전기 시스템 점검 방법을 익혀냈다. 퇴근 후엔 동료들과 맥주 한 잔하며 안정적인 직장 생활의 기틀을 다졌다."
+    },
+    {
+     "topic": "소비",
+     "text": "설날 명절을 앞두고 온라인 쇼핑몰에서 전통 음식 세트를 꼼꼼히 고르며 가족들에게 따뜻한 마음을 전하려 노력했다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말마다 가까운 공원에서 조용히 피아노를 치며, 때로는 눈물 글썽이며 영화의 감동적인 장면을 피아노 선율로 재탄생시켰다."
+    },
+    {
+     "topic": "가족",
+     "text": "추석 아침, 홀로 식탁에 앉아 어릴 적 가족사진을 바라보며, 언젠가는 함께 모여 웃음꽃 피우는 명절을 꿈꾸었다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 499,
+      "evalTokens": 192,
+      "wallSeconds": 3.096433300001081
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 426,
+      "evalTokens": 73,
+      "wallSeconds": 1.5770501999941189
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "직장",
+       "text": "회사 발령 첫날, 신입 교육을 받으며 빠르게 전기 시스템 점검 방법을 익혀냈다. 퇴근 후엔 동료들과 맥주 한 잔하며 안정적인 직장 생활의 기틀을 다졌다."
+      },
+      {
+       "topic": "소비",
+       "text": "설날 명절을 앞두고 온라인 쇼핑몰에서 전통 음식 세트를 꼼꼼히 고르며 가족들에게 따뜻한 마음을 전하려 노력했다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 가까운 공원에서 조용히 피아노를 치며, 때로는 눈물 글썽이며 영화의 감동적인 장면을 피아노 선율로 재탄생시켰다."
+      },
+      {
+       "topic": "가족",
+       "text": "추석 아침, 홀로 식탁에 앉아 어릴 적 가족사진을 바라보며, 언젠가는 함께 모여 웃음꽃 피우는 명절을 꿈꾸었다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.673639900007402
+  },
+  {
+   "personaId": 21,
+   "experiences": [
+    {
+     "topic": "소비",
+     "text": "영화 티켓을 사면서도 작은 간식도 꼭 사서, 어두운 상영관에서 혼자 눈물 흘리며 감동했다."
+    },
+    {
+     "topic": "연애",
+     "text": "그녀의 생일을 맞아, 평소 좋아하던 작은 독립 서점에서 책을 고르고 직접 포장하며 진심 어린 기쁨을 표현했다."
+    },
+    {
+     "topic": "가족",
+     "text": "추석 명절, 부모님과 함께 조용히 동네 공원을 산책하며, 가끔씩 웃음을 나누며 가족의 따뜻함을 느꼈다."
+    },
+    {
+     "topic": "직장",
+     "text": "근무 중 힘든 일이 있었지만, 동료들과 간단히 차 한잔 하며 위로받고 하루를 버텨냈다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 488,
+      "evalTokens": 165,
+      "wallSeconds": 3.019086000000243
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 399,
+      "evalTokens": 73,
+      "wallSeconds": 1.3991957000107504
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "영화 티켓을 사면서도 작은 간식도 꼭 사서, 어두운 상영관에서 혼자 눈물 흘리며 감동했다."
+      },
+      {
+       "topic": "연애",
+       "text": "그녀의 생일을 맞아, 평소 좋아하던 작은 독립 서점에서 책을 고르고 직접 포장하며 진심 어린 기쁨을 표현했다."
+      },
+      {
+       "topic": "가족",
+       "text": "추석 명절, 부모님과 함께 조용히 동네 공원을 산책하며, 가끔씩 웃음을 나누며 가족의 따뜻함을 느꼈다."
+      },
+      {
+       "topic": "직장",
+       "text": "근무 중 힘든 일이 있었지만, 동료들과 간단히 차 한잔 하며 위로받고 하루를 버텨냈다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.418467099996633
+  },
+  {
+   "personaId": 22,
+   "experiences": [
+    {
+     "topic": "소비",
+     "text": "토요일 아침, 아이들이 잠든 틈을 타 배달 앱으로 신선한 과일 박스를 주문하며, 오늘 하루를 활기차게 시작했다."
+    },
+    {
+     "topic": "가족",
+     "text": "저녁 식사 시간, 아내와 함께 자녀의 학교 프로젝트를 도와주며, 가정의 따뜻함 속에서 안정감을 느꼈다."
+    },
+    {
+     "topic": "취미",
+     "text": "매주 일요일 오후, 지역 커뮤니티 센터에서 골프 레슨을 받으며, 평소 느낀 스트레스를 차분히 해소했다."
+    },
+    {
+     "topic": "직장",
+     "text": "회사에서 연말 성과 평가를 받고 나서, 아내와 함께 저녁을 먹으며 미래 계획을 차분히 논의했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 494,
+      "evalTokens": 163,
+      "wallSeconds": 2.6370889999961946
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 397,
+      "evalTokens": 73,
+      "wallSeconds": 1.4604403999983333
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "토요일 아침, 아이들이 잠든 틈을 타 배달 앱으로 신선한 과일 박스를 주문하며, 오늘 하루를 활기차게 시작했다."
+      },
+      {
+       "topic": "가족",
+       "text": "저녁 식사 시간, 아내와 함께 자녀의 학교 프로젝트를 도와주며, 가정의 따뜻함 속에서 안정감을 느꼈다."
+      },
+      {
+       "topic": "취미",
+       "text": "매주 일요일 오후, 지역 커뮤니티 센터에서 골프 레슨을 받으며, 평소 느낀 스트레스를 차분히 해소했다."
+      },
+      {
+       "topic": "직장",
+       "text": "회사에서 연말 성과 평가를 받고 나서, 아내와 함께 저녁을 먹으며 미래 계획을 차분히 논의했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.097685600005207
+  },
+  {
+   "personaId": 23,
+   "experiences": [
+    {
+     "topic": "소비",
+     "text": "주말 장을 보러 갈 때마다 할인 쿠폰을 활용해 필요한 식료품만 딱 구매했다. 절약하면서도 품질은 놓치지 않는 법을 알고 있었다."
+    },
+    {
+     "topic": "연애",
+     "text": "어린 시절 친구의 결혼식에서 축하 공연을 자청해 노래를 불렀다. 그때 느낀 뿌듯함이 외로운 지금도 가끔 떠올랐다."
+    },
+    {
+     "topic": "가족",
+     "text": "부모님의 생일엔 손편지를 직접 써서 선물과 함께 전했다. 말로 표현하기보다 진심이 담긴 글이 더 중요하다고 믿었다."
+    },
+    {
+     "topic": "취미",
+     "text": "매주 일요일 저녁, 혼자 작은 캠핑장을 찾아 텐트를 치고 별을 바라보며 오랜 시간을 보냈다. 새로운 경험에 대한 두려움보다 즐거움이 컸다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 514,
+      "evalTokens": 193,
+      "wallSeconds": 3.136696400004439
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 427,
+      "evalTokens": 73,
+      "wallSeconds": 1.7559794000117108
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "주말 장을 보러 갈 때마다 할인 쿠폰을 활용해 필요한 식료품만 딱 구매했다. 절약하면서도 품질은 놓치지 않는 법을 알고 있었다."
+      },
+      {
+       "topic": "연애",
+       "text": "어린 시절 친구의 결혼식에서 축하 공연을 자청해 노래를 불렀다. 그때 느낀 뿌듯함이 외로운 지금도 가끔 떠올랐다."
+      },
+      {
+       "topic": "가족",
+       "text": "부모님의 생일엔 손편지를 직접 써서 선물과 함께 전했다. 말로 표현하기보다 진심이 담긴 글이 더 중요하다고 믿었다."
+      },
+      {
+       "topic": "취미",
+       "text": "매주 일요일 저녁, 혼자 작은 캠핑장을 찾아 텐트를 치고 별을 바라보며 오랜 시간을 보냈다. 새로운 경험에 대한 두려움보다 즐거움이 컸다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.892865600006189
+  },
+  {
+   "personaId": 24,
+   "experiences": [
+    {
+     "topic": "소비",
+     "text": "매달 예산 계획을 세우며, 새 가전제품 대신 중고 세탁기를 구매해 절약했다."
+    },
+    {
+     "topic": "직장",
+     "text": "12년간의 경험을 바탕으로 신입 용접공의 실수를 바로잡아 주며 팀의 신뢰를 얻었다."
+    },
+    {
+     "topic": "연애",
+     "text": "배우자와 함께 주말 아침, 조용한 해운대 해안을 산책하며 일상의 평온함을 공유했다."
+    },
+    {
+     "topic": "취미",
+     "text": "퇴근 후 혼자 용접 작업을 즐기며, 작은 모형 배를 완성해 자녀에게 선물했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 504,
+      "evalTokens": 149,
+      "wallSeconds": 2.3536602999956813
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 383,
+      "evalTokens": 75,
+      "wallSeconds": 1.5717048999940744
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "해운대"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "매달 예산 계획을 세우며, 새 가전제품 대신 중고 세탁기를 구매해 절약했다."
+      },
+      {
+       "topic": "직장",
+       "text": "12년간의 경험을 바탕으로 신입 용접공의 실수를 바로잡아 주며 팀의 신뢰를 얻었다."
+      },
+      {
+       "topic": "연애",
+       "text": "배우자와 함께 주말 아침, 조용한 해운대 해안을 산책하며 일상의 평온함을 공유했다."
+      },
+      {
+       "topic": "취미",
+       "text": "퇴근 후 혼자 용접 작업을 즐기며, 작은 모형 배를 완성해 자녀에게 선물했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 3.925511800000095
+  },
+  {
+   "personaId": 25,
+   "experiences": [
+    {
+     "topic": "취미",
+     "text": "어느 가을 오후, 강원은 조용히 공원에서 피아노를 연주하며 주변 단풍을 감상했다. 따뜻한 차 한잔을 곁들이며 평온함을 느꼈다."
+    },
+    {
+     "topic": "직장",
+     "text": "대학원 졸업 후, 강원은 안정적인 프리랜서 기획가로 일하며 매달 예산을 철저히 관리하며 프로젝트를 진행했다."
+    },
+    {
+     "topic": "연애",
+     "text": "기념일 저녁, 강원은 연인과 함께 조용한 식당에서 조용히 대화를 나누며, 서로를 더 잘 이해하려 노력하는 모습에 행복감을 느꼈다."
+    },
+    {
+     "topic": "소비",
+     "text": "강원은 새 가전제품을 구매할 때마다 신중하게 예산을 따져보고, 중고 시장에서 효율적으로 필요한 물건을 찾아 아껴 사용하며 만족감을 얻었다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 508,
+      "evalTokens": 192,
+      "wallSeconds": 3.1151203000044916
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 425,
+      "evalTokens": 75,
+      "wallSeconds": 1.708581699989736
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": true,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "강원"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "취미",
+       "text": "어느 가을 오후, 강원은 조용히 공원에서 피아노를 연주하며 주변 단풍을 감상했다. 따뜻한 차 한잔을 곁들이며 평온함을 느꼈다."
+      },
+      {
+       "topic": "직장",
+       "text": "대학원 졸업 후, 강원은 안정적인 프리랜서 기획가로 일하며 매달 예산을 철저히 관리하며 프로젝트를 진행했다."
+      },
+      {
+       "topic": "연애",
+       "text": "기념일 저녁, 강원은 연인과 함께 조용한 식당에서 조용히 대화를 나누며, 서로를 더 잘 이해하려 노력하는 모습에 행복감을 느꼈다."
+      },
+      {
+       "topic": "소비",
+       "text": "강원은 새 가전제품을 구매할 때마다 신중하게 예산을 따져보고, 중고 시장에서 효율적으로 필요한 물건을 찾아 아껴 사용하며 만족감을 얻었다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.823853300011251
+  },
+  {
+   "personaId": 26,
+   "experiences": [
+    {
+     "topic": "연애",
+     "text": "결혼 10주년 기념일, 배우자와 함께 고요한 충북의 정원 카페에서 조용히 손편지를 주고받으며 따뜻한 차를 마셨다."
+    },
+    {
+     "topic": "소비",
+     "text": "오랜만에 시내에서 특가 행사를 발견하고, 충동적으로 고급 주방 도구 세트를 구매하며 집안 주방이 조금 더 밝아질 것 같은 기대감에 빠졌다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말 아침, 조용히 집 뒷마당에서 오래된 피아노를 연주하며 아침 햇살 아래 평화로운 멜로디를 즐겼다."
+    },
+    {
+     "topic": "가족",
+     "text": "자녀의 학교 운동회에서 조용히 응원석에 앉아 자녀의 활약을 지켜보며 가슴 뿌듯함을 느꼈다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 499,
+      "evalTokens": 173,
+      "wallSeconds": 2.979486000011093
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 407,
+      "evalTokens": 75,
+      "wallSeconds": 1.59185919999436
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [
+       "충북"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "연애",
+       "text": "결혼 10주년 기념일, 배우자와 함께 고요한 충북의 정원 카페에서 조용히 손편지를 주고받으며 따뜻한 차를 마셨다."
+      },
+      {
+       "topic": "소비",
+       "text": "오랜만에 시내에서 특가 행사를 발견하고, 충동적으로 고급 주방 도구 세트를 구매하며 집안 주방이 조금 더 밝아질 것 같은 기대감에 빠졌다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말 아침, 조용히 집 뒷마당에서 오래된 피아노를 연주하며 아침 햇살 아래 평화로운 멜로디를 즐겼다."
+      },
+      {
+       "topic": "가족",
+       "text": "자녀의 학교 운동회에서 조용히 응원석에 앉아 자녀의 활약을 지켜보며 가슴 뿌듯함을 느꼈다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.5714967000094475
+  },
+  {
+   "personaId": 27,
+   "experiences": [
+    {
+     "topic": "직장",
+     "text": "정비소 문을 열고 햇살 가득한 아침, 단골 손님이 들어오자마자 활짝 웃으며 차량 점검을 시작했다."
+    },
+    {
+     "topic": "가족",
+     "text": "자녀의 학교 축제에 참석해, 아내와 함께 아이의 무대 공연을 지켜보며 따뜻한 박수를 보냈다."
+    },
+    {
+     "topic": "소비",
+     "text": "가족 생일 선물로 고급 카메라를 고르며, 평소 아끼던 예산을 조금 더 투자해 기쁨을 선물하고 싶었다."
+    },
+    {
+     "topic": "연애",
+     "text": "주말 저녁, 아내와 함께 조용한 카페에서 차를 마시며 오랜 대화를 나누다 서로의 꿈과 희망에 대해 진솔하게 이야기했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 501,
+      "evalTokens": 170,
+      "wallSeconds": 2.9818358000047738
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 403,
+      "evalTokens": 73,
+      "wallSeconds": 1.827780099993106
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "직장",
+       "text": "정비소 문을 열고 햇살 가득한 아침, 단골 손님이 들어오자마자 활짝 웃으며 차량 점검을 시작했다."
+      },
+      {
+       "topic": "가족",
+       "text": "자녀의 학교 축제에 참석해, 아내와 함께 아이의 무대 공연을 지켜보며 따뜻한 박수를 보냈다."
+      },
+      {
+       "topic": "소비",
+       "text": "가족 생일 선물로 고급 카메라를 고르며, 평소 아끼던 예산을 조금 더 투자해 기쁨을 선물하고 싶었다."
+      },
+      {
+       "topic": "연애",
+       "text": "주말 저녁, 아내와 함께 조용한 카페에서 차를 마시며 오랜 대화를 나누다 서로의 꿈과 희망에 대해 진솔하게 이야기했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 4.809968600005959
+  },
+  {
+   "personaId": 28,
+   "experiences": [
+    {
+     "topic": "직장",
+     "text": "25년째 충남의 노인요양센터에서 일하며, 새로운 돌봄 기술을 배우려 매일 아침 관련 세미나에 참석했다."
+    },
+    {
+     "topic": "연애",
+     "text": "결혼 기념일을 맞아 배우자와 함께 조용한 온천 마을을 방문해, 둘만의 시간을 소중히 여기며 손을 잡고 산책했다."
+    },
+    {
+     "topic": "가족",
+     "text": "자녀의 대학 입학 날, 학교 앞에서 가슴 벅찬 순간을 참지 못하고 눈물을 흘리며 손을 흔들었다."
+    },
+    {
+     "topic": "소비",
+     "text": "가족 생일 선물로 평소 아끼던 고급 와인을 구매하고, 아내에게는 특별히 예약한 현지 레스토랑 저녁 식사를 선물했다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 499,
+      "evalTokens": 174,
+      "wallSeconds": 4.6549455000058515
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 409,
+      "evalTokens": 79,
+      "wallSeconds": 2.734321399999317
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": true,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": true,
+      "cities": [
+       "충남",
+       "온천 마을"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "직장",
+       "text": "25년째 충남의 노인요양센터에서 일하며, 새로운 돌봄 기술을 배우려 매일 아침 관련 세미나에 참석했다."
+      },
+      {
+       "topic": "연애",
+       "text": "결혼 기념일을 맞아 배우자와 함께 조용한 온천 마을을 방문해, 둘만의 시간을 소중히 여기며 손을 잡고 산책했다."
+      },
+      {
+       "topic": "가족",
+       "text": "자녀의 대학 입학 날, 학교 앞에서 가슴 벅찬 순간을 참지 못하고 눈물을 흘리며 손을 흔들었다."
+      },
+      {
+       "topic": "소비",
+       "text": "가족 생일 선물로 평소 아끼던 고급 와인을 구매하고, 아내에게는 특별히 예약한 현지 레스토랑 저녁 식사를 선물했다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 7.389447500012466
+  },
+  {
+   "personaId": 29,
+   "experiences": [
+    {
+     "topic": "소비",
+     "text": "장마철에 저렴한 레인코트를 구매하며, 여러 후기를 꼼꼼히 살펴본 뒤 신중하게 결제했다."
+    },
+    {
+     "topic": "연애",
+     "text": "배우자와 함께 조용한 카페에서 차를 마시며, 기념일을 딱히 챙기지 않아도 서로를 위한 작은 선물로 만족했다."
+    },
+    {
+     "topic": "가족",
+     "text": "추석 연휴에 배우자와 조용히 집에서 음식을 준비하며, 가족 모임 없이 편안한 시간을 보냈다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말 아침, 조용한 도서관에서 책을 읽으며 보내는 시간을 즐겼고, 가끔은 작은 정원에서 조용히 식물을 가꾸는 것이 휴식이었다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 495,
+      "evalTokens": 174,
+      "wallSeconds": 5.059067100009997
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 406,
+      "evalTokens": 73,
+      "wallSeconds": 2.2884735999978147
+     },
+     "extracted": {
+      "spouse": true,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": false,
+      "fullTimeJob": false,
+      "cities": [],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "소비",
+       "text": "장마철에 저렴한 레인코트를 구매하며, 여러 후기를 꼼꼼히 살펴본 뒤 신중하게 결제했다."
+      },
+      {
+       "topic": "연애",
+       "text": "배우자와 함께 조용한 카페에서 차를 마시며, 기념일을 딱히 챙기지 않아도 서로를 위한 작은 선물로 만족했다."
+      },
+      {
+       "topic": "가족",
+       "text": "추석 연휴에 배우자와 조용히 집에서 음식을 준비하며, 가족 모임 없이 편안한 시간을 보냈다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말 아침, 조용한 도서관에서 책을 읽으며 보내는 시간을 즐겼고, 가끔은 작은 정원에서 조용히 식물을 가꾸는 것이 휴식이었다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 7.347692499999539
+  },
+  {
+   "personaId": 30,
+   "experiences": [
+    {
+     "topic": "가족",
+     "text": "추석 연휴, 고향 마을의 오래된 창고에서 친척들과 함께 낡은 가구를 정리하며, 어린 시절 추억이 떠올랐다."
+    },
+    {
+     "topic": "취미",
+     "text": "주말마다 한강변 자전거 도로를 달려, 즉흥적인 경로 변경으로 새로운 경치를 발견할 때마다 설렘이 가득했다."
+    },
+    {
+     "topic": "연애",
+     "text": "카페에서 우연히 만난 그와는 즉흥적인 약속으로 밤 늦게까지 이야기를 나누며, 순간적인 연결감에 가슴이 설레었다."
+    },
+    {
+     "topic": "직장",
+     "text": "주방에서 바쁜 하루를 보내던 중, 동료들과 함께 새로운 레시피를 실험하며 모험심에 찬 웃음이 떠나지 않았다."
+    }
+   ],
+   "attempts": [
+    {
+     "attempt": 1,
+     "generation": {
+      "error": null,
+      "promptTokens": 509,
+      "evalTokens": 182,
+      "wallSeconds": 5.570100199998706
+     },
+     "review": {
+      "error": null,
+      "promptTokens": 412,
+      "evalTokens": 76,
+      "wallSeconds": 1.88034940000216
+     },
+     "extracted": {
+      "spouse": false,
+      "ownChild": false,
+      "currentPartner": false,
+      "otherRomance": true,
+      "fullTimeJob": true,
+      "cities": [
+       "한강변"
+      ],
+      "stereotypeSentences": [],
+      "realNames": []
+     },
+     "experiences": [
+      {
+       "topic": "가족",
+       "text": "추석 연휴, 고향 마을의 오래된 창고에서 친척들과 함께 낡은 가구를 정리하며, 어린 시절 추억이 떠올랐다."
+      },
+      {
+       "topic": "취미",
+       "text": "주말마다 한강변 자전거 도로를 달려, 즉흥적인 경로 변경으로 새로운 경치를 발견할 때마다 설렘이 가득했다."
+      },
+      {
+       "topic": "연애",
+       "text": "카페에서 우연히 만난 그와는 즉흥적인 약속으로 밤 늦게까지 이야기를 나누며, 순간적인 연결감에 가슴이 설레었다."
+      },
+      {
+       "topic": "직장",
+       "text": "주방에서 바쁜 하루를 보내던 중, 동료들과 함께 새로운 레시피를 실험하며 모험심에 찬 웃음이 떠나지 않았다."
+      }
+     ],
+     "problems": []
+    }
+   ],
+   "accepted": true,
+   "wallSeconds": 7.450634900000296
+  }
+ ]
+}

@@ -1,0 +1,831 @@
+{
+ "model": "exaone3.5:7.8b",
+ "format": "label",
+ "questionId": "marriage",
+ "topic": "가족",
+ "method": "1x8",
+ "personaCount": 30,
+ "wallSeconds": 4.236216799996328,
+ "promptTokensPerPersona": 301.6333333333333,
+ "evalTokensPerPersona": 43.56666666666667,
+ "seconds100": 14.120722666654425,
+ "failureCount": 0,
+ "failureKinds": {},
+ "personaTexts": {
+  "1": "#1: 35세 여성, 대구, 건물 청소원(경력 12년 (베테랑)), 대졸, 연애 중, 부모와 함께, 경제적으로 빠듯한 편. 신중한 편, 개방적인 편",
+  "2": "#2: 16세 여성, 경기, 고등학생(고등학교 1학년), 고등학교 재학, 연애 중, 부모와 함께, 경제적으로 보통. 안정을 찾는 편, 개방적인 편",
+  "3": "#3: 58세 남성, 인천, 경비원(경력 2년 (신입)), 고졸, 기혼, 배우자와 둘이, 경제적으로 보통. 즉흥적인 편, 감정 표현이 큰 편",
+  "4": "#4: 39세 여성, 서울, 가사·육아(가사·육아), 대졸, 솔로, 부모와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "5": "#5: 18세 남성, 서울, 고등학생(고등학교 3학년), 고등학교 재학, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 전통을 중시하는 편",
+  "6": "#6: 52세 남성, 인천, 교사(경력 3년 (중견)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 모험을 즐기는 편, 아끼는 편",
+  "7": "#7: 67세 여성, 충남, 은퇴(은퇴), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 아끼는 편, 내향적인 편",
+  "8": "#8: 67세 여성, 전북, 지게차 기사(경력 5년 (중견)), 중졸 이하, 이혼·사별, 1인 가구, 경제적으로 보통. 안정을 찾는 편, 전통을 중시하는 편",
+  "9": "#9: 24세 여성, 경기, 주방 보조(경력 5년 (중견)), 대졸, 썸 타는 중, 1인 가구, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "10": "#10: 63세 여성, 충남, 사무직 회사원(경력 8년 (중견)), 고졸, 이혼·사별, 1인 가구, 경제적으로 보통. 외향적인 편, 전통을 중시하는 편",
+  "11": "#11: 51세 남성, 경기, 약사(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 잘 쓰는 편, 안정을 찾는 편",
+  "12": "#12: 37세 남성, 전북, 전기 기사(경력 18년 (베테랑)), 대졸, 솔로, 1인 가구, 경제적으로 보통. 전통을 중시하는 편, 즉흥적인 편",
+  "13": "#13: 52세 남성, 경기, 경리(경력 3년 (중견)), 고졸, 솔로, 부모와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편",
+  "14": "#14: 40세 여성, 서울, 경리(경력 18년 (베테랑)), 대학원졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 즉흥적인 편, 잘 쓰는 편",
+  "15": "#15: 69세 여성, 경기, 은퇴(은퇴), 중졸 이하, 기혼, 배우자와 둘이, 경제적으로 보통. 개방적인 편, 아끼는 편",
+  "16": "#16: 56세 여성, 인천, 공무원(경력 12년 (베테랑)), 중졸 이하, 연애 중, 1인 가구, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "17": "#17: 59세 여성, 제주, 음식점 직원(경력 8년 (중견)), 전문대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 아끼는 편, 감정 표현이 큰 편",
+  "18": "#18: 49세 남성, 서울, 물리치료사(경력 18년 (베테랑)), 고졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 외향적인 편, 전통을 중시하는 편",
+  "19": "#19: 54세 여성, 대구, 구직·쉬는 중(구직·쉬는 중), 대졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정 표현이 큰 편, 개방적인 편",
+  "20": "#20: 58세 남성, 전북, 전기 기사(경력 2년 (신입)), 대졸, 이혼·사별, 1인 가구, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "21": "#21: 15세 여성, 충남, 건물 청소원(경력 1년 (신입)), 고졸, 연애 중, 부모와 함께, 경제적으로 보통. 감정 표현이 큰 편, 내향적인 편",
+  "22": "#22: 51세 남성, 인천, 가사·육아(가사·육아), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 안정을 찾는 편",
+  "23": "#23: 58세 여성, 서울, 물류센터 작업자(경력 12년 (베테랑)), 대졸, 솔로, 부모와 함께, 경제적으로 빠듯한 편. 내향적인 편, 모험을 즐기는 편",
+  "24": "#24: 31세 여성, 부산, 용접공(경력 12년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 빠듯한 편. 안정을 찾는 편, 아끼는 편",
+  "25": "#25: 29세 여성, 강원, 구직·쉬는 중(구직·쉬는 중), 대학원졸, 연애 중, 1인 가구, 경제적으로 보통. 아끼는 편, 안정을 찾는 편",
+  "26": "#26: 68세 여성, 충북, 음식점 직원(경력 1년 (신입)), 전문대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 잘 쓰는 편, 내향적인 편",
+  "27": "#27: 61세 남성, 경기, 자동차 정비사(경력 3년 (중견)), 중졸 이하, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 외향적인 편, 신중한 편",
+  "28": "#28: 49세 남성, 충남, 요양보호사(경력 25년 (베테랑)), 대졸, 기혼, 배우자·자녀와 함께, 경제적으로 보통. 신중한 편, 모험을 즐기는 편",
+  "29": "#29: 31세 남성, 충북, 가사·육아(가사·육아), 고졸, 기혼, 배우자와 둘이, 경제적으로 빠듯한 편. 감정을 안 드러내는 편, 내향적인 편",
+  "30": "#30: 34세 여성, 경기, 주방 보조(경력 8년 (중견)), 대졸, 솔로, 형제·친구와 함께, 경제적으로 보통. 모험을 즐기는 편, 즉흥적인 편"
+ },
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 경제적 여유가 부족해서 결정하기 힘들어",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 학업과 사랑에 집중하고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "연애 중, 안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "인생은 다양하니까 각자 선택이 중요해.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족, 살아온 이야기",
+    "error": null
+   }
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "현재로선 자녀 양육에 집중하고 싶어 결정을 서두르지 않으려 해.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족 (부모와 함께, 자녀 양육에 대한 유연한 태도), 경제 상황 (경제적으로 보통), 살아온 이야기 (주말 아침 부모님과 함께 조용한 시간 보내기, 혼자 보내는 시간 선호 등 자녀 양육에 집중하는 모습)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 공부에 집중하고 싶어, 결혼은 나중에 생각하고 싶어.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동, 살아온 이야기",
+    "error": null
+   }
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "개인 행복이 우선, 가족과 상의 후 결정.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께 행복한 순간들을 즐기며 살아가는 모습과 결혼이나 출산에 대한 유연한 태도는 그가 개인의 행복과 가족 간의 상의 중요성을 강조하는 것을 보여줍니다. 특히, '매달 월급의 일부를 조용히 주식 계좌에 적립하며 안정적인 미래를 위해 조용히 투자하는 만족감을 느꼈다'는 부분은 장기적인 계획과 개인의 행복 추구 사이의 균형을 중요시하는 태도를 반영합니다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "내 삶의 선택이 중요하니까요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 모임 약속이 잡히면 빠질 핑계를 생각한다 / 내향적인 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "개인 행복이 제일 중요하니까요.",
+   "judge": {
+    "specific": true,
+    "evidence": "개인 행복이 제일 중요하다는 생각은 그녀가 이혼·사별 경험이 있으며, 현재 1인 가구로 경제적으로 보통의 안정을 추구하는 점과 연결되며, 전통을 중시하면서도 개인의 행복을 우선시하는 태도를 반영하고 있다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 여행과 경험에 더 집중하고 싶어",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "하는 것이 좋다",
+   "reason": "안정된 삶을 위해 새로운 시작이 필요해 보여.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족 (이혼·사별, 1인 가구), 경제적으로 보통, 살아온 이야기 (추석에 고향에 내려가 부모님과 함께 저녁을 먹으며 옛 추억을 떠올림)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "안정적인 가정이 중요하지만, 경제적인 부담도 고려해야 해서.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 가족과 함께 안정감을 추구하지만, 경제적 부담도 고려해야 함",
+    "error": null
+   }
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "개인 행복이 최고니까요, 전통도 좋지만 우선은 자유롭게 선택해야죠.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 결혼은 때가 되면 하는 것이라고 말한다 / 가까운 사람에게는 기분을 말하지만 밖에서는 잘 드러내지 않는다, 살아온 이야기: 혼자 여행 중 우연히 만난 여성과 카페에서 우연히 같은 영화를 보며 미소를 주고받았다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "인생은 짧고 다양한 경험이 중요해.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 모험을 즐기는 편, 즉흥적인 편 / 살아온 이야기: 주말 산악 등반 중 갑자기 폭풍우를 만나 잠시 고립되었지만, 즉흥적으로 비옷을 찾아 꺼내 입으며 모험을 즐겼다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "개인 행복이 최우선이니까요.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 주말에는 연락을 꺼 두고 혼자 보내는 시간이 제일 편하다 / 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "삶의 선택은 개인이니, 행복이 우선이지.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 결혼이나 출산은 하고 싶은 사람만 하면 된다고 말한다",
+    "error": null
+   }
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 혼자서도 충분히 행복하고 만족스럽거든.",
+   "judge": {
+    "specific": true,
+    "evidence": "혼자서도 충분히 행복하고 만족스럽거든. (평소 행동: 기쁘면 바로 전화해서 자랑하고, 서운하면 그 자리에서 말함, 내향적인 편, 살아온 이야기: 퇴근길에 작은 화분 하나를 사 들고 와, 조용한 방에서 식물을 키우며 평온함을 찾았다.)",
+    "error": null
+   }
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "경제적 여유가 없어 결정이 쉽지 않아.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "가족 행복이 최우선, 경제적 여유 생기면 결정",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편, 가족 행복이 최우선, 자녀의 학교 운동회에서 가족 모두가 하나 되는 따스함을 간직한 점",
+    "error": null
+   }
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "현재 경제적 어려움이 크니 지금은 선택보다는 안정이 우선",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "새로운 시작은 좋지만 강제는 아니야.",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 안정을 찾는 편, 살아온 이야기: 퇴근 후 안정적인 직장 생활의 기틀을 다지며 가족들에게 따뜻한 마음을 전하려 노력함에도 불구하고 홀로 명절을 보내는 모습 등에서 개인의 선택과 안정을 중시하는 태도를 보임",
+    "error": null
+   }
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 꿈과 경험이 더 중요해 보여.",
+   "judge": {
+    "specific": true,
+    "evidence": "꿈과 경험이 더 중요해 보여",
+    "error": null
+   }
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "안정을 찾는 삶에서 선택은 자유롭다.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "현재는 경제적 여유가 부족해 결혼보다는 안정이 우선이야.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "안정적 삶을 위해 강요하긴 싫지만, 가족에겐 긍정적이라 생각해",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편, 아끼는 편, 배우자·자녀와 함께, 경제적으로 빠듯한 편, 살아온 이야기: 배우자와 함께 주말 아침, 조용한 해운대 해안을 산책하며 일상의 평온함을 공유했다.",
+    "error": null
+   }
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 안정된 관계를 찾는 게 우선이라 시간이 필요해.",
+   "judge": {
+    "specific": true,
+    "evidence": "안정을 찾는 편, 연애 중",
+    "error": null
+   }
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 가족과 함께하는 시간이 더 소중해.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족과 함께하는 시간이 더 소중해",
+    "error": null
+   }
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "경험상 중요하지만 각자 삶의 선택이니까요.",
+   "judge": {
+    "specific": true,
+    "evidence": "가족 - 배우자·자녀와 함께, 경제적으로 보통",
+    "error": null
+   }
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "개인 행복이 최우선, 선택은 자유니까",
+   "judge": {
+    "specific": true,
+    "evidence": "개인 행복이 최우선, 선택은 자유니까",
+    "error": null
+   }
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "지금은 경제적 여유가 부족해 결정하기 어렵다.",
+   "judge": {
+    "specific": true,
+    "evidence": "경제적으로 빠듯한 편",
+    "error": null
+   }
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "해도 좋고 안 해도 좋다",
+   "reason": "사랑이 먼저니, 삶의 선택은 자유롭게!",
+   "judge": {
+    "specific": true,
+    "evidence": "평소 행동: 즉흥적인 편, 모험을 즐기는 편, 사랑이 먼저라는 가치관은 그녀의 자유로운 삶의 태도와 연결되어 있으며, 이는 그녀의 경제적으로 보통인 상황과 솔로 생활에서 비롯된 독립적인 선택의 자유를 반영한다.",
+    "error": null
+   }
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 115342.9108535,
+   "endedAt": 115343.9782904,
+   "wallSeconds": 1.0674369000043953,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 경제적 여유가 부족해서 결정하기 힘들어\"}]}",
+   "promptTokens": 301,
+   "evalTokens": 43,
+   "evalSeconds": 0.797475,
+   "promptSeconds": 0.111134,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 115342.9111343,
+   "endedAt": 115343.7893803,
+   "wallSeconds": 0.8782460000074934,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 학업과 사랑에 집중하고 싶어\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 41,
+   "evalSeconds": 0.5984,
+   "promptSeconds": 0.121188,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 115342.9113868,
+   "endedAt": 115343.7897072,
+   "wallSeconds": 0.878320400006487,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"인생은 다양하니까 각자 선택이 중요해.\"}]}",
+   "promptTokens": 299,
+   "evalTokens": 41,
+   "evalSeconds": 0.588739,
+   "promptSeconds": 0.131031,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 115342.9116149,
+   "endedAt": 115344.1202988,
+   "wallSeconds": 1.2086838999966858,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"현재로선 자녀 양육에 집중하고 싶어 결정을 서두르지 않으려 해.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 49,
+   "evalSeconds": 0.890367,
+   "promptSeconds": 0.159922,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 115342.9119377,
+   "endedAt": 115344.0961628,
+   "wallSeconds": 1.1842250999907264,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 공부에 집중하고 싶어, 결혼은 나중에 생각하고 싶어.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 48,
+   "evalSeconds": 0.885422,
+   "promptSeconds": 0.140859,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 115342.9122825,
+   "endedAt": 115343.790148,
+   "wallSeconds": 0.8778655000060098,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"개인 행복이 우선, 가족과 상의 후 결정.\"}]}",
+   "promptTokens": 299,
+   "evalTokens": 41,
+   "evalSeconds": 0.569498,
+   "promptSeconds": 0.150615,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 115342.9126724,
+   "endedAt": 115343.6875326,
+   "wallSeconds": 0.7748602000065148,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"내 삶의 선택이 중요하니까요.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 39,
+   "evalSeconds": 0.448458,
+   "promptSeconds": 0.169156,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 115342.9130867,
+   "endedAt": 115343.6729167,
+   "wallSeconds": 0.7598299999954179,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"개인 행복이 제일 중요하니까요.\"}]}",
+   "promptTokens": 306,
+   "evalTokens": 38,
+   "evalSeconds": 0.424552,
+   "promptSeconds": 0.178411,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 115343.6729541,
+   "endedAt": 115344.6042307,
+   "wallSeconds": 0.9312766000075499,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 여행과 경험에 더 집중하고 싶어\"}]}",
+   "promptTokens": 300,
+   "evalTokens": 42,
+   "evalSeconds": 0.858239,
+   "promptSeconds": 0.049602,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 115343.687571,
+   "endedAt": 115344.6274781,
+   "wallSeconds": 0.9399070999934338,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"하는 것이 좋다\",\"reason\":\"안정된 삶을 위해 새로운 시작이 필요해 보여.\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 42,
+   "evalSeconds": 0.826188,
+   "promptSeconds": 0.055066,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 115343.7894219,
+   "endedAt": 115344.8991169,
+   "wallSeconds": 1.1096949999919161,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"안정적인 가정이 중요하지만, 경제적인 부담도 고려해야 해서.\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 48,
+   "evalSeconds": 0.95569,
+   "promptSeconds": 0.123657,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 115343.7897358,
+   "endedAt": 115345.0169739,
+   "wallSeconds": 1.2272380999929737,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"개인 행복이 최고니까요, 전통도 좋지만 우선은 자유롭게 선택해야죠.\"}]}",
+   "promptTokens": 303,
+   "evalTokens": 51,
+   "evalSeconds": 1.06341,
+   "promptSeconds": 0.133607,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 115343.790182,
+   "endedAt": 115344.7530682,
+   "wallSeconds": 0.9628862000099616,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"인생은 짧고 다양한 경험이 중요해.\"}]}",
+   "promptTokens": 299,
+   "evalTokens": 42,
+   "evalSeconds": 0.789438,
+   "promptSeconds": 0.14378,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 115343.978346,
+   "endedAt": 115344.6263408,
+   "wallSeconds": 0.6479947999905562,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"개인 행복이 최우선이니까요.\"}]}",
+   "promptTokens": 303,
+   "evalTokens": 38,
+   "evalSeconds": 0.574625,
+   "promptSeconds": 0.056271,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 115344.0962132,
+   "endedAt": 115345.0172184,
+   "wallSeconds": 0.9210051999980351,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"삶의 선택은 개인이니, 행복이 우선이지.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 43,
+   "evalSeconds": 0.77885,
+   "promptSeconds": 0.09768,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 115344.1203488,
+   "endedAt": 115344.9938696,
+   "wallSeconds": 0.8735207999998238,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 혼자서도 충분히 행복하고 만족스럽거든.\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 42,
+   "evalSeconds": 0.741932,
+   "promptSeconds": 0.11131,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 115344.6042699,
+   "endedAt": 115345.6341346,
+   "wallSeconds": 1.0298647000017809,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"경제적 여유가 없어 결정이 쉽지 않아.\"}]}",
+   "promptTokens": 302,
+   "evalTokens": 44,
+   "evalSeconds": 0.881793,
+   "promptSeconds": 0.107116,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 115344.626394,
+   "endedAt": 115345.6203996,
+   "wallSeconds": 0.9940055999904871,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"가족 행복이 최우선, 경제적 여유 생기면 결정\"}]}",
+   "promptTokens": 307,
+   "evalTokens": 43,
+   "evalSeconds": 0.845718,
+   "promptSeconds": 0.129412,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 115344.6275166,
+   "endedAt": 115345.7722949,
+   "wallSeconds": 1.1447783000039635,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"현재 경제적 어려움이 크니 지금은 선택보다는 안정이 우선\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 47,
+   "evalSeconds": 1.00788,
+   "promptSeconds": 0.119229,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 115344.7531035,
+   "endedAt": 115345.5342093,
+   "wallSeconds": 0.7811058000079356,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"새로운 시작은 좋지만 강제는 아니야.\"}]}",
+   "promptTokens": 304,
+   "evalTokens": 40,
+   "evalSeconds": 0.696773,
+   "promptSeconds": 0.062486,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 115344.8991622,
+   "endedAt": 115345.8793525,
+   "wallSeconds": 0.980190299989772,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 꿈과 경험이 더 중요해 보여.\"}]}",
+   "promptTokens": 303,
+   "evalTokens": 42,
+   "evalSeconds": 0.886171,
+   "promptSeconds": 0.054237,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 115344.9939081,
+   "endedAt": 115345.9865491,
+   "wallSeconds": 0.9926409999898169,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"안정을 찾는 삶에서 선택은 자유롭다.\"}]}",
+   "promptTokens": 300,
+   "evalTokens": 43,
+   "evalSeconds": 0.811741,
+   "promptSeconds": 0.121228,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 115345.0170362,
+   "endedAt": 115346.1026178,
+   "wallSeconds": 1.085581599996658,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"현재는 경제적 여유가 부족해 결혼보다는 안정이 우선이야.\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 47,
+   "evalSeconds": 0.907775,
+   "promptSeconds": 0.141231,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 115345.0172548,
+   "endedAt": 115346.1708012,
+   "wallSeconds": 1.1535464000044158,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"안정적 삶을 위해 강요하긴 싫지만, 가족에겐 긍정적이라 생각해\"}]}",
+   "promptTokens": 305,
+   "evalTokens": 50,
+   "evalSeconds": 0.985872,
+   "promptSeconds": 0.131338,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 115345.5342473,
+   "endedAt": 115347.0570232,
+   "wallSeconds": 1.5227758999972139,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 안정된 관계를 찾는 게 우선이라 시간이 필요해.\"}]}",
+   "promptTokens": 303,
+   "evalTokens": 47,
+   "evalSeconds": 1.437312,
+   "promptSeconds": 0.061942,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 115345.6204403,
+   "endedAt": 115347.0565469,
+   "wallSeconds": 1.4361065999983111,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 가족과 함께하는 시간이 더 소중해.\"}]}",
+   "promptTokens": 304,
+   "evalTokens": 44,
+   "evalSeconds": 1.309874,
+   "promptSeconds": 0.06567,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 115345.634177,
+   "endedAt": 115346.997692,
+   "wallSeconds": 1.3635150000045542,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"경험상 중요하지만 각자 삶의 선택이니까요.\"}]}",
+   "promptTokens": 304,
+   "evalTokens": 42,
+   "evalSeconds": 1.239906,
+   "promptSeconds": 0.076895,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 115345.7723354,
+   "endedAt": 115347.0572385,
+   "wallSeconds": 1.2849030999932438,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"개인 행복이 최우선, 선택은 자유니까\"}]}",
+   "promptTokens": 304,
+   "evalTokens": 41,
+   "evalSeconds": 1.191621,
+   "promptSeconds": 0.054273,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 115345.8794195,
+   "endedAt": 115347.1189597,
+   "wallSeconds": 1.2395402000111062,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"지금은 경제적 여유가 부족해 결정하기 어렵다.\"}]}",
+   "promptTokens": 302,
+   "evalTokens": 44,
+   "evalSeconds": 1.132615,
+   "promptSeconds": 0.059383,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 115345.9865985,
+   "endedAt": 115347.1464927,
+   "wallSeconds": 1.1598941999982344,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"해도 좋고 안 해도 좋다\",\"reason\":\"사랑이 먼저니, 삶의 선택은 자유롭게!\"}]}",
+   "promptTokens": 302,
+   "evalTokens": 45,
+   "evalSeconds": 1.073789,
+   "promptSeconds": 0.061754,
+   "doneReason": "stop"
+  }
+ ],
+ "repeat": 2
+}
