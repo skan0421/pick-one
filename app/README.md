@@ -313,7 +313,7 @@ MSYS_NO_PATHCONV=1 docker exec pickone-mariadb sh -c 'MYSQL_PWD=$MARIADB_PASSWOR
 | 지인에게 숨기기, 차단 목록 | 자리만 있습니다 (준비 중) |
 | 로그아웃 | |
 
-잔액은 `GET /members/me` 의 `pointBalance` 가 아니라 `GET /points/balance` 로 받습니다. 앞의 값은 서버가 항상 0 을 줍니다.
+잔액은 `GET /members/me` 의 `pointBalance` 가 아니라 `GET /points/balance` 로 받습니다. 두 값은 같은 지갑 잔액이지만, 뒤의 API 가 오늘 적립과 일일 상한을 함께 주고 피드와 같은 캐시를 쓰기 때문입니다.
 
 포인트 내역과 내가 투표한 고민은 같은 목록 틀(`my/PagedList.tsx`)을 씁니다. 받는 중·실패·빈 목록·새로고침·이어 받기는 틀이 하고, 한 줄을 어떻게 그릴지만 화면마다 다릅니다.
 

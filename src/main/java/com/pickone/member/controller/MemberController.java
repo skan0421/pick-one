@@ -28,10 +28,10 @@ public class MemberController {
 		return memberService.getMe(memberId);
 	}
 
-	@Operation(summary = "내 정보 수정 (닉네임)")
+	@Operation(summary = "내 정보 수정 (보낸 필드만 변경. 지금은 닉네임)")
 	@PatchMapping("/me")
 	public MemberResponse updateMe(@LoginMemberId Long memberId, @Valid @RequestBody UpdateMemberRequest request) {
-		return memberService.changeNickname(memberId, request);
+		return memberService.update(memberId, request);
 	}
 
 }

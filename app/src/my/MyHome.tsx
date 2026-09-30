@@ -1,7 +1,7 @@
 // 마이 탭: 닉네임, 포인트, 메뉴, 로그아웃.
 //
 // 포인트는 GET /points/balance 로 받는다 (docs/api.md 6.1).
-// GET /members/me 의 pointBalance 는 서버가 항상 0 을 주므로 쓰지 않는다
+// GET /members/me 의 pointBalance 도 같은 잔액이지만, 오늘 적립과 상한이 함께 필요해 쓰지 않는다
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
