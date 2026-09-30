@@ -1,5 +1,6 @@
 package com.pickone.question.controller;
 
+import com.pickone.global.idempotency.IdempotencyKeys;
 import com.pickone.global.paging.CursorPage;
 import com.pickone.global.security.LoginMemberId;
 import com.pickone.question.dto.CreateQuestionRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -31,11 +33,13 @@ public class QuestionController {
 
 	private final QuestionService questionService;
 
-	@Operation(summary = "고민 등록")
+	/** Idempotency-Key 헤더는 선택. 같은 키의 재요청에도 처음과 같은 201 과 본문을 돌려준다 (docs/api.md 4.1) */
+	@Operation(summary = "고민 등록 (Idempotency-Key 헤더 선택)")
 	@PostMapping("/questions")
 	@ResponseStatus(HttpStatus.CREATED)
-	public QuestionResponse create(@LoginMemberId Long memberId, @Valid @RequestBody CreateQuestionRequest request) {
-		return questionService.create(memberId, request);
+	public QuestionResponse create(@LoginMemberId Long memberId, @Valid @RequestBody CreateQuestionRequest request,
+			@RequestHeader(value = IdempotencyKeys.HEADER, required = false) String idempotencyKey) {
+		return questionService.create(memberId, request, idempotencyKey);
 	}
 
 	@Operation(summary = "투표 피드 (커서, 상단 노출 우선)")

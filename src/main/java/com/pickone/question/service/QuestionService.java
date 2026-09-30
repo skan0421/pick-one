@@ -2,23 +2,19 @@ package com.pickone.question.service;
 
 import com.pickone.global.error.BusinessException;
 import com.pickone.global.error.ErrorCode;
+import com.pickone.global.idempotency.IdempotencyKeys;
 import com.pickone.global.paging.CursorCodec;
 import com.pickone.global.paging.CursorPage;
 import com.pickone.global.paging.KeysetCursor;
 import com.pickone.global.paging.PageSize;
-import com.pickone.member.domain.Member;
-import com.pickone.member.repository.MemberRepository;
+import com.pickone.point.service.OptimisticRetryExecutor;
 import com.pickone.question.domain.Question;
-import com.pickone.question.domain.Question.OptionDraft;
-import com.pickone.question.domain.QuestionType;
 import com.pickone.question.dto.CreateQuestionRequest;
-import com.pickone.question.dto.CreateQuestionRequest.OptionRequest;
 import com.pickone.question.dto.FeedItemResponse;
 import com.pickone.question.dto.MyQuestionResponse;
 import com.pickone.question.dto.QuestionResponse;
 import com.pickone.question.repository.QuestionQueryRepository.FeedKeyset;
 import com.pickone.question.repository.QuestionRepository;
-import com.pickone.upload.service.ImageUrlValidator;
 import com.pickone.vote.domain.Vote;
 import com.pickone.vote.repository.OptionCount;
 import com.pickone.vote.repository.VoteRepository;
@@ -39,65 +35,26 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class QuestionService {
 
-	private static final int TEXT_MIN_OPTIONS = 2;
-	private static final int TEXT_MAX_OPTIONS = 4;
-	private static final int IMAGE_OPTIONS = 2;
-
 	private final QuestionRepository questionRepository;
-	private final MemberRepository memberRepository;
 	private final VoteRepository voteRepository;
-	private final ImageUrlValidator imageUrlValidator;
 	private final CursorCodec cursorCodec;
+	private final QuestionCreateTransaction createTransaction;
+	private final OptimisticRetryExecutor retryExecutor;
 
 	// ---------- 등록 ----------
 
-	@Transactional
-	public QuestionResponse create(Long memberId, CreateQuestionRequest request) {
-		Member author = memberRepository.findById(memberId)
-				.filter(m -> !m.isDeleted())
-				.orElseThrow(() -> new BusinessException(ErrorCode.MEMBER_NOT_FOUND));
-		List<OptionDraft> drafts = validateOptions(memberId, request.questionType(), request.options());
-
-		Question question = questionRepository.save(Question.create(author, request.questionType(), request.content(), drafts));
-		return QuestionResponse.of(question, memberId, LocalDateTime.now());
-	}
-
 	/**
-	 * 유형별 선택지 규칙 (docs/api.md 4.1, erd.md 설계 메모). DB 는 개수를 강제하지 않으므로 여기가 유일한 검증 지점.
-	 * 사진형의 imageUrl 은 개수·형식 검사를 모두 통과한 뒤 본인이 발급받아 업로드한 주소인지 확인한다 (4.6, HEAD 포함)
+	 * 트랜잭션은 QuestionCreateTransaction 이 갖는다 (BoostService 와 같은 구조).
+	 * Idempotency-Key 헤더는 선택이다. 있으면 재시도 실행기로 감싸 같은 키의 동시 요청을 한 번 재실행으로 처리하고,
+	 * 없으면 전과 같이 등록만 한다.
 	 */
-	private List<OptionDraft> validateOptions(Long memberId, QuestionType type, List<OptionRequest> options) {
-		int count = options.size();
-		if (type == QuestionType.TEXT && (count < TEXT_MIN_OPTIONS || count > TEXT_MAX_OPTIONS)) {
-			throw new BusinessException(ErrorCode.QUESTION_OPTION_COUNT_INVALID, "텍스트형 선택지는 2~4개여야 합니다.");
+	public QuestionResponse create(Long memberId, CreateQuestionRequest request, String idempotencyKeyHeader) {
+		Optional<String> key = IdempotencyKeys.optional(idempotencyKeyHeader);
+		if (key.isEmpty()) {
+			return createTransaction.execute(memberId, request, null);
 		}
-		if (type == QuestionType.IMAGE && count != IMAGE_OPTIONS) {
-			throw new BusinessException(ErrorCode.QUESTION_OPTION_COUNT_INVALID, "사진형 선택지는 정확히 2개여야 합니다.");
-		}
-
-		List<OptionDraft> drafts = new ArrayList<>();
-		for (OptionRequest option : options) {
-			boolean hasContent = option.content() != null && !option.content().isBlank();
-			boolean hasImage = option.imageUrl() != null && !option.imageUrl().isBlank();
-			if (type == QuestionType.TEXT) {
-				if (!hasContent || hasImage) {
-					throw new BusinessException(ErrorCode.QUESTION_OPTION_TYPE_MISMATCH, "텍스트형 선택지는 content 만 입력합니다.");
-				}
-				drafts.add(new OptionDraft(option.content().trim(), null));
-			}
-			else {
-				if (!hasImage || hasContent) {
-					throw new BusinessException(ErrorCode.QUESTION_OPTION_TYPE_MISMATCH, "사진형 선택지는 imageUrl 만 입력합니다.");
-				}
-				drafts.add(new OptionDraft(null, option.imageUrl().trim()));
-			}
-		}
-		if (type == QuestionType.IMAGE) {
-			drafts = drafts.stream()
-					.map(d -> new OptionDraft(null, imageUrlValidator.validateOwned(memberId, d.imageUrl())))
-					.toList();
-		}
-		return drafts;
+		return retryExecutor.execute("create question member=" + memberId,
+				() -> createTransaction.execute(memberId, request, key.get()));
 	}
 
 	// ---------- 피드 ----------
