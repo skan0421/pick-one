@@ -1,0 +1,2133 @@
+{
+ "model": "exaone3.5:7.8b",
+ "questionId": "hobby",
+ "method": "1x1",
+ "batchSize": 1,
+ "concurrency": 1,
+ "personaCount": 100,
+ "requestCount": 100,
+ "wallSeconds": 32.30617829998664,
+ "firstResultSeconds": 0.3619761999871116,
+ "evalTokens": 3898,
+ "promptTokens": 27897,
+ "tokensPerSecondOverall": 120.65803524651542,
+ "tokensPerSecondPerStream": 143.08298389892155,
+ "failureCount": 4,
+ "failureRate": 0.04,
+ "failureKinds": {
+  "reason_too_long": 4
+ },
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 12315,
+ "vramPeakMiB": 12315,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "수영",
+   "reason": "스트레스 해소와 건강 유지에 수영이 적합해 보입니다."
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "현실적 활동으로 친구들과 시간 보내며 여유롭게 취미 즐길 수 있어요."
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 걸 만들며 창조적이고 싶어."
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "기타",
+   "reason": "새로운 악기 연주로 감성을 표현하고 싶다."
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "스트레스 해소와 창의성 발휘에 좋을 것 같아요."
+  },
+  {
+   "personaId": 6,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "기타",
+   "reason": "새로운 취미로 음악을 배우면 스트레스 해소와 동시에 계획적인 삶을 추구할 수 있어 좋겠다."
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 유지와 체력 향상에 수영이 적합해요."
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악과 연계해 취미를 즐기고 싶어."
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "아이들 간식 만들며 스트레스 해소하고 싶어요."
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족에게 맛있는 음식 만들어줄 수 있어 기뻐요."
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족을 위한 디저트 만들기, 기쁨 두 배"
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "안정적인 취미로 요리와 연결되어 실생활에 도움"
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "건강한 간식 만들며 반려동물 간식도 직접 해줄 수 있어 좋겠어요."
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 걸 직접 만들어 연인과 나누고 싶어."
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "기타",
+   "reason": "독특한 취미로 자신감 UP, 음악은 새로운 매력 발산에 최고"
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 디저트 만드는 감성적 즐거움이 끌린다."
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "기타",
+   "reason": "스트레스 해소와 건강 관리에 도움 될 것 같아요."
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악에 대한 열정을 기타로 표현하고 싶어."
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악 좋아하니 취미로 실력 향상이 좋겠어."
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "부드러운 취미로 스트레스 해소하고 싶어"
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "새로운 사람들과의 교류와 전략적 사고가 업무에도 도움 될 것 같아요."
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "수영",
+   "reason": "땀 흘리며 자유롭게 수영하는 순간이 즉흥적 열정을 충족시켜 줄 거야."
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "안정적인 결과물 보는 게 좋아서 베이킹 선택"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족과 친구들에게 직접 만든 디저트로 기쁨을 선사하고 싶어요."
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "수영",
+   "reason": "효율적으로 건강 관리하고 싶어"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 걸 만들며 감성을 표현하고 싶어"
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "가족과 함께 즐길 수 있는 활동을 선호합니다."
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악 좋아하고 새로운 경험 선호해!"
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "조용히 취미 즐기며 스트레스 해소 가능"
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악 취미를 더욱 깊게 즐기며 스트레스 해소에 딱"
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악을 더 깊이 이해하고 즐길 수 있을 것 같아요."
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "기타",
+   "reason": "독특한 캠핑 음악 실력으로 새로운 모험을 즐기고 싶어."
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "요리에 관심 많으니 새로운 취미로 베이킹이 딱이네요."
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "여행지에서 맛있는 빵 먹고 싶어서"
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "새로운 창조적 취미로 스트레스 해소하고 싶어."
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "영화 보면서 간식 만들면 더욱 즐겁겠다."
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "요리 흥미가 있으니 직접 만들어 보는 게 좋겠다."
+  },
+  {
+   "personaId": 38,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "베이킹",
+   "reason": "새로운 취미로 경제적 여유를 위한 재테크 연계 아이디어 구상에 좋을 것 같아요."
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족과 함께 즐길 수 있는 따뜻한 활동 선택"
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "수영",
+   "reason": "가족 건강 위해 활동적인 취미 선택"
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "예쁜 디저트 만들며 사진 찍는 재미 놓칠 수 없어"
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "기타",
+   "reason": "새로운 음악을 통해 감정 표현의 폭을 넓히고 싶어."
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 것 만들며 감성 키울 수 있어"
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 유지와 재테크에 도움되는 운동이 우선이지"
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "가족과 함께 즐길 수 있는 취미로 적합해 보여."
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "재료 관리가 계획적 취미에 부합하고, 결과물을 사진으로 기록하기 좋다."
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "책 읽는 시간에 달콤한 즐거움을 더하고 싶어"
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악을 더 즐기고 싶어, 새로운 악기로 친구들과 함께 시간 보내고 싶어."
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 디저트로 반려동물도 기쁘게 할 수 있어요."
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "가족과 함께 즐기기 좋고 시간 효율적"
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "기타",
+   "reason": "즉흥적인 연주로 스트레스 해소하고 싶어"
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "가족과 함께 즐기며 소통 증가, 효율적 시간 활용"
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "영화 속 디저트 만들며 감성 충전하고 싶어요."
+  },
+  {
+   "personaId": 54,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "기타",
+   "reason": "음악을 좋아하고 비용 효율적이라 기타로 취미를 시작해 재능 개발하고 싶어요."
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "드라마 촬영처럼 멋진 디저트 만들어 가족 자랑하고 싶어요."
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악에 대한 감성이 더 깊어질 수 있을 것 같아요."
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "가족과 함께 즐거운 시간 보내고 싶어."
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "기타",
+   "reason": "새로운 음악 세계를 탐험하고 싶어."
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "반려동물 사료 만들기 취미도 가능하고, 스트레스 해소에 좋을 것 같아요."
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 관리와 체력 향상이 우선입니다."
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛과 재미를 동시에, 친구들과 즐기며 경험 가치 높음"
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "특이한 취미로 친구들 감탄사고 싶어"
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 디저트 만들며 독서 시간 즐길 수 있어 좋겠다."
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "새로운 사람들과의 독특한 연결 고리 찾기 좋겠다"
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "조용한 공간에서 창조적인 해방감을 느끼고 싶어"
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족과 함께 즐기며 따뜻한 시간 보내고 싶어"
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족과 함께 즐길 수 있는 따뜻한 시간 만들고 싶어"
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "기타",
+   "reason": "독창적이고 개인적인 음악 경험을 추구하고 싶어."
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "가족과 함께 즐기며 소통 늘릴 수 있을 것 같아요."
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 결과물로 일상에 행복 더하고 싶어."
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "스트레스 해소하고 친구들과의 관계 돈독히 하고 싶어"
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "디자인 감각으로 팀 플레이 즐기고 싶어"
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "스트레스 해소와 새로운 인간관계 형성을 위해"
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "함께 즐길 수 있고, 친구들과의 관계 개선에 도움이 될 것 같아요."
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "기타",
+   "reason": "사진 촬영과 잘 어울리는 취미로, 새로운 경험을 추구한다."
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "수영",
+   "reason": "아이들을 위한 건강한 모범 보여주고 싶어"
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 관리와 운동을 즐기는 데 최고니까"
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "기타",
+   "reason": "반려동물 동반 연주 취미, 독특하고 경제적 효율적"
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "요리에 관심 많아 새로운 재미와 성취감을 느낄 수 있어요."
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "사진과 어울리는 창의적 활동으로, 캠핑 때도 쓸모있어요."
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "기타",
+   "reason": "캠핑과 연계해 야외 공연 꿈꾸며 새로운 도전 즐기죠."
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 유지와 균형 잡힌 삶을 위해 수영을 선택했습니다."
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "예쁜 디저트 만들며 마음 달래고 싶어요."
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 챙기며 여행용으로도 좋으니까"
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악 만들며 데이트 곡 아이디어도 얻을 수 있겠지."
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "기타",
+   "reason": "평범한 것보다 새로운 소리가 매력적이야."
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "빵과 케이크로 캠핑 간식 준비하고 싶어"
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 챙기며 스트레스 해소하고 싶어"
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 유지와 체력 향상이 최우선이야."
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족에게 맛있는 것 만들어 주고 싶어"
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "맛있는 디저트 만들며 일상에 즐거움 더하기"
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악 취미와 연관되고, 스트레스 해소에 효과적이어서 효율적 선택입니다."
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "요리에 관심 있으니 베이킹으로 창의력 발휘하고 싶어요."
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "기타",
+   "reason": "여행지에서 기타 연주로 추억 만들고 싶어."
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족과 함께 즐길 디저트 만들기에 딱!"
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "동물 친구들을 위한 간식도 만들 수 있잖아요!"
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "기타",
+   "reason": "남들이 모르는 나만의 음악 세계를 만들고 싶어."
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "효율적인 시간 활용으로 스트레스 해소가 목표"
+  },
+  {
+   "personaId": 99,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "베이킹",
+   "reason": "드라마처럼 창조적인 시간을 가지며, 만든 디저트로 친구들과 데이트도 즐길 수 있어요."
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악에 대한 열정을 음악 악기로 직접 표현하고 싶어."
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 108233.1125265,
+   "endedAt": 108233.4743334,
+   "wallSeconds": 0.36180689999309834,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"수영\",\"reason\":\"스트레스 해소와 건강 유지에 수영이 적합해 보입니다.\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 36,
+   "evalSeconds": 0.249747,
+   "promptSeconds": 0.043388,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 108233.4743744,
+   "endedAt": 108233.8317001,
+   "wallSeconds": 0.35732569999527186,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"보드게임\",\"reason\":\"현실적 활동으로 친구들과 시간 보내며 여유롭게 취미 즐길 수 있어요.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 44,
+   "evalSeconds": 0.311343,
+   "promptSeconds": 0.036957,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 108233.8317416,
+   "endedAt": 108234.1625178,
+   "wallSeconds": 0.3307761999894865,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"베이킹\",\"reason\":\"맛있는 걸 만들며 창조적이고 싶어.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 37,
+   "evalSeconds": 0.273973,
+   "promptSeconds": 0.037202,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 108234.1625691,
+   "endedAt": 108234.4656109,
+   "wallSeconds": 0.3030418000125792,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"기타\",\"reason\":\"새로운 악기 연주로 감성을 표현하고 싶다.\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 35,
+   "evalSeconds": 0.249255,
+   "promptSeconds": 0.0394,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 108234.4656566,
+   "endedAt": 108234.8066309,
+   "wallSeconds": 0.34097429999383166,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"베이킹\",\"reason\":\"스트레스 해소와 창의성 발휘에 좋을 것 같아요.\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 39,
+   "evalSeconds": 0.27772,
+   "promptSeconds": 0.037795,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 108234.8066728,
+   "endedAt": 108235.2012073,
+   "wallSeconds": 0.3945344999956433,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"기타\",\"reason\":\"새로운 취미로 음악을 배우면 스트레스 해소와 동시에 계획적인 삶을 추구할 수 있어 좋겠다.\"}]}",
+   "promptTokens": 273,
+   "evalTokens": 49,
+   "evalSeconds": 0.347962,
+   "promptSeconds": 0.037503,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 108235.2012484,
+   "endedAt": 108235.5052963,
+   "wallSeconds": 0.30404790000466164,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"수영\",\"reason\":\"건강 유지와 체력 향상에 수영이 적합해요.\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 35,
+   "evalSeconds": 0.247637,
+   "promptSeconds": 0.038092,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 108235.505337,
+   "endedAt": 108235.7987106,
+   "wallSeconds": 0.2933735999977216,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"기타\",\"reason\":\"음악과 연계해 취미를 즐기고 싶어.\"}]}",
+   "promptTokens": 273,
+   "evalTokens": 35,
+   "evalSeconds": 0.24716,
+   "promptSeconds": 0.037151,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 108235.798751,
+   "endedAt": 108236.0939178,
+   "wallSeconds": 0.29516680000233464,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"베이킹\",\"reason\":\"아이들 간식 만들며 스트레스 해소하고 싶어요.\"}]}",
+   "promptTokens": 282,
+   "evalTokens": 36,
+   "evalSeconds": 0.248006,
+   "promptSeconds": 0.037554,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 108236.093958,
+   "endedAt": 108236.436131,
+   "wallSeconds": 0.342172999997274,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"베이킹\",\"reason\":\"가족에게 맛있는 음식 만들어줄 수 있어 기뻐요.\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 41,
+   "evalSeconds": 0.287735,
+   "promptSeconds": 0.038408,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 108236.4361706,
+   "endedAt": 108236.7503591,
+   "wallSeconds": 0.314188499993179,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"베이킹\",\"reason\":\"가족을 위한 디저트 만들기, 기쁨 두 배\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 37,
+   "evalSeconds": 0.260488999,
+   "promptSeconds": 0.036715,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 108236.7503985,
+   "endedAt": 108237.0759746,
+   "wallSeconds": 0.32557610000367276,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"베이킹\",\"reason\":\"안정적인 취미로 요리와 연결되어 실생활에 도움\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 40,
+   "evalSeconds": 0.276035,
+   "promptSeconds": 0.041102,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 108237.0760152,
+   "endedAt": 108237.4300549,
+   "wallSeconds": 0.35403970000334084,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"베이킹\",\"reason\":\"건강한 간식 만들며 반려동물 간식도 직접 해줄 수 있어 좋겠어요.\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 44,
+   "evalSeconds": 0.30783,
+   "promptSeconds": 0.036971,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 108237.4300998,
+   "endedAt": 108237.779293,
+   "wallSeconds": 0.34919320000335574,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"베이킹\",\"reason\":\"맛있는 걸 직접 만들어 연인과 나누고 싶어.\"}]}",
+   "promptTokens": 280,
+   "evalTokens": 39,
+   "evalSeconds": 0.276467,
+   "promptSeconds": 0.040929,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 108237.7793376,
+   "endedAt": 108238.1113686,
+   "wallSeconds": 0.3320309999980964,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"기타\",\"reason\":\"독특한 취미로 자신감 UP, 음악은 새로운 매력 발산에 최고\"}]}",
+   "promptTokens": 287,
+   "evalTokens": 40,
+   "evalSeconds": 0.284568,
+   "promptSeconds": 0.038012,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 108238.1114129,
+   "endedAt": 108238.4303164,
+   "wallSeconds": 0.31890349999594036,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"베이킹\",\"reason\":\"맛있는 디저트 만드는 감성적 즐거움이 끌린다.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 38,
+   "evalSeconds": 0.262993,
+   "promptSeconds": 0.037821,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 108238.4303577,
+   "endedAt": 108238.7508289,
+   "wallSeconds": 0.32047120000061113,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"기타\",\"reason\":\"스트레스 해소와 건강 관리에 도움 될 것 같아요.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 38,
+   "evalSeconds": 0.266451,
+   "promptSeconds": 0.036972,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 108238.7508736,
+   "endedAt": 108239.0600682,
+   "wallSeconds": 0.30919459999131504,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"기타\",\"reason\":\"음악에 대한 열정을 기타로 표현하고 싶어.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 37,
+   "evalSeconds": 0.257714,
+   "promptSeconds": 0.042661,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 108239.0601108,
+   "endedAt": 108239.368579,
+   "wallSeconds": 0.30846820000442676,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"기타\",\"reason\":\"음악 좋아하니 취미로 실력 향상이 좋겠어.\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 37,
+   "evalSeconds": 0.261802,
+   "promptSeconds": 0.037862,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 108239.3686202,
+   "endedAt": 108239.6601865,
+   "wallSeconds": 0.29156630000215955,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"베이킹\",\"reason\":\"부드러운 취미로 스트레스 해소하고 싶어\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 35,
+   "evalSeconds": 0.243766,
+   "promptSeconds": 0.038552,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 108239.6602279,
+   "endedAt": 108240.0278266,
+   "wallSeconds": 0.367598699987866,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"보드게임\",\"reason\":\"새로운 사람들과의 교류와 전략적 사고가 업무에도 도움 될 것 같아요.\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 46,
+   "evalSeconds": 0.321815,
+   "promptSeconds": 0.036588,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 108240.0278659,
+   "endedAt": 108240.4026359,
+   "wallSeconds": 0.37476999999489635,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"수영\",\"reason\":\"땀 흘리며 자유롭게 수영하는 순간이 즉흥적 열정을 충족시켜 줄 거야.\"}]}",
+   "promptTokens": 275,
+   "evalTokens": 46,
+   "evalSeconds": 0.3214,
+   "promptSeconds": 0.036639,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 108240.4026824,
+   "endedAt": 108240.7272893,
+   "wallSeconds": 0.3246069000015268,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"베이킹\",\"reason\":\"안정적인 결과물 보는 게 좋아서 베이킹 선택\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 39,
+   "evalSeconds": 0.27124,
+   "promptSeconds": 0.036518,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 108240.7273351,
+   "endedAt": 108241.0726365,
+   "wallSeconds": 0.34530139999696985,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"베이킹\",\"reason\":\"가족과 친구들에게 직접 만든 디저트로 기쁨을 선사하고 싶어요.\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 43,
+   "evalSeconds": 0.297997,
+   "promptSeconds": 0.038175,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 108241.0726794,
+   "endedAt": 108241.3576175,
+   "wallSeconds": 0.2849381000123685,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"수영\",\"reason\":\"효율적으로 건강 관리하고 싶어\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 33,
+   "evalSeconds": 0.230176,
+   "promptSeconds": 0.03654,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 108241.3576589,
+   "endedAt": 108241.6683459,
+   "wallSeconds": 0.31068700000469107,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"베이킹\",\"reason\":\"맛있는 걸 만들며 감성을 표현하고 싶어\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 38,
+   "evalSeconds": 0.264178,
+   "promptSeconds": 0.037132,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 108241.6683868,
+   "endedAt": 108241.9869659,
+   "wallSeconds": 0.3185790999996243,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"보드게임\",\"reason\":\"가족과 함께 즐길 수 있는 활동을 선호합니다.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 38,
+   "evalSeconds": 0.265535,
+   "promptSeconds": 0.036464,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 108241.9870081,
+   "endedAt": 108242.267035,
+   "wallSeconds": 0.2800268999999389,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"기타\",\"reason\":\"음악 좋아하고 새로운 경험 선호해!\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 34,
+   "evalSeconds": 0.234442,
+   "promptSeconds": 0.0369,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 108242.2670747,
+   "endedAt": 108242.5490949,
+   "wallSeconds": 0.28202020000026096,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"베이킹\",\"reason\":\"조용히 취미 즐기며 스트레스 해소 가능\"}]}",
+   "promptTokens": 275,
+   "evalTokens": 34,
+   "evalSeconds": 0.236361,
+   "promptSeconds": 0.037096,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 108242.5491357,
+   "endedAt": 108242.8636215,
+   "wallSeconds": 0.314485800001421,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"기타\",\"reason\":\"음악 취미를 더욱 깊게 즐기며 스트레스 해소에 딱\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 38,
+   "evalSeconds": 0.268575,
+   "promptSeconds": 0.037058,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    31
+   ],
+   "startedAt": 108242.863666,
+   "endedAt": 108243.185655,
+   "wallSeconds": 0.32198899998911656,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":31,\"choice\":\"기타\",\"reason\":\"음악을 더 깊이 이해하고 즐길 수 있을 것 같아요.\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 40,
+   "evalSeconds": 0.276458,
+   "promptSeconds": 0.036891,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    32
+   ],
+   "startedAt": 108243.1856945,
+   "endedAt": 108243.5096197,
+   "wallSeconds": 0.3239251999912085,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":32,\"choice\":\"기타\",\"reason\":\"독특한 캠핑 음악 실력으로 새로운 모험을 즐기고 싶어.\"}]}",
+   "promptTokens": 282,
+   "evalTokens": 39,
+   "evalSeconds": 0.270751,
+   "promptSeconds": 0.036867,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    33
+   ],
+   "startedAt": 108243.5096636,
+   "endedAt": 108243.8492859,
+   "wallSeconds": 0.3396223000017926,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":33,\"choice\":\"베이킹\",\"reason\":\"요리에 관심 많으니 새로운 취미로 베이킹이 딱이네요.\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 41,
+   "evalSeconds": 0.285046,
+   "promptSeconds": 0.036914,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    34
+   ],
+   "startedAt": 108243.8493272,
+   "endedAt": 108244.1513322,
+   "wallSeconds": 0.3020049999904586,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":34,\"choice\":\"베이킹\",\"reason\":\"여행지에서 맛있는 빵 먹고 싶어서\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 37,
+   "evalSeconds": 0.255028,
+   "promptSeconds": 0.038301,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    35
+   ],
+   "startedAt": 108244.1513757,
+   "endedAt": 108244.4553034,
+   "wallSeconds": 0.3039276999916183,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":35,\"choice\":\"베이킹\",\"reason\":\"새로운 창조적 취미로 스트레스 해소하고 싶어.\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 37,
+   "evalSeconds": 0.258454999,
+   "promptSeconds": 0.036423,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    36
+   ],
+   "startedAt": 108244.455345,
+   "endedAt": 108244.7560679,
+   "wallSeconds": 0.3007229000068037,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":36,\"choice\":\"베이킹\",\"reason\":\"영화 보면서 간식 만들면 더욱 즐겁겠다.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 37,
+   "evalSeconds": 0.255251,
+   "promptSeconds": 0.036937,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    37
+   ],
+   "startedAt": 108244.7561096,
+   "endedAt": 108245.0823495,
+   "wallSeconds": 0.32623989999410696,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":37,\"choice\":\"베이킹\",\"reason\":\"요리 흥미가 있으니 직접 만들어 보는 게 좋겠다.\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 40,
+   "evalSeconds": 0.279311,
+   "promptSeconds": 0.038148,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    38
+   ],
+   "startedAt": 108245.0823898,
+   "endedAt": 108245.4481786,
+   "wallSeconds": 0.36578880000161007,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":38,\"choice\":\"베이킹\",\"reason\":\"새로운 취미로 경제적 여유를 위한 재테크 연계 아이디어 구상에 좋을 것 같아요.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 46,
+   "evalSeconds": 0.320685,
+   "promptSeconds": 0.036149,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    39
+   ],
+   "startedAt": 108245.4482212,
+   "endedAt": 108245.7686017,
+   "wallSeconds": 0.3203804999939166,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":39,\"choice\":\"베이킹\",\"reason\":\"가족과 함께 즐길 수 있는 따뜻한 활동 선택\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 38,
+   "evalSeconds": 0.264011,
+   "promptSeconds": 0.039584,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    40
+   ],
+   "startedAt": 108245.7686418,
+   "endedAt": 108246.0520909,
+   "wallSeconds": 0.28344910001032986,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":40,\"choice\":\"수영\",\"reason\":\"가족 건강 위해 활동적인 취미 선택\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 34,
+   "evalSeconds": 0.23788,
+   "promptSeconds": 0.03689,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    41
+   ],
+   "startedAt": 108246.0521367,
+   "endedAt": 108246.3667167,
+   "wallSeconds": 0.3145799999911105,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":41,\"choice\":\"베이킹\",\"reason\":\"예쁜 디저트 만들며 사진 찍는 재미 놓칠 수 없어\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 39,
+   "evalSeconds": 0.26915,
+   "promptSeconds": 0.03664,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    42
+   ],
+   "startedAt": 108246.3667613,
+   "endedAt": 108246.6910657,
+   "wallSeconds": 0.32430439999734517,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":42,\"choice\":\"기타\",\"reason\":\"새로운 음악을 통해 감정 표현의 폭을 넓히고 싶어.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 39,
+   "evalSeconds": 0.269451,
+   "promptSeconds": 0.0375,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    43
+   ],
+   "startedAt": 108246.6911072,
+   "endedAt": 108246.9981323,
+   "wallSeconds": 0.3070251000026474,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":43,\"choice\":\"베이킹\",\"reason\":\"맛있는 것 만들며 감성 키울 수 있어\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 37,
+   "evalSeconds": 0.261045,
+   "promptSeconds": 0.037389,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    44
+   ],
+   "startedAt": 108246.9981722,
+   "endedAt": 108247.3153133,
+   "wallSeconds": 0.317141100007575,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":44,\"choice\":\"수영\",\"reason\":\"건강 유지와 재테크에 도움되는 운동이 우선이지\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 38,
+   "evalSeconds": 0.262252,
+   "promptSeconds": 0.036995,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    45
+   ],
+   "startedAt": 108247.315363,
+   "endedAt": 108247.6339655,
+   "wallSeconds": 0.31860250000318047,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":45,\"choice\":\"보드게임\",\"reason\":\"가족과 함께 즐길 수 있는 취미로 적합해 보여.\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 39,
+   "evalSeconds": 0.272785,
+   "promptSeconds": 0.036726,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    46
+   ],
+   "startedAt": 108247.6340094,
+   "endedAt": 108247.9978588,
+   "wallSeconds": 0.36384939998970367,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":46,\"choice\":\"베이킹\",\"reason\":\"재료 관리가 계획적 취미에 부합하고, 결과물을 사진으로 기록하기 좋다.\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 45,
+   "evalSeconds": 0.317713,
+   "promptSeconds": 0.03708,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    47
+   ],
+   "startedAt": 108247.9979138,
+   "endedAt": 108248.3312173,
+   "wallSeconds": 0.33330349999596365,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":47,\"choice\":\"베이킹\",\"reason\":\"책 읽는 시간에 달콤한 즐거움을 더하고 싶어\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 40,
+   "evalSeconds": 0.276374,
+   "promptSeconds": 0.037085,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    48
+   ],
+   "startedAt": 108248.3312577,
+   "endedAt": 108248.6984248,
+   "wallSeconds": 0.3671670999901835,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":48,\"choice\":\"기타\",\"reason\":\"음악을 더 즐기고 싶어, 새로운 악기로 친구들과 함께 시간 보내고 싶어.\"}]}",
+   "promptTokens": 282,
+   "evalTokens": 46,
+   "evalSeconds": 0.321055,
+   "promptSeconds": 0.037053,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    49
+   ],
+   "startedAt": 108248.6984705,
+   "endedAt": 108249.0332825,
+   "wallSeconds": 0.33481199998641387,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":49,\"choice\":\"베이킹\",\"reason\":\"맛있는 디저트로 반려동물도 기쁘게 할 수 있어요.\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 40,
+   "evalSeconds": 0.279475,
+   "promptSeconds": 0.037058,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    50
+   ],
+   "startedAt": 108249.0333273,
+   "endedAt": 108249.343129,
+   "wallSeconds": 0.30980170000111684,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":50,\"choice\":\"보드게임\",\"reason\":\"가족과 함께 즐기기 좋고 시간 효율적\"}]}",
+   "promptTokens": 275,
+   "evalTokens": 37,
+   "evalSeconds": 0.255029,
+   "promptSeconds": 0.03733,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51
+   ],
+   "startedAt": 108249.3431697,
+   "endedAt": 108249.6656516,
+   "wallSeconds": 0.3224818999879062,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"기타\",\"reason\":\"즉흥적인 연주로 스트레스 해소하고 싶어\"}]}",
+   "promptTokens": 280,
+   "evalTokens": 37,
+   "evalSeconds": 0.258021,
+   "promptSeconds": 0.036826,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    52
+   ],
+   "startedAt": 108249.6656939,
+   "endedAt": 108249.9807796,
+   "wallSeconds": 0.3150857000000542,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":52,\"choice\":\"보드게임\",\"reason\":\"가족과 함께 즐기며 소통 증가, 효율적 시간 활용\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 39,
+   "evalSeconds": 0.269721,
+   "promptSeconds": 0.037007,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    53
+   ],
+   "startedAt": 108249.98082,
+   "endedAt": 108250.2843749,
+   "wallSeconds": 0.30355490000511054,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":53,\"choice\":\"베이킹\",\"reason\":\"영화 속 디저트 만들며 감성 충전하고 싶어요.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 37,
+   "evalSeconds": 0.256615,
+   "promptSeconds": 0.038556,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    54
+   ],
+   "startedAt": 108250.2844173,
+   "endedAt": 108250.643089,
+   "wallSeconds": 0.3586716999998316,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":54,\"choice\":\"기타\",\"reason\":\"음악을 좋아하고 비용 효율적이라 기타로 취미를 시작해 재능 개발하고 싶어요.\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 45,
+   "evalSeconds": 0.313316,
+   "promptSeconds": 0.036859,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    55
+   ],
+   "startedAt": 108250.6431298,
+   "endedAt": 108250.9661252,
+   "wallSeconds": 0.3229953999980353,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":55,\"choice\":\"베이킹\",\"reason\":\"드라마 촬영처럼 멋진 디저트 만들어 가족 자랑하고 싶어요.\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 39,
+   "evalSeconds": 0.269208,
+   "promptSeconds": 0.036765,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    56
+   ],
+   "startedAt": 108250.9661703,
+   "endedAt": 108251.2980316,
+   "wallSeconds": 0.3318613000010373,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":56,\"choice\":\"기타\",\"reason\":\"음악에 대한 감성이 더 깊어질 수 있을 것 같아요.\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 41,
+   "evalSeconds": 0.285978,
+   "promptSeconds": 0.036878,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    57
+   ],
+   "startedAt": 108251.2980725,
+   "endedAt": 108251.6160299,
+   "wallSeconds": 0.31795740000961814,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":57,\"choice\":\"보드게임\",\"reason\":\"가족과 함께 즐거운 시간 보내고 싶어.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 36,
+   "evalSeconds": 0.263438,
+   "promptSeconds": 0.037146,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    58
+   ],
+   "startedAt": 108251.6160702,
+   "endedAt": 108251.8987009,
+   "wallSeconds": 0.2826306999922963,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":58,\"choice\":\"기타\",\"reason\":\"새로운 음악 세계를 탐험하고 싶어.\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 34,
+   "evalSeconds": 0.236437,
+   "promptSeconds": 0.037156,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    59
+   ],
+   "startedAt": 108251.8987434,
+   "endedAt": 108252.273223,
+   "wallSeconds": 0.3744795999955386,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":59,\"choice\":\"베이킹\",\"reason\":\"반려동물 사료 만들기 취미도 가능하고, 스트레스 해소에 좋을 것 같아요.\"}]}",
+   "promptTokens": 280,
+   "evalTokens": 46,
+   "evalSeconds": 0.321286,
+   "promptSeconds": 0.044766,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    60
+   ],
+   "startedAt": 108252.273262,
+   "endedAt": 108252.567595,
+   "wallSeconds": 0.2943329999980051,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":60,\"choice\":\"수영\",\"reason\":\"건강 관리와 체력 향상이 우선입니다.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 34,
+   "evalSeconds": 0.234311,
+   "promptSeconds": 0.036658,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    61
+   ],
+   "startedAt": 108252.5676372,
+   "endedAt": 108252.9135393,
+   "wallSeconds": 0.34590210000169463,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":61,\"choice\":\"베이킹\",\"reason\":\"맛과 재미를 동시에, 친구들과 즐기며 경험 가치 높음\"}]}",
+   "promptTokens": 275,
+   "evalTokens": 43,
+   "evalSeconds": 0.299736,
+   "promptSeconds": 0.037552,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    62
+   ],
+   "startedAt": 108252.9135846,
+   "endedAt": 108253.2180459,
+   "wallSeconds": 0.3044612999947276,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":62,\"choice\":\"베이킹\",\"reason\":\"특이한 취미로 친구들 감탄사고 싶어\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 37,
+   "evalSeconds": 0.257855,
+   "promptSeconds": 0.037348,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    63
+   ],
+   "startedAt": 108253.2180857,
+   "endedAt": 108253.5407712,
+   "wallSeconds": 0.32268549999571405,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":63,\"choice\":\"베이킹\",\"reason\":\"맛있는 디저트 만들며 독서 시간 즐길 수 있어 좋겠다.\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 40,
+   "evalSeconds": 0.276166,
+   "promptSeconds": 0.037558,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    64
+   ],
+   "startedAt": 108253.5408125,
+   "endedAt": 108253.8653422,
+   "wallSeconds": 0.32452970001031645,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":64,\"choice\":\"보드게임\",\"reason\":\"새로운 사람들과의 독특한 연결 고리 찾기 좋겠다\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 40,
+   "evalSeconds": 0.278596,
+   "promptSeconds": 0.036973,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    65
+   ],
+   "startedAt": 108253.8653847,
+   "endedAt": 108254.2059043,
+   "wallSeconds": 0.34051960000942927,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":65,\"choice\":\"베이킹\",\"reason\":\"조용한 공간에서 창조적인 해방감을 느끼고 싶어\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 41,
+   "evalSeconds": 0.285434,
+   "promptSeconds": 0.037493,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    66
+   ],
+   "startedAt": 108254.2059428,
+   "endedAt": 108254.5342046,
+   "wallSeconds": 0.3282617999939248,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":66,\"choice\":\"베이킹\",\"reason\":\"가족과 함께 즐기며 따뜻한 시간 보내고 싶어\"}]}",
+   "promptTokens": 285,
+   "evalTokens": 39,
+   "evalSeconds": 0.282506,
+   "promptSeconds": 0.037226,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    67
+   ],
+   "startedAt": 108254.5342467,
+   "endedAt": 108254.8766022,
+   "wallSeconds": 0.3423555000044871,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":67,\"choice\":\"베이킹\",\"reason\":\"가족과 함께 즐길 수 있는 따뜻한 시간 만들고 싶어\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 41,
+   "evalSeconds": 0.286098,
+   "promptSeconds": 0.038831,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    68
+   ],
+   "startedAt": 108254.8766418,
+   "endedAt": 108255.2239694,
+   "wallSeconds": 0.3473276000004262,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":68,\"choice\":\"기타\",\"reason\":\"독창적이고 개인적인 음악 경험을 추구하고 싶어. \"}]}",
+   "promptTokens": 284,
+   "evalTokens": 42,
+   "evalSeconds": 0.292209,
+   "promptSeconds": 0.037065,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    69
+   ],
+   "startedAt": 108255.2240082,
+   "endedAt": 108255.561254,
+   "wallSeconds": 0.33724579999397974,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":69,\"choice\":\"보드게임\",\"reason\":\"가족과 함께 즐기며 소통 늘릴 수 있을 것 같아요.\"}]}",
+   "promptTokens": 280,
+   "evalTokens": 41,
+   "evalSeconds": 0.283407,
+   "promptSeconds": 0.036757,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    70
+   ],
+   "startedAt": 108255.5612967,
+   "endedAt": 108255.8797372,
+   "wallSeconds": 0.3184404999919934,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":70,\"choice\":\"베이킹\",\"reason\":\"맛있는 결과물로 일상에 행복 더하고 싶어.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 38,
+   "evalSeconds": 0.264534,
+   "promptSeconds": 0.03691,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    71
+   ],
+   "startedAt": 108255.8797784,
+   "endedAt": 108256.212805,
+   "wallSeconds": 0.33302659999753814,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":71,\"choice\":\"보드게임\",\"reason\":\"스트레스 해소하고 친구들과의 관계 돈독히 하고 싶어\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 40,
+   "evalSeconds": 0.278764,
+   "promptSeconds": 0.037216,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    72
+   ],
+   "startedAt": 108256.2128605,
+   "endedAt": 108256.5079984,
+   "wallSeconds": 0.2951379000005545,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":72,\"choice\":\"보드게임\",\"reason\":\"디자인 감각으로 팀 플레이 즐기고 싶어\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 36,
+   "evalSeconds": 0.249648,
+   "promptSeconds": 0.036726,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    73
+   ],
+   "startedAt": 108256.5080371,
+   "endedAt": 108256.8252029,
+   "wallSeconds": 0.3171658000064781,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":73,\"choice\":\"보드게임\",\"reason\":\"스트레스 해소와 새로운 인간관계 형성을 위해\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 36,
+   "evalSeconds": 0.271701,
+   "promptSeconds": 0.036713,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    74
+   ],
+   "startedAt": 108256.8252455,
+   "endedAt": 108257.1973244,
+   "wallSeconds": 0.3720788999926299,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":74,\"choice\":\"보드게임\",\"reason\":\"함께 즐길 수 있고, 친구들과의 관계 개선에 도움이 될 것 같아요.\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 47,
+   "evalSeconds": 0.326676,
+   "promptSeconds": 0.036957,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    75
+   ],
+   "startedAt": 108257.1973637,
+   "endedAt": 108257.5293226,
+   "wallSeconds": 0.3319589000020642,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":75,\"choice\":\"기타\",\"reason\":\"사진 촬영과 잘 어울리는 취미로, 새로운 경험을 추구한다.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 40,
+   "evalSeconds": 0.277487,
+   "promptSeconds": 0.037292,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76
+   ],
+   "startedAt": 108257.5293616,
+   "endedAt": 108257.8481516,
+   "wallSeconds": 0.3187900000048103,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"수영\",\"reason\":\"아이들을 위한 건강한 모범 보여주고 싶어\"}]}",
+   "promptTokens": 281,
+   "evalTokens": 38,
+   "evalSeconds": 0.264966999,
+   "promptSeconds": 0.036938,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    77
+   ],
+   "startedAt": 108257.8481956,
+   "endedAt": 108258.1481711,
+   "wallSeconds": 0.2999754999909783,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":77,\"choice\":\"수영\",\"reason\":\"건강 관리와 운동을 즐기는 데 최고니까\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 36,
+   "evalSeconds": 0.253842,
+   "promptSeconds": 0.037376,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    78
+   ],
+   "startedAt": 108258.1482122,
+   "endedAt": 108258.4582723,
+   "wallSeconds": 0.3100601000041934,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":78,\"choice\":\"기타\",\"reason\":\"반려동물 동반 연주 취미, 독특하고 경제적 효율적\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 38,
+   "evalSeconds": 0.264387999,
+   "promptSeconds": 0.03682,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    79
+   ],
+   "startedAt": 108258.4583129,
+   "endedAt": 108258.7977204,
+   "wallSeconds": 0.33940750001056585,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":79,\"choice\":\"베이킹\",\"reason\":\"요리에 관심 많아 새로운 재미와 성취감을 느낄 수 있어요.\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 41,
+   "evalSeconds": 0.286158,
+   "promptSeconds": 0.036476,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    80
+   ],
+   "startedAt": 108258.7977795,
+   "endedAt": 108259.1424005,
+   "wallSeconds": 0.3446209999965504,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":80,\"choice\":\"베이킹\",\"reason\":\"사진과 어울리는 창의적 활동으로, 캠핑 때도 쓸모있어요.\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 42,
+   "evalSeconds": 0.291,
+   "promptSeconds": 0.036474,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    81
+   ],
+   "startedAt": 108259.14244,
+   "endedAt": 108259.4530565,
+   "wallSeconds": 0.31061650000629015,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":81,\"choice\":\"기타\",\"reason\":\"캠핑과 연계해 야외 공연 꿈꾸며 새로운 도전 즐기죠.\"}]}",
+   "promptTokens": 275,
+   "evalTokens": 38,
+   "evalSeconds": 0.265289,
+   "promptSeconds": 0.036459,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    82
+   ],
+   "startedAt": 108259.4530964,
+   "endedAt": 108259.7734328,
+   "wallSeconds": 0.3203363999928115,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":82,\"choice\":\"수영\",\"reason\":\"건강 유지와 균형 잡힌 삶을 위해 수영을 선택했습니다.\"}]}",
+   "promptTokens": 278,
+   "evalTokens": 39,
+   "evalSeconds": 0.274038,
+   "promptSeconds": 0.037655,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    83
+   ],
+   "startedAt": 108259.7734759,
+   "endedAt": 108260.0702719,
+   "wallSeconds": 0.29679599999508355,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":83,\"choice\":\"베이킹\",\"reason\":\"예쁜 디저트 만들며 마음 달래고 싶어요.\"}]}",
+   "promptTokens": 283,
+   "evalTokens": 36,
+   "evalSeconds": 0.249293,
+   "promptSeconds": 0.037727,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    84
+   ],
+   "startedAt": 108260.0703119,
+   "endedAt": 108260.3667774,
+   "wallSeconds": 0.29646550001052674,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":84,\"choice\":\"수영\",\"reason\":\"건강 챙기며 여행용으로도 좋으니까\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 36,
+   "evalSeconds": 0.250468,
+   "promptSeconds": 0.036859,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    85
+   ],
+   "startedAt": 108260.3668164,
+   "endedAt": 108260.6829883,
+   "wallSeconds": 0.31617190000542905,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":85,\"choice\":\"기타\",\"reason\":\"음악 만들며 데이트 곡 아이디어도 얻을 수 있겠지.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 39,
+   "evalSeconds": 0.270138,
+   "promptSeconds": 0.037466,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    86
+   ],
+   "startedAt": 108260.6830307,
+   "endedAt": 108260.9806991,
+   "wallSeconds": 0.2976683999877423,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":86,\"choice\":\"기타\",\"reason\":\"평범한 것보다 새로운 소리가 매력적이야.\"}]}",
+   "promptTokens": 286,
+   "evalTokens": 36,
+   "evalSeconds": 0.252097,
+   "promptSeconds": 0.037016,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    87
+   ],
+   "startedAt": 108260.9807389,
+   "endedAt": 108261.2890651,
+   "wallSeconds": 0.30832620000001043,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":87,\"choice\":\"베이킹\",\"reason\":\"빵과 케이크로 캠핑 간식 준비하고 싶어\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 37,
+   "evalSeconds": 0.255578,
+   "promptSeconds": 0.036784,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    88
+   ],
+   "startedAt": 108261.2891061,
+   "endedAt": 108261.5704575,
+   "wallSeconds": 0.2813514000008581,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":88,\"choice\":\"수영\",\"reason\":\"건강 챙기며 스트레스 해소하고 싶어\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 34,
+   "evalSeconds": 0.23593,
+   "promptSeconds": 0.036817,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    89
+   ],
+   "startedAt": 108261.5704971,
+   "endedAt": 108261.853561,
+   "wallSeconds": 0.28306390000216197,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":89,\"choice\":\"수영\",\"reason\":\"건강 유지와 체력 향상이 최우선이야.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 34,
+   "evalSeconds": 0.237661,
+   "promptSeconds": 0.036959,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    90
+   ],
+   "startedAt": 108261.8536008,
+   "endedAt": 108262.1617738,
+   "wallSeconds": 0.3081730000121752,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":90,\"choice\":\"베이킹\",\"reason\":\"가족에게 맛있는 것 만들어 주고 싶어\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 38,
+   "evalSeconds": 0.261666999,
+   "promptSeconds": 0.037957,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    91
+   ],
+   "startedAt": 108262.1618153,
+   "endedAt": 108262.4655048,
+   "wallSeconds": 0.30368949999683537,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":91,\"choice\":\"베이킹\",\"reason\":\"맛있는 디저트 만들며 일상에 즐거움 더하기\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 37,
+   "evalSeconds": 0.258112,
+   "promptSeconds": 0.036606,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    92
+   ],
+   "startedAt": 108262.4655488,
+   "endedAt": 108262.8085926,
+   "wallSeconds": 0.3430438000068534,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":92,\"choice\":\"기타\",\"reason\":\"음악 취미와 연관되고, 스트레스 해소에 효과적이어서 효율적 선택입니다.\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 43,
+   "evalSeconds": 0.29752,
+   "promptSeconds": 0.036709,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    93
+   ],
+   "startedAt": 108262.8086321,
+   "endedAt": 108263.1354268,
+   "wallSeconds": 0.32679469999857247,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":93,\"choice\":\"베이킹\",\"reason\":\"요리에 관심 있으니 베이킹으로 창의력 발휘하고 싶어요.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 40,
+   "evalSeconds": 0.280788,
+   "promptSeconds": 0.036959,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    94
+   ],
+   "startedAt": 108263.135467,
+   "endedAt": 108263.4504825,
+   "wallSeconds": 0.31501550000393763,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":94,\"choice\":\"기타\",\"reason\":\"여행지에서 기타 연주로 추억 만들고 싶어.\"}]}",
+   "promptTokens": 276,
+   "evalTokens": 37,
+   "evalSeconds": 0.269872,
+   "promptSeconds": 0.036706,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    95
+   ],
+   "startedAt": 108263.4505218,
+   "endedAt": 108263.7448142,
+   "wallSeconds": 0.2942924000089988,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":95,\"choice\":\"베이킹\",\"reason\":\"가족과 함께 즐길 디저트 만들기에 딱!\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 36,
+   "evalSeconds": 0.2487,
+   "promptSeconds": 0.037017,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    96
+   ],
+   "startedAt": 108263.7448588,
+   "endedAt": 108264.0637813,
+   "wallSeconds": 0.3189225000096485,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":96,\"choice\":\"베이킹\",\"reason\":\"동물 친구들을 위한 간식도 만들 수 있잖아요!\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 39,
+   "evalSeconds": 0.273489,
+   "promptSeconds": 0.036698,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    97
+   ],
+   "startedAt": 108264.0638208,
+   "endedAt": 108264.3788761,
+   "wallSeconds": 0.31505530000140425,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":97,\"choice\":\"기타\",\"reason\":\"남들이 모르는 나만의 음악 세계를 만들고 싶어.\"}]}",
+   "promptTokens": 284,
+   "evalTokens": 39,
+   "evalSeconds": 0.269703,
+   "promptSeconds": 0.036752,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    98
+   ],
+   "startedAt": 108264.3789237,
+   "endedAt": 108264.6899662,
+   "wallSeconds": 0.31104250000498723,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":98,\"choice\":\"보드게임\",\"reason\":\"효율적인 시간 활용으로 스트레스 해소가 목표\"}]}",
+   "promptTokens": 277,
+   "evalTokens": 37,
+   "evalSeconds": 0.255536,
+   "promptSeconds": 0.037774,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    99
+   ],
+   "startedAt": 108264.6900059,
+   "endedAt": 108265.0783015,
+   "wallSeconds": 0.3882956000015838,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":99,\"choice\":\"베이킹\",\"reason\":\"드라마처럼 창조적인 시간을 가지며, 만든 디저트로 친구들과 데이트도 즐길 수 있어요.\"}]}",
+   "promptTokens": 282,
+   "evalTokens": 49,
+   "evalSeconds": 0.342385,
+   "promptSeconds": 0.03701,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    100
+   ],
+   "startedAt": 108265.0783453,
+   "endedAt": 108265.4183754,
+   "wallSeconds": 0.34003009999287315,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":100,\"choice\":\"기타\",\"reason\":\"음악에 대한 열정을 음악 악기로 직접 표현하고 싶어.\"}]}",
+   "promptTokens": 279,
+   "evalTokens": 40,
+   "evalSeconds": 0.277588,
+   "promptSeconds": 0.03926,
+   "doneReason": "stop"
+  }
+ ]
+}

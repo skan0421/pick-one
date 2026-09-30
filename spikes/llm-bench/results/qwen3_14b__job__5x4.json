@@ -1,0 +1,1010 @@
+{
+ "model": "qwen3:14b",
+ "questionId": "job",
+ "method": "5x4",
+ "batchSize": 5,
+ "concurrency": 4,
+ "personaCount": 100,
+ "requestCount": 20,
+ "wallSeconds": 27.645929599995725,
+ "firstResultSeconds": 5.263480800000252,
+ "evalTokens": 3086,
+ "promptTokens": 12320,
+ "tokensPerSecondOverall": 111.62583586990243,
+ "tokensPerSecondPerStream": 32.87951435146053,
+ "failureCount": 1,
+ "failureRate": 0.01,
+ "failureKinds": {
+  "reason_too_long": 1
+ },
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 11996,
+ "vramPeakMiB": 15664,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 되면 더 피곤할 것 같아"
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르고 계획 세우면 힘들지 않을까"
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험하고 싶어서"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "도전하고 싶어서"
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 일자리가 중요해서"
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름이 중요한데 출퇴근 시간은 계획으로 조절할 수 있다"
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강을 생각하면 출퇴근 시간이 오래 걸리는 게 부담스럽다"
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름이 유리하고 즉흥적으로 출퇴근 시간을 적응할 수 있다"
+  },
+  {
+   "personaId": 9,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "남는다",
+   "reason": "건강과 일상의 균형을 생각해 출퇴근 시간이 오래 걸리는 게 마음에 들지 않는다"
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 함께하는 시간을 우선시해서 출퇴근 시간이 길면 부담스럽다"
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 보내는 게 중요해서"
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 현실적이라 생각해서"
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강 위해 출퇴근 시간 줄이고 싶어서"
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 사업에 도움이 되서"
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 환경에 도전하고 싶어서"
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 올라서 생활이 더 풍요로워질 것 같아"
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 되면 피로가 더 쌓일 것 같아"
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르면 미래가 더 밝아질 것 같아"
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 길면 일이 더 힘들어질 것 같아"
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르면 생활비 걱정이 줄어들겠지"
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름이 더 중요하고 출퇴근 시간은 적응할 수 있어"
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 우선이고, 새로운 도전은 다른 기회로"
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정성과 일과 삶의 균형을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 상승이 가족을 위한 미래를 생각해서"
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 효율이 더 중요하고, 다른 기회를 기다리고 싶어서"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 더 좋아보여서"
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 위해 편한 일자리가 중요해"
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 해보고 싶어서"
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "돈보다 편한 출퇴근이 더 중요해"
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정이 가장 중요해서"
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 더 중요하다고 생각해"
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "성장 기회를 놓치기 싫어서"
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "돈 더 벌고 싶어서"
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 더 중요하다고 느껴"
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 올라서 힘들 때 도움 될 것 같아"
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간 절약보다 돈 더 중요해 보여서"
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강을 생각해 근무 시간은 줄이고 싶어서"
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 상승이 경제적 여유를 줄 수 있어서"
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 함께할 시간이 더 중요해서"
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 보내는 게 우선이라 생각해서"
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간을 가족과 보내고 싶어서"
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "급여가 더 많아서 좋다 생각해서"
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 너무 길어서"
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르면 부담 덜어지니까"
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일과 삶의 균형을 생각해서"
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 증가가 장기적인 계획에 맞아 보인다"
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간은 가족과의 시간을 줄여 버린다"
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "건강을 위해 출퇴근 시간을 줄이려고 한다"
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 환경에 대한 흥미가 더 크다"
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 효율이 더 중요하다고 판단한다"
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 나은 직장에 도전하고 싶다"
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 더 중요하다고 생각한다"
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 경험을 쌓고 싶어서"
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 소중하다고 생각해서"
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 우선이라고 생각해서"
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "감성적인 이유에 잘 흔들리고, 더 넓은 세상을 경험하고 싶어서"
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "등산과 캠핑을 좋아해서, 시간이 아깝고 피곤해 보여"
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "즉흥적으로 움직이는 걸 좋아하고, 연봉 오름에 흥미를 느껴"
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐 있고, 돈보다는 여유로운 삶을 원해서"
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강과 안정을 중시하고, 출퇴근 시간이 너무 길어 보여"
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 증가가 경제적 여유를 줄 거라 판단했기 때문"
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 더 중요하다고 생각했기 때문"
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 해보고 싶어서 선택했기 때문"
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 소중하다고 생각해서 남기기로 했기 때문"
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐 있어서 더 편한 선택을 했기 때문"
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간이 더 중요하다고 생각해서"
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 인상으로 경제적 여유가 생기길 바라서"
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 일자리를 유지하고 싶어서"
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "수입보다는 일과 삶의 균형을 생각해서"
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 나은 조건으로 성장하고 싶어서"
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거야"
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르면 미래가 더 안정되니까"
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 너무 길어져서 지칠 것 같아"
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르면 가족을 더 잘 책임질 수 있을 것 같아"
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 해보고 싶어서"
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 인상이 더 중요하고 출퇴근 시간은 적응할 수 있어요"
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 피곤해질 것 같아요"
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름이 더 가치 있다고 판단해요"
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐 있어서 이직은 피하고 싶어요"
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간을 절약하는 게 더 중요하게 느껴져요"
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "수입 증가가 더 중요하고 출퇴근 시간은 적응할 수 있다"
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강을 위해 출퇴근 시간이 늘어난다면 피곤할 것 같아"
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 마음에 들고 새로운 곳에 도전해보고 싶다"
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 기대되고 출퇴근 시간은 버틸 수 있을 것 같아"
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "즉흥적으로 움직이는 건 좋아하지만 출퇴근 시간이 너무 늘어나서"
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 늘어나도 연봉 오름이 더 중요해 보여서"
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 길어지면 건강에 안 좋아 보여서"
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강을 생각해서 출퇴근 시간이 너무 늘어나서"
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름이 더 중요해서 출퇴근 시간은 참고로 보기로"
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 생각해서 출퇴근 시간이 너무 늘어나서"
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 인상이 커서 계획에 맞아요"
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간을 절약해서 공부에 집중하고 싶어요"
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 환경에 도전해보고 싶어요"
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 너무 소모되어 피곤해요"
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "좋은 기회가 생겼으니 도전해보고 싶어요"
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 너무 오래 걸려서 힘들다"
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서"
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 더 중요하다고 생각해서"
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 유혹돼서"
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 해보고 싶어서"
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "startedAt": 108679.6200306,
+   "endedAt": 108684.8833484,
+   "wallSeconds": 5.2633178000105545,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 되면 더 피곤할 것 같아\"},{\"personaId\":2,\"choice\":\"이직한다\",\"reason\":\"연봉 오르고 계획 세우면 힘들지 않을까\"},{\"personaId\":3,\"choice\":\"이직한다\",\"reason\":\"새로운 경험하고 싶어서\"},{\"personaId\":4,\"choice\":\"이직한다\",\"reason\":\"도전하고 싶어서\"},{\"personaId\":5,\"choice\":\"남는다\",\"reason\":\"안정적인 일자리가 중요해서\"}]}",
+   "promptTokens": 608,
+   "evalTokens": 131,
+   "evalSeconds": 4.794721,
+   "promptSeconds": 0.334473,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "startedAt": 108679.620362,
+   "endedAt": 108687.3616854,
+   "wallSeconds": 7.741323399997782,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"이직한다\",\"reason\":\"연봉 오름이 중요한데 출퇴근 시간은 계획으로 조절할 수 있다\"},{\"personaId\":7,\"choice\":\"남는다\",\"reason\":\"건강을 생각하면 출퇴근 시간이 오래 걸리는 게 부담스럽다\"},{\"personaId\":8,\"choice\":\"이직한다\",\"reason\":\"연봉 오름이 유리하고 즉흥적으로 출퇴근 시간을 적응할 수 있다\"},{\"personaId\":9,\"choice\":\"남는다\",\"reason\":\"건강과 일상의 균형을 생각해 출퇴근 시간이 오래 걸리는 게 마음에 들지 않는다\"},{\"personaId\":10,\"choice\":\"남는다\",\"reason\":\"가족과 함께하는 시간을 우선시해서 출퇴근 시간이 길면 부담스럽다\"}]}",
+   "promptTokens": 618,
+   "evalTokens": 192,
+   "evalSeconds": 6.396583,
+   "promptSeconds": 0.534832,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "startedAt": 108679.6206023,
+   "endedAt": 108685.4640133,
+   "wallSeconds": 5.843411000008928,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"남는다\",\"reason\":\"가족과 시간 보내는 게 중요해서\"},{\"personaId\":12,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 현실적이라 생각해서\"},{\"personaId\":13,\"choice\":\"남는다\",\"reason\":\"건강 위해 출퇴근 시간 줄이고 싶어서\"},{\"personaId\":14,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 사업에 도움이 되서\"},{\"personaId\":15,\"choice\":\"이직한다\",\"reason\":\"새로운 환경에 도전하고 싶어서\"}]}",
+   "promptTokens": 622,
+   "evalTokens": 140,
+   "evalSeconds": 5.033634,
+   "promptSeconds": 0.676009,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "startedAt": 108679.6210364,
+   "endedAt": 108686.764935,
+   "wallSeconds": 7.143898599999375,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"이직한다\",\"reason\":\"연봉 올라서 생활이 더 풍요로워질 것 같아\"},{\"personaId\":17,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 되면 피로가 더 쌓일 것 같아\"},{\"personaId\":18,\"choice\":\"이직한다\",\"reason\":\"연봉 오르면 미래가 더 밝아질 것 같아\"},{\"personaId\":19,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 길면 일이 더 힘들어질 것 같아\"},{\"personaId\":20,\"choice\":\"이직한다\",\"reason\":\"연봉 오르면 생활비 걱정이 줄어들겠지\"}]}",
+   "promptTokens": 626,
+   "evalTokens": 172,
+   "evalSeconds": 5.858247,
+   "promptSeconds": 0.818062,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "startedAt": 108684.8833985,
+   "endedAt": 108689.6446615,
+   "wallSeconds": 4.761263000007602,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"이직한다\",\"reason\":\"연봉 오름이 더 중요하고 출퇴근 시간은 적응할 수 있어\"},{\"personaId\":22,\"choice\":\"남는다\",\"reason\":\"시간 절약이 우선이고, 새로운 도전은 다른 기회로\"},{\"personaId\":23,\"choice\":\"남는다\",\"reason\":\"안정성과 일과 삶의 균형을 더 중요하게 생각해서\"},{\"personaId\":24,\"choice\":\"이직한다\",\"reason\":\"연봉 상승이 가족을 위한 미래를 생각해서\"},{\"personaId\":25,\"choice\":\"남는다\",\"reason\":\"시간 효율이 더 중요하고, 다른 기회를 기다리고 싶어서\"}]}",
+   "promptTokens": 606,
+   "evalTokens": 165,
+   "evalSeconds": 4.448692,
+   "promptSeconds": 0.260343,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26,
+    27,
+    28,
+    29,
+    30
+   ],
+   "startedAt": 108685.464073,
+   "endedAt": 108688.9887935,
+   "wallSeconds": 3.52472050000506,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 더 좋아보여서\"},{\"personaId\":27,\"choice\":\"남는다\",\"reason\":\"가족을 위해 편한 일자리가 중요해\"},{\"personaId\":28,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 해보고 싶어서\"},{\"personaId\":29,\"choice\":\"남는다\",\"reason\":\"돈보다 편한 출퇴근이 더 중요해\"},{\"personaId\":30,\"choice\":\"남는다\",\"reason\":\"안정이 가장 중요해서\"}]}",
+   "promptTokens": 624,
+   "evalTokens": 136,
+   "evalSeconds": 2.99967,
+   "promptSeconds": 0.446702,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    31,
+    32,
+    33,
+    34,
+    35
+   ],
+   "startedAt": 108686.7649761,
+   "endedAt": 108690.213228,
+   "wallSeconds": 3.4482518999866443,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":31,\"choice\":\"남는다\",\"reason\":\"시간 절약이 더 중요하다고 생각해\"},{\"personaId\":32,\"choice\":\"이직한다\",\"reason\":\"성장 기회를 놓치기 싫어서\"},{\"personaId\":33,\"choice\":\"이직한다\",\"reason\":\"돈 더 벌고 싶어서\"},{\"personaId\":34,\"choice\":\"남는다\",\"reason\":\"시간이 더 중요하다고 느껴\"},{\"personaId\":35,\"choice\":\"이직한다\",\"reason\":\"연봉 올라서 힘들 때 도움 될 것 같아\"}]}",
+   "promptTokens": 605,
+   "evalTokens": 137,
+   "evalSeconds": 3.185304,
+   "promptSeconds": 0.205838,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "startedAt": 108687.3617319,
+   "endedAt": 108691.2310309,
+   "wallSeconds": 3.8692989999981364,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":36,\"choice\":\"이직한다\",\"reason\":\"시간 절약보다 돈 더 중요해 보여서\"},{\"personaId\":37,\"choice\":\"남는다\",\"reason\":\"건강을 생각해 근무 시간은 줄이고 싶어서\"},{\"personaId\":38,\"choice\":\"이직한다\",\"reason\":\"연봉 상승이 경제적 여유를 줄 수 있어서\"},{\"personaId\":39,\"choice\":\"남는다\",\"reason\":\"가족과 함께할 시간이 더 중요해서\"},{\"personaId\":40,\"choice\":\"남는다\",\"reason\":\"가족과 시간 보내는 게 우선이라 생각해서\"}]}",
+   "promptTokens": 606,
+   "evalTokens": 145,
+   "evalSeconds": 3.637764,
+   "promptSeconds": 0.190203,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    41,
+    42,
+    43,
+    44,
+    45
+   ],
+   "startedAt": 108688.988835,
+   "endedAt": 108693.2799928,
+   "wallSeconds": 4.291157800005749,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":41,\"choice\":\"남는다\",\"reason\":\"시간을 가족과 보내고 싶어서\"},{\"personaId\":42,\"choice\":\"이직한다\",\"reason\":\"급여가 더 많아서 좋다 생각해서\"},{\"personaId\":43,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 너무 길어서\"},{\"personaId\":44,\"choice\":\"이직한다\",\"reason\":\"연봉 오르면 부담 덜어지니까\"},{\"personaId\":45,\"choice\":\"남는다\",\"reason\":\"일과 삶의 균형을 생각해서\"}]}",
+   "promptTokens": 620,
+   "evalTokens": 133,
+   "evalSeconds": 3.928669,
+   "promptSeconds": 0.309138,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "startedAt": 108689.644711,
+   "endedAt": 108695.0303561,
+   "wallSeconds": 5.3856451000028756,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":46,\"choice\":\"이직한다\",\"reason\":\"연봉 증가가 장기적인 계획에 맞아 보인다\"},{\"personaId\":47,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간은 가족과의 시간을 줄여 버린다\"},{\"personaId\":48,\"choice\":\"이직한다\",\"reason\":\"건강을 위해 출퇴근 시간을 줄이려고 한다\"},{\"personaId\":49,\"choice\":\"이직한다\",\"reason\":\"새로운 환경에 대한 흥미가 더 크다\"},{\"personaId\":50,\"choice\":\"남는다\",\"reason\":\"시간 효율이 더 중요하다고 판단한다\"}]}",
+   "promptTokens": 620,
+   "evalTokens": 156,
+   "evalSeconds": 5.039556,
+   "promptSeconds": 0.297362,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51,
+    52,
+    53,
+    54,
+    55
+   ],
+   "startedAt": 108690.2132753,
+   "endedAt": 108694.4154547,
+   "wallSeconds": 4.202179400002933,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"이직한다\",\"reason\":\"시간이 더 나은 직장에 도전하고 싶다\"},{\"personaId\":52,\"choice\":\"남는다\",\"reason\":\"시간 절약이 더 중요하다고 생각한다\"},{\"personaId\":53,\"choice\":\"이직한다\",\"reason\":\"더 많은 경험을 쌓고 싶어서\"},{\"personaId\":54,\"choice\":\"남는다\",\"reason\":\"시간이 소중하다고 생각해서\"},{\"personaId\":55,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 우선이라고 생각해서\"}]}",
+   "promptTokens": 610,
+   "evalTokens": 134,
+   "evalSeconds": 3.881929,
+   "promptSeconds": 0.259164,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    56,
+    57,
+    58,
+    59,
+    60
+   ],
+   "startedAt": 108691.2310808,
+   "endedAt": 108697.4059893,
+   "wallSeconds": 6.174908499990124,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":56,\"choice\":\"이직한다\",\"reason\":\"감성적인 이유에 잘 흔들리고, 더 넓은 세상을 경험하고 싶어서\"},{\"personaId\":57,\"choice\":\"남는다\",\"reason\":\"등산과 캠핑을 좋아해서, 시간이 아깝고 피곤해 보여\"},{\"personaId\":58,\"choice\":\"이직한다\",\"reason\":\"즉흥적으로 움직이는 걸 좋아하고, 연봉 오름에 흥미를 느껴\"},{\"personaId\":59,\"choice\":\"남는다\",\"reason\":\"일에 지쳐 있고, 돈보다는 여유로운 삶을 원해서\"},{\"personaId\":60,\"choice\":\"남는다\",\"reason\":\"건강과 안정을 중시하고, 출퇴근 시간이 너무 길어 보여\"}]}",
+   "promptTokens": 618,
+   "evalTokens": 189,
+   "evalSeconds": 5.7267,
+   "promptSeconds": 0.405445,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    61,
+    62,
+    63,
+    64,
+    65
+   ],
+   "startedAt": 108693.280039,
+   "endedAt": 108698.7850211,
+   "wallSeconds": 5.504982099999324,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":61,\"choice\":\"이직한다\",\"reason\":\"연봉 증가가 경제적 여유를 줄 거라 판단했기 때문\"},{\"personaId\":62,\"choice\":\"남는다\",\"reason\":\"시간 절약이 더 중요하다고 생각했기 때문\"},{\"personaId\":63,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 해보고 싶어서 선택했기 때문\"},{\"personaId\":64,\"choice\":\"남는다\",\"reason\":\"시간이 소중하다고 생각해서 남기기로 했기 때문\"},{\"personaId\":65,\"choice\":\"남는다\",\"reason\":\"일에 지쳐 있어서 더 편한 선택을 했기 때문\"}]}",
+   "promptTokens": 608,
+   "evalTokens": 162,
+   "evalSeconds": 5.187596,
+   "promptSeconds": 0.253896,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    66,
+    67,
+    68,
+    69,
+    70
+   ],
+   "startedAt": 108694.4154963,
+   "endedAt": 108699.7319196,
+   "wallSeconds": 5.31642329999886,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":66,\"choice\":\"남는다\",\"reason\":\"가족과의 시간이 더 중요하다고 생각해서\"},{\"personaId\":67,\"choice\":\"이직한다\",\"reason\":\"연봉 인상으로 경제적 여유가 생기길 바라서\"},{\"personaId\":68,\"choice\":\"남는다\",\"reason\":\"안정적인 일자리를 유지하고 싶어서\"},{\"personaId\":69,\"choice\":\"남는다\",\"reason\":\"수입보다는 일과 삶의 균형을 생각해서\"},{\"personaId\":70,\"choice\":\"이직한다\",\"reason\":\"더 나은 조건으로 성장하고 싶어서\"}]}",
+   "promptTokens": 637,
+   "evalTokens": 147,
+   "evalSeconds": 4.829747,
+   "promptSeconds": 0.416776,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    71,
+    72,
+    73,
+    74,
+    75
+   ],
+   "startedAt": 108695.0304103,
+   "endedAt": 108700.4195208,
+   "wallSeconds": 5.389110500007519,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":71,\"choice\":\"남는다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거야\"},{\"personaId\":72,\"choice\":\"이직한다\",\"reason\":\"연봉 오르면 미래가 더 안정되니까\"},{\"personaId\":73,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 너무 길어져서 지칠 것 같아\"},{\"personaId\":74,\"choice\":\"이직한다\",\"reason\":\"연봉 오르면 가족을 더 잘 책임질 수 있을 것 같아\"},{\"personaId\":75,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 해보고 싶어서\"}]}",
+   "promptTokens": 616,
+   "evalTokens": 151,
+   "evalSeconds": 4.95431,
+   "promptSeconds": 0.385384,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76,
+    77,
+    78,
+    79,
+    80
+   ],
+   "startedAt": 108697.4060379,
+   "endedAt": 108702.7220754,
+   "wallSeconds": 5.316037500000675,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"이직한다\",\"reason\":\"연봉 인상이 더 중요하고 출퇴근 시간은 적응할 수 있어요\"},{\"personaId\":77,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 피곤해질 것 같아요\"},{\"personaId\":78,\"choice\":\"이직한다\",\"reason\":\"연봉 오름이 더 가치 있다고 판단해요\"},{\"personaId\":79,\"choice\":\"남는다\",\"reason\":\"일에 지쳐 있어서 이직은 피하고 싶어요\"},{\"personaId\":80,\"choice\":\"남는다\",\"reason\":\"시간을 절약하는 게 더 중요하게 느껴져요\"}]}",
+   "promptTokens": 609,
+   "evalTokens": 156,
+   "evalSeconds": 5.028411,
+   "promptSeconds": 0.239046,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    81,
+    82,
+    83,
+    84,
+    85
+   ],
+   "startedAt": 108698.7850665,
+   "endedAt": 108705.0630214,
+   "wallSeconds": 6.277954899996985,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":81,\"choice\":\"이직한다\",\"reason\":\"수입 증가가 더 중요하고 출퇴근 시간은 적응할 수 있다\"},{\"personaId\":82,\"choice\":\"남는다\",\"reason\":\"건강을 위해 출퇴근 시간이 늘어난다면 피곤할 것 같아\"},{\"personaId\":83,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 마음에 들고 새로운 곳에 도전해보고 싶다\"},{\"personaId\":84,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 기대되고 출퇴근 시간은 버틸 수 있을 것 같아\"},{\"personaId\":85,\"choice\":\"남는다\",\"reason\":\"즉흥적으로 움직이는 건 좋아하지만 출퇴근 시간이 너무 늘어나서\"}]}",
+   "promptTokens": 618,
+   "evalTokens": 187,
+   "evalSeconds": 5.778763,
+   "promptSeconds": 0.409676,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    86,
+    87,
+    88,
+    89,
+    90
+   ],
+   "startedAt": 108699.73199,
+   "endedAt": 108705.0865702,
+   "wallSeconds": 5.3545802000007825,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":86,\"choice\":\"이직한다\",\"reason\":\"시간이 늘어나도 연봉 오름이 더 중요해 보여서\"},{\"personaId\":87,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 길어지면 건강에 안 좋아 보여서\"},{\"personaId\":88,\"choice\":\"남는다\",\"reason\":\"건강을 생각해서 출퇴근 시간이 너무 늘어나서\"},{\"personaId\":89,\"choice\":\"이직한다\",\"reason\":\"연봉 오름이 더 중요해서 출퇴근 시간은 참고로 보기로\"},{\"personaId\":90,\"choice\":\"남는다\",\"reason\":\"가족을 생각해서 출퇴근 시간이 너무 늘어나서\"}]}",
+   "promptTokens": 621,
+   "evalTokens": 168,
+   "evalSeconds": 4.884969,
+   "promptSeconds": 0.406205,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "startedAt": 108700.4195854,
+   "endedAt": 108704.8542072,
+   "wallSeconds": 4.4346217999991495,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":91,\"choice\":\"이직한다\",\"reason\":\"연봉 인상이 커서 계획에 맞아요\"},{\"personaId\":92,\"choice\":\"남는다\",\"reason\":\"시간을 절약해서 공부에 집중하고 싶어요\"},{\"personaId\":93,\"choice\":\"이직한다\",\"reason\":\"새로운 환경에 도전해보고 싶어요\"},{\"personaId\":94,\"choice\":\"남는다\",\"reason\":\"시간이 너무 소모되어 피곤해요\"},{\"personaId\":95,\"choice\":\"이직한다\",\"reason\":\"좋은 기회가 생겼으니 도전해보고 싶어요\"}]}",
+   "promptTokens": 609,
+   "evalTokens": 149,
+   "evalSeconds": 4.150207,
+   "promptSeconds": 0.233327,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    96,
+    97,
+    98,
+    99,
+    100
+   ],
+   "startedAt": 108702.7221221,
+   "endedAt": 108707.2655554,
+   "wallSeconds": 4.543433299986646,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":96,\"choice\":\"남는다\",\"reason\":\"시간이 너무 오래 걸려서 힘들다\"},{\"personaId\":97,\"choice\":\"이직한다\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서\"},{\"personaId\":98,\"choice\":\"남는다\",\"reason\":\"시간 절약이 더 중요하다고 생각해서\"},{\"personaId\":99,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 유혹돼서\"},{\"personaId\":100,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 해보고 싶어서\"}]}",
+   "promptTokens": 619,
+   "evalTokens": 136,
+   "evalSeconds": 4.112362,
+   "promptSeconds": 0.381545,
+   "doneReason": "stop"
+  }
+ ]
+}

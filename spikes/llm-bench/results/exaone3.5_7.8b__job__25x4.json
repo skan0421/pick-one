@@ -1,0 +1,784 @@
+{
+ "model": "exaone3.5:7.8b",
+ "questionId": "job",
+ "method": "25x4",
+ "batchSize": 25,
+ "concurrency": 4,
+ "personaCount": 100,
+ "requestCount": 4,
+ "wallSeconds": 9.398045099995215,
+ "firstResultSeconds": 7.820037299999967,
+ "evalTokens": 3099,
+ "promptTokens": 5107,
+ "tokensPerSecondOverall": 329.7494284211913,
+ "tokensPerSecondPerStream": 95.68168399071234,
+ "failureCount": 0,
+ "failureRate": 0.0,
+ "failureKinds": {},
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 15711,
+ "vramPeakMiB": 11203,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정이 우선, 체력 관리도 중요해"
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획대로 안정을 택해"
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험에 흔들리기 쉽다"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전에 흥분"
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정과 건강 우선시"
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획대로 안정적 선택"
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강과 안정이 우선"
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간 효율성 중요"
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 건강 고려"
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족 우선, 안정적 선택"
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족 위한 안정 선택"
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 생활 선호"
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강과 안정 중시"
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적 판단, 안정적 선택"
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험에 끌리는 편"
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 생활 유지"
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획대로 안정 선택"
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "감정적 변화에 민감"
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정 최우선"
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강 유지가 우선"
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적 판단, 안정적 선택"
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 취미 경험"
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 삶 유지"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적이고 안정적 선택"
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율성과 안정 중시"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 큰 경험과 성장의 기회를 위해 감성적 결정을 내린다."
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 주변의 안정이 우선, 현실적인 선택이다."
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶에 활력을 더하고 싶다."
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재의 건강한 균형을 유지하는 것이 중요하다."
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 직장이 주변 사람들에게 긍정적 영향을 미친다."
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적 관점에서 장기적 안정이 더 가치있다."
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험을 통해 삶의 질을 향상시키고 싶다."
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "지친 일상에서 벗어나 새로운 모험을 원한다."
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 환경이 주변 사람들에게 긍정적 영향을 미친다."
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "효율적인 삶과 건강한 도전을 위해 이직한다."
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "효율성을 위해 새로운 환경을 선택한다."
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "건강과 새로운 도전을 위해 이직한다."
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적 안정과 주변의 신뢰를 우선시한다."
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 주변의 안정을 위해 현재 직장을 유지한다."
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족 중심의 삶을 위해 현재 직장을 선택한다."
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 삶이 주변에 긍정적 영향을 미친다."
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전과 감성적 만족을 위해 이직한다."
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 환경이 감성적 안정에 중요하다."
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "신중한 재정 관리와 취미 균형을 위해 유지한다."
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "주변의 안정과 취미 균형을 위해 현재 직장 유지."
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획적 안정이 현실적이고 효율적이다."
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 생활이 취미 활동에 더 집중할 수 있게 한다."
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "건강한 삶과 새로운 경험을 위해 이직한다."
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "감성적 동기와 새로운 도전을 위해 이직한다."
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율적이고 안정적인 환경이 주변에 긍정적이다."
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 나은 경험과 에너지로 반려동물과의 시간도 늘릴 수 있어요."
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율적인 출퇴근이 장기적인 재테크에 도움이 될 거예요."
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 환경이 감성적인 영감을 더 많이 줄 것 같아요."
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "신중한 선택이 미래의 효율적인 시간 관리를 위해 필요해요."
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 환경에서 취미 활동에 더 집중할 수 있어요."
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "일상의 변화가 새로운 사진 기회를 줄 거예요."
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "조용한 환경에서의 안정적인 근무가 필요해요."
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 직장이 더 큰 모험과 경험을 선사할 거예요."
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 상승이 반려동물과의 시간을 늘릴 여유를 줄 거예요."
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 환경에서 건강 관리에 집중할 수 있어요."
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율성을 중시하는 성향에 맞춰요."
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "신중한 결정이 장기적인 계획에 유리해요."
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전이 디자인과 취미에 활력을 줄 거예요."
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "색다른 선택이 미래의 가능성을 넓혀줄 거예요."
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획적인 삶이 안정감을 줄 거예요."
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 주변 사람을 위해 안정적인 선택이 중요해요."
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 주변을 위해 효율적인 출퇴근이 필요해요."
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 선택이 장기적인 행복을 가져올 거예요."
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족 중심의 안정적인 환경이 우선이에요."
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적 판단이 장기적인 만족을 가져다 줄 거예요."
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 환경이 현재의 스트레스 해소에 도움이 될 거예요."
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 선택이 취미와 현실 사이 균형을 맞춰줘요."
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재의 안정이 건강과 휴식에 중요해요."
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 환경에서 더 많은 운동 시간 확보 가능해요."
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 선택이 주변 사람들에게 긍정적 영향 미쳐요."
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간, 안정적인 출퇴근 시간이 더 중요해요."
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "건강 관리와 새로운 도전을 위해 시간 투자 가치 있어요."
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "돈 보다 시간 효율이 더 중요해요."
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획과 안정감을 잃지 않기로 했어요."
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "취미 시간 줄이는 건 너무 아까워요."
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적인 조언으로 안정적인 선택이 나아요."
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강 유지가 최우선이에요."
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "감성적 이유로 현재 위치가 더 안정적이에요."
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험을 위한 시간 투자 가치있어요."
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적 조언으로 안정성 우선."
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 선택이 장기적으로 이득이에요."
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 안정적인 시간이 소중해요."
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강 유지와 반려동물 시간 확보."
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 생활 유지가 우선이에요."
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 주변 사람들을 위해 안정성 선택."
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획과 취미 시간 확보 위해."
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율적 시간 관리로 안정적 생활 유지."
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험이 현실적 조언보다 중요해요."
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 일에 지쳐 새로운 도전은 늦었어요."
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 주변 고려해 안정적 선택."
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "취미 시간을 더 중요하게 생각해요."
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "남들과 다른 선택으로 새로운 도전."
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 삶을 위해 현재 위치 유지."
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "취미 시간이 너무 소중해요."
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적 생활 유지와 효율성 위해."
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "startedAt": 109008.618555,
+   "endedAt": 109016.4383693,
+   "wallSeconds": 7.819814300004509,
+   "error": null,
+   "content": "{\"answers\":[\n{\"personaId\":1,\"choice\":\"남는다\",\"reason\":\"안정이 우선, 체력 관리도 중요해\"},\n{\"personaId\":2,\"choice\":\"남는다\",\"reason\":\"계획대로 안정을 택해\"},\n{\"personaId\":3,\"choice\":\"이직한다\",\"reason\":\"새로운 경험에 흔들리기 쉽다\"},\n{\"personaId\":4,\"choice\":\"이직한다\",\"reason\":\"새로운 도전에 흥분\"},\n{\"personaId\":5,\"choice\":\"남는다\",\"reason\":\"안정과 건강 우선시\"},\n{\"personaId\":6,\"choice\":\"남는다\",\"reason\":\"계획대로 안정적 선택\"},\n{\"personaId\":7,\"choice\":\"남는다\",\"reason\":\"건강과 안정이 우선\"},\n{\"personaId\":8,\"choice\":\"이직한다\",\"reason\":\"시간 효율성 중요\"},\n{\"personaId\":9,\"choice\":\"남는다\",\"reason\":\"가족과 건강 고려\"},\n{\"personaId\":10,\"choice\":\"남는다\",\"reason\":\"가족 우선, 안정적 선택\"},\n{\"personaId\":11,\"choice\":\"남는다\",\"reason\":\"가족 위한 안정 선택\"},\n{\"personaId\":12,\"choice\":\"남는다\",\"reason\":\"안정적 생활 선호\"},\n{\"personaId\":13,\"choice\":\"남는다\",\"reason\":\"건강과 안정 중시\"},\n{\"personaId\":14,\"choice\":\"남는다\",\"reason\":\"현실적 판단, 안정적 선택\"},\n{\"personaId\":15,\"choice\":\"이직한다\",\"reason\":\"새로운 경험에 끌리는 편\"},\n{\"personaId\":16,\"choice\":\"남는다\",\"reason\":\"안정적 생활 유지\"},\n{\"personaId\":17,\"choice\":\"남는다\",\"reason\":\"계획대로 안정 선택\"},\n{\"personaId\":18,\"choice\":\"이직한다\",\"reason\":\"감정적 변화에 민감\"},\n{\"personaId\":19,\"choice\":\"남는다\",\"reason\":\"안정 최우선\"},\n{\"personaId\":20,\"choice\":\"남는다\",\"reason\":\"건강 유지가 우선\"},\n{\"personaId\":21,\"choice\":\"남는다\",\"reason\":\"현실적 판단, 안정적 선택\"},\n{\"personaId\":22,\"choice\":\"이직한다\",\"reason\":\"새로운 취미 경험\"},\n{\"personaId\":23,\"choice\":\"남는다\",\"reason\":\"안정적 삶 유지\"},\n{\"personaId\":24,\"choice\":\"남는다\",\"reason\":\"현실적이고 안정적 선택\"},\n{\"personaId\":25,\"choice\":\"남는다\",\"reason\":\"효율성과 안정 중시\"}]}",
+   "promptTokens": 1269,
+   "evalTokens": 672,
+   "evalSeconds": 7.391155,
+   "promptSeconds": 0.315542,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "startedAt": 109008.6190331,
+   "endedAt": 109017.646701,
+   "wallSeconds": 9.027667900008964,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"이직한다\",\"reason\":\"더 큰 경험과 성장의 기회를 위해 감성적 결정을 내린다.\"},{\"personaId\":27,\"choice\":\"남는다\",\"reason\":\"가족과 주변의 안정이 우선, 현실적인 선택이다.\"},{\"personaId\":28,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶에 활력을 더하고 싶다.\"},{\"personaId\":29,\"choice\":\"남는다\",\"reason\":\"현재의 건강한 균형을 유지하는 것이 중요하다.\"},{\"personaId\":30,\"choice\":\"남는다\",\"reason\":\"안정적인 직장이 주변 사람들에게 긍정적 영향을 미친다.\"},{\"personaId\":31,\"choice\":\"남는다\",\"reason\":\"현실적 관점에서 장기적 안정이 더 가치있다.\"},{\"personaId\":32,\"choice\":\"이직한다\",\"reason\":\"새로운 경험을 통해 삶의 질을 향상시키고 싶다.\"},{\"personaId\":33,\"choice\":\"이직한다\",\"reason\":\"지친 일상에서 벗어나 새로운 모험을 원한다.\"},{\"personaId\":34,\"choice\":\"남는다\",\"reason\":\"안정적인 환경이 주변 사람들에게 긍정적 영향을 미친다.\"},{\"personaId\":35,\"choice\":\"이직한다\",\"reason\":\"효율적인 삶과 건강한 도전을 위해 이직한다.\"},{\"personaId\":36,\"choice\":\"이직한다\",\"reason\":\"효율성을 위해 새로운 환경을 선택한다.\"},{\"personaId\":37,\"choice\":\"이직한다\",\"reason\":\"건강과 새로운 도전을 위해 이직한다.\"},{\"personaId\":38,\"choice\":\"남는다\",\"reason\":\"현실적 안정과 주변의 신뢰를 우선시한다.\"},{\"personaId\":39,\"choice\":\"남는다\",\"reason\":\"가족과 주변의 안정을 위해 현재 직장을 유지한다.\"},{\"personaId\":40,\"choice\":\"남는다\",\"reason\":\"가족 중심의 삶을 위해 현재 직장을 선택한다.\"},{\"personaId\":41,\"choice\":\"남는다\",\"reason\":\"안정적인 삶이 주변에 긍정적 영향을 미친다.\"},{\"personaId\":42,\"choice\":\"이직한다\",\"reason\":\"새로운 도전과 감성적 만족을 위해 이직한다.\"},{\"personaId\":43,\"choice\":\"남는다\",\"reason\":\"안정적 환경이 감성적 안정에 중요하다.\"},{\"personaId\":44,\"choice\":\"남는다\",\"reason\":\"신중한 재정 관리와 취미 균형을 위해 유지한다.\"},{\"personaId\":45,\"choice\":\"남는다\",\"reason\":\"주변의 안정과 취미 균형을 위해 현재 직장 유지.\"},{\"personaId\":46,\"choice\":\"남는다\",\"reason\":\"계획적 안정이 현실적이고 효율적이다.\"},{\"personaId\":47,\"choice\":\"남는다\",\"reason\":\"안정적 생활이 취미 활동에 더 집중할 수 있게 한다.\"},{\"personaId\":48,\"choice\":\"이직한다\",\"reason\":\"건강한 삶과 새로운 경험을 위해 이직한다.\"},{\"personaId\":49,\"choice\":\"이직한다\",\"reason\":\"감성적 동기와 새로운 도전을 위해 이직한다.\"},{\"personaId\":50,\"choice\":\"남는다\",\"reason\":\"효율적이고 안정적인 환경이 주변에 긍정적이다.\"}]}",
+   "promptTokens": 1273,
+   "evalTokens": 798,
+   "evalSeconds": 8.215700999,
+   "promptSeconds": 0.383589,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75
+   ],
+   "startedAt": 109008.6193366,
+   "endedAt": 109018.0161239,
+   "wallSeconds": 9.396787300007418,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"이직한다\",\"reason\":\"더 나은 경험과 에너지로 반려동물과의 시간도 늘릴 수 있어요.\"},{\"personaId\":52,\"choice\":\"남는다\",\"reason\":\"효율적인 출퇴근이 장기적인 재테크에 도움이 될 거예요.\"},{\"personaId\":53,\"choice\":\"이직한다\",\"reason\":\"새로운 환경이 감성적인 영감을 더 많이 줄 것 같아요.\"},{\"personaId\":54,\"choice\":\"남는다\",\"reason\":\"신중한 선택이 미래의 효율적인 시간 관리를 위해 필요해요.\"},{\"personaId\":55,\"choice\":\"남는다\",\"reason\" :\"안정적인 환경에서 취미 활동에 더 집중할 수 있어요.\"},{\"personaId\":56,\"choice\":\"이직한다\",\"reason\":\"일상의 변화가 새로운 사진 기회를 줄 거예요.\"},{\"personaId\":57,\"choice\":\"남는다\",\"reason\":\"조용한 환경에서의 안정적인 근무가 필요해요.\"},{\"personaId\":58,\"choice\":\"이직한다\",\"reason\":\"새로운 직장이 더 큰 모험과 경험을 선사할 거예요.\"},{\"personaId\":59,\"choice\":\"이직한다\",\"reason\":\"연봉 상승이 반려동물과의 시간을 늘릴 여유를 줄 거예요.\"},{\"personaId\":60,\"choice\":\"남는다\",\"reason\":\"안정적인 환경에서 건강 관리에 집중할 수 있어요.\"},{\"personaId\":61,\"choice\":\"남는다\",\"reason\":\"효율성을 중시하는 성향에 맞춰요.\"},{\"personaId\":62,\"choice\":\"남는다\",\"reason\":\"신중한 결정이 장기적인 계획에 유리해요.\"},{\"personaId\":63,\"choice\":\"이직한다\",\"reason\":\"새로운 도전이 디자인과 취미에 활력을 줄 거예요.\"},{\"personaId\":64,\"choice\":\"이직한다\",\"reason\":\"색다른 선택이 미래의 가능성을 넓혀줄 거예요.\"},{\"personaId\":65,\"choice\":\"남는다\",\"reason\":\"계획적인 삶이 안정감을 줄 거예요.\"},{\"personaId\":66,\"choice\":\"남는다\",\"reason\":\"가족과 주변 사람을 위해 안정적인 선택이 중요해요.\"},{\"personaId\":67,\"choice\":\"남는다\",\"reason\":\"가족과 주변을 위해 효율적인 출퇴근이 필요해요.\"},{\"personaId\":68,\"choice\":\"남는다\",\"reason\":\"안정적인 선택이 장기적인 행복을 가져올 거예요.\"},{\"personaId\":69,\"choice\":\"남는다\",\"reason\":\"가족 중심의 안정적인 환경이 우선이에요.\"},{\"personaId\":70,\"choice\":\"남는다\",\"reason\":\"현실적 판단이 장기적인 만족을 가져다 줄 거예요.\"},{\"personaId\":71,\"choice\":\"남는다\",\"reason\":\"안정적인 환경이 현재의 스트레스 해소에 도움이 될 거예요.\"},{\"personaId\":72,\"choice\":\"남는다\",\"reason\":\"안정적 선택이 취미와 현실 사이 균형을 맞춰줘요.\"},{\"personaId\":73,\"choice\":\"남는다\",\"reason\":\"현재의 안정이 건강과 휴식에 중요해요.\"},{\"personaId\":74,\"choice\":\"남는다\",\"reason\":\"안정적인 환경에서 더 많은 운동 시간 확보 가능해요.\"},{\"personaId\":75,\"choice\":\"남는다\",\"reason\":\"안정적 선택이 주변 사람들에게 긍정적 영향 미쳐요.\"}]}",
+   "promptTokens": 1293,
+   "evalTokens": 844,
+   "evalSeconds": 8.49902,
+   "promptSeconds": 0.278806,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+   ],
+   "startedAt": 109008.6196298,
+   "endedAt": 109017.520927,
+   "wallSeconds": 8.901297200005502,
+   "error": null,
+   "content": "{\"answers\":[\n{\"personaId\":76,\"choice\":\"남는다\",\"reason\":\"가족과의 시간, 안정적인 출퇴근 시간이 더 중요해요.\"},\n{\"personaId\":77,\"choice\":\"이직한다\",\"reason\":\"건강 관리와 새로운 도전을 위해 시간 투자 가치 있어요.\"},\n{\"personaId\":78,\"choice\":\"남는다\",\"reason\":\"돈 보다 시간 효율이 더 중요해요.\"},\n{\"personaId\":79,\"choice\":\"남는다\",\"reason\":\"계획과 안정감을 잃지 않기로 했어요.\"},\n{\"personaId\":80,\"choice\":\"남는다\",\"reason\":\"취미 시간 줄이는 건 너무 아까워요.\"},\n{\"personaId\":81,\"choice\":\"남는다\",\"reason\":\"현실적인 조언으로 안정적인 선택이 나아요.\"},\n{\"personaId\":82,\"choice\":\"남는다\",\"reason\":\"건강 유지가 최우선이에요.\"},\n{\"personaId\":83,\"choice\":\"남는다\",\"reason\":\"감성적 이유로 현재 위치가 더 안정적이에요.\"},\n{\"personaId\":84,\"choice\":\"이직한다\",\"reason\":\"새로운 경험을 위한 시간 투자 가치있어요.\"},\n{\"personaId\":85,\"choice\":\"남는다\",\"reason\":\"현실적 조언으로 안정성 우선.\"},\n{\"personaId\":86,\"choice\":\"남는다\",\"reason\":\"안정적 선택이 장기적으로 이득이에요.\"},\n{\"personaId\":87,\"choice\":\"남는다\",\"reason\":\"가족과의 안정적인 시간이 소중해요.\"},\n{\"personaId\":88,\"choice\":\"남는다\",\"reason\":\"건강 유지와 반려동물 시간 확보.\"},\n{\"personaId\":89,\"choice\":\"남는다\",\"reason\":\"안정적 생활 유지가 우선이에요.\"},\n{\"personaId\":90,\"choice\":\"남는다\",\"reason\":\"가족과 주변 사람들을 위해 안정성 선택.\"},\n{\"personaId\":91,\"choice\":\"남는다\",\"reason\":\"계획과 취미 시간 확보 위해.\"},\n{\"personaId\":92,\"choice\":\"남는다\",\"reason\":\"효율적 시간 관리로 안정적 생활 유지.\"},\n{\"personaId\":93,\"choice\":\"이직한다\",\"reason\":\"새로운 경험이 현실적 조언보다 중요해요.\"},\n{\"personaId\":94,\"choice\":\"남는다\",\"reason\":\"현재 일에 지쳐 새로운 도전은 늦었어요.\"},\n{\"personaId\":95,\"choice\":\"남는다\",\"reason\":\"가족과 주변 고려해 안정적 선택.\"},\n{\"personaId\":96,\"choice\":\"남는다\",\"reason\":\"취미 시간을 더 중요하게 생각해요.\"},\n{\"personaId\":97,\"choice\":\"이직한다\",\"reason\":\"남들과 다른 선택으로 새로운 도전.\"},\n{\"personaId\":98,\"choice\":\"남는다\",\"reason\":\"안정적 삶을 위해 현재 위치 유지.\"},\n{\"personaId\":99,\"choice\":\"남는다\",\"reason\":\"취미 시간이 너무 소중해요.\"},\n{\"personaId\":100,\"choice\":\"남는다\",\"reason\":\"안정적 생활 유지와 효율성 위해.\"}]}",
+   "promptTokens": 1272,
+   "evalTokens": 785,
+   "evalSeconds": 8.282768,
+   "promptSeconds": 0.497698,
+   "doneReason": "stop"
+  }
+ ],
+ "tag": ""
+}

@@ -1,0 +1,1010 @@
+{
+ "model": "qwen3:14b",
+ "questionId": "date",
+ "method": "5x4",
+ "batchSize": 5,
+ "concurrency": 4,
+ "personaCount": 100,
+ "requestCount": 20,
+ "wallSeconds": 19.56227910000598,
+ "firstResultSeconds": 3.454586300009396,
+ "evalTokens": 3220,
+ "promptTokens": 11680,
+ "tokensPerSecondOverall": 164.60249767109272,
+ "tokensPerSecondPerStream": 46.654840678790265,
+ "failureCount": 1,
+ "failureRate": 0.01,
+ "failureKinds": {
+  "reason_too_long": 1
+ },
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 11996,
+ "vramPeakMiB": 15551,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 차분하게 대화할 수 있어서 좋다"
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥 머나먼 계획을 세우는 게 마음이 편하다"
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페 분위기가 감성적이어서 좋아 보인다"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 음식을 먹으면서 이야기를 나눌 수 있다"
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 일에 대해 잊고 편하게 쉬고 싶다"
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "카페",
+   "reason": "계획을 세우고 편안하게 대화할 수 있어서"
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "건강을 생각해서 함께 맛있게 먹을 수 있어서"
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "카페",
+   "reason": "즉흥적으로 즐겁게 시간 보내고 싶어서"
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "카페",
+   "reason": "친해지면 말이 많아지니 분위기 좋고 편한 곳을 원해서"
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 맛있게 먹으면서 가족 생각도 할 수 있어서"
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥을 함께 먹으면서 대화가 자연스럽게 이어질 것 같아요"
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥을 먹으면서 실용적인 이야기를 나눌 수 있어서 좋아요"
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 차를 마시며 안정된 분위기로 시작하고 싶어요"
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "맛있는 음식을 함께 먹으며 친해지기 좋아요"
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "카페",
+   "reason": "신선한 분위기에서 대화가 잘 흘러갈 것 같아요"
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "카페",
+   "reason": "감성적인 분위기와 영화 이야기 나누기 좋아함"
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "계획 세우기 좋아하고 편안하게 대화 가능"
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "카페",
+   "reason": "음악과 감성적인 분위기 좋아함"
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적이고 현실적인 분위기 좋아함"
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용하게 오랜 시간 이야기 나누기 좋아함"
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 차분히 대화하며 서로의 성격을 파악하기 좋다"
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "즉흥적인 분위기에서 자연스럽게 친해질 수 있다"
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "카페",
+   "reason": "안정적인 분위기에서 편하게 대화할 수 있다"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 곳에서 오래 이야기할 수 있는 장점이 있다"
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "카페",
+   "reason": "남 눈치 보지 않고 효율적으로 대화할 수 있다"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "카페",
+   "reason": "감성적인 분위기에서 자연스럽게 대화할 수 있어 좋아요"
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "가족을 생각하면 식사가 더 안정적이어서 좋아요"
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "다른 사람과는 다르게 특별한 경험을 하고 싶어서요"
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "카페",
+   "reason": "돈을 아끼면서도 편안하게 대화하기 좋아요"
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 첫 만남이 더 좋을 것 같아요"
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "카페",
+   "reason": "차분한 분위기에서 이야기 잘 나눌 수 있어"
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "신선한 경험을 하고 싶어서"
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "맛있고 편안한 분위기 좋아해서"
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "카페",
+   "reason": "사진 잘 찍히고 분위기 좋아서"
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "카페",
+   "reason": "말이 많아지기 전에 편안하게 지낼 수 있어서"
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "카페",
+   "reason": "시간 효율이 잘되고 대화가 자연스럽다"
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "건강한 식사로 인상 잘 지킬 수 있다"
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "카페",
+   "reason": "분위기 좋고 차가 잘 어울린다"
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥 먹으며 가족 이야기도 나눌 수 있다"
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "카페",
+   "reason": "등산 이야기 하며 친해질 수 있다"
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 차를 마시며 말이 잘 풀리고 감성적인 분위기를 즐길 수 있어요"
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥집에서 음식을 먹으며 자연스럽게 대화가 오가게 될 것 같아요"
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 차를 마시며 조용하게 오랜 시간 대화를 나눌 수 있어요"
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥집은 예산이 적게 들고 음식을 먹으며 대화하기 좋을 것 같아요"
+  },
+  {
+   "personaId": 45,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "카페",
+   "reason": "카페는 조용하고 안정적인 분위기라서 상대의 눈치를 잘 보며 대화하기 좋아요"
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥을 먹으면서 대화가 자연스럽게 흐를 수 있어 계획적으로 좋다"
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "카페",
+   "reason": "안정적인 분위기에서 차분히 대화할 수 있어 좋다"
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "카페",
+   "reason": "분위기 좋고 건강한 음료로 인상 좋을 것 같아"
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "카페",
+   "reason": "감성적인 분위기에서 즉흥적인 대화가 잘 흐를 것 같아"
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "시간 효율적으로 잘 마무리할 수 있어 남 눈치도 잘 보인다"
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페는 편안하게 대화할 수 있고, 새로운 곳 탐방이 좋아서"
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥 먹으며 효율적으로 대화하고, 인상 잘 남기고 싶어서"
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "카페",
+   "reason": "분위기 좋은 카페에서 감성적인 대화가 하고 싶어서"
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥값은 착하고, 시간도 효율적으로 보내고 싶어서"
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "카페",
+   "reason": "눈치 보지 않고, 취미에 대해 자연스럽게 이야기할 수 있어서"
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "카페",
+   "reason": "감성적인 분위기에서 사진 찍으며 대화하기 좋아서"
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "오래 머무를 수 있고 진심 어린 대화 나누기 좋아해서"
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "즉흥적인 분위기에서 진솔한 대화 나누고 싶어서"
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "카페",
+   "reason": "돈을 아끼며 차분히 대화할 수 있는 곳이라서"
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적이고 건강한 식사 함께 나누고 싶어서"
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페는 대화가 자연스럽고 효율적으로 이어질 수 있어요"
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥집은 분위기 있고 독특한 선택이 될 수 있어서요"
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 차를 마시며 편하게 대화가 잘 될 것 같아요"
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥집에서 음식도 먹고 재미있게 대화하고 싶어요"
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 편안하게 대화하며 힐링하고 싶어요"
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "카페",
+   "reason": "차가운 분위기에서 차분하게 이야기할 수 있어요"
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 먹으면서 자연스럽게 대화할 수 있어요"
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥을 먹으면서 좀 더 가까워질 수 있을 것 같아요"
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 곳에서 오래 이야기할 수 있어서 좋아요"
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "카페",
+   "reason": "차분하게 이야기하며 서로를 알아갈 수 있어요"
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "카페",
+   "reason": "일에 지쳐 있으니 조용한 분위기의 카페가 편할 것 같아"
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥집에서 편하게 대화하며 서로를 더 알아갈 수 있을 것 같아"
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "카페",
+   "reason": "분위기 좋은 카페에서 서로를 더 잘 알아볼 수 있을 것 같아"
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "감성적인 분위기의 밥집이 소개팅에 어울릴 것 같아"
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적이면서도 남들과 다른 선택을 해보고 싶어 해"
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "카페",
+   "reason": "담소가 가능하고 차분한 분위기 좋아함"
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 음식 먹으면서 이야기 나누기 좋아함"
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "카페",
+   "reason": "경제적 부담이 적고 여유 있는 분위기 좋아함"
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "카페",
+   "reason": "계획을 세우기 쉬운 곳이 마음에 들음"
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "카페",
+   "reason": "예산을 생각하고 차분한 곳을 원함"
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "실용적이고 분위기 있는 장소가 대화를 이어줄 것 같아"
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "카페",
+   "reason": "가벼운 분위기에서 편하게 대화할 수 있을 것 같아"
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "카페",
+   "reason": "따뜻한 분위기에서 차를 마시며 친해질 수 있을 것 같아"
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "즉흥적인 분위기에서 자연스럽게 대화할 수 있을 것 같아"
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "카페",
+   "reason": "분위기 좋은 곳에서 첫인상 잘 잡을 수 있을 것 같아"
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "카페",
+   "reason": "안정적이면서도 특별한 분위기로 인상 깊게 만들 수 있어서"
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 음식을 먹으면서 자연스럽게 대화할 수 있어서"
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "카페",
+   "reason": "분위기 좋고 차도 마실 수 있어서 건강에 좋아 보여서"
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "건강에 좋고 함께 먹으면서 친밀감을 높일 수 있어서"
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "카페",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서 분위기 있는 카페가 좋을 것 같아서"
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 차분하게 대화하며 분위기 읽기 좋아함"
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥 먹으며 자연스럽게 대화할 수 있다고 생각함"
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서 음식이야기 나누기 좋아함"
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "카페",
+   "reason": "일에 지쳐 있으니 조용한 곳에서 편하게 대화하고 싶음"
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "카페",
+   "reason": "새로운 곳 탐방하면서도 가족 생각해서 안정적인 곳 선호함"
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "카페",
+   "reason": "카페에서 조용히 오래 이야기할 수 있어요"
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서요"
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "카페",
+   "reason": "안정적이고 효율적인 만남이 좋아요"
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용히 오래 이야기하는 걸 좋아해서요"
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "새로운 도전을 즐기고 싶어서요"
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "startedAt": 108531.7233117,
+   "endedAt": 108535.5498846,
+   "wallSeconds": 3.8265728999977,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"카페\",\"reason\":\"카페에서 차분하게 대화할 수 있어서 좋다\"},{\"personaId\":2,\"choice\":\"밥집\",\"reason\":\"밥 머나먼 계획을 세우는 게 마음이 편하다\"},{\"personaId\":3,\"choice\":\"카페\",\"reason\":\"카페 분위기가 감성적이어서 좋아 보인다\"},{\"personaId\":4,\"choice\":\"밥집\",\"reason\":\"함께 음식을 먹으면서 이야기를 나눌 수 있다\"},{\"personaId\":5,\"choice\":\"카페\",\"reason\":\"카페에서 일에 대해 잊고 편하게 쉬고 싶다\"}]}",
+   "promptTokens": 576,
+   "evalTokens": 149,
+   "evalSeconds": 3.18884,
+   "promptSeconds": 0.531808999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "startedAt": 108531.7236081,
+   "endedAt": 108536.0067565,
+   "wallSeconds": 4.283148400005302,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"카페\",\"reason\":\"계획을 세우고 편안하게 대화할 수 있어서\"},{\"personaId\":7,\"choice\":\"밥집\",\"reason\":\"건강을 생각해서 함께 맛있게 먹을 수 있어서\"},{\"personaId\":8,\"choice\":\"카페\",\"reason\":\"즉흥적으로 즐겁게 시간 보내고 싶어서\"},{\"personaId\":9,\"choice\":\"카페\",\"reason\":\"친해지면 말이 많아지니 분위기 좋고 편한 곳을 원해서\"},{\"personaId\":10,\"choice\":\"밥집\",\"reason\":\"함께 맛있게 먹으면서 가족 생각도 할 수 있어서\"}]}",
+   "promptTokens": 586,
+   "evalTokens": 155,
+   "evalSeconds": 3.222055,
+   "promptSeconds": 0.683021,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "startedAt": 108531.7239139,
+   "endedAt": 108536.490428,
+   "wallSeconds": 4.7665141000034055,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"밥집\",\"reason\":\"밥을 함께 먹으면서 대화가 자연스럽게 이어질 것 같아요\"},{\"personaId\":12,\"choice\":\"밥집\",\"reason\":\"밥을 먹으면서 실용적인 이야기를 나눌 수 있어서 좋아요\"},{\"personaId\":13,\"choice\":\"카페\",\"reason\":\"카페에서 차를 마시며 안정된 분위기로 시작하고 싶어요\"},{\"personaId\":14,\"choice\":\"밥집\",\"reason\":\"맛있는 음식을 함께 먹으며 친해지기 좋아요\"},{\"personaId\":15,\"choice\":\"카페\",\"reason\":\"신선한 분위기에서 대화가 잘 흘러갈 것 같아요\"}]}",
+   "promptTokens": 590,
+   "evalTokens": 170,
+   "evalSeconds": 4.388562,
+   "promptSeconds": 0.272506,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "startedAt": 108531.724154,
+   "endedAt": 108535.1777428,
+   "wallSeconds": 3.4535888000100385,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"카페\",\"reason\":\"감성적인 분위기와 영화 이야기 나누기 좋아함\"},{\"personaId\":17,\"choice\":\"밥집\",\"reason\":\"계획 세우기 좋아하고 편안하게 대화 가능\"},{\"personaId\":18,\"choice\":\"카페\",\"reason\":\"음악과 감성적인 분위기 좋아함\"},{\"personaId\":19,\"choice\":\"밥집\",\"reason\":\"안정적이고 현실적인 분위기 좋아함\"},{\"personaId\":20,\"choice\":\"카페\",\"reason\":\"조용하게 오랜 시간 이야기 나누기 좋아함\"}]}",
+   "promptTokens": 594,
+   "evalTokens": 137,
+   "evalSeconds": 2.339289,
+   "promptSeconds": 0.477274,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "startedAt": 108535.1777891,
+   "endedAt": 108539.29128,
+   "wallSeconds": 4.11349090001022,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"카페\",\"reason\":\"카페에서 차분히 대화하며 서로의 성격을 파악하기 좋다\"},{\"personaId\":22,\"choice\":\"밥집\",\"reason\":\"즉흥적인 분위기에서 자연스럽게 친해질 수 있다\"},{\"personaId\":23,\"choice\":\"카페\",\"reason\":\"안정적인 분위기에서 편하게 대화할 수 있다\"},{\"personaId\":24,\"choice\":\"카페\",\"reason\":\"조용한 곳에서 오래 이야기할 수 있는 장점이 있다\"},{\"personaId\":25,\"choice\":\"카페\",\"reason\":\"남 눈치 보지 않고 효율적으로 대화할 수 있다\"}]}",
+   "promptTokens": 574,
+   "evalTokens": 158,
+   "evalSeconds": 3.878758,
+   "promptSeconds": 0.194886,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26,
+    27,
+    28,
+    29,
+    30
+   ],
+   "startedAt": 108535.5499386,
+   "endedAt": 108540.0183424,
+   "wallSeconds": 4.468403799997759,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"카페\",\"reason\":\"감성적인 분위기에서 자연스럽게 대화할 수 있어 좋아요\"},{\"personaId\":27,\"choice\":\"밥집\",\"reason\":\"가족을 생각하면 식사가 더 안정적이어서 좋아요\"},{\"personaId\":28,\"choice\":\"밥집\",\"reason\":\"다른 사람과는 다르게 특별한 경험을 하고 싶어서요\"},{\"personaId\":29,\"choice\":\"카페\",\"reason\":\"돈을 아끼면서도 편안하게 대화하기 좋아요\"},{\"personaId\":30,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 첫 만남이 더 좋을 것 같아요\"}]}",
+   "promptTokens": 592,
+   "evalTokens": 161,
+   "evalSeconds": 4.099121,
+   "promptSeconds": 0.315153,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    31,
+    32,
+    33,
+    34,
+    35
+   ],
+   "startedAt": 108536.0068,
+   "endedAt": 108538.9250187,
+   "wallSeconds": 2.9182186999969417,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":31,\"choice\":\"카페\",\"reason\":\"차분한 분위기에서 이야기 잘 나눌 수 있어\"},{\"personaId\":32,\"choice\":\"밥집\",\"reason\":\"신선한 경험을 하고 싶어서\"},{\"personaId\":33,\"choice\":\"밥집\",\"reason\":\"맛있고 편안한 분위기 좋아해서\"},{\"personaId\":34,\"choice\":\"카페\",\"reason\":\"사진 잘 찍히고 분위기 좋아서\"},{\"personaId\":35,\"choice\":\"카페\",\"reason\":\"말이 많아지기 전에 편안하게 지낼 수 있어서\"}]}",
+   "promptTokens": 573,
+   "evalTokens": 139,
+   "evalSeconds": 2.634409,
+   "promptSeconds": 0.222463,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "startedAt": 108536.4904825,
+   "endedAt": 108539.7465079,
+   "wallSeconds": 3.2560253999981796,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":36,\"choice\":\"카페\",\"reason\":\"시간 효율이 잘되고 대화가 자연스럽다\"},{\"personaId\":37,\"choice\":\"밥집\",\"reason\":\"건강한 식사로 인상 잘 지킬 수 있다\"},{\"personaId\":38,\"choice\":\"카페\",\"reason\":\"분위기 좋고 차가 잘 어울린다\"},{\"personaId\":39,\"choice\":\"밥집\",\"reason\":\"밥 먹으며 가족 이야기도 나눌 수 있다\"},{\"personaId\":40,\"choice\":\"카페\",\"reason\":\"등산 이야기 하며 친해질 수 있다\"}]}",
+   "promptTokens": 574,
+   "evalTokens": 137,
+   "evalSeconds": 3.019397,
+   "promptSeconds": 0.194862,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    41,
+    42,
+    43,
+    44,
+    45
+   ],
+   "startedAt": 108538.9250591,
+   "endedAt": 108544.380539,
+   "wallSeconds": 5.455479900003411,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":41,\"choice\":\"카페\",\"reason\":\"카페에서 차를 마시며 말이 잘 풀리고 감성적인 분위기를 즐길 수 있어요\"},{\"personaId\":42,\"choice\":\"밥집\",\"reason\":\"밥집에서 음식을 먹으며 자연스럽게 대화가 오가게 될 것 같아요\"},{\"personaId\":43,\"choice\":\"카페\",\"reason\":\"카페에서 차를 마시며 조용하게 오랜 시간 대화를 나눌 수 있어요\"},{\"personaId\":44,\"choice\":\"밥집\",\"reason\":\"밥집은 예산이 적게 들고 음식을 먹으며 대화하기 좋을 것 같아요\"},{\"personaId\":45,\"choice\":\"카페\",\"reason\":\"카페는 조용하고 안정적인 분위기라서 상대의 눈치를 잘 보며 대화하기 좋아요\"}]}",
+   "promptTokens": 588,
+   "evalTokens": 204,
+   "evalSeconds": 5.089474,
+   "promptSeconds": 0.314669,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "startedAt": 108539.2913276,
+   "endedAt": 108543.1804334,
+   "wallSeconds": 3.8891058000008343,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":46,\"choice\":\"밥집\",\"reason\":\"밥을 먹으면서 대화가 자연스럽게 흐를 수 있어 계획적으로 좋다\"},{\"personaId\":47,\"choice\":\"카페\",\"reason\":\"안정적인 분위기에서 차분히 대화할 수 있어 좋다\"},{\"personaId\":48,\"choice\":\"카페\",\"reason\":\"분위기 좋고 건강한 음료로 인상 좋을 것 같아\"},{\"personaId\":49,\"choice\":\"카페\",\"reason\":\"감성적인 분위기에서 즉흥적인 대화가 잘 흐를 것 같아\"},{\"personaId\":50,\"choice\":\"밥집\",\"reason\":\"시간 효율적으로 잘 마무리할 수 있어 남 눈치도 잘 보인다\"}]}",
+   "promptTokens": 588,
+   "evalTokens": 176,
+   "evalSeconds": 3.554547,
+   "promptSeconds": 0.291579,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51,
+    52,
+    53,
+    54,
+    55
+   ],
+   "startedAt": 108539.7465547,
+   "endedAt": 108543.6887697,
+   "wallSeconds": 3.9422150000027614,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"카페\",\"reason\":\"카페는 편안하게 대화할 수 있고, 새로운 곳 탐방이 좋아서\"},{\"personaId\":52,\"choice\":\"밥집\",\"reason\":\"밥 먹으며 효율적으로 대화하고, 인상 잘 남기고 싶어서\"},{\"personaId\":53,\"choice\":\"카페\",\"reason\":\"분위기 좋은 카페에서 감성적인 대화가 하고 싶어서\"},{\"personaId\":54,\"choice\":\"밥집\",\"reason\":\"밥값은 착하고, 시간도 효율적으로 보내고 싶어서\"},{\"personaId\":55,\"choice\":\"카페\",\"reason\":\"눈치 보지 않고, 취미에 대해 자연스럽게 이야기할 수 있어서\"}]}",
+   "promptTokens": 578,
+   "evalTokens": 171,
+   "evalSeconds": 3.710994,
+   "promptSeconds": 0.191027,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    56,
+    57,
+    58,
+    59,
+    60
+   ],
+   "startedAt": 108540.0183896,
+   "endedAt": 108543.1468422,
+   "wallSeconds": 3.128452600009041,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":56,\"choice\":\"카페\",\"reason\":\"감성적인 분위기에서 사진 찍으며 대화하기 좋아서\"},{\"personaId\":57,\"choice\":\"밥집\",\"reason\":\"오래 머무를 수 있고 진심 어린 대화 나누기 좋아해서\"},{\"personaId\":58,\"choice\":\"밥집\",\"reason\":\"즉흥적인 분위기에서 진솔한 대화 나누고 싶어서\"},{\"personaId\":59,\"choice\":\"카페\",\"reason\":\"돈을 아끼며 차분히 대화할 수 있는 곳이라서\"},{\"personaId\":60,\"choice\":\"밥집\",\"reason\":\"안정적이고 건강한 식사 함께 나누고 싶어서\"}]}",
+   "promptTokens": 586,
+   "evalTokens": 162,
+   "evalSeconds": 2.75683,
+   "promptSeconds": 0.319301,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    61,
+    62,
+    63,
+    64,
+    65
+   ],
+   "startedAt": 108543.1468842,
+   "endedAt": 108547.4410294,
+   "wallSeconds": 4.294145199994091,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":61,\"choice\":\"카페\",\"reason\":\"카페는 대화가 자연스럽고 효율적으로 이어질 수 있어요\"},{\"personaId\":62,\"choice\":\"밥집\",\"reason\":\"밥집은 분위기 있고 독특한 선택이 될 수 있어서요\"},{\"personaId\":63,\"choice\":\"카페\",\"reason\":\"카페에서 차를 마시며 편하게 대화가 잘 될 것 같아요\"},{\"personaId\":64,\"choice\":\"밥집\",\"reason\":\"밥집에서 음식도 먹고 재미있게 대화하고 싶어요\"},{\"personaId\":65,\"choice\":\"카페\",\"reason\":\"카페에서 편안하게 대화하며 힐링하고 싶어요\"}]}",
+   "promptTokens": 576,
+   "evalTokens": 171,
+   "evalSeconds": 3.926624,
+   "promptSeconds": 0.275276,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    66,
+    67,
+    68,
+    69,
+    70
+   ],
+   "startedAt": 108543.1804762,
+   "endedAt": 108546.784481,
+   "wallSeconds": 3.6040047999995295,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":66,\"choice\":\"카페\",\"reason\":\"차가운 분위기에서 차분하게 이야기할 수 있어요\"},{\"personaId\":67,\"choice\":\"밥집\",\"reason\":\"함께 먹으면서 자연스럽게 대화할 수 있어요\"},{\"personaId\":68,\"choice\":\"밥집\",\"reason\":\"밥을 먹으면서 좀 더 가까워질 수 있을 것 같아요\"},{\"personaId\":69,\"choice\":\"카페\",\"reason\":\"조용한 곳에서 오래 이야기할 수 있어서 좋아요\"},{\"personaId\":70,\"choice\":\"카페\",\"reason\":\"차분하게 이야기하며 서로를 알아갈 수 있어요\"}]}",
+   "promptTokens": 605,
+   "evalTokens": 150,
+   "evalSeconds": 3.134676,
+   "promptSeconds": 0.410606,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    71,
+    72,
+    73,
+    74,
+    75
+   ],
+   "startedAt": 108543.6888123,
+   "endedAt": 108548.1371381,
+   "wallSeconds": 4.4483258000109345,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":71,\"choice\":\"카페\",\"reason\":\"일에 지쳐 있으니 조용한 분위기의 카페가 편할 것 같아\"},{\"personaId\":72,\"choice\":\"밥집\",\"reason\":\"밥집에서 편하게 대화하며 서로를 더 알아갈 수 있을 것 같아\"},{\"personaId\":73,\"choice\":\"카페\",\"reason\":\"분위기 좋은 카페에서 서로를 더 잘 알아볼 수 있을 것 같아\"},{\"personaId\":74,\"choice\":\"밥집\",\"reason\":\"감성적인 분위기의 밥집이 소개팅에 어울릴 것 같아\"},{\"personaId\":75,\"choice\":\"밥집\",\"reason\":\"안정적이면서도 남들과 다른 선택을 해보고 싶어 해\"}]}",
+   "promptTokens": 584,
+   "evalTokens": 174,
+   "evalSeconds": 4.106728,
+   "promptSeconds": 0.301552,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76,
+    77,
+    78,
+    79,
+    80
+   ],
+   "startedAt": 108544.3805851,
+   "endedAt": 108547.8064898,
+   "wallSeconds": 3.4259046999941347,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"카페\",\"reason\":\"담소가 가능하고 차분한 분위기 좋아함\"},{\"personaId\":77,\"choice\":\"밥집\",\"reason\":\"함께 음식 먹으면서 이야기 나누기 좋아함\"},{\"personaId\":78,\"choice\":\"카페\",\"reason\":\"경제적 부담이 적고 여유 있는 분위기 좋아함\"},{\"personaId\":79,\"choice\":\"카페\",\"reason\":\"계획을 세우기 쉬운 곳이 마음에 들음\"},{\"personaId\":80,\"choice\":\"카페\",\"reason\":\"예산을 생각하고 차분한 곳을 원함\"}]}",
+   "promptTokens": 577,
+   "evalTokens": 146,
+   "evalSeconds": 3.168076,
+   "promptSeconds": 0.202325,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    81,
+    82,
+    83,
+    84,
+    85
+   ],
+   "startedAt": 108546.784525,
+   "endedAt": 108550.9461644,
+   "wallSeconds": 4.16163940000115,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":81,\"choice\":\"밥집\",\"reason\":\"실용적이고 분위기 있는 장소가 대화를 이어줄 것 같아\"},{\"personaId\":82,\"choice\":\"카페\",\"reason\":\"가벼운 분위기에서 편하게 대화할 수 있을 것 같아\"},{\"personaId\":83,\"choice\":\"카페\",\"reason\":\"따뜻한 분위기에서 차를 마시며 친해질 수 있을 것 같아\"},{\"personaId\":84,\"choice\":\"밥집\",\"reason\":\"즉흥적인 분위기에서 자연스럽게 대화할 수 있을 것 같아\"},{\"personaId\":85,\"choice\":\"카페\",\"reason\":\"분위기 좋은 곳에서 첫인상 잘 잡을 수 있을 것 같아\"}]}",
+   "promptTokens": 586,
+   "evalTokens": 174,
+   "evalSeconds": 3.815761,
+   "promptSeconds": 0.304558,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    86,
+    87,
+    88,
+    89,
+    90
+   ],
+   "startedAt": 108547.4410785,
+   "endedAt": 108551.2851877,
+   "wallSeconds": 3.844109200013918,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":86,\"choice\":\"카페\",\"reason\":\"안정적이면서도 특별한 분위기로 인상 깊게 만들 수 있어서\"},{\"personaId\":87,\"choice\":\"밥집\",\"reason\":\"함께 음식을 먹으면서 자연스럽게 대화할 수 있어서\"},{\"personaId\":88,\"choice\":\"카페\",\"reason\":\"분위기 좋고 차도 마실 수 있어서 건강에 좋아 보여서\"},{\"personaId\":89,\"choice\":\"밥집\",\"reason\":\"건강에 좋고 함께 먹으면서 친밀감을 높일 수 있어서\"},{\"personaId\":90,\"choice\":\"카페\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서 분위기 있는 카페가 좋을 것 같아서\"}]}",
+   "promptTokens": 589,
+   "evalTokens": 177,
+   "evalSeconds": 3.478974,
+   "promptSeconds": 0.311081,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "startedAt": 108547.8065299,
+   "endedAt": 108551.2401512,
+   "wallSeconds": 3.4336213000060525,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":91,\"choice\":\"카페\",\"reason\":\"카페에서 차분하게 대화하며 분위기 읽기 좋아함\"},{\"personaId\":92,\"choice\":\"밥집\",\"reason\":\"밥 먹으며 자연스럽게 대화할 수 있다고 생각함\"},{\"personaId\":93,\"choice\":\"밥집\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서 음식이야기 나누기 좋아함\"},{\"personaId\":94,\"choice\":\"카페\",\"reason\":\"일에 지쳐 있으니 조용한 곳에서 편하게 대화하고 싶음\"},{\"personaId\":95,\"choice\":\"카페\",\"reason\":\"새로운 곳 탐방하면서도 가족 생각해서 안정적인 곳 선호함\"}]}",
+   "promptTokens": 577,
+   "evalTokens": 172,
+   "evalSeconds": 3.174374,
+   "promptSeconds": 0.206698,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    96,
+    97,
+    98,
+    99,
+    100
+   ],
+   "startedAt": 108548.1371831,
+   "endedAt": 108550.8016429,
+   "wallSeconds": 2.66445979999844,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":96,\"choice\":\"카페\",\"reason\":\"카페에서 조용히 오래 이야기할 수 있어요\"},{\"personaId\":97,\"choice\":\"밥집\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서요\"},{\"personaId\":98,\"choice\":\"카페\",\"reason\":\"안정적이고 효율적인 만남이 좋아요\"},{\"personaId\":99,\"choice\":\"카페\",\"reason\":\"조용히 오래 이야기하는 걸 좋아해서요\"},{\"personaId\":100,\"choice\":\"밥집\",\"reason\":\"새로운 도전을 즐기고 싶어서요\"}]}",
+   "promptTokens": 587,
+   "evalTokens": 137,
+   "evalSeconds": 2.330001,
+   "promptSeconds": 0.293606,
+   "doneReason": "stop"
+  }
+ ]
+}

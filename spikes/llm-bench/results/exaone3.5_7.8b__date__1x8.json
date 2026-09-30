@@ -1,0 +1,2131 @@
+{
+ "model": "exaone3.5:7.8b",
+ "questionId": "date",
+ "method": "1x8",
+ "batchSize": 1,
+ "concurrency": 8,
+ "personaCount": 100,
+ "requestCount": 100,
+ "wallSeconds": 10.825294499998563,
+ "firstResultSeconds": 0.6095778999879258,
+ "evalTokens": 3998,
+ "promptTokens": 26697,
+ "tokensPerSecondOverall": 369.3202064849627,
+ "tokensPerSecondPerStream": 54.514743177602135,
+ "failureCount": 2,
+ "failureRate": 0.02,
+ "failureKinds": {
+  "reason_too_long": 2
+ },
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 12315,
+ "vramPeakMiB": 12315,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 대화 나누며 서로를 더 잘 이해하고 싶다."
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "대화를 자유롭게 나누며 서로를 더 잘 알아갈 수 있을 것 같아요."
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "카페",
+   "reason": "영화 이야기 나누며 분위기 좋게 시작하고 싶어"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "카페",
+   "reason": "새로운 분위기에서 대화가 더 자연스러울 것 같아요."
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누며 에너지 충전하고 싶어."
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 맛있는 음식 나누며 자연스럽게 대화 이어갈 수 있어요."
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누고 싶어"
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "첫 만남에 편안한 분위기와 대화에 집중하기 좋음"
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "카페",
+   "reason": "편안한 분위기에서 건강 간식 즐기며 대화하기 좋을 것 같아요."
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 식사하며 편안한 분위기에서 대화 나누기 좋겠다."
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "가족처럼 편안한 분위기에서 서로를 더 잘 알 수 있겠어요."
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "처음엔 편안한 대화를 위해 식사 분위기가 좋겠다."
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "따뜻한 음식에 이야기 나누며 자연스럽게 친해지고 싶어요."
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "처음엔 편안한 분위기에서 대화 나누기 좋죠."
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 식사하며 자연스러운 대화로 분위기 띄우고 싶어."
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "카페",
+   "reason": "영화 이야기 나누며 분위기 편히"
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누며 스트레스 좀 풀고 싶어."
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "카페",
+   "reason": "음악과 패션을 공유하며 분위기 있게 대화 나누기 좋을 것 같아."
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 진지한 대화 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 차 한잔하며 이야기 나누고 싶어요."
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "카페",
+   "reason": "새로운 분위기에서 대화를 즐기고 싶어요."
+  },
+  {
+   "personaId": 22,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "카페",
+   "reason": "카페에서 여유롭게 커피 한잔하며 대화 나누는 게 첫인상에 좋을 것 같아요."
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누고 싶어"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "대화 나누며 편안한 분위기에서 진솔한 대화를 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 대화 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "카페",
+   "reason": "드라마처럼 아름다운 분위기 속 대화 나누고 싶어"
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "가족 같은 분위기에서 자연스럽게 대화 나누기 좋겠다."
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "카페",
+   "reason": "새로운 분위기에서 대화 시작, 음악 이야기도 나눠보려구요."
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누며 피로 풀고 싶어요."
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "카페",
+   "reason": "부드러운 분위기에서 음악 감상하며 대화 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 식사하며 편안하게 대화 나누기 좋을 듯."
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "카페",
+   "reason": "독특한 분위기에서 대화를 나누고 싶어."
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누고 싶어"
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "현실적인 대화 나누기 좋고, 서로의 취향 파악하기 쉬워."
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "따뜻한 분위기에서 대화 나누며 휴식 같은 만남을 원할 것 같아요."
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "카페",
+   "reason": "커피 마시며 대화 나누기 편해, 첫인상 좋게 하기 좋음"
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 요리 이야기 나누며 편안한 분위기에서 시작하고 싶어요."
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "대화 나누기 편하고, 음식에 대한 공통 관심사 있어 분위기 자연스러워요."
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누며 서로를 더 잘 이해할 수 있을 것 같아요."
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 맛있는 식사로 편안한 분위기에서 이야기 나누기 좋겠다."
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "카페",
+   "reason": "따뜻한 분위기에서 진솔한 대화 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "카페",
+   "reason": "드라마 속 로맨틱한 만남처럼 분위기 있는 카페가 좋을 것 같아요."
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 커피 한잔하며 천천히 이야기 나누고 싶어."
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "운동 후 기력 보충하며 대화하기 좋겠다."
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "간단한 대화로 분위기 편안하게 시작하고 싶어요."
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "현실적인 대화와 첫인상에 음식이 중요하니까요."
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적 대화를 위한 분위기가 필요해."
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "카페",
+   "reason": "영화 이야기 나누며 분위기 편안해질 듯."
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "카페",
+   "reason": "감성 넘치는 분위기에서 자연스러운 대화 이끌어낼 수 있어."
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "대화 흐름 원활해지고 식사 중 자연스러운 대화 유도 가능"
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "카페",
+   "reason": "일에 지쳐 휴식이 필요해, 카페에서 여유롭게 대화하고 싶어."
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "대화보다는 편안한 식사 분위기서 자연스러움을 찾아볼래."
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "카페",
+   "reason": "영화 토론하며 분위기 잡기 좋을 것 같아요."
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "간단하게 식사하며 대화 나누기 좋고 비용 부담 덜해요."
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "밥 먹으며 자연스럽게 대화 나누기 좋아요."
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "카페",
+   "reason": "사진 찍기 좋고 분위기 편해 이야기 잘 나눌 수 있어."
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 오랜 대화를 즐길 수 있어요."
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "카페",
+   "reason": "독특한 분위기에서 음악 감상하며 대화 나누고 싶어요."
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 대화 나누며 피로 풀어야지."
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 건강한 식사 나누며 대화 이어가기 좋을 듯."
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "카페",
+   "reason": "편안한 분위기에서 대화를 나누기 좋고, 시간 효율적."
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "카페",
+   "reason": "독특한 분위기에서 대화 물꼬 터보고 싶어"
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "맛있는 대화는 마음을 더 열어줄 것 같아요."
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "카페",
+   "reason": "독특한 분위기에서 대화를 시작해보고 싶어."
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 대화 나누며 휴식도 취할 수 있어요."
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 대화 나누기 좋고, 책 이야기도 자연스러워요."
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "가족처럼 편안하게 오래 이야기 나누고 싶어."
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "새로운 장소보단 편안한 분위기에서 대화를 나누고 싶어."
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 대화를 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "카페",
+   "reason": "편안한 분위기에서 패션과 반려동물 이야기 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 대화 나누고 싶어."
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 대화 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 대화 나누며 스트레스 풀고 싶어."
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "카페",
+   "reason": "편안한 분위기에서 이야기 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적이고 자연스러운 대화를 위해 밥을 먹으며 이야기 나누는 게 좋겠다."
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "처음엔 편안한 대화, 음식 나누며 자연스럽게 친해지고 싶어."
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "건강 식사로 대화 시작해보는 게 어때?"
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "새로운 만남에서 진솔한 대화를 나누기에 밥집 분위기가 더 편안하다."
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "맛있는 식사하며 대화 나누는 게 일상의 활력 충전에 좋을 것 같아요."
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "친구들과 자주 가봐서 분위기 편안하고 대화하기 좋을 것 같아."
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 진솔한 대화 나누기 좋을 것 같아."
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "건강한 식사로 대화 분위기를 자연스럽게 이끌 수 있어요."
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "카페",
+   "reason": "감성적 분위기에서 편안하게 대화 나누기 좋을 것 같아요."
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "카페",
+   "reason": "새로운 이야기 나누며 커피 한잔, 분위기 좋지."
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "카페",
+   "reason": "읽던 책 잠시 내려놓고 대화 즐기기 좋겠다."
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 분위기에서 진솔한 대화 나누고 싶어."
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적인 대화 흐름 위해 분위기 편안한 밥집 추천"
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "편안한 분위기에서 진지한 대화 나누기 좋겠다."
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 건강한 식사하며 자연스러운 대화 나눠요."
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "가족처럼 편안한 분위기에서 대화를 나누고 싶어."
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "카페",
+   "reason": "계획된 일정으로 편안한 대화를 즐길 수 있어요."
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "간단한 대화로 분위기 보고 식사로 시간 효율적으로 쓰기 좋다."
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "함께 요리 이야기 나누며 편해지고 싶어."
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "조용한 분위기에서 대화 나누기 좋고, 가격도 부담 덜 돼."
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "카페",
+   "reason": "독서와 카페 분위기가 대화를 자연스럽게 이끌 것 같아요."
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용한 분위기에서 반려동물 이야기 나누기 좋겠다."
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "카페",
+   "reason": "음악을 들으며 신선한 대화 흐름을 만들고 싶어."
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "밥집",
+   "reason": "안정적이고 효율적인 대화를 위해 분위기 있는 밥집을 추천해요."
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "카페",
+   "reason": "조용히 드라마 이야기 나누기 딱이지."
+  },
+  {
+   "personaId": 100,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "카페",
+   "reason": "음악 감상하며 대화하기 좋고, 편안한 분위기로 스트레스 해소도 될 것 같아요."
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 108131.5681261,
+   "endedAt": 108132.4659537,
+   "wallSeconds": 0.8978275999979815,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 대화 나누며 서로를 더 잘 이해하고 싶다.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 42,
+   "evalSeconds": 0.695867,
+   "promptSeconds": 0.087192,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 108131.5684854,
+   "endedAt": 108132.5907017,
+   "wallSeconds": 1.0222162999998545,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"밥집\",\"reason\":\"대화를 자유롭게 나누며 서로를 더 잘 알아갈 수 있을 것 같아요.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 46,
+   "evalSeconds": 0.84196,
+   "promptSeconds": 0.065924,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 108131.5687305,
+   "endedAt": 108132.2035432,
+   "wallSeconds": 0.6348126999946544,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"카페\",\"reason\":\"영화 이야기 나누며 분위기 좋게 시작하고 싶어\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 36,
+   "evalSeconds": 0.422622,
+   "promptSeconds": 0.097983,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 108131.5690405,
+   "endedAt": 108132.2905263,
+   "wallSeconds": 0.7214857999933884,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"카페\",\"reason\":\"새로운 분위기에서 대화가 더 자연스러울 것 같아요.\"}]}",
+   "promptTokens": 262,
+   "evalTokens": 38,
+   "evalSeconds": 0.530828,
+   "promptSeconds": 0.076433,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 108131.569327,
+   "endedAt": 108132.2891642,
+   "wallSeconds": 0.7198371999984374,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누며 에너지 충전하고 싶어.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 38,
+   "evalSeconds": 0.581969,
+   "promptSeconds": 0.024457,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 108131.5696645,
+   "endedAt": 108132.442296,
+   "wallSeconds": 0.8726314999948954,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"밥집\",\"reason\":\"함께 맛있는 음식 나누며 자연스럽게 대화 이어갈 수 있어요.\"}]}",
+   "promptTokens": 261,
+   "evalTokens": 41,
+   "evalSeconds": 0.7148,
+   "promptSeconds": 0.044726,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 108131.5700693,
+   "endedAt": 108132.1775579,
+   "wallSeconds": 0.60748859999876,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누고 싶어\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 35,
+   "evalSeconds": 0.460133,
+   "promptSeconds": 0.034517,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 108131.5703752,
+   "endedAt": 108132.3129426,
+   "wallSeconds": 0.7425673999969149,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"밥집\",\"reason\":\"첫 만남에 편안한 분위기와 대화에 집중하기 좋음\"}]}",
+   "promptTokens": 261,
+   "evalTokens": 39,
+   "evalSeconds": 0.574735,
+   "promptSeconds": 0.055419,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 108132.1776056,
+   "endedAt": 108132.9962888,
+   "wallSeconds": 0.8186832000064896,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"카페\",\"reason\":\"편안한 분위기에서 건강 간식 즐기며 대화하기 좋을 것 같아요.\"}]}",
+   "promptTokens": 270,
+   "evalTokens": 41,
+   "evalSeconds": 0.732105,
+   "promptSeconds": 0.03311,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 108132.2035804,
+   "endedAt": 108132.9821121,
+   "wallSeconds": 0.7785316999943461,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"밥집\",\"reason\":\"함께 식사하며 편안한 분위기에서 대화 나누기 좋겠다.\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 40,
+   "evalSeconds": 0.706457,
+   "promptSeconds": 0.044471,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 108132.2892083,
+   "endedAt": 108133.2017526,
+   "wallSeconds": 0.9125442999938969,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"밥집\",\"reason\":\"가족처럼 편안한 분위기에서 서로를 더 잘 알 수 있겠어요.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 42,
+   "evalSeconds": 0.784379,
+   "promptSeconds": 0.061755,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 108132.2905613,
+   "endedAt": 108133.0478555,
+   "wallSeconds": 0.7572941999969771,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"밥집\",\"reason\":\"처음엔 편안한 대화를 위해 식사 분위기가 좋겠다.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 39,
+   "evalSeconds": 0.641373,
+   "promptSeconds": 0.05067,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 108132.3129841,
+   "endedAt": 108133.2126376,
+   "wallSeconds": 0.8996534999896539,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"밥집\",\"reason\":\"따뜻한 음식에 이야기 나누며 자연스럽게 친해지고 싶어요.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 42,
+   "evalSeconds": 0.784486,
+   "promptSeconds": 0.072388,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 108132.4423438,
+   "endedAt": 108133.1443515,
+   "wallSeconds": 0.702007700005197,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"밥집\",\"reason\":\"처음엔 편안한 분위기에서 대화 나누기 좋죠.\"}]}",
+   "promptTokens": 268,
+   "evalTokens": 38,
+   "evalSeconds": 0.592934,
+   "promptSeconds": 0.054355,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 108132.4659967,
+   "endedAt": 108133.2847107,
+   "wallSeconds": 0.8187139999936335,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"밥집\",\"reason\":\"함께 식사하며 자연스러운 대화로 분위기 띄우고 싶어.\"}]}",
+   "promptTokens": 275,
+   "evalTokens": 40,
+   "evalSeconds": 0.744736,
+   "promptSeconds": 0.042971,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 108132.5907412,
+   "endedAt": 108133.1212816,
+   "wallSeconds": 0.530540400010068,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"카페\",\"reason\":\"영화 이야기 나누며 분위기 편히\"}]}",
+   "promptTokens": 272,
+   "evalTokens": 32,
+   "evalSeconds": 0.459631,
+   "promptSeconds": 0.033436,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 108132.9821504,
+   "endedAt": 108133.7947529,
+   "wallSeconds": 0.8126024999946821,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누며 스트레스 좀 풀고 싶어.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 40,
+   "evalSeconds": 0.718818,
+   "promptSeconds": 0.051706,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 108132.9963285,
+   "endedAt": 108133.9441737,
+   "wallSeconds": 0.9478452000039397,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"카페\",\"reason\":\"음악과 패션을 공유하며 분위기 있게 대화 나누기 좋을 것 같아.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 44,
+   "evalSeconds": 0.884496,
+   "promptSeconds": 0.03524,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 108133.0478905,
+   "endedAt": 108133.9439663,
+   "wallSeconds": 0.8960757999884663,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 진지한 대화 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 43,
+   "evalSeconds": 0.823223,
+   "promptSeconds": 0.031739,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 108133.1213166,
+   "endedAt": 108133.8847575,
+   "wallSeconds": 0.7634409000020241,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 차 한잔하며 이야기 나누고 싶어요.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 39,
+   "evalSeconds": 0.672334,
+   "promptSeconds": 0.042054,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 108133.1443938,
+   "endedAt": 108133.7239349,
+   "wallSeconds": 0.5795410999999149,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"카페\",\"reason\":\"새로운 분위기에서 대화를 즐기고 싶어요.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 35,
+   "evalSeconds": 0.500903,
+   "promptSeconds": 0.052744,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 108133.2017946,
+   "endedAt": 108134.0996358,
+   "wallSeconds": 0.8978411999996752,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"카페\",\"reason\":\"카페에서 여유롭게 커피 한잔하며 대화 나누는 게 첫인상에 좋을 것 같아요.\"}]}",
+   "promptTokens": 263,
+   "evalTokens": 47,
+   "evalSeconds": 0.803773,
+   "promptSeconds": 0.0428,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 108133.2126766,
+   "endedAt": 108133.783806,
+   "wallSeconds": 0.5711294000066118,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누고 싶어\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 36,
+   "evalSeconds": 0.477364,
+   "promptSeconds": 0.053543,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 108133.2847493,
+   "endedAt": 108134.0993994,
+   "wallSeconds": 0.8146501000010176,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"밥집\",\"reason\":\"대화 나누며 편안한 분위기에서 진솔한 대화를 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 46,
+   "evalSeconds": 0.743349,
+   "promptSeconds": 0.032747,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 108133.7239687,
+   "endedAt": 108134.5312402,
+   "wallSeconds": 0.8072715000016615,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 대화 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 262,
+   "evalTokens": 39,
+   "evalSeconds": 0.736633,
+   "promptSeconds": 0.034019,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 108133.7838616,
+   "endedAt": 108134.4603047,
+   "wallSeconds": 0.6764431000046898,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"카페\",\"reason\":\"드라마처럼 아름다운 분위기 속 대화 나누고 싶어\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 36,
+   "evalSeconds": 0.602113,
+   "promptSeconds": 0.033961,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 108133.7947957,
+   "endedAt": 108134.6013301,
+   "wallSeconds": 0.8065344000060577,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"밥집\",\"reason\":\"가족 같은 분위기에서 자연스럽게 대화 나누기 좋겠다.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 40,
+   "evalSeconds": 0.730869,
+   "promptSeconds": 0.046207,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 108133.8848037,
+   "endedAt": 108134.6442702,
+   "wallSeconds": 0.7594665000069654,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"카페\",\"reason\":\"새로운 분위기에서 대화 시작, 음악 이야기도 나눠보려구요.\"}]}",
+   "promptTokens": 273,
+   "evalTokens": 39,
+   "evalSeconds": 0.689197,
+   "promptSeconds": 0.03372,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 108133.944005,
+   "endedAt": 108134.6930433,
+   "wallSeconds": 0.7490382999967551,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누며 피로 풀고 싶어요.\"}]}",
+   "promptTokens": 263,
+   "evalTokens": 39,
+   "evalSeconds": 0.667447,
+   "promptSeconds": 0.043023,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 108133.9442214,
+   "endedAt": 108134.7794172,
+   "wallSeconds": 0.8351957999984734,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"카페\",\"reason\":\"부드러운 분위기에서 음악 감상하며 대화 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 42,
+   "evalSeconds": 0.763864,
+   "promptSeconds": 0.032941,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    31
+   ],
+   "startedAt": 108134.099447,
+   "endedAt": 108134.9491454,
+   "wallSeconds": 0.8496983999939403,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":31,\"choice\":\"밥집\",\"reason\":\"함께 식사하며 편안하게 대화 나누기 좋을 듯.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 40,
+   "evalSeconds": 0.754534,
+   "promptSeconds": 0.043102,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    32
+   ],
+   "startedAt": 108134.099677,
+   "endedAt": 108134.8438525,
+   "wallSeconds": 0.7441754999890691,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":32,\"choice\":\"카페\",\"reason\":\"독특한 분위기에서 대화를 나누고 싶어.\"}]}",
+   "promptTokens": 270,
+   "evalTokens": 36,
+   "evalSeconds": 0.659964,
+   "promptSeconds": 0.032592,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    33
+   ],
+   "startedAt": 108134.4603395,
+   "endedAt": 108135.236379,
+   "wallSeconds": 0.7760394999932032,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":33,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누고 싶어\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 36,
+   "evalSeconds": 0.705414,
+   "promptSeconds": 0.034171,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    34
+   ],
+   "startedAt": 108134.5312832,
+   "endedAt": 108135.3895458,
+   "wallSeconds": 0.8582625999988522,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":34,\"choice\":\"밥집\",\"reason\":\"현실적인 대화 나누기 좋고, 서로의 취향 파악하기 쉬워.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 42,
+   "evalSeconds": 0.788462,
+   "promptSeconds": 0.033552,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    35
+   ],
+   "startedAt": 108134.6013923,
+   "endedAt": 108135.5570758,
+   "wallSeconds": 0.9556834999966668,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":35,\"choice\":\"밥집\",\"reason\":\"따뜻한 분위기에서 대화 나누며 휴식 같은 만남을 원할 것 같아요.\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 44,
+   "evalSeconds": 0.899494,
+   "promptSeconds": 0.027653,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    36
+   ],
+   "startedAt": 108134.6443121,
+   "endedAt": 108135.4506065,
+   "wallSeconds": 0.8062943999975687,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":36,\"choice\":\"카페\",\"reason\":\"커피 마시며 대화 나누기 편해, 첫인상 좋게 하기 좋음\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 41,
+   "evalSeconds": 0.74645,
+   "promptSeconds": 0.033345999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    37
+   ],
+   "startedAt": 108134.6930849,
+   "endedAt": 108135.4500894,
+   "wallSeconds": 0.7570044999883976,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":37,\"choice\":\"밥집\",\"reason\":\"함께 요리 이야기 나누며 편안한 분위기에서 시작하고 싶어요.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 40,
+   "evalSeconds": 0.698592,
+   "promptSeconds": 0.033597,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    38
+   ],
+   "startedAt": 108134.7794758,
+   "endedAt": 108135.6770168,
+   "wallSeconds": 0.8975409999984549,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":38,\"choice\":\"밥집\",\"reason\":\"대화 나누기 편하고, 음식에 대한 공통 관심사 있어 분위기 자연스러워요.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 45,
+   "evalSeconds": 0.833398,
+   "promptSeconds": 0.034746,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    39
+   ],
+   "startedAt": 108134.843892,
+   "endedAt": 108135.8024198,
+   "wallSeconds": 0.9585278000013204,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":39,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누며 서로를 더 잘 이해할 수 있을 것 같아요.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 47,
+   "evalSeconds": 0.88718,
+   "promptSeconds": 0.032772,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    40
+   ],
+   "startedAt": 108134.9491875,
+   "endedAt": 108135.7409092,
+   "wallSeconds": 0.7917217000067467,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":40,\"choice\":\"밥집\",\"reason\":\"함께 맛있는 식사로 편안한 분위기에서 이야기 나누기 좋겠다.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 41,
+   "evalSeconds": 0.720805,
+   "promptSeconds": 0.03292,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    41
+   ],
+   "startedAt": 108135.2364201,
+   "endedAt": 108136.0962184,
+   "wallSeconds": 0.8597982999926899,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":41,\"choice\":\"카페\",\"reason\":\"따뜻한 분위기에서 진솔한 대화 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 41,
+   "evalSeconds": 0.768211,
+   "promptSeconds": 0.033228,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    42
+   ],
+   "startedAt": 108135.3895879,
+   "endedAt": 108136.3599233,
+   "wallSeconds": 0.9703353999939281,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":42,\"choice\":\"카페\",\"reason\":\"드라마 속 로맨틱한 만남처럼 분위기 있는 카페가 좋을 것 같아요.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 43,
+   "evalSeconds": 0.898033,
+   "promptSeconds": 0.034072,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    43
+   ],
+   "startedAt": 108135.4501571,
+   "endedAt": 108136.2894051,
+   "wallSeconds": 0.8392480000038631,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":43,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 커피 한잔하며 천천히 이야기 나누고 싶어.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 40,
+   "evalSeconds": 0.747916,
+   "promptSeconds": 0.053119,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    44
+   ],
+   "startedAt": 108135.4506366,
+   "endedAt": 108136.2038491,
+   "wallSeconds": 0.7532124999997905,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":44,\"choice\":\"밥집\",\"reason\":\"운동 후 기력 보충하며 대화하기 좋겠다.\"}]}",
+   "promptTokens": 262,
+   "evalTokens": 37,
+   "evalSeconds": 0.673274,
+   "promptSeconds": 0.042181,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    45
+   ],
+   "startedAt": 108135.5571238,
+   "endedAt": 108136.3859655,
+   "wallSeconds": 0.8288417000003392,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":45,\"choice\":\"밥집\",\"reason\":\"간단한 대화로 분위기 편안하게 시작하고 싶어요.\"}]}",
+   "promptTokens": 262,
+   "evalTokens": 39,
+   "evalSeconds": 0.758056,
+   "promptSeconds": 0.025026,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    46
+   ],
+   "startedAt": 108135.6770719,
+   "endedAt": 108136.5665697,
+   "wallSeconds": 0.8894977999880211,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":46,\"choice\":\"밥집\",\"reason\":\"현실적인 대화와 첫인상에 음식이 중요하니까요.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 39,
+   "evalSeconds": 0.826261,
+   "promptSeconds": 0.033965,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    47
+   ],
+   "startedAt": 108135.7409515,
+   "endedAt": 108136.5160398,
+   "wallSeconds": 0.7750882999971509,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":47,\"choice\":\"밥집\",\"reason\":\"안정적 대화를 위한 분위기가 필요해.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 36,
+   "evalSeconds": 0.702003,
+   "promptSeconds": 0.035022,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    48
+   ],
+   "startedAt": 108135.8024679,
+   "endedAt": 108136.4921727,
+   "wallSeconds": 0.6897048000100767,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":48,\"choice\":\"카페\",\"reason\":\"영화 이야기 나누며 분위기 편안해질 듯.\"}]}",
+   "promptTokens": 270,
+   "evalTokens": 34,
+   "evalSeconds": 0.625523,
+   "promptSeconds": 0.034878,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    49
+   ],
+   "startedAt": 108136.0962707,
+   "endedAt": 108136.9277828,
+   "wallSeconds": 0.8315121000050567,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":49,\"choice\":\"카페\",\"reason\":\"감성 넘치는 분위기에서 자연스러운 대화 이끌어낼 수 있어.\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 40,
+   "evalSeconds": 0.737824,
+   "promptSeconds": 0.033372,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    50
+   ],
+   "startedAt": 108136.2038913,
+   "endedAt": 108137.0139397,
+   "wallSeconds": 0.8100484000024153,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":50,\"choice\":\"밥집\",\"reason\":\"대화 흐름 원활해지고 식사 중 자연스러운 대화 유도 가능\"}]}",
+   "promptTokens": 263,
+   "evalTokens": 40,
+   "evalSeconds": 0.739377,
+   "promptSeconds": 0.034039,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51
+   ],
+   "startedAt": 108136.2894406,
+   "endedAt": 108137.1568261,
+   "wallSeconds": 0.8673855000088224,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"카페\",\"reason\":\"일에 지쳐 휴식이 필요해, 카페에서 여유롭게 대화하고 싶어.\"}]}",
+   "promptTokens": 268,
+   "evalTokens": 43,
+   "evalSeconds": 0.797324,
+   "promptSeconds": 0.033687,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    52
+   ],
+   "startedAt": 108136.3599638,
+   "endedAt": 108137.1573056,
+   "wallSeconds": 0.7973418000037782,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":52,\"choice\":\"밥집\",\"reason\":\"대화보다는 편안한 식사 분위기서 자연스러움을 찾아볼래.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 41,
+   "evalSeconds": 0.71205,
+   "promptSeconds": 0.025827,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    53
+   ],
+   "startedAt": 108136.3860115,
+   "endedAt": 108137.1150865,
+   "wallSeconds": 0.7290749999956461,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":53,\"choice\":\"카페\",\"reason\":\"영화 토론하며 분위기 잡기 좋을 것 같아요.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 39,
+   "evalSeconds": 0.659225,
+   "promptSeconds": 0.036429,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    54
+   ],
+   "startedAt": 108136.4922133,
+   "endedAt": 108137.4096103,
+   "wallSeconds": 0.917397000011988,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":54,\"choice\":\"밥집\",\"reason\":\"간단하게 식사하며 대화 나누기 좋고 비용 부담 덜해요.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 42,
+   "evalSeconds": 0.831801,
+   "promptSeconds": 0.034091,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    55
+   ],
+   "startedAt": 108136.5160832,
+   "endedAt": 108137.2677963,
+   "wallSeconds": 0.7517131000058725,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":55,\"choice\":\"밥집\",\"reason\":\"밥 먹으며 자연스럽게 대화 나누기 좋아요.\"}]}",
+   "promptTokens": 262,
+   "evalTokens": 38,
+   "evalSeconds": 0.679029,
+   "promptSeconds": 0.044923,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    56
+   ],
+   "startedAt": 108136.5666096,
+   "endedAt": 108137.3365046,
+   "wallSeconds": 0.7698949999903562,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":56,\"choice\":\"카페\",\"reason\":\"사진 찍기 좋고 분위기 편해 이야기 잘 나눌 수 있어.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 39,
+   "evalSeconds": 0.699514,
+   "promptSeconds": 0.032570999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    57
+   ],
+   "startedAt": 108136.9278271,
+   "endedAt": 108137.7205095,
+   "wallSeconds": 0.7926824000023771,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":57,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 오랜 대화를 즐길 수 있어요.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 37,
+   "evalSeconds": 0.721041,
+   "promptSeconds": 0.034575,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    58
+   ],
+   "startedAt": 108137.0139913,
+   "endedAt": 108137.8381231,
+   "wallSeconds": 0.824131799992756,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":58,\"choice\":\"카페\",\"reason\":\"독특한 분위기에서 음악 감상하며 대화 나누고 싶어요.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 39,
+   "evalSeconds": 0.752283,
+   "promptSeconds": 0.033788,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    59
+   ],
+   "startedAt": 108137.1151237,
+   "endedAt": 108137.8623152,
+   "wallSeconds": 0.7471914999914588,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":59,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 대화 나누며 피로 풀어야지.\"}]}",
+   "promptTokens": 268,
+   "evalTokens": 36,
+   "evalSeconds": 0.690375,
+   "promptSeconds": 0.029296,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    60
+   ],
+   "startedAt": 108137.1568693,
+   "endedAt": 108138.1203311,
+   "wallSeconds": 0.9634617999981856,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":60,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 건강한 식사 나누며 대화 이어가기 좋을 듯.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 44,
+   "evalSeconds": 0.866718,
+   "promptSeconds": 0.052487,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    61
+   ],
+   "startedAt": 108137.1573523,
+   "endedAt": 108138.0095955,
+   "wallSeconds": 0.8522432000027038,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":61,\"choice\":\"카페\",\"reason\":\"편안한 분위기에서 대화를 나누기 좋고, 시간 효율적.\"}]}",
+   "promptTokens": 263,
+   "evalTokens": 40,
+   "evalSeconds": 0.766532,
+   "promptSeconds": 0.042033,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    62
+   ],
+   "startedAt": 108137.2678384,
+   "endedAt": 108137.9863816,
+   "wallSeconds": 0.7185431999969296,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":62,\"choice\":\"카페\",\"reason\":\"독특한 분위기에서 대화 물꼬 터보고 싶어\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 36,
+   "evalSeconds": 0.638725,
+   "promptSeconds": 0.033605,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    63
+   ],
+   "startedAt": 108137.3365413,
+   "endedAt": 108138.1507683,
+   "wallSeconds": 0.8142269999952987,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":63,\"choice\":\"밥집\",\"reason\":\"맛있는 대화는 마음을 더 열어줄 것 같아요.\"}]}",
+   "promptTokens": 262,
+   "evalTokens": 41,
+   "evalSeconds": 0.755973,
+   "promptSeconds": 0.032458,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    64
+   ],
+   "startedAt": 108137.4096549,
+   "endedAt": 108138.1195751,
+   "wallSeconds": 0.7099202000099467,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":64,\"choice\":\"카페\",\"reason\":\"독특한 분위기에서 대화를 시작해보고 싶어.\"}]}",
+   "promptTokens": 272,
+   "evalTokens": 37,
+   "evalSeconds": 0.639589,
+   "promptSeconds": 0.0327,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    65
+   ],
+   "startedAt": 108137.72055,
+   "endedAt": 108138.5253977,
+   "wallSeconds": 0.804847699997481,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":65,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 대화 나누며 휴식도 취할 수 있어요.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 39,
+   "evalSeconds": 0.725276,
+   "promptSeconds": 0.033331,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    66
+   ],
+   "startedAt": 108137.8381652,
+   "endedAt": 108138.7134645,
+   "wallSeconds": 0.8752993000089191,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":66,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 대화 나누기 좋고, 책 이야기도 자연스러워요.\"}]}",
+   "promptTokens": 273,
+   "evalTokens": 43,
+   "evalSeconds": 0.780963,
+   "promptSeconds": 0.037053,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    67
+   ],
+   "startedAt": 108137.8623571,
+   "endedAt": 108138.6254921,
+   "wallSeconds": 0.763135000001057,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":67,\"choice\":\"밥집\",\"reason\":\"가족처럼 편안하게 오래 이야기 나누고 싶어.\"}]}",
+   "promptTokens": 272,
+   "evalTokens": 38,
+   "evalSeconds": 0.679166,
+   "promptSeconds": 0.050805,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    68
+   ],
+   "startedAt": 108137.9864248,
+   "endedAt": 108138.7997356,
+   "wallSeconds": 0.8133108000038192,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":68,\"choice\":\"밥집\",\"reason\":\"새로운 장소보단 편안한 분위기에서 대화를 나누고 싶어.\"}]}",
+   "promptTokens": 272,
+   "evalTokens": 41,
+   "evalSeconds": 0.729234,
+   "promptSeconds": 0.032976999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    69
+   ],
+   "startedAt": 108138.0096305,
+   "endedAt": 108138.822653,
+   "wallSeconds": 0.813022499991348,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":69,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 대화를 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 268,
+   "evalTokens": 42,
+   "evalSeconds": 0.742139,
+   "promptSeconds": 0.043033,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    70
+   ],
+   "startedAt": 108138.1196186,
+   "endedAt": 108139.038466,
+   "wallSeconds": 0.9188473999965936,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":70,\"choice\":\"카페\",\"reason\":\"편안한 분위기에서 패션과 반려동물 이야기 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 272,
+   "evalTokens": 43,
+   "evalSeconds": 0.788277,
+   "promptSeconds": 0.059954,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    71
+   ],
+   "startedAt": 108138.1203692,
+   "endedAt": 108138.8222889,
+   "wallSeconds": 0.7019197000045097,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":71,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 대화 나누고 싶어.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 37,
+   "evalSeconds": 0.582595,
+   "promptSeconds": 0.049377,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    72
+   ],
+   "startedAt": 108138.150814,
+   "endedAt": 108138.9797667,
+   "wallSeconds": 0.8289527000015369,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":72,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 대화 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 41,
+   "evalSeconds": 0.718645,
+   "promptSeconds": 0.07086,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    73
+   ],
+   "startedAt": 108138.5254414,
+   "endedAt": 108139.3242233,
+   "wallSeconds": 0.7987819000118179,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":73,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 대화 나누며 스트레스 풀고 싶어.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 39,
+   "evalSeconds": 0.726715,
+   "promptSeconds": 0.033761,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    74
+   ],
+   "startedAt": 108138.6255306,
+   "endedAt": 108139.4234448,
+   "wallSeconds": 0.7979142000112915,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":74,\"choice\":\"카페\",\"reason\":\"편안한 분위기에서 이야기 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 39,
+   "evalSeconds": 0.744824,
+   "promptSeconds": 0.0252,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    75
+   ],
+   "startedAt": 108138.7135108,
+   "endedAt": 108139.6610507,
+   "wallSeconds": 0.9475399000075413,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":75,\"choice\":\"밥집\",\"reason\":\"안정적이고 자연스러운 대화를 위해 밥을 먹으며 이야기 나누는 게 좋겠다.\"}]}",
+   "promptTokens": 272,
+   "evalTokens": 46,
+   "evalSeconds": 0.87622,
+   "promptSeconds": 0.033615,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76
+   ],
+   "startedAt": 108138.7997793,
+   "endedAt": 108139.7214998,
+   "wallSeconds": 0.9217205000022659,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"밥집\",\"reason\":\"처음엔 편안한 대화, 음식 나누며 자연스럽게 친해지고 싶어.\"}]}",
+   "promptTokens": 269,
+   "evalTokens": 44,
+   "evalSeconds": 0.808649,
+   "promptSeconds": 0.040544,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    77
+   ],
+   "startedAt": 108138.8223291,
+   "endedAt": 108139.5252082,
+   "wallSeconds": 0.7028790999902412,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":77,\"choice\":\"밥집\",\"reason\":\"건강 식사로 대화 시작해보는 게 어때?\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 37,
+   "evalSeconds": 0.601652,
+   "promptSeconds": 0.051177,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    78
+   ],
+   "startedAt": 108138.8226908,
+   "endedAt": 108139.6385925,
+   "wallSeconds": 0.815901699999813,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":78,\"choice\":\"밥집\",\"reason\":\"새로운 만남에서 진솔한 대화를 나누기에 밥집 분위기가 더 편안하다.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 42,
+   "evalSeconds": 0.700524,
+   "promptSeconds": 0.065578,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    79
+   ],
+   "startedAt": 108138.9798024,
+   "endedAt": 108139.924348,
+   "wallSeconds": 0.944545599995763,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":79,\"choice\":\"밥집\",\"reason\":\"맛있는 식사하며 대화 나누는 게 일상의 활력 충전에 좋을 것 같아요.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 47,
+   "evalSeconds": 0.874772,
+   "promptSeconds": 0.033561,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    80
+   ],
+   "startedAt": 108139.0385116,
+   "endedAt": 108139.8525258,
+   "wallSeconds": 0.814014200004749,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":80,\"choice\":\"밥집\",\"reason\":\"친구들과 자주 가봐서 분위기 편안하고 대화하기 좋을 것 같아.\"}]}",
+   "promptTokens": 262,
+   "evalTokens": 44,
+   "evalSeconds": 0.757869,
+   "promptSeconds": 0.032494,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    81
+   ],
+   "startedAt": 108139.3242645,
+   "endedAt": 108140.1671377,
+   "wallSeconds": 0.8428732000029413,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":81,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 진솔한 대화 나누기 좋을 것 같아.\"}]}",
+   "promptTokens": 263,
+   "evalTokens": 41,
+   "evalSeconds": 0.772144,
+   "promptSeconds": 0.034841,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    82
+   ],
+   "startedAt": 108139.4234894,
+   "endedAt": 108140.2658463,
+   "wallSeconds": 0.8423569000005955,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":82,\"choice\":\"밥집\",\"reason\":\"건강한 식사로 대화 분위기를 자연스럽게 이끌 수 있어요.\"}]}",
+   "promptTokens": 266,
+   "evalTokens": 41,
+   "evalSeconds": 0.787954,
+   "promptSeconds": 0.025518,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    83
+   ],
+   "startedAt": 108139.5252473,
+   "endedAt": 108140.3880098,
+   "wallSeconds": 0.8627624999935506,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":83,\"choice\":\"카페\",\"reason\":\"감성적 분위기에서 편안하게 대화 나누기 좋을 것 같아요.\"}]}",
+   "promptTokens": 271,
+   "evalTokens": 42,
+   "evalSeconds": 0.789281,
+   "promptSeconds": 0.033994,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    84
+   ],
+   "startedAt": 108139.6386329,
+   "endedAt": 108140.3647513,
+   "wallSeconds": 0.7261184000089997,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":84,\"choice\":\"카페\",\"reason\":\"새로운 이야기 나누며 커피 한잔, 분위기 좋지.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 36,
+   "evalSeconds": 0.632163,
+   "promptSeconds": 0.041727,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    85
+   ],
+   "startedAt": 108139.661094,
+   "endedAt": 108140.3884569,
+   "wallSeconds": 0.727362899997388,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":85,\"choice\":\"카페\",\"reason\":\"읽던 책 잠시 내려놓고 대화 즐기기 좋겠다.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 37,
+   "evalSeconds": 0.644784,
+   "promptSeconds": 0.052482,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    86
+   ],
+   "startedAt": 108139.7215416,
+   "endedAt": 108140.5207753,
+   "wallSeconds": 0.7992337000032421,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":86,\"choice\":\"밥집\",\"reason\":\"안정적인 분위기에서 진솔한 대화 나누고 싶어.\"}]}",
+   "promptTokens": 274,
+   "evalTokens": 39,
+   "evalSeconds": 0.730799,
+   "promptSeconds": 0.032386,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    87
+   ],
+   "startedAt": 108139.8525744,
+   "endedAt": 108140.6383823,
+   "wallSeconds": 0.7858078999997815,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":87,\"choice\":\"밥집\",\"reason\":\"안정적인 대화 흐름 위해 분위기 편안한 밥집 추천\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 38,
+   "evalSeconds": 0.715113,
+   "promptSeconds": 0.032616999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    88
+   ],
+   "startedAt": 108139.924402,
+   "endedAt": 108140.709151,
+   "wallSeconds": 0.7847489999985555,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":88,\"choice\":\"밥집\",\"reason\":\"편안한 분위기에서 진지한 대화 나누기 좋겠다.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 38,
+   "evalSeconds": 0.714485,
+   "promptSeconds": 0.033885,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    89
+   ],
+   "startedAt": 108140.1671789,
+   "endedAt": 108140.9512339,
+   "wallSeconds": 0.7840550000109943,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":89,\"choice\":\"밥집\",\"reason\":\"함께 건강한 식사하며 자연스러운 대화 나눠요.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 38,
+   "evalSeconds": 0.713288,
+   "promptSeconds": 0.033947,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    90
+   ],
+   "startedAt": 108140.2658869,
+   "endedAt": 108141.0701148,
+   "wallSeconds": 0.8042278999928385,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":90,\"choice\":\"밥집\",\"reason\":\"가족처럼 편안한 분위기에서 대화를 나누고 싶어.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 39,
+   "evalSeconds": 0.751464,
+   "promptSeconds": 0.024922,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    91
+   ],
+   "startedAt": 108140.3647884,
+   "endedAt": 108141.1696943,
+   "wallSeconds": 0.804905900004087,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":91,\"choice\":\"카페\",\"reason\":\"계획된 일정으로 편안한 대화를 즐길 수 있어요.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 38,
+   "evalSeconds": 0.697383,
+   "promptSeconds": 0.041432,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    92
+   ],
+   "startedAt": 108140.3880513,
+   "endedAt": 108141.2888664,
+   "wallSeconds": 0.9008151000016369,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":92,\"choice\":\"밥집\",\"reason\":\"간단한 대화로 분위기 보고 식사로 시간 효율적으로 쓰기 좋다.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 42,
+   "evalSeconds": 0.795333,
+   "promptSeconds": 0.062596,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    93
+   ],
+   "startedAt": 108140.3884997,
+   "endedAt": 108141.1472033,
+   "wallSeconds": 0.7587036000040825,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":93,\"choice\":\"밥집\",\"reason\":\"함께 요리 이야기 나누며 편해지고 싶어.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 37,
+   "evalSeconds": 0.664254,
+   "promptSeconds": 0.051766,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    94
+   ],
+   "startedAt": 108140.520836,
+   "endedAt": 108141.3779465,
+   "wallSeconds": 0.8571105000009993,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":94,\"choice\":\"밥집\",\"reason\":\"조용한 분위기에서 대화 나누기 좋고, 가격도 부담 덜 돼.\"}]}",
+   "promptTokens": 264,
+   "evalTokens": 42,
+   "evalSeconds": 0.793788,
+   "promptSeconds": 0.033971,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    95
+   ],
+   "startedAt": 108140.6384293,
+   "endedAt": 108141.5048653,
+   "wallSeconds": 0.8664359999966109,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":95,\"choice\":\"카페\",\"reason\":\"독서와 카페 분위기가 대화를 자연스럽게 이끌 것 같아요.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 41,
+   "evalSeconds": 0.796654,
+   "promptSeconds": 0.032488999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    96
+   ],
+   "startedAt": 108140.7091928,
+   "endedAt": 108141.4453449,
+   "wallSeconds": 0.736152099998435,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":96,\"choice\":\"카페\",\"reason\":\"조용한 분위기에서 반려동물 이야기 나누기 좋겠다.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 37,
+   "evalSeconds": 0.665965,
+   "promptSeconds": 0.033458,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    97
+   ],
+   "startedAt": 108140.9513045,
+   "endedAt": 108142.0894793,
+   "wallSeconds": 1.1381747999985237,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":97,\"choice\":\"카페\",\"reason\":\"음악을 들으며 신선한 대화 흐름을 만들고 싶어.\"}]}",
+   "promptTokens": 272,
+   "evalTokens": 38,
+   "evalSeconds": 1.059156999,
+   "promptSeconds": 0.042958,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    98
+   ],
+   "startedAt": 108141.0701576,
+   "endedAt": 108142.3304138,
+   "wallSeconds": 1.2602561999956379,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":98,\"choice\":\"밥집\",\"reason\":\"안정적이고 효율적인 대화를 위해 분위기 있는 밥집을 추천해요.\"}]}",
+   "promptTokens": 265,
+   "evalTokens": 44,
+   "evalSeconds": 1.207493,
+   "promptSeconds": 0.025085,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    99
+   ],
+   "startedAt": 108141.1472569,
+   "endedAt": 108142.2001087,
+   "wallSeconds": 1.0528517999919131,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":99,\"choice\":\"카페\",\"reason\":\"조용히 드라마 이야기 나누기 딱이지.\"}]}",
+   "promptTokens": 270,
+   "evalTokens": 33,
+   "evalSeconds": 0.961045,
+   "promptSeconds": 0.041713,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    100
+   ],
+   "startedAt": 108141.1697333,
+   "endedAt": 108142.3929165,
+   "wallSeconds": 1.2231831999961287,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":100,\"choice\":\"카페\",\"reason\":\"음악 감상하며 대화하기 좋고, 편안한 분위기로 스트레스 해소도 될 것 같아요.\"}]}",
+   "promptTokens": 267,
+   "evalTokens": 48,
+   "evalSeconds": 1.143544,
+   "promptSeconds": 0.052045,
+   "doneReason": "stop"
+  }
+ ]
+}

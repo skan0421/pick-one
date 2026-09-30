@@ -1,0 +1,1007 @@
+{
+ "model": "qwen3:14b",
+ "questionId": "hobby",
+ "method": "5x4",
+ "batchSize": 5,
+ "concurrency": 4,
+ "personaCount": 100,
+ "requestCount": 20,
+ "wallSeconds": 21.327313999994658,
+ "firstResultSeconds": 3.6027819000009913,
+ "evalTokens": 3165,
+ "promptTokens": 12040,
+ "tokensPerSecondOverall": 148.40124733948178,
+ "tokensPerSecondPerStream": 44.04518983595108,
+ "failureCount": 0,
+ "failureRate": 0.0,
+ "failureKinds": {},
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 11996,
+ "vramPeakMiB": 15710,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "수영",
+   "reason": "피로를 해소하고 몸을 단련할 수 있어서"
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "계획을 세우며 친구와 즐겁게 시간 보내기 좋아해서"
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "새로운 경험과 창의적인 표현을 즐기고 싶어서"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "새로운 도전과 친구들과의 소통을 즐기고 싶어서"
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "수영",
+   "reason": "안정적인 생활과 건강을 동시에 챙기고 싶어서"
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "기타",
+   "reason": "계획을 세우면 매일 연습할 수 있어서 좋아요"
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 위해 규칙적으로 할 수 있는 활동이라 좋아요"
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "친구들과 즉흥적으로 즐길 수 있어서 좋아요"
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "집에서 차분히 할 수 있고 결과가 보여서 좋아요"
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강하고 가족과 함께할 수 있어서 좋아요"
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족과 함께 할 수 있는 안정적인 취미라 생각해서"
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 유지하면서도 실용적인 활동이니까"
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "친구와 자주 할 수 있는 편안한 취미라 생각해서"
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 생각하면서도 쉽게 시작할 수 있어서"
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "기타",
+   "reason": "다른 사람들은 안 하니까 도전해 보고 싶어서"
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "기타",
+   "reason": "감성적인 음악을 즐기며 스트레스를 해소하고 싶어서"
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "수영",
+   "reason": "규칙적인 운동으로 일에 지친 몸을 회복하고 싶어서"
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악을 통해 창의성을 발휘하고 싶어서"
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 위해 안정적인 취미를 찾고 싶어서"
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "조용히 집에서 시간을 보내며 일의 피로를 달래고 싶어서"
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "기타",
+   "reason": "새로운 도전을 즐기고 실용적인 취미를 선호하기 때문"
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "수영",
+   "reason": "즉흥적이고 몸을 움직이는 취미를 좋아하기 때문"
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "안정적이면서도 즐거운 취미를 찾고 있기 때문"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "조용한 곳에서 오랜 시간 집중할 수 있기 때문"
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "수영",
+   "reason": "효율적이고 남 눈치를 덜 보며 할 수 있기 때문"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "새로운 사람과 쉽게 친해질 수 있어요"
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "수영",
+   "reason": "가족과 함께할 수 있는 건강한 취미입니다"
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "기타",
+   "reason": "특별한 취미로 자신만의 색을 표현하고 싶어요"
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "돈을 많이 안 쓰면서도 즐거움을 느낄 수 있어요"
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "기타",
+   "reason": "안정적인 취미로 일상의 스트레스를 줄일 수 있어요"
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "기타",
+   "reason": "음악을 좋아하니 취미로 기타를 배우는 게 현실적이야"
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "다른 사람들이 안 하는 선택을 하고 싶어서"
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "수영",
+   "reason": "일에 지쳐서 몸을 움직이며 힐링하고 싶어서"
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "수영",
+   "reason": "여행과 사진처럼 몸을 움직이며 즐겁게 시간 보내고 싶어서"
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "게임을 좋아해서 친구들과 함께할 수 있어서"
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "수영",
+   "reason": "운동도 되고 친구들과도 같이 할 수 있어 효율적이야"
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가족과 함께할 수 있고 건강한 음식도 만들 수 있겠지"
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "재미있고 친구들과도 쉽게 즐길 수 있어"
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강도 생각하고 가족과 함께할 수 있어서 좋아"
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "기타",
+   "reason": "운동이 되고 친구들과도 잘 어울릴 수 있어"
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "수영",
+   "reason": "감성적인 이유에 흔들리며 안정적인 취미를 원하기 때문"
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "즉흥적으로 움직이며 감성적인 이유에 잘 흔들리기 때문"
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "요리에 관심이 많고 조용한 취미를 원하기 때문"
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "기타",
+   "reason": "돈 쓰는 데 신중하며 취미에 진심이기 때문"
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "수영",
+   "reason": "남 눈치를 보며 편안한 취미를 찾기 때문"
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "기타",
+   "reason": "계획을 세워 연습할 수 있어서 좋다"
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "집에서 할 수 있고 안정적인 취미다"
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강도 생각하고 스트레스도 줄일 수 있다"
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "친구랑도 즐길 수 있고 감성적이야"
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "수영",
+   "reason": "시간 효율도 잘되고 몸도 건강해진다"
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "새로운 사람과의 교류가 필요해서"
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "가정에서 효율적인 시간 활용을 원해서"
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "기타",
+   "reason": "감성적인 경험을 통해 힐링하고 싶어서"
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "수영",
+   "reason": "운동을 통해 건강을 관리하고 싶어서"
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "취미를 통해 소통하고 싶어서"
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "기타",
+   "reason": "감성적인 음악을 통해 자신만의 세계를 표현하고 싶어서"
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 챙기며 조용한 시간을 보내고 싶어서"
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "다른 사람들이 하지 않는 선택을 해보고 싶어서"
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "집에서 편하게 반려동물과 시간을 보내고 싶어서"
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 챙기기 위해 안정적인 생활을 원해서"
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "시간 효율이 좋고 재미도 있다."
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "수영",
+   "reason": "운동하면서 독특한 선택을 해보고 싶다."
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "새로운 도전을 하고 싶어서."
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "친구들과 잘 어울리는 활동이 좋아."
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "일상에서 벗어나 편안하게 시간 보내기 좋아."
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "기타",
+   "reason": "조용한 곳에서 집중할 수 있고 취미로도 활용할 수 있어서"
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 위해 운동하고 싶어서"
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "새로운 경험을 해보고 싶어서"
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 챙기면서도 안정적인 취미를 원해서"
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "따뜻한 활동으로 스트레스를 해소하고 싶어서"
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "휴식과 즐거움을 동시에 얻을 수 있어서"
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "기타",
+   "reason": "창의적이고 자기 표현이 잘 된다고 생각해서"
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 위해 몸을 움직이고 싶어서"
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "수영",
+   "reason": "혼자서도 즐겁게 할 수 있는 활동이 좋아서"
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "새로운 것에 도전하고 싶어서"
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "수영",
+   "reason": "운동으로 스트레스를 해소하고 건강을 챙기고 싶어서"
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "수영",
+   "reason": "즉흥적인 활동을 좋아하고 건강을 챙기기 시작했기 때문"
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "새로운 취미를 시도하면서도 돈을 절약하고 싶어서"
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "요리로 일에 지친 마음을 달래고 계획적으로 즐기고 싶어서"
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "취미에 진심이고 친구들과 함께 즐겁게 시간 보내고 싶어서"
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "새로운 도전이면서 실내에서 할 수 있어서 좋아"
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "수영",
+   "reason": "계획을 세우고 건강을 관리하기에 좋다"
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "감성적인 시간을 보내며 친구들과 공유할 수 있다"
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "기타",
+   "reason": "즉흥적으로 즐길 수 있고 여행에서도 사용할 수 있다"
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "수영",
+   "reason": "즉흥적으로 움직이며 건강도 챙길 수 있다"
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "다른 사람과 하면 재미있고 독특하다"
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강에 좋고 안정적인 취미다"
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강 관리와 함께 할 수 있다"
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "수영",
+   "reason": "건강을 생각하며 안정적인 취미를 찾고 싶다"
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "가족과 함께 즐길 수 있고 즉흥적이다"
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "수영",
+   "reason": "운동으로 스트레스 해소하고 건강도 관리할 수 있어서"
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "시간 효율적으로 즐길 수 있고 친구들과도 잘 어울릴 수 있어서"
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "즉흥적으로 요리하며 친구들과도 즐겁게 시간 보내고 싶어서"
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "수영",
+   "reason": "운동으로 스트레스 풀고 경제적 부담 없이 할 수 있어서"
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "기타",
+   "reason": "새로운 도전으로 가족과 함께 연주하며 즐겁게 시간 보내고 싶어서"
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "요리에 관심이 많아서 베이킹을 시작해 보고 싶다"
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "보드게임",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서 보드게임을 해보고 싶다"
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "수영",
+   "reason": "시간이 효율적으로 사용되면서 건강도 관리할 수 있어서 수영을 고른다"
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "기타",
+   "reason": "조용한 곳에서 오래 할 수 있는 취미로 기타를 고르고 싶다"
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "베이킹",
+   "reason": "일에 지쳐 있으니 힐링이 되는 베이킹을 해보고 싶다"
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "startedAt": 108876.5514755,
+   "endedAt": 108881.0520386,
+   "wallSeconds": 4.500563099994906,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"수영\",\"reason\":\"피로를 해소하고 몸을 단련할 수 있어서\"},{\"personaId\":2,\"choice\":\"보드게임\",\"reason\":\"계획을 세우며 친구와 즐겁게 시간 보내기 좋아해서\"},{\"personaId\":3,\"choice\":\"베이킹\",\"reason\":\"새로운 경험과 창의적인 표현을 즐기고 싶어서\"},{\"personaId\":4,\"choice\":\"보드게임\",\"reason\":\"새로운 도전과 친구들과의 소통을 즐기고 싶어서\"},{\"personaId\":5,\"choice\":\"수영\",\"reason\":\"안정적인 생활과 건강을 동시에 챙기고 싶어서\"}]}",
+   "promptTokens": 594,
+   "evalTokens": 164,
+   "evalSeconds": 4.123626,
+   "promptSeconds": 0.254173,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "startedAt": 108876.551808,
+   "endedAt": 108880.1540876,
+   "wallSeconds": 3.602279600003385,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"기타\",\"reason\":\"계획을 세우면 매일 연습할 수 있어서 좋아요\"},{\"personaId\":7,\"choice\":\"수영\",\"reason\":\"건강을 위해 규칙적으로 할 수 있는 활동이라 좋아요\"},{\"personaId\":8,\"choice\":\"보드게임\",\"reason\":\"친구들과 즉흥적으로 즐길 수 있어서 좋아요\"},{\"personaId\":9,\"choice\":\"베이킹\",\"reason\":\"집에서 차분히 할 수 있고 결과가 보여서 좋아요\"},{\"personaId\":10,\"choice\":\"수영\",\"reason\":\"건강하고 가족과 함께할 수 있어서 좋아요\"}]}",
+   "promptTokens": 604,
+   "evalTokens": 143,
+   "evalSeconds": 2.54341,
+   "promptSeconds": 0.416868,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "startedAt": 108876.5520967,
+   "endedAt": 108880.4773911,
+   "wallSeconds": 3.9252943999890704,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"베이킹\",\"reason\":\"가족과 함께 할 수 있는 안정적인 취미라 생각해서\"},{\"personaId\":12,\"choice\":\"수영\",\"reason\":\"건강을 유지하면서도 실용적인 활동이니까\"},{\"personaId\":13,\"choice\":\"보드게임\",\"reason\":\"친구와 자주 할 수 있는 편안한 취미라 생각해서\"},{\"personaId\":14,\"choice\":\"수영\",\"reason\":\"건강을 생각하면서도 쉽게 시작할 수 있어서\"},{\"personaId\":15,\"choice\":\"기타\",\"reason\":\"다른 사람들은 안 하니까 도전해 보고 싶어서\"}]}",
+   "promptTokens": 608,
+   "evalTokens": 150,
+   "evalSeconds": 2.925463,
+   "promptSeconds": 0.623536,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "startedAt": 108876.5523677,
+   "endedAt": 108881.343399,
+   "wallSeconds": 4.791031300002942,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"기타\",\"reason\":\"감성적인 음악을 즐기며 스트레스를 해소하고 싶어서\"},{\"personaId\":17,\"choice\":\"수영\",\"reason\":\"규칙적인 운동으로 일에 지친 몸을 회복하고 싶어서\"},{\"personaId\":18,\"choice\":\"기타\",\"reason\":\"음악을 통해 창의성을 발휘하고 싶어서\"},{\"personaId\":19,\"choice\":\"수영\",\"reason\":\"건강을 위해 안정적인 취미를 찾고 싶어서\"},{\"personaId\":20,\"choice\":\"베이킹\",\"reason\":\"조용히 집에서 시간을 보내며 일의 피로를 달래고 싶어서\"}]}",
+   "promptTokens": 612,
+   "evalTokens": 167,
+   "evalSeconds": 4.14968,
+   "promptSeconds": 0.519398,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "startedAt": 108880.1541324,
+   "endedAt": 108884.1783063,
+   "wallSeconds": 4.0241739000048256,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"기타\",\"reason\":\"새로운 도전을 즐기고 실용적인 취미를 선호하기 때문\"},{\"personaId\":22,\"choice\":\"수영\",\"reason\":\"즉흥적이고 몸을 움직이는 취미를 좋아하기 때문\"},{\"personaId\":23,\"choice\":\"보드게임\",\"reason\":\"안정적이면서도 즐거운 취미를 찾고 있기 때문\"},{\"personaId\":24,\"choice\":\"베이킹\",\"reason\":\"조용한 곳에서 오랜 시간 집중할 수 있기 때문\"},{\"personaId\":25,\"choice\":\"수영\",\"reason\":\"효율적이고 남 눈치를 덜 보며 할 수 있기 때문\"}]}",
+   "promptTokens": 592,
+   "evalTokens": 163,
+   "evalSeconds": 3.772389,
+   "promptSeconds": 0.195238,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26,
+    27,
+    28,
+    29,
+    30
+   ],
+   "startedAt": 108880.4774309,
+   "endedAt": 108884.5126974,
+   "wallSeconds": 4.035266499995487,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"보드게임\",\"reason\":\"새로운 사람과 쉽게 친해질 수 있어요\"},{\"personaId\":27,\"choice\":\"수영\",\"reason\":\"가족과 함께할 수 있는 건강한 취미입니다\"},{\"personaId\":28,\"choice\":\"기타\",\"reason\":\"특별한 취미로 자신만의 색을 표현하고 싶어요\"},{\"personaId\":29,\"choice\":\"베이킹\",\"reason\":\"돈을 많이 안 쓰면서도 즐거움을 느낄 수 있어요\"},{\"personaId\":30,\"choice\":\"기타\",\"reason\":\"안정적인 취미로 일상의 스트레스를 줄일 수 있어요\"}]}",
+   "promptTokens": 610,
+   "evalTokens": 159,
+   "evalSeconds": 3.646022,
+   "promptSeconds": 0.326038,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    31,
+    32,
+    33,
+    34,
+    35
+   ],
+   "startedAt": 108881.0520924,
+   "endedAt": 108885.3439616,
+   "wallSeconds": 4.291869199994835,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":31,\"choice\":\"기타\",\"reason\":\"음악을 좋아하니 취미로 기타를 배우는 게 현실적이야\"},{\"personaId\":32,\"choice\":\"보드게임\",\"reason\":\"다른 사람들이 안 하는 선택을 하고 싶어서\"},{\"personaId\":33,\"choice\":\"수영\",\"reason\":\"일에 지쳐서 몸을 움직이며 힐링하고 싶어서\"},{\"personaId\":34,\"choice\":\"수영\",\"reason\":\"여행과 사진처럼 몸을 움직이며 즐겁게 시간 보내고 싶어서\"},{\"personaId\":35,\"choice\":\"보드게임\",\"reason\":\"게임을 좋아해서 친구들과 함께할 수 있어서\"}]}",
+   "promptTokens": 591,
+   "evalTokens": 163,
+   "evalSeconds": 4.040139,
+   "promptSeconds": 0.206263,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "startedAt": 108881.3434468,
+   "endedAt": 108885.0817356,
+   "wallSeconds": 3.7382887999992818,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":36,\"choice\":\"수영\",\"reason\":\"운동도 되고 친구들과도 같이 할 수 있어 효율적이야\"},{\"personaId\":37,\"choice\":\"베이킹\",\"reason\":\"가족과 함께할 수 있고 건강한 음식도 만들 수 있겠지\"},{\"personaId\":38,\"choice\":\"보드게임\",\"reason\":\"재미있고 친구들과도 쉽게 즐길 수 있어\"},{\"personaId\":39,\"choice\":\"수영\",\"reason\":\"건강도 생각하고 가족과 함께할 수 있어서 좋아\"},{\"personaId\":40,\"choice\":\"기타\",\"reason\":\"운동이 되고 친구들과도 잘 어울릴 수 있어\"}]}",
+   "promptTokens": 592,
+   "evalTokens": 157,
+   "evalSeconds": 3.464406,
+   "promptSeconds": 0.205776,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    41,
+    42,
+    43,
+    44,
+    45
+   ],
+   "startedAt": 108884.1783559,
+   "endedAt": 108888.9417865,
+   "wallSeconds": 4.763430599996354,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":41,\"choice\":\"수영\",\"reason\":\"감성적인 이유에 흔들리며 안정적인 취미를 원하기 때문\"},{\"personaId\":42,\"choice\":\"보드게임\",\"reason\":\"즉흥적으로 움직이며 감성적인 이유에 잘 흔들리기 때문\"},{\"personaId\":43,\"choice\":\"베이킹\",\"reason\":\"요리에 관심이 많고 조용한 취미를 원하기 때문\"},{\"personaId\":44,\"choice\":\"기타\",\"reason\":\"돈 쓰는 데 신중하며 취미에 진심이기 때문\"},{\"personaId\":45,\"choice\":\"수영\",\"reason\":\"남 눈치를 보며 편안한 취미를 찾기 때문\"}]}",
+   "promptTokens": 606,
+   "evalTokens": 170,
+   "evalSeconds": 4.428477,
+   "promptSeconds": 0.291959,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "startedAt": 108884.5127431,
+   "endedAt": 108887.873355,
+   "wallSeconds": 3.3606119000032777,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":46,\"choice\":\"기타\",\"reason\":\"계획을 세워 연습할 수 있어서 좋다\"},{\"personaId\":47,\"choice\":\"베이킹\",\"reason\":\"집에서 할 수 있고 안정적인 취미다\"},{\"personaId\":48,\"choice\":\"수영\",\"reason\":\"건강도 생각하고 스트레스도 줄일 수 있다\"},{\"personaId\":49,\"choice\":\"보드게임\",\"reason\":\"친구랑도 즐길 수 있고 감성적이야\"},{\"personaId\":50,\"choice\":\"수영\",\"reason\":\"시간 효율도 잘되고 몸도 건강해진다\"}]}",
+   "promptTokens": 606,
+   "evalTokens": 142,
+   "evalSeconds": 2.997175,
+   "promptSeconds": 0.309585,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51,
+    52,
+    53,
+    54,
+    55
+   ],
+   "startedAt": 108885.081793,
+   "endedAt": 108888.3093473,
+   "wallSeconds": 3.2275542999996105,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"보드게임\",\"reason\":\"새로운 사람과의 교류가 필요해서\"},{\"personaId\":52,\"choice\":\"베이킹\",\"reason\":\"가정에서 효율적인 시간 활용을 원해서\"},{\"personaId\":53,\"choice\":\"기타\",\"reason\":\"감성적인 경험을 통해 힐링하고 싶어서\"},{\"personaId\":54,\"choice\":\"수영\",\"reason\":\"운동을 통해 건강을 관리하고 싶어서\"},{\"personaId\":55,\"choice\":\"보드게임\",\"reason\":\"취미를 통해 소통하고 싶어서\"}]}",
+   "promptTokens": 596,
+   "evalTokens": 138,
+   "evalSeconds": 2.964779,
+   "promptSeconds": 0.206729,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    56,
+    57,
+    58,
+    59,
+    60
+   ],
+   "startedAt": 108885.3440145,
+   "endedAt": 108889.4313531,
+   "wallSeconds": 4.087338599987561,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":56,\"choice\":\"기타\",\"reason\":\"감성적인 음악을 통해 자신만의 세계를 표현하고 싶어서\"},{\"personaId\":57,\"choice\":\"수영\",\"reason\":\"건강을 챙기며 조용한 시간을 보내고 싶어서\"},{\"personaId\":58,\"choice\":\"보드게임\",\"reason\":\"다른 사람들이 하지 않는 선택을 해보고 싶어서\"},{\"personaId\":59,\"choice\":\"베이킹\",\"reason\":\"집에서 편하게 반려동물과 시간을 보내고 싶어서\"},{\"personaId\":60,\"choice\":\"수영\",\"reason\":\"건강을 챙기기 위해 안정적인 생활을 원해서\"}]}",
+   "promptTokens": 604,
+   "evalTokens": 162,
+   "evalSeconds": 3.747392,
+   "promptSeconds": 0.293798,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    61,
+    62,
+    63,
+    64,
+    65
+   ],
+   "startedAt": 108887.8733953,
+   "endedAt": 108891.6575764,
+   "wallSeconds": 3.7841810999962036,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":61,\"choice\":\"보드게임\",\"reason\":\"시간 효율이 좋고 재미도 있다.\"},{\"personaId\":62,\"choice\":\"수영\",\"reason\":\"운동하면서 독특한 선택을 해보고 싶다.\"},{\"personaId\":63,\"choice\":\"베이킹\",\"reason\":\"새로운 도전을 하고 싶어서.\"},{\"personaId\":64,\"choice\":\"보드게임\",\"reason\":\"친구들과 잘 어울리는 활동이 좋아.\"},{\"personaId\":65,\"choice\":\"보드게임\",\"reason\":\"일상에서 벗어나 편안하게 시간 보내기 좋아.\"}]}",
+   "promptTokens": 594,
+   "evalTokens": 147,
+   "evalSeconds": 3.488725,
+   "promptSeconds": 0.202636,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    66,
+    67,
+    68,
+    69,
+    70
+   ],
+   "startedAt": 108888.3093958,
+   "endedAt": 108892.2597908,
+   "wallSeconds": 3.95039500000712,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":66,\"choice\":\"기타\",\"reason\":\"조용한 곳에서 집중할 수 있고 취미로도 활용할 수 있어서\"},{\"personaId\":67,\"choice\":\"수영\",\"reason\":\"건강을 위해 운동하고 싶어서\"},{\"personaId\":68,\"choice\":\"보드게임\",\"reason\":\"새로운 경험을 해보고 싶어서\"},{\"personaId\":69,\"choice\":\"수영\",\"reason\":\"건강을 챙기면서도 안정적인 취미를 원해서\"},{\"personaId\":70,\"choice\":\"베이킹\",\"reason\":\"따뜻한 활동으로 스트레스를 해소하고 싶어서\"}]}",
+   "promptTokens": 623,
+   "evalTokens": 151,
+   "evalSeconds": 3.575781,
+   "promptSeconds": 0.314473,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    71,
+    72,
+    73,
+    74,
+    75
+   ],
+   "startedAt": 108888.9418372,
+   "endedAt": 108892.7733281,
+   "wallSeconds": 3.8314909000037005,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":71,\"choice\":\"보드게임\",\"reason\":\"휴식과 즐거움을 동시에 얻을 수 있어서\"},{\"personaId\":72,\"choice\":\"기타\",\"reason\":\"창의적이고 자기 표현이 잘 된다고 생각해서\"},{\"personaId\":73,\"choice\":\"수영\",\"reason\":\"건강을 위해 몸을 움직이고 싶어서\"},{\"personaId\":74,\"choice\":\"수영\",\"reason\":\"혼자서도 즐겁게 할 수 있는 활동이 좋아서\"},{\"personaId\":75,\"choice\":\"베이킹\",\"reason\":\"새로운 것에 도전하고 싶어서\"}]}",
+   "promptTokens": 602,
+   "evalTokens": 145,
+   "evalSeconds": 3.486629,
+   "promptSeconds": 0.296286,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76,
+    77,
+    78,
+    79,
+    80
+   ],
+   "startedAt": 108889.4314055,
+   "endedAt": 108893.8318316,
+   "wallSeconds": 4.400426099993638,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"수영\",\"reason\":\"운동으로 스트레스를 해소하고 건강을 챙기고 싶어서\"},{\"personaId\":77,\"choice\":\"수영\",\"reason\":\"즉흥적인 활동을 좋아하고 건강을 챙기기 시작했기 때문\"},{\"personaId\":78,\"choice\":\"베이킹\",\"reason\":\"새로운 취미를 시도하면서도 돈을 절약하고 싶어서\"},{\"personaId\":79,\"choice\":\"베이킹\",\"reason\":\"요리로 일에 지친 마음을 달래고 계획적으로 즐기고 싶어서\"},{\"personaId\":80,\"choice\":\"보드게임\",\"reason\":\"취미에 진심이고 친구들과 함께 즐겁게 시간 보내고 싶어서\"}]}",
+   "promptTokens": 595,
+   "evalTokens": 184,
+   "evalSeconds": 4.16801,
+   "promptSeconds": 0.186466,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    81,
+    82,
+    83,
+    84,
+    85
+   ],
+   "startedAt": 108891.657621,
+   "endedAt": 108895.5295718,
+   "wallSeconds": 3.8719507999921916,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":81,\"choice\":\"보드게임\",\"reason\":\"새로운 도전이면서 실내에서 할 수 있어서 좋아\"},{\"personaId\":82,\"choice\":\"수영\",\"reason\":\"계획을 세우고 건강을 관리하기에 좋다\"},{\"personaId\":83,\"choice\":\"베이킹\",\"reason\":\"감성적인 시간을 보내며 친구들과 공유할 수 있다\"},{\"personaId\":84,\"choice\":\"기타\",\"reason\":\"즉흥적으로 즐길 수 있고 여행에서도 사용할 수 있다\"},{\"personaId\":85,\"choice\":\"수영\",\"reason\":\"즉흥적으로 움직이며 건강도 챙길 수 있다\"}]}",
+   "promptTokens": 604,
+   "evalTokens": 152,
+   "evalSeconds": 3.49791,
+   "promptSeconds": 0.31552,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    86,
+    87,
+    88,
+    89,
+    90
+   ],
+   "startedAt": 108892.2598369,
+   "endedAt": 108895.6650161,
+   "wallSeconds": 3.405179199995473,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":86,\"choice\":\"보드게임\",\"reason\":\"다른 사람과 하면 재미있고 독특하다\"},{\"personaId\":87,\"choice\":\"수영\",\"reason\":\"건강에 좋고 안정적인 취미다\"},{\"personaId\":88,\"choice\":\"수영\",\"reason\":\"건강 관리와 함께 할 수 있다\"},{\"personaId\":89,\"choice\":\"수영\",\"reason\":\"건강을 생각하며 안정적인 취미를 찾고 싶다\"},{\"personaId\":90,\"choice\":\"보드게임\",\"reason\":\"가족과 함께 즐길 수 있고 즉흥적이다\"}]}",
+   "promptTokens": 607,
+   "evalTokens": 142,
+   "evalSeconds": 3.030736,
+   "promptSeconds": 0.315001,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "startedAt": 108892.7733751,
+   "endedAt": 108897.1240146,
+   "wallSeconds": 4.350639500000398,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":91,\"choice\":\"수영\",\"reason\":\"운동으로 스트레스 해소하고 건강도 관리할 수 있어서\"},{\"personaId\":92,\"choice\":\"보드게임\",\"reason\":\"시간 효율적으로 즐길 수 있고 친구들과도 잘 어울릴 수 있어서\"},{\"personaId\":93,\"choice\":\"베이킹\",\"reason\":\"즉흥적으로 요리하며 친구들과도 즐겁게 시간 보내고 싶어서\"},{\"personaId\":94,\"choice\":\"수영\",\"reason\":\"운동으로 스트레스 풀고 경제적 부담 없이 할 수 있어서\"},{\"personaId\":95,\"choice\":\"기타\",\"reason\":\"새로운 도전으로 가족과 함께 연주하며 즐겁게 시간 보내고 싶어서\"}]}",
+   "promptTokens": 595,
+   "evalTokens": 179,
+   "evalSeconds": 4.108398,
+   "promptSeconds": 0.195193,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    96,
+    97,
+    98,
+    99,
+    100
+   ],
+   "startedAt": 108893.8318859,
+   "endedAt": 108897.8783224,
+   "wallSeconds": 4.046436500007985,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":96,\"choice\":\"베이킹\",\"reason\":\"요리에 관심이 많아서 베이킹을 시작해 보고 싶다\"},{\"personaId\":97,\"choice\":\"보드게임\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서 보드게임을 해보고 싶다\"},{\"personaId\":98,\"choice\":\"수영\",\"reason\":\"시간이 효율적으로 사용되면서 건강도 관리할 수 있어서 수영을 고른다\"},{\"personaId\":99,\"choice\":\"기타\",\"reason\":\"조용한 곳에서 오래 할 수 있는 취미로 기타를 고르고 싶다\"},{\"personaId\":100,\"choice\":\"베이킹\",\"reason\":\"일에 지쳐 있으니 힐링이 되는 베이킹을 해보고 싶다\"}]}",
+   "promptTokens": 605,
+   "evalTokens": 187,
+   "evalSeconds": 3.69887,
+   "promptSeconds": 0.300188,
+   "doneReason": "stop"
+  }
+ ]
+}

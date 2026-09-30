@@ -1,0 +1,783 @@
+{
+ "model": "qwen3:14b",
+ "questionId": "job",
+ "method": "25x1",
+ "batchSize": 25,
+ "concurrency": 1,
+ "personaCount": 100,
+ "requestCount": 4,
+ "wallSeconds": 41.65193759999238,
+ "firstResultSeconds": 10.295661199997994,
+ "evalTokens": 2653,
+ "promptTokens": 6810,
+ "tokensPerSecondOverall": 63.69451585850079,
+ "tokensPerSecondPerStream": 68.53256941260457,
+ "failureCount": 0,
+ "failureRate": 0.0,
+ "failureKinds": {},
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 11996,
+ "vramPeakMiB": 15696,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전에 흥미가 생겼다"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 즐기기 때문"
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐서 안정을 더 원한다"
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강을 위해 출퇴근 시간을 더 줄이고 싶다"
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 위해 안정적인 일자리가 중요하다"
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "현실적인 조언을 좋아해서"
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "감성적인 이유에 잘 흔들린다"
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐서 안정을 더 원한다"
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "감성적인 이유에 잘 흔들린다"
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 걸 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 즐기기 때문"
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서"
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정을 위해 연봉 상승보다 출퇴근 시간이 중요한 듯"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 중요해 보여서 이직은 안 할 거다"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 더 중요해 보여서"
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 위해 안정적인 직장을 원해서"
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "남들이 안 하는 선택을 해보고 싶어서"
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "돈을 더 많이 벌고 싶지만 힘들어해서"
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 삶을 우선시해서"
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 더 중요하다고 생각해서"
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "남들이 안 하는 선택을 해보고 싶어서"
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "소득 증가가 필요해서"
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적인 조언을 고려해서"
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐서 편한 곳을 원해서"
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "효율을 따져서 이직하는 게 좋다고 생각해서"
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전이 하고 싶어서"
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "재테크를 고려해서"
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 위해 안정적인 직장을 원해서"
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 위해 절약을 우선시해서"
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 삶을 우선시해서"
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "감성적인 이유로 도전을 원해서"
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "재테크를 위해 연봉 증가를 원해서"
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "돈을 절약하는 게 우선시해서"
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 위해 안정적인 직장을 원해서"
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "계획을 세워야 해서 연봉 오름을 고려해서"
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 삶을 우선시해서"
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 사람과 친해지길 원해서"
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "감성적인 이유로 도전을 원해서"
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율을 따져서 남는 게 좋다고 생각해서"
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서"
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "경험을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험을 원해서"
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간을 더 소중하게 생각해서"
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 선택을 해보고 싶어서"
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 즐기고 있어서"
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 선택을 해보고 싶어서"
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획을 세워야 마음이 놓여"
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험을 원해서"
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족을 먼저 생각해서"
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 선택을 해보고 싶어서"
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현실적인 조언을 좋아해서"
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "경험을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약을 더 중요하게 생각해"
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 선택을 해보고 싶어서"
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 증가가 생활에 도움이 될 것 같아"
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸려 피곤할 것 같아"
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 증가가 장기적으로 유리할 것 같아"
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐 있어 더 힘들어질 것 같아"
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 아깝고 피곤할 것 같아"
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "도전을 좋아해서 도전해 보고 싶어"
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 부족해 건강에 나쁘다고 생각해"
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "돈을 더 벌 수 있어서 좋겠다 싶어서"
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "게임처럼 도전하는 걸 좋아해서"
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서"
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 삶이 더 중요하다고 생각해서"
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정을 더 원해서"
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "돈을 더 벌 수 있어서"
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 부족해 힘들다고 생각해서"
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "가족을 생각해도 도전해 보고 싶어"
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "계획을 세우면 더 좋을 것 같아"
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 효율이 더 중요하다고 생각해서"
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서"
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐 있어 더 힘들어질 것 같아"
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전이 흥미롭고 도움이 될 것 같아"
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "조용한 곳에서 오래 이야기하는 게 좋아"
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "즉흥적으로 움직이는 걸 좋아해서"
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 부족해 건강에 나쁘다고 생각해서"
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "조용한 곳에서 오래 이야기하는 게 좋아"
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전을 좋아해서 도전해 보고 싶어"
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "startedAt": 108611.4353348,
+   "endedAt": 108621.7307769,
+   "wallSeconds": 10.295442100003129,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"남는다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":2,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":3,\"choice\":\"이직한다\",\"reason\":\"새로운 도전에 흥미가 생겼다\"},{\"personaId\":4,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 즐기기 때문\"},{\"personaId\":5,\"choice\":\"남는다\",\"reason\":\"일에 지쳐서 안정을 더 원한다\"},{\"personaId\":6,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":7,\"choice\":\"남는다\",\"reason\":\"건강을 위해 출퇴근 시간을 더 줄이고 싶다\"},{\"personaId\":8,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":9,\"choice\":\"남는다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":10,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":11,\"choice\":\"남는다\",\"reason\":\"가족을 위해 안정적인 일자리가 중요하다\"},{\"personaId\":12,\"choice\":\"남는다\",\"reason\":\"안정을 더 중요하게 생각해서\"},{\"personaId\":13,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":14,\"choice\":\"이직한다\",\"reason\":\"현실적인 조언을 좋아해서\"},{\"personaId\":15,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":16,\"choice\":\"이직한다\",\"reason\":\"감성적인 이유에 잘 흔들린다\"},{\"personaId\":17,\"choice\":\"남는다\",\"reason\":\"일에 지쳐서 안정을 더 원한다\"},{\"personaId\":18,\"choice\":\"이직한다\",\"reason\":\"감성적인 이유에 잘 흔들린다\"},{\"personaId\":19,\"choice\":\"남는다\",\"reason\":\"안정적인 걸 더 중요하게 생각해서\"},{\"personaId\":20,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":21,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 즐기기 때문\"},{\"personaId\":22,\"choice\":\"이직한다\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서\"},{\"personaId\":23,\"choice\":\"남는다\",\"reason\":\"안정을 위해 연봉 상승보다 출퇴근 시간이 중요한 듯\"},{\"personaId\":24,\"choice\":\"남는다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"},{\"personaId\":25,\"choice\":\"이직한다\",\"reason\":\"시간이 더 중요해 보여서 이직은 안 할 거다\"}]}",
+   "promptTokens": 1704,
+   "evalTokens": 701,
+   "evalSeconds": 9.628816,
+   "promptSeconds": 0.652144,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "startedAt": 108621.7308299,
+   "endedAt": 108631.522221,
+   "wallSeconds": 9.791391100006877,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 더 중요해 보여서\"},{\"personaId\":27,\"choice\":\"남는다\",\"reason\":\"가족을 위해 안정적인 직장을 원해서\"},{\"personaId\":28,\"choice\":\"이직한다\",\"reason\":\"남들이 안 하는 선택을 해보고 싶어서\"},{\"personaId\":29,\"choice\":\"남는다\",\"reason\":\"돈을 더 많이 벌고 싶지만 힘들어해서\"},{\"personaId\":30,\"choice\":\"남는다\",\"reason\":\"안정적인 삶을 우선시해서\"},{\"personaId\":31,\"choice\":\"남는다\",\"reason\":\"시간 절약이 더 중요하다고 생각해서\"},{\"personaId\":32,\"choice\":\"이직한다\",\"reason\":\"남들이 안 하는 선택을 해보고 싶어서\"},{\"personaId\":33,\"choice\":\"이직한다\",\"reason\":\"소득 증가가 필요해서\"},{\"personaId\":34,\"choice\":\"남는다\",\"reason\":\"현실적인 조언을 고려해서\"},{\"personaId\":35,\"choice\":\"남는다\",\"reason\":\"일에 지쳐서 편한 곳을 원해서\"},{\"personaId\":36,\"choice\":\"이직한다\",\"reason\":\"효율을 따져서 이직하는 게 좋다고 생각해서\"},{\"personaId\":37,\"choice\":\"이직한다\",\"reason\":\"새로운 도전이 하고 싶어서\"},{\"personaId\":38,\"choice\":\"이직한다\",\"reason\":\"재테크를 고려해서\"},{\"personaId\":39,\"choice\":\"남는다\",\"reason\":\"가족을 위해 안정적인 직장을 원해서\"},{\"personaId\":40,\"choice\":\"남는다\",\"reason\":\"가족을 위해 절약을 우선시해서\"},{\"personaId\":41,\"choice\":\"남는다\",\"reason\":\"안정적인 삶을 우선시해서\"},{\"personaId\":42,\"choice\":\"이직한다\",\"reason\":\"감성적인 이유로 도전을 원해서\"},{\"personaId\":43,\"choice\":\"이직한다\",\"reason\":\"재테크를 위해 연봉 증가를 원해서\"},{\"personaId\":44,\"choice\":\"남는다\",\"reason\":\"돈을 절약하는 게 우선시해서\"},{\"personaId\":45,\"choice\":\"남는다\",\"reason\":\"가족을 위해 안정적인 직장을 원해서\"},{\"personaId\":46,\"choice\":\"이직한다\",\"reason\":\"계획을 세워야 해서 연봉 오름을 고려해서\"},{\"personaId\":47,\"choice\":\"남는다\",\"reason\":\"안정적인 삶을 우선시해서\"},{\"personaId\":48,\"choice\":\"이직한다\",\"reason\":\"새로운 사람과 친해지길 원해서\"},{\"personaId\":49,\"choice\":\"이직한다\",\"reason\":\"감성적인 이유로 도전을 원해서\"},{\"personaId\":50,\"choice\":\"남는다\",\"reason\":\"효율을 따져서 남는 게 좋다고 생각해서\"}]}",
+   "promptTokens": 1697,
+   "evalTokens": 657,
+   "evalSeconds": 8.998772,
+   "promptSeconds": 0.696594,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75
+   ],
+   "startedAt": 108631.5222733,
+   "endedAt": 108640.904387,
+   "wallSeconds": 9.382113700004993,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"이직한다\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서\"},{\"personaId\":52,\"choice\":\"남는다\",\"reason\":\"시간 절약을 더 중요하게 생각해\"},{\"personaId\":53,\"choice\":\"이직한다\",\"reason\":\"경험을 더 중요하게 생각해\"},{\"personaId\":54,\"choice\":\"남는다\",\"reason\":\"시간 절약을 더 중요하게 생각해\"},{\"personaId\":55,\"choice\":\"남는다\",\"reason\":\"시간 절약을 더 중요하게 생각해\"},{\"personaId\":56,\"choice\":\"이직한다\",\"reason\":\"새로운 경험을 원해서\"},{\"personaId\":57,\"choice\":\"남는다\",\"reason\":\"시간을 더 소중하게 생각해서\"},{\"personaId\":58,\"choice\":\"이직한다\",\"reason\":\"새로운 선택을 해보고 싶어서\"},{\"personaId\":59,\"choice\":\"남는다\",\"reason\":\"시간 절약을 더 중요하게 생각해\"},{\"personaId\":60,\"choice\":\"남는다\",\"reason\":\"건강을 더 중요하게 생각해서\"},{\"personaId\":61,\"choice\":\"남는다\",\"reason\":\"시간 절약을 더 중요하게 생각해\"},{\"personaId\":62,\"choice\":\"남는다\",\"reason\":\"시간 절약을 더 중요하게 생각해\"},{\"personaId\":63,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 즐기고 있어서\"},{\"personaId\":64,\"choice\":\"이직한다\",\"reason\":\"새로운 선택을 해보고 싶어서\"},{\"personaId\":65,\"choice\":\"남는다\",\"reason\":\"계획을 세워야 마음이 놓여\"},{\"personaId\":66,\"choice\":\"이직한다\",\"reason\":\"새로운 경험을 원해서\"},{\"personaId\":67,\"choice\":\"남는다\",\"reason\":\"가족을 먼저 생각해서\"},{\"personaId\":68,\"choice\":\"이직한다\",\"reason\":\"새로운 선택을 해보고 싶어서\"},{\"personaId\":69,\"choice\":\"남는다\",\"reason\":\"안정을 더 중요하게 생각해서\"},{\"personaId\":70,\"choice\":\"남는다\",\"reason\":\"현실적인 조언을 좋아해서\"},{\"personaId\":71,\"choice\":\"남는다\",\"reason\":\"안정을 더 중요하게 생각해서\"},{\"personaId\":72,\"choice\":\"남는다\",\"reason\":\"안정을 더 중요하게 생각해서\"},{\"personaId\":73,\"choice\":\"이직한다\",\"reason\":\"경험을 더 중요하게 생각해\"},{\"personaId\":74,\"choice\":\"남는다\",\"reason\":\"시간 절약을 더 중요하게 생각해\"},{\"personaId\":75,\"choice\":\"이직한다\",\"reason\":\"새로운 선택을 해보고 싶어서\"}]}",
+   "promptTokens": 1711,
+   "evalTokens": 606,
+   "evalSeconds": 8.684004,
+   "promptSeconds": 0.622683,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+   ],
+   "startedAt": 108640.9044392,
+   "endedAt": 108653.086892,
+   "wallSeconds": 12.182452799999737,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"이직한다\",\"reason\":\"연봉 증가가 생활에 도움이 될 것 같아\"},{\"personaId\":77,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸려 피곤할 것 같아\"},{\"personaId\":78,\"choice\":\"이직한다\",\"reason\":\"연봉 증가가 장기적으로 유리할 것 같아\"},{\"personaId\":79,\"choice\":\"남는다\",\"reason\":\"일에 지쳐 있어 더 힘들어질 것 같아\"},{\"personaId\":80,\"choice\":\"남는다\",\"reason\":\"시간이 아깝고 피곤할 것 같아\"},{\"personaId\":81,\"choice\":\"이직한다\",\"reason\":\"도전을 좋아해서 도전해 보고 싶어\"},{\"personaId\":82,\"choice\":\"남는다\",\"reason\":\"시간이 부족해 건강에 나쁘다고 생각해\"},{\"personaId\":83,\"choice\":\"이직한다\",\"reason\":\"돈을 더 벌 수 있어서 좋겠다 싶어서\"},{\"personaId\":84,\"choice\":\"이직한다\",\"reason\":\"게임처럼 도전하는 걸 좋아해서\"},{\"personaId\":85,\"choice\":\"이직한다\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서\"},{\"personaId\":86,\"choice\":\"남는다\",\"reason\":\"안정적인 삶이 더 중요하다고 생각해서\"},{\"personaId\":87,\"choice\":\"남는다\",\"reason\":\"안정을 더 원해서\"},{\"personaId\":88,\"choice\":\"이직한다\",\"reason\":\"돈을 더 벌 수 있어서\"},{\"personaId\":89,\"choice\":\"남는다\",\"reason\":\"시간이 부족해 힘들다고 생각해서\"},{\"personaId\":90,\"choice\":\"이직한다\",\"reason\":\"가족을 생각해도 도전해 보고 싶어\"},{\"personaId\":91,\"choice\":\"이직한다\",\"reason\":\"계획을 세우면 더 좋을 것 같아\"},{\"personaId\":92,\"choice\":\"남는다\",\"reason\":\"시간 효율이 더 중요하다고 생각해서\"},{\"personaId\":93,\"choice\":\"이직한다\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서\"},{\"personaId\":94,\"choice\":\"남는다\",\"reason\":\"일에 지쳐 있어 더 힘들어질 것 같아\"},{\"personaId\":95,\"choice\":\"이직한다\",\"reason\":\"새로운 도전이 흥미롭고 도움이 될 것 같아\"},{\"personaId\":96,\"choice\":\"남는다\",\"reason\":\"조용한 곳에서 오래 이야기하는 게 좋아\"},{\"personaId\":97,\"choice\":\"이직한다\",\"reason\":\"즉흥적으로 움직이는 걸 좋아해서\"},{\"personaId\":98,\"choice\":\"남는다\",\"reason\":\"시간이 부족해 건강에 나쁘다고 생각해서\"},{\"personaId\":99,\"choice\":\"남는다\",\"reason\":\"조용한 곳에서 오래 이야기하는 게 좋아\"},{\"personaId\":100,\"choice\":\"이직한다\",\"reason\":\"새로운 도전을 좋아해서 도전해 보고 싶어\"}]}",
+   "promptTokens": 1698,
+   "evalTokens": 689,
+   "evalSeconds": 11.399929,
+   "promptSeconds": 0.699895,
+   "doneReason": "stop"
+  }
+ ]
+}

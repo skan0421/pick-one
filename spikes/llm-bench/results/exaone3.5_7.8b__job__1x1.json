@@ -1,0 +1,2135 @@
+{
+ "model": "exaone3.5:7.8b",
+ "questionId": "job",
+ "method": "1x1",
+ "batchSize": 1,
+ "concurrency": 1,
+ "personaCount": 100,
+ "requestCount": 100,
+ "wallSeconds": 33.67712530000426,
+ "firstResultSeconds": 0.4593014999991283,
+ "evalTokens": 4132,
+ "promptTokens": 29297,
+ "tokensPerSecondOverall": 122.6945578992004,
+ "tokensPerSecondPerStream": 143.1972387944882,
+ "failureCount": 6,
+ "failureRate": 0.06,
+ "failureKinds": {
+  "reason_too_long": 6
+ },
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 12315,
+ "vramPeakMiB": 12316,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "남는다",
+   "reason": "안정적인 현재 상황이 더 중요하고, 체력 유지 위해 일찍 일어나 운동 계획도 세울 수 있어."
+  },
+  {
+   "personaId": 2,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "남는다",
+   "reason": "현재 학업과 계획에 집중하고 싶어, 시간 관리로 충분히 균형 맞출 수 있어."
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험과 더 나은 패션 아이템 구매로 설레네!"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶의 활력을 더하고 싶어."
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 안정감이 더 중요하고, 추가적인 스트레스는 피하고 싶다."
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "계획 세우는 재미보다 현재의 안정감이 더 소중해."
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 직장 유지가 현재 건강 관리에 더 유리하다."
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 나은 연봉으로 열정적인 일상을 위해 시간 좀 더 쓰겠다."
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강한 일상 유지가 우선, 반려동물과의 시간도 소중해요."
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 조율이 우선, 여행 계획에도 영향 미미"
+  },
+  {
+   "personaId": 11,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "남는다",
+   "reason": "가족과의 시간을 더 소중히 여기니, 현재 상황을 유지하며 안정을 우선시합니다."
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 현재 위치와 시간 관리가 중요하다."
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 더 보내고 싶어, 건강도 고려했어."
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 큰 돈으로 삶의 질 향상이 우선, 시간은 유연하게 관리 가능해."
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정이 우선, 새로운 도전은 나중에 해도 늦지 않아."
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶에 활력을 더하고 싶어."
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 일과 휴식 균형이 더 중요해 보인다."
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간으로 인해 음악 감상 시간이 줄어들어 속상해요."
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 수입이 더 중요하고 출퇴근 시간은 조절 가능하니까."
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 시간으로 재테크와 반려동물 관리에 집중하고 싶어."
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶에 활력을 더하고 싶어."
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 시간 운동과 카페 탐방에 쓸 수 있으니까"
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 안정감이 중요하고, 취미 시간 확보가 우선시돼요."
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간이 소중해, 조금 더 시간 확보를 선택해."
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율성 저하로 매출에 악영향 우려"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 드라마 시간과 여행 계획을 위해 감성적인 기회를 놓칠 수 없어."
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간, 현재 안정감 포기 못해"
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶에 활력을 더하고 싶어."
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 좋은 휴식과 취미 시간을 위해 현재 스트레스를 줄이고 싶어요."
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 더 중요, 안정적인 현재 선택"
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 생활 균형이 더 중요, 안정적인 선택 유지"
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶의 활력을 더하고 싶어요."
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 모험과 휴식을 위해, 요리와 캠핑으로 여유를 더하고 싶어."
+  },
+  {
+   "personaId": 34,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "남는다",
+   "reason": "가족과 시간 맞추는 게 중요하고, 현재 위치에서의 안정성이 더 가치있어요."
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 활력 찾고 싶어"
+  },
+  {
+   "personaId": 36,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간 절약으로 취미 시간 늘려 더 행복해질 것 같아요."
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전과 건강 관리를 위해 시간 투자 가치 인정"
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 상승으로 삶의 질 향상이 더 중요해요."
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 동료들에게 더 많은 시간을 할애하고 싶어요."
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간을 더 중요하게 생각해."
+  },
+  {
+   "personaId": 41,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "남는다",
+   "reason": "아이들 학교 시간과 건강한 생활 리듬을 위해 현재 직장을 유지하려고 합니다."
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "드라마 속 주인공처럼 새로운 도전이 짜릿해요."
+  },
+  {
+   "personaId": 43,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "이직한다",
+   "reason": "더 나은 삶의 균형과 여유로운 시간으로 요리와 재테크에 더 집중하고 싶어."
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 생활 균형이 좋아 재테크에 집중하기 좋다."
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 직장의 안정감과 반려동물 산책 시간이 중요해."
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 현재 상황 유지가 미래 계획에 유리해 보여."
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 현재 직장이 더 소중해."
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "더 많은 시간으로 건강 관리와 취미 즐기기 위해"
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 긴 출퇴근 시간보다 새로운 도전과 반려동물 시간이 소중해."
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 일과 균형, 효율성 유지가 우선입니다."
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 환경에서 활력 찾고 싶어, 피로 탈출이 우선."
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율적인 시간 활용이 더 중요해 이직은 보류."
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간이 소중해요, 조금 더 노력해도 행복을 유지하고 싶어요."
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간 증가로 학업과 시간 관리가 어려워져서요."
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 조율이 더 중요해 보여요."
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험과 감성적 성장의 기회를 놓칠 수 없어."
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간이 소중해, 조금 더 긴 출퇴근도 감수할래."
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶에 활력을 더하고 싶어."
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 시간으로 반려동물 시간 늘릴 수 있어 기쁘다."
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강과 안정적인 생활을 위해 현재 위치를 유지한다."
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "효율적인 시간 활용이 중요하고, 장기적인 재무 안정이 우선시 됨."
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 경험과 자유로운 시간 활용으로 요리와 운동에 더 집중하고 싶어."
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶의 활력을 더하고 싶어요."
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶에 활력을 더하고 싶어!"
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 사업에 집중해 성장시키는 게 우선이다."
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 현재 삶의 균형을 우선시해요."
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간을 위해 현재 위치를 유지하는 것이 우선입니다."
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 현재 직업이 더 소중해."
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간이 더 소중해."
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉 상승으로 장기적인 안정성이 더 중요해요."
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 일상이 더 중요해요, 게임 시간도 줄여야 할까 봐."
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 안정감이 중요하고, 취미 시간이 줄어들어 아쉽네요."
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 환경에서 활력을 찾고 싶어."
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간 늘어나는 게 걱정되지만 안정적인 현재 직장이 더 중요해."
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간을 더 소중히 여기고 싶어."
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 좀 더 갖고 싶어."
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 건강한 생활 유지하며, 시간 활용해 사진 취미도 즐기고 싶어."
+  },
+  {
+   "personaId": 78,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "여행 자금 마련하고 새로운 경험 쌓고 싶어"
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 긴 출퇴근은 현재 일에 대한 피로를 더욱 증가시킬 것 같아요."
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "취미 시간 줄일 수 없어, 현재 활동 유지 우선"
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 큰 도전과 경험이 현재의 40분보다 가치있어 보여."
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강 챙기고 가족과 시간 더 보내는 게 우선입니다."
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 환경에서 더 큰 기쁨과 성장을 위해 감성적인 선택을 해볼게요."
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 시간으로 여행과 게임 즐기고 건강도 챙길 수 있어."
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 큰 연봉으로 삶의 질 향상이 우선이지."
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정이 우선, 새로운 경험은 나중에 여행으로 충분히 해도 돼."
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 더 많은 시간을 보내고 싶어 안정적인 선택을 우선시해."
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강과 현재 삶의 균형을 우선시합니다."
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강이 우선, 긴 출퇴근보다 현재 안정감이 더 중요하다."
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족이 있으니 안정적인 생활이 우선입니다."
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 안정감이 좋고, 더 많은 취미 시간 확보 가능해."
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "현재 생활 균형이 좋고, 추가적인 시간 투자로 취미 즐기기 용이."
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 자유 시간으로 요리 취미 즐기고 싶어."
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "여행과 독서 시간 줄어들어 아쉬워"
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간 더 소중해, 도전은 다음에 해도 돼."
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "취미 시간 줄이기 싫어, 안정적인 일상 유지가 우선"
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 삶에 활력을 더하고 싶어."
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "안정적인 현재 위치와 효율적인 시간 관리가 우선."
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "학업에 집중하고 시간을 동물과 드라마로 즐기는 게 더 이득이야."
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전으로 스트레스 해소하고, 더 나은 재테크 기회 찾고 싶어."
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 108152.3260416,
+   "endedAt": 108152.785169,
+   "wallSeconds": 0.45912739999766927,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"남는다\",\"reason\":\"안정적인 현재 상황이 더 중요하고, 체력 유지 위해 일찍 일어나 운동 계획도 세울 수 있어.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 49,
+   "evalSeconds": 0.340206,
+   "promptSeconds": 0.043804,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 108152.7852083,
+   "endedAt": 108153.1724302,
+   "wallSeconds": 0.3872218999895267,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"남는다\",\"reason\":\"현재 학업과 계획에 집중하고 싶어, 시간 관리로 충분히 균형 맞출 수 있어.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 46,
+   "evalSeconds": 0.318405,
+   "promptSeconds": 0.036553,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 108153.1724712,
+   "endedAt": 108153.5091794,
+   "wallSeconds": 0.3367082000040682,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"이직한다\",\"reason\":\"새로운 경험과 더 나은 패션 아이템 구매로 설레네!\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 40,
+   "evalSeconds": 0.289408,
+   "promptSeconds": 0.03865,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 108153.5092224,
+   "endedAt": 108153.8416689,
+   "wallSeconds": 0.33244650000415277,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶의 활력을 더하고 싶어.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 38,
+   "evalSeconds": 0.264137,
+   "promptSeconds": 0.036933,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 108153.8417097,
+   "endedAt": 108154.196323,
+   "wallSeconds": 0.35461329999088775,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"남는다\",\"reason\":\"현재 안정감이 더 중요하고, 추가적인 스트레스는 피하고 싶다.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 44,
+   "evalSeconds": 0.307554,
+   "promptSeconds": 0.038116,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 108154.1963808,
+   "endedAt": 108154.5188211,
+   "wallSeconds": 0.32244030000583734,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"남는다\",\"reason\":\"계획 세우는 재미보다 현재의 안정감이 더 소중해.\"}]}",
+   "promptTokens": 287,
+   "evalTokens": 40,
+   "evalSeconds": 0.276716,
+   "promptSeconds": 0.036665,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 108154.5188613,
+   "endedAt": 108154.8453697,
+   "wallSeconds": 0.3265083999867784,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"남는다\",\"reason\":\"안정적인 직장 유지가 현재 건강 관리에 더 유리하다.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 40,
+   "evalSeconds": 0.281442,
+   "promptSeconds": 0.036743,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 108154.8454095,
+   "endedAt": 108155.201928,
+   "wallSeconds": 0.35651849998976104,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"이직한다\",\"reason\":\"더 나은 연봉으로 열정적인 일상을 위해 시간 좀 더 쓰겠다.\"}]}",
+   "promptTokens": 287,
+   "evalTokens": 43,
+   "evalSeconds": 0.306477,
+   "promptSeconds": 0.03936,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 108155.201978,
+   "endedAt": 108155.5472523,
+   "wallSeconds": 0.3452743000088958,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"남는다\",\"reason\":\"건강한 일상 유지가 우선, 반려동물과의 시간도 소중해요.\"}]}",
+   "promptTokens": 296,
+   "evalTokens": 42,
+   "evalSeconds": 0.294709,
+   "promptSeconds": 0.039966,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 108155.5472909,
+   "endedAt": 108155.8702985,
+   "wallSeconds": 0.3230076000036206,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"남는다\",\"reason\":\"가족과 시간 조율이 우선, 여행 계획에도 영향 미미\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 40,
+   "evalSeconds": 0.275953,
+   "promptSeconds": 0.038648,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 108155.8703382,
+   "endedAt": 108156.2511821,
+   "wallSeconds": 0.38084389999858104,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"남는다\",\"reason\":\"가족과의 시간을 더 소중히 여기니, 현재 상황을 유지하며 안정을 우선시합니다.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 48,
+   "evalSeconds": 0.335157,
+   "promptSeconds": 0.036959,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 108156.2512212,
+   "endedAt": 108156.5753237,
+   "wallSeconds": 0.324102500002482,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"남는다\",\"reason\":\"안정적인 현재 위치와 시간 관리가 중요하다.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 39,
+   "evalSeconds": 0.278311,
+   "promptSeconds": 0.036892,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 108156.5753747,
+   "endedAt": 108156.9206492,
+   "wallSeconds": 0.3452744999958668,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"남는다\",\"reason\":\"가족과 시간 더 보내고 싶어, 건강도 고려했어.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 42,
+   "evalSeconds": 0.297956,
+   "promptSeconds": 0.038296,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 108156.9206895,
+   "endedAt": 108157.2972827,
+   "wallSeconds": 0.37659320000966545,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"이직한다\",\"reason\":\"더 큰 돈으로 삶의 질 향상이 우선, 시간은 유연하게 관리 가능해.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 47,
+   "evalSeconds": 0.330596,
+   "promptSeconds": 0.037549,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 108157.2973264,
+   "endedAt": 108157.6463311,
+   "wallSeconds": 0.34900469999411143,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"남는다\",\"reason\":\"안정이 우선, 새로운 도전은 나중에 해도 늦지 않아.\"}]}",
+   "promptTokens": 301,
+   "evalTokens": 42,
+   "evalSeconds": 0.303194,
+   "promptSeconds": 0.037367,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 108157.6463696,
+   "endedAt": 108157.9716213,
+   "wallSeconds": 0.3252517000073567,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶에 활력을 더하고 싶어.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 39,
+   "evalSeconds": 0.276747,
+   "promptSeconds": 0.039788,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 108157.9716652,
+   "endedAt": 108158.2770248,
+   "wallSeconds": 0.30535959999542683,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"남는다\",\"reason\":\"현재 일과 휴식 균형이 더 중요해 보인다.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 37,
+   "evalSeconds": 0.256565999,
+   "promptSeconds": 0.038517,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 108158.277069,
+   "endedAt": 108158.6090293,
+   "wallSeconds": 0.33196029999817256,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간으로 인해 음악 감상 시간이 줄어들어 속상해요.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 41,
+   "evalSeconds": 0.285848,
+   "promptSeconds": 0.037254,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 108158.609071,
+   "endedAt": 108158.951766,
+   "wallSeconds": 0.3426949999993667,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"남는다\",\"reason\":\"안정적인 수입이 더 중요하고 출퇴근 시간은 조절 가능하니까.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 43,
+   "evalSeconds": 0.297198,
+   "promptSeconds": 0.037071,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 108158.9518064,
+   "endedAt": 108159.2975443,
+   "wallSeconds": 0.34573790000285953,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"이직한다\",\"reason\":\"더 많은 시간으로 재테크와 반려동물 관리에 집중하고 싶어.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 43,
+   "evalSeconds": 0.299119,
+   "promptSeconds": 0.036922,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 108159.2975841,
+   "endedAt": 108159.6209317,
+   "wallSeconds": 0.32334760000230744,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶에 활력을 더하고 싶어.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 39,
+   "evalSeconds": 0.27799,
+   "promptSeconds": 0.036414,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 108159.6209718,
+   "endedAt": 108159.9627447,
+   "wallSeconds": 0.3417728999920655,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"이직한다\",\"reason\":\"더 많은 시간 운동과 카페 탐방에 쓸 수 있으니까\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 42,
+   "evalSeconds": 0.294453,
+   "promptSeconds": 0.03825,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 108159.9627884,
+   "endedAt": 108160.3036661,
+   "wallSeconds": 0.3408777000004193,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"남는다\",\"reason\":\"현재 안정감이 중요하고, 취미 시간 확보가 우선시돼요.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 42,
+   "evalSeconds": 0.295184,
+   "promptSeconds": 0.036979,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 108160.3037058,
+   "endedAt": 108160.6559318,
+   "wallSeconds": 0.35222600000270177,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"남는다\",\"reason\":\"가족과의 시간이 소중해, 조금 더 시간 확보를 선택해.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 43,
+   "evalSeconds": 0.306085,
+   "promptSeconds": 0.037426,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 108160.6559711,
+   "endedAt": 108160.950613,
+   "wallSeconds": 0.29464189999271184,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"남는다\",\"reason\":\"효율성 저하로 매출에 악영향 우려\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 36,
+   "evalSeconds": 0.249643,
+   "promptSeconds": 0.036688,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 108160.950662,
+   "endedAt": 108161.3232267,
+   "wallSeconds": 0.3725646999955643,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"이직한다\",\"reason\":\"더 많은 드라마 시간과 여행 계획을 위해 감성적인 기회를 놓칠 수 없어.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 47,
+   "evalSeconds": 0.325294,
+   "promptSeconds": 0.038128,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 108161.3232672,
+   "endedAt": 108161.6327302,
+   "wallSeconds": 0.30946299999777693,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"남는다\",\"reason\":\"가족과의 시간, 현재 안정감 포기 못해\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 38,
+   "evalSeconds": 0.264244,
+   "promptSeconds": 0.036762,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 108161.6327776,
+   "endedAt": 108161.9602719,
+   "wallSeconds": 0.32749429999967106,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶에 활력을 더하고 싶어.\"}]}",
+   "promptTokens": 299,
+   "evalTokens": 39,
+   "evalSeconds": 0.27262,
+   "promptSeconds": 0.041698,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 108161.9603141,
+   "endedAt": 108162.3120415,
+   "wallSeconds": 0.35172740000416525,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"이직한다\",\"reason\":\"더 좋은 휴식과 취미 시간을 위해 현재 스트레스를 줄이고 싶어요.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 44,
+   "evalSeconds": 0.306226,
+   "promptSeconds": 0.036727,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 108162.3120831,
+   "endedAt": 108162.6301274,
+   "wallSeconds": 0.3180443000019295,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"남는다\",\"reason\":\"가족과 시간 더 중요, 안정적인 현재 선택\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 39,
+   "evalSeconds": 0.271942,
+   "promptSeconds": 0.037321,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    31
+   ],
+   "startedAt": 108162.6301664,
+   "endedAt": 108162.9536152,
+   "wallSeconds": 0.32344879998709075,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":31,\"choice\":\"남는다\",\"reason\":\"현재 생활 균형이 더 중요, 안정적인 선택 유지\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 40,
+   "evalSeconds": 0.277239,
+   "promptSeconds": 0.037681,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    32
+   ],
+   "startedAt": 108162.9536575,
+   "endedAt": 108163.27074,
+   "wallSeconds": 0.31708250001247507,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":32,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶의 활력을 더하고 싶어요.\"}]}",
+   "promptTokens": 296,
+   "evalTokens": 39,
+   "evalSeconds": 0.271761,
+   "promptSeconds": 0.036688,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    33
+   ],
+   "startedAt": 108163.2707935,
+   "endedAt": 108163.6304418,
+   "wallSeconds": 0.35964830000011716,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":33,\"choice\":\"이직한다\",\"reason\":\"새로운 모험과 휴식을 위해, 요리와 캠핑으로 여유를 더하고 싶어.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 45,
+   "evalSeconds": 0.313622,
+   "promptSeconds": 0.036923,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    34
+   ],
+   "startedAt": 108163.6304874,
+   "endedAt": 108164.0023735,
+   "wallSeconds": 0.371886099994299,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":34,\"choice\":\"남는다\",\"reason\":\"가족과 시간 맞추는 게 중요하고, 현재 위치에서의 안정성이 더 가치있어요.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 47,
+   "evalSeconds": 0.326293,
+   "promptSeconds": 0.036866,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    35
+   ],
+   "startedAt": 108164.0024158,
+   "endedAt": 108164.2983202,
+   "wallSeconds": 0.29590440000174567,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":35,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 활력 찾고 싶어\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 36,
+   "evalSeconds": 0.248879,
+   "promptSeconds": 0.037745,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    36
+   ],
+   "startedAt": 108164.2983587,
+   "endedAt": 108164.6436434,
+   "wallSeconds": 0.34528470000077505,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":36,\"choice\":\"이직한다\",\"reason\":\"시간 절약으로 취미 시간 늘려 더 행복해질 것 같아요.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 41,
+   "evalSeconds": 0.285901,
+   "promptSeconds": 0.050893,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    37
+   ],
+   "startedAt": 108164.6436838,
+   "endedAt": 108164.9595638,
+   "wallSeconds": 0.31588000000920147,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":37,\"choice\":\"이직한다\",\"reason\":\"새로운 도전과 건강 관리를 위해 시간 투자 가치 인정\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 39,
+   "evalSeconds": 0.270536,
+   "promptSeconds": 0.036767,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    38
+   ],
+   "startedAt": 108164.9596061,
+   "endedAt": 108165.2849312,
+   "wallSeconds": 0.3253250999987358,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":38,\"choice\":\"이직한다\",\"reason\":\"연봉 상승으로 삶의 질 향상이 더 중요해요.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 40,
+   "evalSeconds": 0.278418,
+   "promptSeconds": 0.038516,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    39
+   ],
+   "startedAt": 108165.2849727,
+   "endedAt": 108165.6324006,
+   "wallSeconds": 0.34742790000746027,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":39,\"choice\":\"남는다\",\"reason\":\"가족과 동료들에게 더 많은 시간을 할애하고 싶어요.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 43,
+   "evalSeconds": 0.300889,
+   "promptSeconds": 0.036516,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    40
+   ],
+   "startedAt": 108165.6324398,
+   "endedAt": 108165.9404081,
+   "wallSeconds": 0.3079682999959914,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":40,\"choice\":\"남는다\",\"reason\":\"가족과 시간을 더 중요하게 생각해.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 38,
+   "evalSeconds": 0.262442999,
+   "promptSeconds": 0.036773,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    41
+   ],
+   "startedAt": 108165.9404493,
+   "endedAt": 108166.3068644,
+   "wallSeconds": 0.3664150999975391,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":41,\"choice\":\"남는다\",\"reason\":\"아이들 학교 시간과 건강한 생활 리듬을 위해 현재 직장을 유지하려고 합니다.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 46,
+   "evalSeconds": 0.320891,
+   "promptSeconds": 0.036944,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    42
+   ],
+   "startedAt": 108166.306905,
+   "endedAt": 108166.6097837,
+   "wallSeconds": 0.3028786999930162,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":42,\"choice\":\"이직한다\",\"reason\":\"드라마 속 주인공처럼 새로운 도전이 짜릿해요.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 37,
+   "evalSeconds": 0.257182,
+   "promptSeconds": 0.037003,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    43
+   ],
+   "startedAt": 108166.609823,
+   "endedAt": 108166.9923712,
+   "wallSeconds": 0.3825481999956537,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":43,\"choice\":\"이직한다\",\"reason\":\"더 나은 삶의 균형과 여유로운 시간으로 요리와 재테크에 더 집중하고 싶어.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 48,
+   "evalSeconds": 0.335801,
+   "promptSeconds": 0.036837,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    44
+   ],
+   "startedAt": 108166.9924342,
+   "endedAt": 108167.3100563,
+   "wallSeconds": 0.3176221000030637,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":44,\"choice\":\"남는다\",\"reason\":\"현재 생활 균형이 좋아 재테크에 집중하기 좋다.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 39,
+   "evalSeconds": 0.272164,
+   "promptSeconds": 0.03695,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    45
+   ],
+   "startedAt": 108167.3100949,
+   "endedAt": 108167.6411261,
+   "wallSeconds": 0.33103119999577757,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":45,\"choice\":\"남는다\",\"reason\":\"현재 직장의 안정감과 반려동물 산책 시간이 중요해.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 41,
+   "evalSeconds": 0.285675,
+   "promptSeconds": 0.036814,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    46
+   ],
+   "startedAt": 108167.6411774,
+   "endedAt": 108167.9727647,
+   "wallSeconds": 0.33158729999559,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":46,\"choice\":\"남는다\",\"reason\":\"안정적인 현재 상황 유지가 미래 계획에 유리해 보여.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 41,
+   "evalSeconds": 0.285744,
+   "promptSeconds": 0.036871,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    47
+   ],
+   "startedAt": 108167.9728071,
+   "endedAt": 108168.2865463,
+   "wallSeconds": 0.3137392000062391,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":47,\"choice\":\"남는다\",\"reason\":\"안정적인 현재 직장이 더 소중해.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 37,
+   "evalSeconds": 0.258166999,
+   "promptSeconds": 0.036207,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    48
+   ],
+   "startedAt": 108168.2866126,
+   "endedAt": 108168.6090525,
+   "wallSeconds": 0.32243990000279155,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":48,\"choice\":\"남는다\",\"reason\":\"더 많은 시간으로 건강 관리와 취미 즐기기 위해\"}]}",
+   "promptTokens": 296,
+   "evalTokens": 40,
+   "evalSeconds": 0.276649,
+   "promptSeconds": 0.03707,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    49
+   ],
+   "startedAt": 108168.6090992,
+   "endedAt": 108168.9483605,
+   "wallSeconds": 0.3392613000032725,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":49,\"choice\":\"이직한다\",\"reason\":\"더 긴 출퇴근 시간보다 새로운 도전과 반려동물 시간이 소중해.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 42,
+   "evalSeconds": 0.292826,
+   "promptSeconds": 0.038046,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    50
+   ],
+   "startedAt": 108168.9484049,
+   "endedAt": 108169.2661181,
+   "wallSeconds": 0.3177131999982521,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":50,\"choice\":\"남는다\",\"reason\":\"가족과 일과 균형, 효율성 유지가 우선입니다.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 39,
+   "evalSeconds": 0.272532,
+   "promptSeconds": 0.036296,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51
+   ],
+   "startedAt": 108169.266177,
+   "endedAt": 108169.5950986,
+   "wallSeconds": 0.32892159999755677,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"이직한다\",\"reason\":\"새로운 환경에서 활력 찾고 싶어, 피로 탈출이 우선.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 41,
+   "evalSeconds": 0.283658,
+   "promptSeconds": 0.036751,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    52
+   ],
+   "startedAt": 108169.5951397,
+   "endedAt": 108169.9203425,
+   "wallSeconds": 0.32520279999880586,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":52,\"choice\":\"남는다\",\"reason\":\"효율적인 시간 활용이 더 중요해 이직은 보류.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 40,
+   "evalSeconds": 0.279056,
+   "promptSeconds": 0.036938,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    53
+   ],
+   "startedAt": 108169.9203841,
+   "endedAt": 108170.2867846,
+   "wallSeconds": 0.3664005000027828,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":53,\"choice\":\"남는다\",\"reason\":\"가족과의 시간이 소중해요, 조금 더 노력해도 행복을 유지하고 싶어요.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 46,
+   "evalSeconds": 0.321134,
+   "promptSeconds": 0.036396,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    54
+   ],
+   "startedAt": 108170.2868267,
+   "endedAt": 108170.6170258,
+   "wallSeconds": 0.3301991000043927,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":54,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간 증가로 학업과 시간 관리가 어려워져서요.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 41,
+   "evalSeconds": 0.284954,
+   "promptSeconds": 0.03645,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    55
+   ],
+   "startedAt": 108170.6170648,
+   "endedAt": 108170.9194977,
+   "wallSeconds": 0.3024329000036232,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":55,\"choice\":\"남는다\",\"reason\":\"가족과 시간 조율이 더 중요해 보여요.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 37,
+   "evalSeconds": 0.257108,
+   "promptSeconds": 0.036564,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    56
+   ],
+   "startedAt": 108170.9195396,
+   "endedAt": 108171.2503343,
+   "wallSeconds": 0.3307946999993874,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":56,\"choice\":\"이직한다\",\"reason\":\"새로운 경험과 감성적 성장의 기회를 놓칠 수 없어.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 41,
+   "evalSeconds": 0.285234,
+   "promptSeconds": 0.036755,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    57
+   ],
+   "startedAt": 108171.250394,
+   "endedAt": 108171.6064987,
+   "wallSeconds": 0.3561046999966493,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":57,\"choice\":\"남는다\",\"reason\":\"가족과의 시간이 소중해, 조금 더 긴 출퇴근도 감수할래.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 44,
+   "evalSeconds": 0.3102,
+   "promptSeconds": 0.036617,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    58
+   ],
+   "startedAt": 108171.606538,
+   "endedAt": 108171.9541171,
+   "wallSeconds": 0.34757910000917036,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":58,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶에 활력을 더하고 싶어.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 39,
+   "evalSeconds": 0.280232,
+   "promptSeconds": 0.037026,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    59
+   ],
+   "startedAt": 108171.9541585,
+   "endedAt": 108172.3000463,
+   "wallSeconds": 0.3458878000092227,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":59,\"choice\":\"이직한다\",\"reason\":\"더 많은 시간으로 반려동물 시간 늘릴 수 있어 기쁘다.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 42,
+   "evalSeconds": 0.298434,
+   "promptSeconds": 0.037875,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    60
+   ],
+   "startedAt": 108172.3000871,
+   "endedAt": 108172.6355528,
+   "wallSeconds": 0.3354657000018051,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":60,\"choice\":\"남는다\",\"reason\":\"건강과 안정적인 생활을 위해 현재 위치를 유지한다.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 41,
+   "evalSeconds": 0.288617,
+   "promptSeconds": 0.037618,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    61
+   ],
+   "startedAt": 108172.6355983,
+   "endedAt": 108173.0031247,
+   "wallSeconds": 0.3675264000048628,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":61,\"choice\":\"남는다\",\"reason\":\"효율적인 시간 활용이 중요하고, 장기적인 재무 안정이 우선시 됨.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 45,
+   "evalSeconds": 0.320286,
+   "promptSeconds": 0.038076,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    62
+   ],
+   "startedAt": 108173.0031653,
+   "endedAt": 108173.3712475,
+   "wallSeconds": 0.3680822000023909,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":62,\"choice\":\"이직한다\",\"reason\":\"새로운 경험과 자유로운 시간 활용으로 요리와 운동에 더 집중하고 싶어.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 45,
+   "evalSeconds": 0.320575,
+   "promptSeconds": 0.038032,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    63
+   ],
+   "startedAt": 108173.3712886,
+   "endedAt": 108173.7007974,
+   "wallSeconds": 0.3295088000013493,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":63,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶의 활력을 더하고 싶어요.\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 39,
+   "evalSeconds": 0.271426,
+   "promptSeconds": 0.037164,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    64
+   ],
+   "startedAt": 108173.700839,
+   "endedAt": 108174.0266189,
+   "wallSeconds": 0.3257798999984516,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":64,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶에 활력을 더하고 싶어!\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 40,
+   "evalSeconds": 0.280254,
+   "promptSeconds": 0.037082,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    65
+   ],
+   "startedAt": 108174.0266577,
+   "endedAt": 108174.3438522,
+   "wallSeconds": 0.3171945000067353,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":65,\"choice\":\"남는다\",\"reason\":\"현재 사업에 집중해 성장시키는 게 우선이다.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 39,
+   "evalSeconds": 0.271602,
+   "promptSeconds": 0.036178,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    66
+   ],
+   "startedAt": 108174.3438992,
+   "endedAt": 108174.6478795,
+   "wallSeconds": 0.3039802999992389,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":66,\"choice\":\"남는다\",\"reason\":\"가족과 현재 삶의 균형을 우선시해요.\"}]}",
+   "promptTokens": 299,
+   "evalTokens": 37,
+   "evalSeconds": 0.256747,
+   "promptSeconds": 0.037203,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    67
+   ],
+   "startedAt": 108174.6479189,
+   "endedAt": 108174.9955451,
+   "wallSeconds": 0.3476262000040151,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":67,\"choice\":\"남는다\",\"reason\":\"가족과 시간을 위해 현재 위치를 유지하는 것이 우선입니다.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 43,
+   "evalSeconds": 0.301892,
+   "promptSeconds": 0.03719,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    68
+   ],
+   "startedAt": 108174.9955865,
+   "endedAt": 108175.2971579,
+   "wallSeconds": 0.30157140000665095,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":68,\"choice\":\"남는다\",\"reason\":\"안정적인 현재 직업이 더 소중해.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 37,
+   "evalSeconds": 0.255734,
+   "promptSeconds": 0.036855,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    69
+   ],
+   "startedAt": 108175.2971972,
+   "endedAt": 108175.5936945,
+   "wallSeconds": 0.29649730000528507,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":69,\"choice\":\"남는다\",\"reason\":\"가족과의 시간이 더 소중해.\"}]}",
+   "promptTokens": 294,
+   "evalTokens": 36,
+   "evalSeconds": 0.249682,
+   "promptSeconds": 0.037921,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    70
+   ],
+   "startedAt": 108175.5937335,
+   "endedAt": 108175.9184918,
+   "wallSeconds": 0.3247582999902079,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":70,\"choice\":\"남는다\",\"reason\":\"연봉 상승으로 장기적인 안정성이 더 중요해요.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 40,
+   "evalSeconds": 0.278849,
+   "promptSeconds": 0.036964,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    71
+   ],
+   "startedAt": 108175.9185312,
+   "endedAt": 108176.2612501,
+   "wallSeconds": 0.3427188999921782,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":71,\"choice\":\"남는다\",\"reason\":\"안정적인 일상이 더 중요해요, 게임 시간도 줄여야 할까 봐.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 43,
+   "evalSeconds": 0.297653,
+   "promptSeconds": 0.036801,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    72
+   ],
+   "startedAt": 108176.2612883,
+   "endedAt": 108176.6003465,
+   "wallSeconds": 0.3390581999992719,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":72,\"choice\":\"남는다\",\"reason\":\"현재 안정감이 중요하고, 취미 시간이 줄어들어 아쉽네요.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 42,
+   "evalSeconds": 0.293932,
+   "promptSeconds": 0.036741,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    73
+   ],
+   "startedAt": 108176.6003867,
+   "endedAt": 108176.9055156,
+   "wallSeconds": 0.30512889999954496,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":73,\"choice\":\"이직한다\",\"reason\":\"새로운 환경에서 활력을 찾고 싶어.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 37,
+   "evalSeconds": 0.258851,
+   "promptSeconds": 0.036905,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    74
+   ],
+   "startedAt": 108176.9055733,
+   "endedAt": 108177.2741938,
+   "wallSeconds": 0.3686204999976326,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":74,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간 늘어나는 게 걱정되지만 안정적인 현재 직장이 더 중요해.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 46,
+   "evalSeconds": 0.318071,
+   "promptSeconds": 0.036833,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    75
+   ],
+   "startedAt": 108177.2742333,
+   "endedAt": 108177.5913974,
+   "wallSeconds": 0.31716409999353345,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":75,\"choice\":\"남는다\",\"reason\":\"가족과의 시간을 더 소중히 여기고 싶어.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 39,
+   "evalSeconds": 0.272179,
+   "promptSeconds": 0.036553,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76
+   ],
+   "startedAt": 108177.5914391,
+   "endedAt": 108177.894432,
+   "wallSeconds": 0.30299290000402834,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"남는다\",\"reason\":\"가족과 시간 좀 더 갖고 싶어.\"}]}",
+   "promptTokens": 295,
+   "evalTokens": 37,
+   "evalSeconds": 0.255437,
+   "promptSeconds": 0.03897,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    77
+   ],
+   "startedAt": 108177.8944717,
+   "endedAt": 108178.2637752,
+   "wallSeconds": 0.3693035000032978,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":77,\"choice\":\"이직한다\",\"reason\":\"더 건강한 생활 유지하며, 시간 활용해 사진 취미도 즐기고 싶어.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 46,
+   "evalSeconds": 0.321312,
+   "promptSeconds": 0.038648,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    78
+   ],
+   "startedAt": 108178.2638149,
+   "endedAt": 108178.5768545,
+   "wallSeconds": 0.31303960000514053,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":78,\"choice\":\"이직한다\",\"reason\":\"여행 자금 마련하고 새로운 경험 쌓고 싶어\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 38,
+   "evalSeconds": 0.265827,
+   "promptSeconds": 0.038441,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    79
+   ],
+   "startedAt": 108178.5768946,
+   "endedAt": 108178.941916,
+   "wallSeconds": 0.36502139999356586,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":79,\"choice\":\"이직한다\",\"reason\":\"더 긴 출퇴근은 현재 일에 대한 피로를 더욱 증가시킬 것 같아요.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 46,
+   "evalSeconds": 0.319615,
+   "promptSeconds": 0.037067,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    80
+   ],
+   "startedAt": 108178.9419554,
+   "endedAt": 108179.2572866,
+   "wallSeconds": 0.31533119999221526,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":80,\"choice\":\"남는다\",\"reason\":\"취미 시간 줄일 수 없어, 현재 활동 유지 우선\"}]}",
+   "promptTokens": 288,
+   "evalTokens": 39,
+   "evalSeconds": 0.270367,
+   "promptSeconds": 0.036321,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    81
+   ],
+   "startedAt": 108179.2573257,
+   "endedAt": 108179.6274785,
+   "wallSeconds": 0.37015279999468476,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":81,\"choice\":\"이직한다\",\"reason\":\"더 큰 도전과 경험이 현재의 40분보다 가치있어 보여.\"}]}",
+   "promptTokens": 289,
+   "evalTokens": 45,
+   "evalSeconds": 0.314184,
+   "promptSeconds": 0.04737,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    82
+   ],
+   "startedAt": 108179.6275165,
+   "endedAt": 108179.9494197,
+   "wallSeconds": 0.32190320000518113,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":82,\"choice\":\"남는다\",\"reason\":\"건강 챙기고 가족과 시간 더 보내는 게 우선입니다.\"}]}",
+   "promptTokens": 292,
+   "evalTokens": 40,
+   "evalSeconds": 0.276632,
+   "promptSeconds": 0.03694,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    83
+   ],
+   "startedAt": 108179.9494613,
+   "endedAt": 108180.3149473,
+   "wallSeconds": 0.3654859999951441,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":83,\"choice\":\"이직한다\",\"reason\":\"새로운 환경에서 더 큰 기쁨과 성장을 위해 감성적인 선택을 해볼게요.\"}]}",
+   "promptTokens": 297,
+   "evalTokens": 46,
+   "evalSeconds": 0.318478,
+   "promptSeconds": 0.037989,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    84
+   ],
+   "startedAt": 108180.3149879,
+   "endedAt": 108180.6694922,
+   "wallSeconds": 0.35450430000491906,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":84,\"choice\":\"이직한다\",\"reason\":\"더 많은 시간으로 여행과 게임 즐기고 건강도 챙길 수 있어.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 44,
+   "evalSeconds": 0.309135,
+   "promptSeconds": 0.036394,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    85
+   ],
+   "startedAt": 108180.6695307,
+   "endedAt": 108180.985344,
+   "wallSeconds": 0.3158132999960799,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":85,\"choice\":\"이직한다\",\"reason\":\"더 큰 연봉으로 삶의 질 향상이 우선이지.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 39,
+   "evalSeconds": 0.27025,
+   "promptSeconds": 0.037071,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    86
+   ],
+   "startedAt": 108180.9853854,
+   "endedAt": 108181.322173,
+   "wallSeconds": 0.33678759999747854,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":86,\"choice\":\"남는다\",\"reason\":\"안정이 우선, 새로운 경험은 나중에 여행으로 충분히 해도 돼.\"}]}",
+   "promptTokens": 300,
+   "evalTokens": 42,
+   "evalSeconds": 0.291045,
+   "promptSeconds": 0.036991,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    87
+   ],
+   "startedAt": 108181.3222205,
+   "endedAt": 108181.6889823,
+   "wallSeconds": 0.36676179998903535,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":87,\"choice\":\"남는다\",\"reason\":\"가족과 더 많은 시간을 보내고 싶어 안정적인 선택을 우선시해.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 46,
+   "evalSeconds": 0.321299,
+   "promptSeconds": 0.036464,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    88
+   ],
+   "startedAt": 108181.689035,
+   "endedAt": 108181.9984485,
+   "wallSeconds": 0.3094134999992093,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":88,\"choice\":\"남는다\",\"reason\":\"건강과 현재 삶의 균형을 우선시합니다.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 37,
+   "evalSeconds": 0.256757999,
+   "promptSeconds": 0.043209,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    89
+   ],
+   "startedAt": 108181.9984878,
+   "endedAt": 108182.3360841,
+   "wallSeconds": 0.3375962999998592,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":89,\"choice\":\"남는다\",\"reason\":\"건강이 우선, 긴 출퇴근보다 현재 안정감이 더 중요하다.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 42,
+   "evalSeconds": 0.290526,
+   "promptSeconds": 0.038466,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    90
+   ],
+   "startedAt": 108182.3361245,
+   "endedAt": 108182.6535966,
+   "wallSeconds": 0.31747209999593906,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":90,\"choice\":\"남는다\",\"reason\":\"가족이 있으니 안정적인 생활이 우선입니다.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 39,
+   "evalSeconds": 0.272315,
+   "promptSeconds": 0.036465,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    91
+   ],
+   "startedAt": 108182.6536356,
+   "endedAt": 108182.9970589,
+   "wallSeconds": 0.3434233000007225,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":91,\"choice\":\"남는다\",\"reason\":\"현재 안정감이 좋고, 더 많은 취미 시간 확보 가능해.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 43,
+   "evalSeconds": 0.297235,
+   "promptSeconds": 0.036967,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    92
+   ],
+   "startedAt": 108182.9970978,
+   "endedAt": 108183.3546421,
+   "wallSeconds": 0.3575443000008818,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":92,\"choice\":\"남는다\",\"reason\":\"현재 생활 균형이 좋고, 추가적인 시간 투자로 취미 즐기기 용이.\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 45,
+   "evalSeconds": 0.311401,
+   "promptSeconds": 0.037491,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    93
+   ],
+   "startedAt": 108183.3546812,
+   "endedAt": 108183.6788376,
+   "wallSeconds": 0.32415640000544954,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":93,\"choice\":\"이직한다\",\"reason\":\"더 많은 자유 시간으로 요리 취미 즐기고 싶어.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 40,
+   "evalSeconds": 0.278942,
+   "promptSeconds": 0.036855,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    94
+   ],
+   "startedAt": 108183.6788788,
+   "endedAt": 108183.965774,
+   "wallSeconds": 0.2868951999989804,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":94,\"choice\":\"남는다\",\"reason\":\"여행과 독서 시간 줄어들어 아쉬워\"}]}",
+   "promptTokens": 290,
+   "evalTokens": 35,
+   "evalSeconds": 0.241884,
+   "promptSeconds": 0.036412,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    95
+   ],
+   "startedAt": 108183.9658169,
+   "endedAt": 108184.3054887,
+   "wallSeconds": 0.33967180000036024,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":95,\"choice\":\"남는다\",\"reason\":\"가족과의 시간 더 소중해, 도전은 다음에 해도 돼.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 42,
+   "evalSeconds": 0.295045,
+   "promptSeconds": 0.036238,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    96
+   ],
+   "startedAt": 108184.3055286,
+   "endedAt": 108184.6380972,
+   "wallSeconds": 0.33256860000255983,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":96,\"choice\":\"남는다\",\"reason\":\"취미 시간 줄이기 싫어, 안정적인 일상 유지가 우선\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 41,
+   "evalSeconds": 0.286223,
+   "promptSeconds": 0.036819,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    97
+   ],
+   "startedAt": 108184.6381424,
+   "endedAt": 108184.9535555,
+   "wallSeconds": 0.31541310000466183,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":97,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 삶에 활력을 더하고 싶어.\"}]}",
+   "promptTokens": 298,
+   "evalTokens": 39,
+   "evalSeconds": 0.270037,
+   "promptSeconds": 0.036681,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    98
+   ],
+   "startedAt": 108184.9535957,
+   "endedAt": 108185.2846222,
+   "wallSeconds": 0.3310264999890933,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":98,\"choice\":\"남는다\",\"reason\":\"안정적인 현재 위치와 효율적인 시간 관리가 우선.\"}]}",
+   "promptTokens": 291,
+   "evalTokens": 41,
+   "evalSeconds": 0.285817,
+   "promptSeconds": 0.036156,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    99
+   ],
+   "startedAt": 108185.2846636,
+   "endedAt": 108185.6452104,
+   "wallSeconds": 0.3605468000023393,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":99,\"choice\":\"남는다\",\"reason\":\"학업에 집중하고 시간을 동물과 드라마로 즐기는 게 더 이득이야.\"}]}",
+   "promptTokens": 296,
+   "evalTokens": 45,
+   "evalSeconds": 0.314331,
+   "promptSeconds": 0.036777,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    100
+   ],
+   "startedAt": 108185.6452495,
+   "endedAt": 108186.002842,
+   "wallSeconds": 0.3575925000041025,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":100,\"choice\":\"이직한다\",\"reason\":\"새로운 도전으로 스트레스 해소하고, 더 나은 재테크 기회 찾고 싶어.\"}]}",
+   "promptTokens": 293,
+   "evalTokens": 45,
+   "evalSeconds": 0.311858,
+   "promptSeconds": 0.036579,
+   "doneReason": "stop"
+  }
+ ]
+}

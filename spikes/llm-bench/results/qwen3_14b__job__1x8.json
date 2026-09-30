@@ -1,0 +1,2131 @@
+{
+ "model": "qwen3:14b",
+ "questionId": "job",
+ "method": "1x8",
+ "batchSize": 1,
+ "concurrency": 8,
+ "personaCount": 100,
+ "requestCount": 100,
+ "wallSeconds": 26.507801800005836,
+ "firstResultSeconds": 2.125129399995785,
+ "evalTokens": 3913,
+ "promptTokens": 38116,
+ "tokensPerSecondOverall": 147.6169178237608,
+ "tokensPerSecondPerStream": 22.26993934747894,
+ "failureCount": 2,
+ "failureRate": 0.02,
+ "failureKinds": {
+  "reason_too_long": 2
+ },
+ "requestErrors": 0,
+ "truncated": 0,
+ "vramBaselineMiB": 11996,
+ "vramPeakMiB": 15700,
+ "numCtx": 4096,
+ "answers": [
+  {
+   "personaId": 1,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래되니 몸이 더 지칠 것 같아"
+  },
+  {
+   "personaId": 2,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 소중하고, 등산과 카페 탐방에 더 집중하고 싶어서"
+  },
+  {
+   "personaId": 3,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 아깝고, 감성적으로 뭔가를 하고 싶어서"
+  },
+  {
+   "personaId": 4,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "새로운 도전이 기대되서"
+  },
+  {
+   "personaId": 5,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 더 오래 걸리면 오히려 스트레스가 더 누적될 것 같아"
+  },
+  {
+   "personaId": 6,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 돼서 계획에 차질 생길 수 있어서"
+  },
+  {
+   "personaId": 7,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강과 안정을 더 중요하게 생각해서요"
+  },
+  {
+   "personaId": 8,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간 절약이 더 중요하고, 출퇴근은 음악 듣기로 보상할 수 있어."
+  },
+  {
+   "personaId": 9,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강을 우선시하고, 출퇴근 시간이 오래 걸리는 일은 피하고 싶어요."
+  },
+  {
+   "personaId": 10,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 돼서 가족과 시간 보내기 어려울 것 같아"
+  },
+  {
+   "personaId": 11,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 함께 시간 보내는 게 우선이라서"
+  },
+  {
+   "personaId": 12,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉 상승보다 출퇴근 시간 증가가 부담이 된다."
+  },
+  {
+   "personaId": 13,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강 관리와 가족 시간을 위해 출퇴근 시간을 더 줄이고 싶어요"
+  },
+  {
+   "personaId": 14,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름이 더 중요하고, 출퇴근 시간은 습관으로 적응할 수 있어."
+  },
+  {
+   "personaId": 15,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉보다 안정성이 중요하고, 출퇴근 시간은 건강에 영향을 줄 수 있어"
+  },
+  {
+   "personaId": 16,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 되는 게 마음에 안 드네요."
+  },
+  {
+   "personaId": 17,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 증가가 미래 계획에 맞아서"
+  },
+  {
+   "personaId": 18,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간은 소중하고, 출퇴근 시간이 늘어나면 계획이 깨질 수 있어."
+  },
+  {
+   "personaId": 19,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 생활에 지장이 가요"
+  },
+  {
+   "personaId": 20,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐 있고 출퇴근 시간이 늘어나면 더 피곤할 것 같아요"
+  },
+  {
+   "personaId": 21,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 더 중요하고, 출퇴근 시간은 적응할 수 있어."
+  },
+  {
+   "personaId": 22,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "출퇴근 시간이 늘어나도 연봉 증가에 기대를 걸고 싶다."
+  },
+  {
+   "personaId": 23,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 피로가 쌓일 것 같아서"
+  },
+  {
+   "personaId": 24,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 되면 가족 시간이 줄어들어 걱정돼요."
+  },
+  {
+   "personaId": 25,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 효율이 더 중요하고, 출퇴근 시간이 오래 걸리면 피곤해질 것 같아"
+  },
+  {
+   "personaId": 26,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 너무 길어 감성적인 나에게 힘들 것 같아"
+  },
+  {
+   "personaId": 27,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 함께 시간 보내는 게 우선이에요."
+  },
+  {
+   "personaId": 28,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "돈 더 받고 새로운 경험 해보고 싶어서"
+  },
+  {
+   "personaId": 29,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 더 피곤할 것 같아요"
+  },
+  {
+   "personaId": 30,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리는 게 마음에 안 들고 안정이 더 중요해서"
+  },
+  {
+   "personaId": 31,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약과 가족과의 시간이 더 중요하다고 생각해서"
+  },
+  {
+   "personaId": 32,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 인상에 매력을 느껴 도전해보고 싶다"
+  },
+  {
+   "personaId": 33,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간은 건강에 더 부담이 될 것 같아"
+  },
+  {
+   "personaId": 34,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 중요하고, 연봉 차이보다 안정성 우선입니다."
+  },
+  {
+   "personaId": 35,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "일에 지쳐 있으니 출퇴근 시간은 더 못 견뎌"
+  },
+  {
+   "personaId": 36,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "이직한다",
+   "reason": "시간 효율을 따지면 출퇴근 시간은 줄일 수 없지만 연봉은 중요하다고 생각해"
+  },
+  {
+   "personaId": 37,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 건강에 더 부담될 것 같아서"
+  },
+  {
+   "personaId": 38,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 상승이 장기적으로 더 유리할 것 같아요."
+  },
+  {
+   "personaId": 39,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 함께 시간 보내는 게 중요해서"
+  },
+  {
+   "personaId": 40,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 가족과 함께 시간을 보내기 어려워서"
+  },
+  {
+   "personaId": 41,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 가족과 시간이 줄어들어 마음이 안踏实해요"
+  },
+  {
+   "personaId": 42,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 마음에 안 들어서"
+  },
+  {
+   "personaId": 43,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸려 피로가 더 쌓일 것 같아."
+  },
+  {
+   "personaId": 44,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약과 재테크에 집중하고 싶어서"
+  },
+  {
+   "personaId": 45,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "공무원으로서의 안정성을 더 중요하게 생각하기 때문입니다."
+  },
+  {
+   "personaId": 46,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 일상의 행복을 더하는 것 같아."
+  },
+  {
+   "personaId": 47,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸려 가족과의 시간이 줄어들 수 있어서"
+  },
+  {
+   "personaId": 48,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름이 더 중요하고, 건강은 운동으로 관리할 수 있어."
+  },
+  {
+   "personaId": 49,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "짧은 출퇴근보다 새로운 환경과 감성적인 변화를 더 좋아해요"
+  },
+  {
+   "personaId": 50,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 효율이 더 중요하고, 출퇴근 시간이 오래 걸리면 피곤해질 것 같아"
+  },
+  {
+   "personaId": 51,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름에 대한 유혹이 너무 강해서"
+  },
+  {
+   "personaId": 52,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약과 일상 효율을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 53,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오르는 게 더 중요해 보여서"
+  },
+  {
+   "personaId": 54,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약과 일상 효율을 더 중요하게 생각해서"
+  },
+  {
+   "personaId": 55,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "남편과 함께 사는 게 중요해서 출퇴근 시간을 줄이고 싶어요"
+  },
+  {
+   "personaId": 56,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 돼서 일과 삶의 균형이 깨질까 걱려서"
+  },
+  {
+   "personaId": 57,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 돼서 가족과 시간 보내기 어렵다"
+  },
+  {
+   "personaId": 58,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간이 더 나가는 게 오히려 삶의 질을 높일 수 있다고 생각해서"
+  },
+  {
+   "personaId": 59,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "돈보다는 편안한 출퇴근이 더 중요해요"
+  },
+  {
+   "personaId": 60,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강이 더 중요하고 출퇴근 시간은 너무 길다"
+  },
+  {
+   "personaId": 61,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 증가가 장기적인 재테크에 더 유리하다고 판단했기 때문입니다."
+  },
+  {
+   "personaId": 62,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약이 더 중요해 보여서요."
+  },
+  {
+   "personaId": 63,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "신나는 도전이야. 출퇴근 시간은 별 거 아니지."
+  },
+  {
+   "personaId": 64,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "더 많은 경험을 하면서 새로운 도전을 하고 싶어서요"
+  },
+  {
+   "personaId": 65,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 더 중요하고, 일에 지쳐 있으니 현재 일자리가 더 나을 것 같아"
+  },
+  {
+   "personaId": 66,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간이 더 중요해서 이직은 고려하지 않겠어요."
+  },
+  {
+   "personaId": 67,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 보내는 게 우선이니까"
+  },
+  {
+   "personaId": 68,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉보다는 출퇴근 시간을 더 중요하게 생각해요"
+  },
+  {
+   "personaId": 69,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉 오르는 것보다 시간이 더 소중해서"
+  },
+  {
+   "personaId": 70,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 소중하고, 출퇴근 시간은 에너지를 뺏아가니까"
+  },
+  {
+   "personaId": 71,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉 오름보다는 편안한 출퇴근이 더 중요해서"
+  },
+  {
+   "personaId": 72,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 피곤해질 것 같아."
+  },
+  {
+   "personaId": 73,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 너무 길어져서 지치지 않으려고 남는다"
+  },
+  {
+   "personaId": 74,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래되서 고민이 되요"
+  },
+  {
+   "personaId": 75,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 돼서 가족과 시간을 더 보내고 싶어요."
+  },
+  {
+   "personaId": 76,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간 절약과 가족과의 시간이 더 중요해요"
+  },
+  {
+   "personaId": 77,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "건강을 위해 운동할 시간이 더 생기니까"
+  },
+  {
+   "personaId": 78,
+   "ok": false,
+   "failure": "reason_too_long",
+   "choice": "이직한다",
+   "reason": "연봉 상승에 매력을 느끼지만, 출퇴근 시간은 반려동물과의 시간을 고려해 줄 수 있다."
+  },
+  {
+   "personaId": 79,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 돼서 피곤할 것 같아요."
+  },
+  {
+   "personaId": 80,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 소중하고, 돈보다 여유로운 일상이 더 중요해요."
+  },
+  {
+   "personaId": 81,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 상승이 더 중요한데, 출퇴근 시간은 운동으로 보상할 수 있어."
+  },
+  {
+   "personaId": 82,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강과 시간 절약을 위해 현재 직장을 유지한다."
+  },
+  {
+   "personaId": 83,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "직장에서의 안정감과 편안한 출퇴근이 더 중요해 보여서"
+  },
+  {
+   "personaId": 84,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "출퇴근 시간은 건강에 안 좋지만, 연봉 오르는 게 더 중요해 보여"
+  },
+  {
+   "personaId": 85,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 상승이 더 중요하고, 출퇴근 시간은 습관으로 적응할 수 있어."
+  },
+  {
+   "personaId": 86,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉 오르는 것보다 일상이 안정적인 게 더 중요해 보여서"
+  },
+  {
+   "personaId": 87,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래되서 가족과 시간을 보내고 싶어요."
+  },
+  {
+   "personaId": 88,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강이 더 중요해서 출퇴근 시간이 긴 직장은 피하고 싶어요"
+  },
+  {
+   "personaId": 89,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "건강이 더 중요하고 출퇴근 시간이 길어지면 피곤해질 것 같아"
+  },
+  {
+   "personaId": 90,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과 시간 보내는 게 우선이야"
+  },
+  {
+   "personaId": 91,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래되어 일과 삶의 균형이 깨질까 걱정돼요"
+  },
+  {
+   "personaId": 92,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 오래 걸리면 스트레스가 많아질 것 같아."
+  },
+  {
+   "personaId": 93,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "시간은 늘어났지만 연봉 오르는 게 더 중요해 보여"
+  },
+  {
+   "personaId": 94,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "출퇴근 시간이 더 오래 걸리면 힐링 시간이 줄어들잖아."
+  },
+  {
+   "personaId": 95,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "가족과의 시간이 더 중요해서 이직하지 않겠어요."
+  },
+  {
+   "personaId": 96,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 더 중요하고, 요리하는 시간이 줄어들면 안 되니까"
+  },
+  {
+   "personaId": 97,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "모험을 좋아해서 40분 더 걸리는 것도 감수할 수 있어"
+  },
+  {
+   "personaId": 98,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "연봉 상승보다 출퇴근 시간 증가가 부담이다."
+  },
+  {
+   "personaId": 99,
+   "ok": true,
+   "choice": "남는다",
+   "reason": "시간이 너무 오래 걸리고, 학교와 썸이 우선이에요."
+  },
+  {
+   "personaId": 100,
+   "ok": true,
+   "choice": "이직한다",
+   "reason": "연봉 오름에 매력을 느끼고, 새로운 도전을 하고 싶어서"
+  }
+ ],
+ "calls": [
+  {
+   "personaIds": [
+    1
+   ],
+   "startedAt": 108653.0886348,
+   "endedAt": 108655.5688677,
+   "wallSeconds": 2.4802328999940073,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":1,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래되니 몸이 더 지칠 것 같아\"}]}",
+   "promptTokens": 375,
+   "evalTokens": 37,
+   "evalSeconds": 2.018829,
+   "promptSeconds": 0.365736,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    2
+   ],
+   "startedAt": 108653.0889294,
+   "endedAt": 108656.0729897,
+   "wallSeconds": 2.984060300004785,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":2,\"choice\":\"남는다\",\"reason\":\"시간이 소중하고, 등산과 카페 탐방에 더 집중하고 싶어서\"}]}",
+   "promptTokens": 384,
+   "evalTokens": 42,
+   "evalSeconds": 2.202117,
+   "promptSeconds": 0.686092,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    3
+   ],
+   "startedAt": 108653.0892099,
+   "endedAt": 108655.5926373,
+   "wallSeconds": 2.5034273999917787,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":3,\"choice\":\"남는다\",\"reason\":\"시간이 아깝고, 감성적으로 뭔가를 하고 싶어서\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 37,
+   "evalSeconds": 1.720937,
+   "promptSeconds": 0.320825,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    4
+   ],
+   "startedAt": 108653.0894545,
+   "endedAt": 108655.2136183,
+   "wallSeconds": 2.1241637999919476,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":4,\"choice\":\"이직한다\",\"reason\":\"새로운 도전이 기대되서\"}]}",
+   "promptTokens": 375,
+   "evalTokens": 29,
+   "evalSeconds": 0.810919,
+   "promptSeconds": 0.851484,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    5
+   ],
+   "startedAt": 108653.0898176,
+   "endedAt": 108656.2304514,
+   "wallSeconds": 3.140633799994248,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":5,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 더 오래 걸리면 오히려 스트레스가 더 누적될 것 같아\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 43,
+   "evalSeconds": 1.82696,
+   "promptSeconds": 0.531760999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    6
+   ],
+   "startedAt": 108653.0904825,
+   "endedAt": 108655.5920808,
+   "wallSeconds": 2.5015982999902917,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":6,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 돼서 계획에 차질 생길 수 있어서\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 38,
+   "evalSeconds": 2.04119,
+   "promptSeconds": 0.366037,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    7
+   ],
+   "startedAt": 108653.0910587,
+   "endedAt": 108655.3770071,
+   "wallSeconds": 2.285948400007328,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":7,\"choice\":\"남는다\",\"reason\":\"건강과 안정을 더 중요하게 생각해서요\"}]}",
+   "promptTokens": 378,
+   "evalTokens": 31,
+   "evalSeconds": 0.974006,
+   "promptSeconds": 0.531304,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    8
+   ],
+   "startedAt": 108653.0914359,
+   "endedAt": 108656.4255464,
+   "wallSeconds": 3.3341104999999516,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":8,\"choice\":\"이직한다\",\"reason\":\"시간 절약이 더 중요하고, 출퇴근은 음악 듣기로 보상할 수 있어.\"}]}",
+   "promptTokens": 376,
+   "evalTokens": 46,
+   "evalSeconds": 1.904795,
+   "promptSeconds": 0.648977,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    9
+   ],
+   "startedAt": 108655.2136946,
+   "endedAt": 108657.2204429,
+   "wallSeconds": 2.006748300002073,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":9,\"choice\":\"남는다\",\"reason\":\"건강을 우선시하고, 출퇴근 시간이 오래 걸리는 일은 피하고 싶어요.\"}]}",
+   "promptTokens": 387,
+   "evalTokens": 44,
+   "evalSeconds": 1.843746,
+   "promptSeconds": 0.117827,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    10
+   ],
+   "startedAt": 108655.377056,
+   "endedAt": 108657.2209237,
+   "wallSeconds": 1.843867700008559,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":10,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 돼서 가족과 시간 보내기 어려울 것 같아\"}]}",
+   "promptTokens": 384,
+   "evalTokens": 42,
+   "evalSeconds": 1.694593,
+   "promptSeconds": 0.111524,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    11
+   ],
+   "startedAt": 108655.5689188,
+   "endedAt": 108656.9591839,
+   "wallSeconds": 1.3902651000098558,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":11,\"choice\":\"남는다\",\"reason\":\"가족과 함께 시간 보내는 게 우선이라서\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 31,
+   "evalSeconds": 0.971674,
+   "promptSeconds": 0.365333,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    12
+   ],
+   "startedAt": 108655.592147,
+   "endedAt": 108657.2574704,
+   "wallSeconds": 1.6653233999968506,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":12,\"choice\":\"남는다\",\"reason\":\"연봉 상승보다 출퇴근 시간 증가가 부담이 된다.\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 39,
+   "evalSeconds": 1.268332,
+   "promptSeconds": 0.366801,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    13
+   ],
+   "startedAt": 108655.5926774,
+   "endedAt": 108657.6465483,
+   "wallSeconds": 2.0538709000102244,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":13,\"choice\":\"남는다\",\"reason\":\"건강 관리와 가족 시간을 위해 출퇴근 시간을 더 줄이고 싶어요\"}]}",
+   "promptTokens": 385,
+   "evalTokens": 43,
+   "evalSeconds": 1.65844,
+   "promptSeconds": 0.365859,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    14
+   ],
+   "startedAt": 108656.0730544,
+   "endedAt": 108657.9686993,
+   "wallSeconds": 1.8956449000106659,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":14,\"choice\":\"이직한다\",\"reason\":\"연봉 오름이 더 중요하고, 출퇴근 시간은 습관으로 적응할 수 있어.\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 45,
+   "evalSeconds": 1.73941,
+   "promptSeconds": 0.117317,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    15
+   ],
+   "startedAt": 108656.2304924,
+   "endedAt": 108658.2132812,
+   "wallSeconds": 1.9827887999999803,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":15,\"choice\":\"남는다\",\"reason\":\"연봉보다 안정성이 중요하고, 출퇴근 시간은 건강에 영향을 줄 수 있어\"}]}",
+   "promptTokens": 385,
+   "evalTokens": 45,
+   "evalSeconds": 1.831796,
+   "promptSeconds": 0.112935,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    16
+   ],
+   "startedAt": 108656.4255885,
+   "endedAt": 108657.9078273,
+   "wallSeconds": 1.4822388000029605,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":16,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 되는 게 마음에 안 드네요.\"}]}",
+   "promptTokens": 389,
+   "evalTokens": 37,
+   "evalSeconds": 1.34588,
+   "promptSeconds": 0.113275,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    17
+   ],
+   "startedAt": 108656.9592353,
+   "endedAt": 108658.5697995,
+   "wallSeconds": 1.6105641999893123,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":17,\"choice\":\"이직한다\",\"reason\":\"연봉 증가가 미래 계획에 맞아서\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 33,
+   "evalSeconds": 1.46608,
+   "promptSeconds": 0.118953,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    18
+   ],
+   "startedAt": 108657.2204944,
+   "endedAt": 108659.3426888,
+   "wallSeconds": 2.122194399998989,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":18,\"choice\":\"남는다\",\"reason\":\"시간은 소중하고, 출퇴근 시간이 늘어나면 계획이 깨질 수 있어.\"}]}",
+   "promptTokens": 386,
+   "evalTokens": 46,
+   "evalSeconds": 1.758727,
+   "promptSeconds": 0.297981,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    19
+   ],
+   "startedAt": 108657.2209591,
+   "endedAt": 108658.9341044,
+   "wallSeconds": 1.7131453000038164,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":19,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 생활에 지장이 가요\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 38,
+   "evalSeconds": 1.351186,
+   "promptSeconds": 0.297168,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    20
+   ],
+   "startedAt": 108657.2575189,
+   "endedAt": 108659.1929207,
+   "wallSeconds": 1.935401800001273,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":20,\"choice\":\"남는다\",\"reason\":\"일에 지쳐 있고 출퇴근 시간이 늘어나면 더 피곤할 것 같아요\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 44,
+   "evalSeconds": 1.60953,
+   "promptSeconds": 0.297571,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    21
+   ],
+   "startedAt": 108657.6466085,
+   "endedAt": 108659.3790211,
+   "wallSeconds": 1.7324126000021352,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":21,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 더 중요하고, 출퇴근 시간은 적응할 수 있어.\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 42,
+   "evalSeconds": 1.572582,
+   "promptSeconds": 0.117442,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    22
+   ],
+   "startedAt": 108657.9078676,
+   "endedAt": 108659.9494225,
+   "wallSeconds": 2.041554899988114,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":22,\"choice\":\"이직한다\",\"reason\":\"출퇴근 시간이 늘어나도 연봉 증가에 기대를 걸고 싶다.\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 45,
+   "evalSeconds": 1.760079,
+   "promptSeconds": 0.203818,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    23
+   ],
+   "startedAt": 108657.968748,
+   "endedAt": 108659.745072,
+   "wallSeconds": 1.7763240000058431,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":23,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 피로가 쌓일 것 같아서\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 41,
+   "evalSeconds": 1.554215,
+   "promptSeconds": 0.205217,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    24
+   ],
+   "startedAt": 108658.2133235,
+   "endedAt": 108660.1681837,
+   "wallSeconds": 1.9548602000140818,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":24,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 되면 가족 시간이 줄어들어 걱정돼요.\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 44,
+   "evalSeconds": 1.800738,
+   "promptSeconds": 0.116505,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    25
+   ],
+   "startedAt": 108658.5698421,
+   "endedAt": 108660.6276798,
+   "wallSeconds": 2.0578377000056207,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":25,\"choice\":\"남는다\",\"reason\":\"시간 효율이 더 중요하고, 출퇴근 시간이 오래 걸리면 피곤해질 것 같아\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 46,
+   "evalSeconds": 1.896527,
+   "promptSeconds": 0.13131,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    26
+   ],
+   "startedAt": 108658.9341435,
+   "endedAt": 108661.1336822,
+   "wallSeconds": 2.1995387000060873,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":26,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 너무 길어 감성적인 나에게 힘들 것 같아\"}]}",
+   "promptTokens": 389,
+   "evalTokens": 41,
+   "evalSeconds": 2.028498,
+   "promptSeconds": 0.132356,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    27
+   ],
+   "startedAt": 108659.1929574,
+   "endedAt": 108660.8378952,
+   "wallSeconds": 1.6449378000106663,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":27,\"choice\":\"남는다\",\"reason\":\"가족과 함께 시간 보내는 게 우선이에요.\"}]}",
+   "promptTokens": 375,
+   "evalTokens": 33,
+   "evalSeconds": 1.495495,
+   "promptSeconds": 0.111401,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    28
+   ],
+   "startedAt": 108659.3427312,
+   "endedAt": 108660.8368994,
+   "wallSeconds": 1.4941682000062428,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":28,\"choice\":\"이직한다\",\"reason\":\"돈 더 받고 새로운 경험 해보고 싶어서\"}]}",
+   "promptTokens": 388,
+   "evalTokens": 31,
+   "evalSeconds": 1.228803,
+   "promptSeconds": 0.206691,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    29
+   ],
+   "startedAt": 108659.3790867,
+   "endedAt": 108661.383566,
+   "wallSeconds": 2.004479299997911,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":29,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 더 피곤할 것 같아요\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 38,
+   "evalSeconds": 1.773571,
+   "promptSeconds": 0.208272,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    30
+   ],
+   "startedAt": 108659.7451109,
+   "endedAt": 108661.7505659,
+   "wallSeconds": 2.0054550000058953,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":30,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리는 게 마음에 안 들고 안정이 더 중요해서\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 41,
+   "evalSeconds": 1.851657,
+   "promptSeconds": 0.129377999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    31
+   ],
+   "startedAt": 108659.9494691,
+   "endedAt": 108661.7491436,
+   "wallSeconds": 1.7996744999982184,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":31,\"choice\":\"남는다\",\"reason\":\"시간 절약과 가족과의 시간이 더 중요하다고 생각해서\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 37,
+   "evalSeconds": 1.582184,
+   "promptSeconds": 0.145595,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    32
+   ],
+   "startedAt": 108660.1682239,
+   "endedAt": 108661.8022328,
+   "wallSeconds": 1.634008900000481,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":32,\"choice\":\"이직한다\",\"reason\":\"연봉 인상에 매력을 느껴 도전해보고 싶다\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 36,
+   "evalSeconds": 1.434387,
+   "promptSeconds": 0.152842,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    33
+   ],
+   "startedAt": 108660.6277221,
+   "endedAt": 108662.6331413,
+   "wallSeconds": 2.005419199995231,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":33,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간은 건강에 더 부담이 될 것 같아\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 36,
+   "evalSeconds": 1.849434,
+   "promptSeconds": 0.103137,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    34
+   ],
+   "startedAt": 108660.8369526,
+   "endedAt": 108663.0534274,
+   "wallSeconds": 2.216474799992284,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":34,\"choice\":\"남는다\",\"reason\":\"시간 절약이 중요하고, 연봉 차이보다 안정성 우선입니다.\"}]}",
+   "promptTokens": 371,
+   "evalTokens": 39,
+   "evalSeconds": 1.920333,
+   "promptSeconds": 0.224189,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    35
+   ],
+   "startedAt": 108660.8379439,
+   "endedAt": 108662.8721542,
+   "wallSeconds": 2.034210300000268,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":35,\"choice\":\"남는다\",\"reason\":\"일에 지쳐 있으니 출퇴근 시간은 더 못 견뎌\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 37,
+   "evalSeconds": 1.737619,
+   "promptSeconds": 0.225405,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    36
+   ],
+   "startedAt": 108661.1337358,
+   "endedAt": 108663.709361,
+   "wallSeconds": 2.5756251999991946,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":36,\"choice\":\"이직한다\",\"reason\":\"시간 효율을 따지면 출퇴근 시간은 줄일 수 없지만 연봉은 중요하다고 생각해\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 47,
+   "evalSeconds": 2.39601,
+   "promptSeconds": 0.131815,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    37
+   ],
+   "startedAt": 108661.3836297,
+   "endedAt": 108663.2893076,
+   "wallSeconds": 1.905677900009323,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":37,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 건강에 더 부담될 것 같아서\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 36,
+   "evalSeconds": 1.726262,
+   "promptSeconds": 0.131085,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    38
+   ],
+   "startedAt": 108661.7491846,
+   "endedAt": 108663.9838775,
+   "wallSeconds": 2.2346928999904776,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":38,\"choice\":\"이직한다\",\"reason\":\"연봉 상승이 장기적으로 더 유리할 것 같아요.\"}]}",
+   "promptTokens": 378,
+   "evalTokens": 37,
+   "evalSeconds": 1.67882,
+   "promptSeconds": 0.474063,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    39
+   ],
+   "startedAt": 108661.7506051,
+   "endedAt": 108663.5171834,
+   "wallSeconds": 1.7665783000120427,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":39,\"choice\":\"남는다\",\"reason\":\"가족과 함께 시간 보내는 게 중요해서\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 30,
+   "evalSeconds": 1.210489,
+   "promptSeconds": 0.475643,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    40
+   ],
+   "startedAt": 108661.8022752,
+   "endedAt": 108664.2444667,
+   "wallSeconds": 2.4421914999984438,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":40,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 가족과 함께 시간을 보내기 어려워서\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 42,
+   "evalSeconds": 1.937223,
+   "promptSeconds": 0.476073,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    41
+   ],
+   "startedAt": 108662.6331996,
+   "endedAt": 108664.9371749,
+   "wallSeconds": 2.303975300004822,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":41,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 가족과 시간이 줄어들어 마음이 안踏实해요\"}]}",
+   "promptTokens": 384,
+   "evalTokens": 46,
+   "evalSeconds": 2.14325,
+   "promptSeconds": 0.128309,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    42
+   ],
+   "startedAt": 108662.8721971,
+   "endedAt": 108664.549864,
+   "wallSeconds": 1.677666899995529,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":42,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 마음에 안 들어서\"}]}",
+   "promptTokens": 384,
+   "evalTokens": 30,
+   "evalSeconds": 1.495224,
+   "promptSeconds": 0.136834,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    43
+   ],
+   "startedAt": 108663.0534872,
+   "endedAt": 108665.2207096,
+   "wallSeconds": 2.1672224000067217,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":43,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸려 피로가 더 쌓일 것 같아.\"}]}",
+   "promptTokens": 387,
+   "evalTokens": 41,
+   "evalSeconds": 1.98246,
+   "promptSeconds": 0.140418,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    44
+   ],
+   "startedAt": 108663.2893482,
+   "endedAt": 108664.9387327,
+   "wallSeconds": 1.6493844999931753,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":44,\"choice\":\"남는다\",\"reason\":\"시간 절약과 재테크에 집중하고 싶어서\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 35,
+   "evalSeconds": 1.472273,
+   "promptSeconds": 0.136959,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    45
+   ],
+   "startedAt": 108663.5172198,
+   "endedAt": 108665.4623679,
+   "wallSeconds": 1.945148100014194,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":45,\"choice\":\"남는다\",\"reason\":\"공무원으로서의 안정성을 더 중요하게 생각하기 때문입니다.\"}]}",
+   "promptTokens": 378,
+   "evalTokens": 37,
+   "evalSeconds": 1.75183,
+   "promptSeconds": 0.137563,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    46
+   ],
+   "startedAt": 108663.7094043,
+   "endedAt": 108665.5055298,
+   "wallSeconds": 1.796125499997288,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":46,\"choice\":\"남는다\",\"reason\":\"시간 절약이 일상의 행복을 더하는 것 같아.\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 36,
+   "evalSeconds": 1.593104,
+   "promptSeconds": 0.143272,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    47
+   ],
+   "startedAt": 108663.9839302,
+   "endedAt": 108665.9716934,
+   "wallSeconds": 1.9877631999988807,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":47,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸려 가족과의 시간이 줄어들 수 있어서\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 41,
+   "evalSeconds": 1.799627,
+   "promptSeconds": 0.133017,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    48
+   ],
+   "startedAt": 108664.2445069,
+   "endedAt": 108666.217853,
+   "wallSeconds": 1.9733460999996169,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":48,\"choice\":\"이직한다\",\"reason\":\"연봉 오름이 더 중요하고, 건강은 운동으로 관리할 수 있어.\"}]}",
+   "promptTokens": 387,
+   "evalTokens": 41,
+   "evalSeconds": 1.830783,
+   "promptSeconds": 0.118652,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    49
+   ],
+   "startedAt": 108664.5499432,
+   "endedAt": 108666.5369787,
+   "wallSeconds": 1.9870354999875417,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":49,\"choice\":\"이직한다\",\"reason\":\"짧은 출퇴근보다 새로운 환경과 감성적인 변화를 더 좋아해요\"}]}",
+   "promptTokens": 389,
+   "evalTokens": 41,
+   "evalSeconds": 1.806816,
+   "promptSeconds": 0.131562999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    50
+   ],
+   "startedAt": 108664.9372145,
+   "endedAt": 108667.561276,
+   "wallSeconds": 2.6240614999987883,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":50,\"choice\":\"남는다\",\"reason\":\"시간 효율이 더 중요하고, 출퇴근 시간이 오래 걸리면 피곤해질 것 같아\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 46,
+   "evalSeconds": 2.338782,
+   "promptSeconds": 0.228222,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    51
+   ],
+   "startedAt": 108664.9389516,
+   "endedAt": 108666.7291859,
+   "wallSeconds": 1.7902343000023393,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":51,\"choice\":\"이직한다\",\"reason\":\"연봉 오름에 대한 유혹이 너무 강해서\"}]}",
+   "promptTokens": 383,
+   "evalTokens": 32,
+   "evalSeconds": 1.508377,
+   "promptSeconds": 0.22624,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    52
+   ],
+   "startedAt": 108665.2207587,
+   "endedAt": 108666.9556779,
+   "wallSeconds": 1.7349191999965115,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":52,\"choice\":\"남는다\",\"reason\":\"시간 절약과 일상 효율을 더 중요하게 생각해서\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 35,
+   "evalSeconds": 1.544365,
+   "promptSeconds": 0.137552,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    53
+   ],
+   "startedAt": 108665.4624108,
+   "endedAt": 108666.9990051,
+   "wallSeconds": 1.536594300006982,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":53,\"choice\":\"이직한다\",\"reason\":\"연봉 오르는 게 더 중요해 보여서\"}]}",
+   "promptTokens": 383,
+   "evalTokens": 32,
+   "evalSeconds": 1.244345,
+   "promptSeconds": 0.231866,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    54
+   ],
+   "startedAt": 108665.5056649,
+   "endedAt": 108667.3041969,
+   "wallSeconds": 1.798532000000705,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":54,\"choice\":\"남는다\",\"reason\":\"시간 절약과 일상 효율을 더 중요하게 생각해서\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 35,
+   "evalSeconds": 1.548475,
+   "promptSeconds": 0.2329,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    55
+   ],
+   "startedAt": 108665.9717626,
+   "endedAt": 108667.993673,
+   "wallSeconds": 2.0219103999988874,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":55,\"choice\":\"남는다\",\"reason\":\"남편과 함께 사는 게 중요해서 출퇴근 시간을 줄이고 싶어요\"}]}",
+   "promptTokens": 374,
+   "evalTokens": 41,
+   "evalSeconds": 1.848156,
+   "promptSeconds": 0.127705,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    56
+   ],
+   "startedAt": 108666.2178967,
+   "endedAt": 108668.3986517,
+   "wallSeconds": 2.180754999993951,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":56,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 돼서 일과 삶의 균형이 깨질까 걱려서\"}]}",
+   "promptTokens": 385,
+   "evalTokens": 47,
+   "evalSeconds": 2.026925,
+   "promptSeconds": 0.120247,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    57
+   ],
+   "startedAt": 108666.5370249,
+   "endedAt": 108668.397885,
+   "wallSeconds": 1.860860100001446,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":57,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 돼서 가족과 시간 보내기 어렵다\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 38,
+   "evalSeconds": 1.667037,
+   "promptSeconds": 0.144666,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    58
+   ],
+   "startedAt": 108666.7292427,
+   "endedAt": 108668.7469402,
+   "wallSeconds": 2.0176974999922095,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":58,\"choice\":\"이직한다\",\"reason\":\"시간이 더 나가는 게 오히려 삶의 질을 높일 수 있다고 생각해서\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 40,
+   "evalSeconds": 1.865011,
+   "promptSeconds": 0.125903,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    59
+   ],
+   "startedAt": 108666.9557172,
+   "endedAt": 108669.0462068,
+   "wallSeconds": 2.090489599999273,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":59,\"choice\":\"남는다\",\"reason\":\"돈보다는 편안한 출퇴근이 더 중요해요\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 37,
+   "evalSeconds": 1.792902,
+   "promptSeconds": 0.240227,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    60
+   ],
+   "startedAt": 108666.9990589,
+   "endedAt": 108668.7705722,
+   "wallSeconds": 1.7715133000019705,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":60,\"choice\":\"남는다\",\"reason\":\"건강이 더 중요하고 출퇴근 시간은 너무 길다\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 36,
+   "evalSeconds": 1.516587,
+   "promptSeconds": 0.240911,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    61
+   ],
+   "startedAt": 108667.3042368,
+   "endedAt": 108669.6136373,
+   "wallSeconds": 2.3094005000020843,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":61,\"choice\":\"이직한다\",\"reason\":\"연봉 증가가 장기적인 재테크에 더 유리하다고 판단했기 때문입니다.\"}]}",
+   "promptTokens": 374,
+   "evalTokens": 44,
+   "evalSeconds": 2.124868,
+   "promptSeconds": 0.1416,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    62
+   ],
+   "startedAt": 108667.5613244,
+   "endedAt": 108669.3107796,
+   "wallSeconds": 1.7494551999989199,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":62,\"choice\":\"남는다\",\"reason\":\"시간 절약이 더 중요해 보여서요.\"}]}",
+   "promptTokens": 383,
+   "evalTokens": 33,
+   "evalSeconds": 1.563379,
+   "promptSeconds": 0.13205,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    63
+   ],
+   "startedAt": 108667.9937375,
+   "endedAt": 108670.1095194,
+   "wallSeconds": 2.115781899992726,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":63,\"choice\":\"이직한다\",\"reason\":\"신나는 도전이야. 출퇴근 시간은 별 거 아니지.\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 40,
+   "evalSeconds": 1.924857,
+   "promptSeconds": 0.133076,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    64
+   ],
+   "startedAt": 108668.3979347,
+   "endedAt": 108670.4126786,
+   "wallSeconds": 2.014743899999303,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":64,\"choice\":\"이직한다\",\"reason\":\"더 많은 경험을 하면서 새로운 도전을 하고 싶어서요\"}]}",
+   "promptTokens": 385,
+   "evalTokens": 35,
+   "evalSeconds": 1.716826,
+   "promptSeconds": 0.233952,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    65
+   ],
+   "startedAt": 108668.3986906,
+   "endedAt": 108670.8965373,
+   "wallSeconds": 2.497846699989168,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":65,\"choice\":\"남는다\",\"reason\":\"시간이 더 중요하고, 일에 지쳐 있으니 현재 일자리가 더 나을 것 같아\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 43,
+   "evalSeconds": 2.199852,
+   "promptSeconds": 0.234874,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    66
+   ],
+   "startedAt": 108668.7469885,
+   "endedAt": 108670.8949867,
+   "wallSeconds": 2.1479982000018936,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":66,\"choice\":\"남는다\",\"reason\":\"가족과의 시간이 더 중요해서 이직은 고려하지 않겠어요.\"}]}",
+   "promptTokens": 392,
+   "evalTokens": 39,
+   "evalSeconds": 1.847721,
+   "promptSeconds": 0.250979,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    67
+   ],
+   "startedAt": 108668.7706199,
+   "endedAt": 108670.3808979,
+   "wallSeconds": 1.6102780000073835,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":67,\"choice\":\"남는다\",\"reason\":\"가족과 시간 보내는 게 우선이니까\"}]}",
+   "promptTokens": 383,
+   "evalTokens": 30,
+   "evalSeconds": 1.334975,
+   "promptSeconds": 0.249683,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    68
+   ],
+   "startedAt": 108669.0462542,
+   "endedAt": 108670.8440806,
+   "wallSeconds": 1.7978263999975752,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":68,\"choice\":\"남는다\",\"reason\":\"연봉보다는 출퇴근 시간을 더 중요하게 생각해요\"}]}",
+   "promptTokens": 384,
+   "evalTokens": 36,
+   "evalSeconds": 1.604535,
+   "promptSeconds": 0.141739,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    69
+   ],
+   "startedAt": 108669.3108252,
+   "endedAt": 108671.3038154,
+   "wallSeconds": 1.9929902000003494,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":69,\"choice\":\"남는다\",\"reason\":\"연봉 오르는 것보다 시간이 더 소중해서\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 33,
+   "evalSeconds": 1.788003,
+   "promptSeconds": 0.138812,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    70
+   ],
+   "startedAt": 108669.6136854,
+   "endedAt": 108671.7721446,
+   "wallSeconds": 2.1584591999999247,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":70,\"choice\":\"남는다\",\"reason\":\"시간이 소중하고, 출퇴근 시간은 에너지를 뺏아가니까\"}]}",
+   "promptTokens": 388,
+   "evalTokens": 41,
+   "evalSeconds": 1.939819,
+   "promptSeconds": 0.162093,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    71
+   ],
+   "startedAt": 108670.1095849,
+   "endedAt": 108672.1722992,
+   "wallSeconds": 2.0627143000019714,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":71,\"choice\":\"남는다\",\"reason\":\"연봉 오름보다는 편안한 출퇴근이 더 중요해서\"}]}",
+   "promptTokens": 376,
+   "evalTokens": 39,
+   "evalSeconds": 1.868218,
+   "promptSeconds": 0.148414,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    72
+   ],
+   "startedAt": 108670.3809467,
+   "endedAt": 108672.4119483,
+   "wallSeconds": 2.031001600000309,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":72,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 피곤해질 것 같아.\"}]}",
+   "promptTokens": 384,
+   "evalTokens": 38,
+   "evalSeconds": 1.723206,
+   "promptSeconds": 0.257343,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    73
+   ],
+   "startedAt": 108670.412727,
+   "endedAt": 108672.5881517,
+   "wallSeconds": 2.1754246999917086,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":73,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 너무 길어져서 지치지 않으려고 남는다\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 41,
+   "evalSeconds": 1.897605,
+   "promptSeconds": 0.258997,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    74
+   ],
+   "startedAt": 108670.8441516,
+   "endedAt": 108672.6363394,
+   "wallSeconds": 1.7921878000051947,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":74,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래되서 고민이 되요\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 34,
+   "evalSeconds": 1.334529,
+   "promptSeconds": 0.36866,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    75
+   ],
+   "startedAt": 108670.8950224,
+   "endedAt": 108673.3433447,
+   "wallSeconds": 2.4483222999988357,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":75,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 돼서 가족과 시간을 더 보내고 싶어요.\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 42,
+   "evalSeconds": 2.040693,
+   "promptSeconds": 0.369471,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    76
+   ],
+   "startedAt": 108670.8965803,
+   "endedAt": 108672.9078742,
+   "wallSeconds": 2.0112938999955077,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":76,\"choice\":\"남는다\",\"reason\":\"시간 절약과 가족과의 시간이 더 중요해요\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 35,
+   "evalSeconds": 1.603141,
+   "promptSeconds": 0.371518,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    77
+   ],
+   "startedAt": 108671.3038851,
+   "endedAt": 108672.9073146,
+   "wallSeconds": 1.603429499999038,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":77,\"choice\":\"이직한다\",\"reason\":\"건강을 위해 운동할 시간이 더 생기니까\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 33,
+   "evalSeconds": 1.434794,
+   "promptSeconds": 0.12813,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    78
+   ],
+   "startedAt": 108671.7721874,
+   "endedAt": 108674.2572077,
+   "wallSeconds": 2.4850202999950852,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":78,\"choice\":\"이직한다\",\"reason\":\"연봉 상승에 매력을 느끼지만, 출퇴근 시간은 반려동물과의 시간을 고려해 줄 수 있다.\"}]}",
+   "promptTokens": 384,
+   "evalTokens": 53,
+   "evalSeconds": 2.294621,
+   "promptSeconds": 0.144688,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    79
+   ],
+   "startedAt": 108672.1723594,
+   "endedAt": 108674.0182981,
+   "wallSeconds": 1.8459386999893468,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":79,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 돼서 피곤할 것 같아요.\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 38,
+   "evalSeconds": 1.655565,
+   "promptSeconds": 0.146225,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    80
+   ],
+   "startedAt": 108672.412015,
+   "endedAt": 108674.6103665,
+   "wallSeconds": 2.1983515000029,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":80,\"choice\":\"남는다\",\"reason\":\"시간이 소중하고, 돈보다 여유로운 일상이 더 중요해요.\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 41,
+   "evalSeconds": 2.046662,
+   "promptSeconds": 0.124383,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    81
+   ],
+   "startedAt": 108672.5882248,
+   "endedAt": 108674.8785677,
+   "wallSeconds": 2.290342899999814,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":81,\"choice\":\"이직한다\",\"reason\":\"연봉 상승이 더 중요한데, 출퇴근 시간은 운동으로 보상할 수 있어.\"}]}",
+   "promptTokens": 376,
+   "evalTokens": 44,
+   "evalSeconds": 1.972746,
+   "promptSeconds": 0.252836,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    82
+   ],
+   "startedAt": 108672.6363923,
+   "endedAt": 108674.2566397,
+   "wallSeconds": 1.620247400001972,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":82,\"choice\":\"남는다\",\"reason\":\"건강과 시간 절약을 위해 현재 직장을 유지한다.\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 35,
+   "evalSeconds": 1.349653,
+   "promptSeconds": 0.253948,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    83
+   ],
+   "startedAt": 108672.9073543,
+   "endedAt": 108675.1787914,
+   "wallSeconds": 2.2714371000038227,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":83,\"choice\":\"남는다\",\"reason\":\"직장에서의 안정감과 편안한 출퇴근이 더 중요해 보여서\"}]}",
+   "promptTokens": 390,
+   "evalTokens": 44,
+   "evalSeconds": 1.95928,
+   "promptSeconds": 0.24925,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    84
+   ],
+   "startedAt": 108672.9079164,
+   "endedAt": 108674.9198534,
+   "wallSeconds": 2.011937000002945,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":84,\"choice\":\"이직한다\",\"reason\":\"출퇴근 시간은 건강에 안 좋지만, 연봉 오르는 게 더 중요해 보여\"}]}",
+   "promptTokens": 378,
+   "evalTokens": 43,
+   "evalSeconds": 1.699355,
+   "promptSeconds": 0.249959,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    85
+   ],
+   "startedAt": 108673.3434113,
+   "endedAt": 108675.5037519,
+   "wallSeconds": 2.160340600006748,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":85,\"choice\":\"이직한다\",\"reason\":\"연봉 상승이 더 중요하고, 출퇴근 시간은 습관으로 적응할 수 있어.\"}]}",
+   "promptTokens": 383,
+   "evalTokens": 45,
+   "evalSeconds": 1.971785,
+   "promptSeconds": 0.141595,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    86
+   ],
+   "startedAt": 108674.0183431,
+   "endedAt": 108676.0760649,
+   "wallSeconds": 2.057721799996216,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":86,\"choice\":\"남는다\",\"reason\":\"연봉 오르는 것보다 일상이 안정적인 게 더 중요해 보여서\"}]}",
+   "promptTokens": 387,
+   "evalTokens": 40,
+   "evalSeconds": 1.870172,
+   "promptSeconds": 0.142998,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    87
+   ],
+   "startedAt": 108674.2566845,
+   "endedAt": 108676.3486986,
+   "wallSeconds": 2.092014100009692,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":87,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래되서 가족과 시간을 보내고 싶어요.\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 40,
+   "evalSeconds": 1.763861,
+   "promptSeconds": 0.237107,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    88
+   ],
+   "startedAt": 108674.2572442,
+   "endedAt": 108676.6525795,
+   "wallSeconds": 2.395335300010629,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":88,\"choice\":\"남는다\",\"reason\":\"건강이 더 중요해서 출퇴근 시간이 긴 직장은 피하고 싶어요\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 42,
+   "evalSeconds": 2.066815999,
+   "promptSeconds": 0.238148,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    89
+   ],
+   "startedAt": 108674.6104399,
+   "endedAt": 108676.9509983,
+   "wallSeconds": 2.3405583999992814,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":89,\"choice\":\"남는다\",\"reason\":\"건강이 더 중요하고 출퇴근 시간이 길어지면 피곤해질 것 같아\"}]}",
+   "promptTokens": 383,
+   "evalTokens": 44,
+   "evalSeconds": 2.154623,
+   "promptSeconds": 0.121498,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    90
+   ],
+   "startedAt": 108674.8786283,
+   "endedAt": 108676.2963419,
+   "wallSeconds": 1.4177136000071187,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":90,\"choice\":\"남는다\",\"reason\":\"가족과 시간 보내는 게 우선이야\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 30,
+   "evalSeconds": 1.118591,
+   "promptSeconds": 0.241838,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    91
+   ],
+   "startedAt": 108674.9199029,
+   "endedAt": 108677.4049756,
+   "wallSeconds": 2.485072700001183,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":91,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래되어 일과 삶의 균형이 깨질까 걱정돼요\"}]}",
+   "promptTokens": 382,
+   "evalTokens": 46,
+   "evalSeconds": 2.225179,
+   "promptSeconds": 0.243624,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    92
+   ],
+   "startedAt": 108675.178836,
+   "endedAt": 108677.1831717,
+   "wallSeconds": 2.0043356999958633,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":92,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 오래 걸리면 스트레스가 많아질 것 같아.\"}]}",
+   "promptTokens": 379,
+   "evalTokens": 42,
+   "evalSeconds": 1.818726,
+   "promptSeconds": 0.134415,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    93
+   ],
+   "startedAt": 108675.5038074,
+   "endedAt": 108677.55238,
+   "wallSeconds": 2.0485725999897113,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":93,\"choice\":\"이직한다\",\"reason\":\"시간은 늘어났지만 연봉 오르는 게 더 중요해 보여\"}]}",
+   "promptTokens": 380,
+   "evalTokens": 38,
+   "evalSeconds": 1.867293,
+   "promptSeconds": 0.135879,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    94
+   ],
+   "startedAt": 108676.0761208,
+   "endedAt": 108678.7491887,
+   "wallSeconds": 2.673067900002934,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":94,\"choice\":\"남는다\",\"reason\":\"출퇴근 시간이 더 오래 걸리면 힐링 시간이 줄어들잖아.\"}]}",
+   "promptTokens": 377,
+   "evalTokens": 43,
+   "evalSeconds": 2.476329,
+   "promptSeconds": 0.15132,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    95
+   ],
+   "startedAt": 108676.2963784,
+   "endedAt": 108678.4826281,
+   "wallSeconds": 2.1862496999965515,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":95,\"choice\":\"남는다\",\"reason\":\"가족과의 시간이 더 중요해서 이직하지 않겠어요.\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 36,
+   "evalSeconds": 1.856516,
+   "promptSeconds": 0.262748,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    96
+   ],
+   "startedAt": 108676.3487664,
+   "endedAt": 108678.6828045,
+   "wallSeconds": 2.334038100001635,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":96,\"choice\":\"남는다\",\"reason\":\"시간이 더 중요하고, 요리하는 시간이 줄어들면 안 되니까\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 39,
+   "evalSeconds": 2.055728999,
+   "promptSeconds": 0.263673,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    97
+   ],
+   "startedAt": 108676.6526224,
+   "endedAt": 108678.7957286,
+   "wallSeconds": 2.143106200004695,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":97,\"choice\":\"이직한다\",\"reason\":\"모험을 좋아해서 40분 더 걸리는 것도 감수할 수 있어\"}]}",
+   "promptTokens": 381,
+   "evalTokens": 38,
+   "evalSeconds": 1.957669,
+   "promptSeconds": 0.130461999,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    98
+   ],
+   "startedAt": 108676.9510465,
+   "endedAt": 108679.1982765,
+   "wallSeconds": 2.2472299999935785,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":98,\"choice\":\"남는다\",\"reason\":\"연봉 상승보다 출퇴근 시간 증가가 부담이다.\"}]}",
+   "promptTokens": 378,
+   "evalTokens": 38,
+   "evalSeconds": 2.095875,
+   "promptSeconds": 0.12148,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    99
+   ],
+   "startedAt": 108677.1832269,
+   "endedAt": 108679.5956886,
+   "wallSeconds": 2.412461700005224,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":99,\"choice\":\"남는다\",\"reason\":\"시간이 너무 오래 걸리고, 학교와 썸이 우선이에요.\"}]}",
+   "promptTokens": 387,
+   "evalTokens": 42,
+   "evalSeconds": 2.191213,
+   "promptSeconds": 0.170516,
+   "doneReason": "stop"
+  },
+  {
+   "personaIds": [
+    100
+   ],
+   "startedAt": 108677.4050376,
+   "endedAt": 108679.5959564,
+   "wallSeconds": 2.1909187999990536,
+   "error": null,
+   "content": "{\"answers\":[{\"personaId\":100,\"choice\":\"이직한다\",\"reason\":\"연봉 오름에 매력을 느끼고, 새로운 도전을 하고 싶어서\"}]}",
+   "promptTokens": 383,
+   "evalTokens": 40,
+   "evalSeconds": 2.042026,
+   "promptSeconds": 0.1209,
+   "doneReason": "stop"
+  }
+ ]
+}
