@@ -40,6 +40,7 @@ erDiagram
         varchar question_type "TEXT / IMAGE"
         varchar status
         datetime boosted_until
+        varchar idempotency_key UK "등록 요청의 키 (없으면 NULL)"
         datetime deleted_at "소프트 삭제"
     }
 
@@ -152,6 +153,8 @@ Table question {
   content varchar(300) [not null, note: '고민 본문']
   status varchar(20) [not null, note: 'ACTIVE / HIDDEN(신고 누적) / CLOSED']
   boosted_until datetime(6) [note: '포인트로 상단 노출 시 만료 시각']
+  idempotency_key varchar(100) [note: '등록 요청의 Idempotency-Key. 헤더 없이 등록했으면 NULL (V6)']
+  request_hash char(64) [note: '등록 요청 내용의 SHA-256. 키가 있을 때만 (V6)']
   created_at datetime(6) [not null]
   updated_at datetime(6) [not null]
   deleted_at datetime(6)
@@ -159,6 +162,7 @@ Table question {
   indexes {
     (status, created_at) [note: '피드 조회']
     (member_id, created_at) [note: '내 고민 목록']
+    idempotency_key [unique, note: '같은 등록 요청의 중복 처리 방지. NULL 은 여러 개 허용']
   }
 }
 
